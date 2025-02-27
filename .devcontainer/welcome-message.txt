@@ -1,0 +1,3 @@
+👋 Welcome to building a full stack fitness application with GitHub Copilot! We are thrilled that you are here and we hope you are excited to explore the capabilities of Copilot!
+📝 If you would like to sign up for Copilot visit here: https://github.com/features/copilot#pricing
+📃 GitHub Copilot documentation: https://docs.github.com/en/copilot
