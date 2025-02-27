@@ -1,5 +1,5 @@
 {
-    "image": "mcr.microsoft.com/vscode/code-insiders:latest",
+    "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
     "hostRequirements": {
         "cpus": 4
     },
@@ -18,5 +18,12 @@
         3000, // React default port
         8000, // Django default port
         27017 // MongoDB default port
-    ]
+    ],
+    "portAttributes": {
+      "3000": { // React port attributes
+      "label": "octofit-tracker",
+      "onAutoForward": "silent",
+      "requireLocalPort": true
+    }
+  }
 }
