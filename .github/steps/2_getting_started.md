@@ -1,15 +1,18 @@
-# Getting started - app frontend and backend creation
+# Getting started - Prompt GitHub Copilot agent mode
 
-In this section, we will start by setting up the face of our OctoFit application by building the front end page. To do that, we will keep it as simple as possible for now. We need resources like HTML and CSS to start decorating first, and we will later modify the page to extend the functionalities.
+## Prompt for GitHub Copilot agent mode
 
-> TIP: One challenging thing about GitHub Copilot is that it is very generative. Thus, it is hard to make a consistent, repeatable tutorial unless you try to keep it simple and very progressive.
+```text
+Create a full stack application based on the markdown files in the .github/steps markdown files provided.
 
-## Explain to GitHub Copilot the goals and steps
+Let's take this step by step 
+1 - Understand the story of creating the fitness application in 0_story.md
+2 - Be aware of the technology stack outlined in 1_perparing.md
+3 - Create the application based on the instructions provided in the 2_getting_started.md and the correct versions. The react framework, python django, and mongodb. 
+4 - Create all necessary files and commands to create files and the overall directory structure under a octofit-tracker directory and create a requirements.txt in the octofit-tracker directory for python required packages.
+```
 
-It is important to lay out a plan, provide details, and be specific.</br>
-Type the following prompt in GitHub Copilot Chat:
-
-> TIP: we are going to use gpt-4o as our OpenAI GPT model for this GitHub Universe Workshop
+## Content for GitHub Copilot agent mode to evaluate to build the OctoFit Tracker app
 
 ```text
 I want to build an OctoFit Tracker app that will include the following:
@@ -56,6 +59,34 @@ octofit-tracker/
     ├── package.json
     └── README.md
 
+Python required packages
+
+Django==4.1
+djangorestframework==3.14.0
+django-allauth==0.51.0
+django-cors-headers==4.5.0
+dj-rest-auth
+djongo==1.3.6
+pymongo==3.12
+sqlparse==0.2.4
+stack-data==0.6.3
+sympy==1.12
+tenacity==9.0.0
+terminado==0.18.1
+threadpoolctl==3.5.0
+tinycss2==1.3.0
+tornado==6.4.1
+traitlets==5.14.3
+types-python-dateutil==2.9.0.20240906
+typing_extensions==4.9.0
+tzdata==2024.2
+uri-template==1.3.0
+urllib3==2.2.3
+wcwidth==0.2.13
+webcolors==24.8.0
+webencodings==0.5.1
+websocket-client==1.8.0
+
 All of the backend django app will be in octofit_tracker and do NOT create another app of any kind
 
 Use a Python virtual environment and install all python dependencies from file octofit-tracker/requirements.txt in this workspace
@@ -69,6 +100,7 @@ Use bootstrap for the frontend
 Let's think about this step by step
 
 Important to avoid using public code and we do NOT need to initialize the git repository
+
 ```
 
 ### Cheat sheet of commands to use to create the OctoFit Tracker structure
