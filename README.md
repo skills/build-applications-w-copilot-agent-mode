@@ -1,4 +1,4 @@
-# Build an application with GitHub Copilot agent mode
+# Build applications with GitHub Copilot agent mode
 
 <!-- ![](../../actions/workflows/0-start-course.yml/badge.svg?branch=main) -->
 <img src="https://github.com/user-attachments/assets/1b3ea5df-f18d-4ed8-9ae6-f96dc1861818" alt="octofit-tracker" width="300"/>

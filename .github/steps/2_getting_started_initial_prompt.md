@@ -1,6 +1,6 @@
-# Getting started - Prompt GitHub Copilot agent mode
+# Getting started: The initial prompt GitHub Copilot agent mode
 
-## Prompt for GitHub Copilot agent mode
+## Prompt for GitHub Copilot in agent mode
 
 ```text
 Create a full stack application based on the markdown files in the .github/steps markdown files provided.
@@ -8,8 +8,9 @@ Create a full stack application based on the markdown files in the .github/steps
 Let's take this step by step 
 1 - Understand the story of creating the fitness application in 0_story.md
 2 - Be aware of the technology stack outlined in 1_perparing.md
-3 - Create the application based on the instructions provided in the 2_getting_started.md and the correct versions. The react framework, python django, and mongodb. 
+3 - Create the application based on the instructions provided in the 2_getting_started_initial_prompt.md and the correct versions. The react framework, python django, and mongodb. 
 4 - Create all necessary files and commands to create files and the overall directory structure under a octofit-tracker directory and create a requirements.txt in the octofit-tracker directory for python required packages.
+5 - Provide commands to run the application.
 ```
 
 ## Content for GitHub Copilot agent mode to evaluate to build the OctoFit Tracker app
