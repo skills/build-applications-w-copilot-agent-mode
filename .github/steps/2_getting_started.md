@@ -71,12 +71,6 @@ Let's think about this step by step
 Important to avoid using public code and we do NOT need to initialize the git repository
 ```
 
-![create project plan](./3_1_GettingStartedPromptProjectCreation.png)</br>
-
-![step by step](./3_2_GettingStartedStepByStep.png)</br>
-
-![octofit-tracker app directory tree](./3_3_OctoFitTrackerDirTree.png)</br>
-
 ### Cheat sheet of commands to use to create the OctoFit Tracker structure
 
 ```bash
@@ -101,5 +95,3 @@ sudo apt-get install -y mongodb
 sudo service mongodb start
 sudo service mongodb status
 ```
-
-[:arrow_backward: Previous: Prerequisites and development environment setup](../2_Prerequisites/README.md) | [Next: Let's work on front end stuff :arrow_forward:](../4_FrontEndWork/README.md)
