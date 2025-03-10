@@ -1,11 +1,42 @@
-## Step 1: Preparing to build your application with GitHub Copilot agent mode
+## Step 1: Hello GitHub Copilot agent mode
 
-### Prerequisites
+Welcome to your **"Build applications with GitHub Copilot agent mode"** exercise! :robot:
 
-- GitHub account
-- GitHub Copilot license
+In this exercise, you will be using GitHub Copilot agent mode to build an application that tracks your fitness goals and progress. 🏋️‍♂️🏃‍♀️💪
 
-### OctoFit Tracker technology stack
+### What is GitHub Copilot agent mode?
+
+Copilot agent mode can create apps from scratch, perform refactorings across multiple files, write and run tests, and migrate legacy code to modern frameworks. It can automatically generate documentation, integrate new libraries, or help answer questions about a complex codebase. Copilot agent mode helps you be super-productive by having an AI collaborator that understands the workspace. It can orchestrate your inner development flow while keeping you in control.
+
+Copilot agent mode operates in a more autonomous and dynamic manner to achieve the desired outcome. To process a request, Copilot loops over the following steps and iterates multiple times as needed:
+
+Determines the relevant context and files to edit autonomously.
+Offers both code changes and terminal commands to complete the task. For example, Copilot might compile code, install packages, run tests, and more.
+Monitors the correctness of code edits and terminal command output and iterates to remediate issues.
+
+> [!TIP]
+> You can learn more about GitHub Copilot agent mode in the [Use agent mode documentation](https://code.visualstudio.com/docs/copilot/copilot-edits#_use-agent-mode-preview).
+
+> [!Note]
+ Copilot agent mode is a preview feature available in [Visual Studio Code Insiders](https://code.visualstudio.com/insiders).
+
+Your most common interactions with Gitub Copilot will likely be:
+
+- **Inline suggestions**: As you type, Copilot uses the nearby context to suggest code directly in your editor. This will be a familiar interaction if you have used code completion tools like [Intellisense](https://code.visualstudio.com/docs/editor/intellisense), except that the completions may be entire functions.
+- **Copilot Chat**: A dedicated chat panel that lets you ask coding related questions. This will feel familiar if you have used online AI assistant chats. The big difference however, is that your project files will provide automatic context to provide tailored responses.
+- **Copilot Edits**: Similar to Copilot Chat, but less conversational and more big picture or goal oriented.
+- **Copilot agent mode**: Operates in a more autonomous and dynamic manner to achieve the desired outcome. To process a request, Copilot loops over the following steps and iterates multiple times as needed:
+  - Determines the relevant context and files to edit autonomously.
+  - Offers both code changes and terminal commands to complete the task. For example, Copilot might compile code, install packages, run tests, and more.
+  - Monitors the correctness of code edits and terminal command output and iterates to remediate issues.
+
+> [!TIP]
+> You can learn more about current and preview features in the [GitHub Copilot Features](https://docs.github.com/en/copilot/about-github-copilot/github-copilot-features) documentation.
+
+> [!TIP]
+> You can also select different [models](https://docs.github.com/en/github-models) and [extensions](https://github.com/features/copilot/extensions), but that's for a different lesson!
+
+### OctoFit tracker fitness application technology stack
 
 - NodeJS: Version v20.17.0
 - ReactJS: Version v18.3.1
@@ -13,14 +44,18 @@
 
 ### Ok, let's get to developing! :mechanical_arm:
 
-Before we get started on your extension, we have to configure our development environment.
+Before we get started on developing an application in GitHub Copilot agent mode, we have to configure our development environment.
 Fortunately, this has been bootstrapped for us with a pre-configured [Codespace](https://github.com/features/codespaces).
 
 This development environment includes:
 
 - The Node.js runtime.
-- A template GitHub Extension (javascript web app service).
-- [VS Code](https://code.visualstudio.com/) launch settings to start your extension in debug mode.
+- The Python runtime.
+  - forwardPorts
+    - 3000, // React default port
+    - 8000, // Django default port
+    - 27017 // MongoDB default port
+- [VS Code](https://code.visualstudio.com/) launch settings to start your application in debug mode.
 
 ### :keyboard: Activity: Getting to know your GitHub Copilot agent mode development environment
 
