@@ -105,7 +105,7 @@ Important to avoid using public code and we do NOT need to initialize the git re
 ```
 
 <details>
-<summary>Cheat sheet of commands to use to create the OctoFit Tracker structure</summary>
+<summary>Instructions for Copilot agent mode to use to create the OctoFit Tracker structure</summary>
 
 ```bash
 mkdir -p octofit-tracker/{backend,frontend}
