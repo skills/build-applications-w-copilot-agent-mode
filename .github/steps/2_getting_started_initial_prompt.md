@@ -1,6 +1,6 @@
 ## Step 2: Getting started: The initial prompt GitHub Copilot agent mode
 
-### Prompt for GitHub Copilot in agent mode
+### :keyboard: Prompt for GitHub Copilot in agent mode
 
 ```text
 Create a full stack application based on the markdown files in the .github/steps markdown files provided.
@@ -13,7 +13,7 @@ Let's take this step by step
 5 - Provide commands to run the application.
 ```
 
-### Content for GitHub Copilot agent mode to evaluate to build the OctoFit Tracker app
+#### Content for GitHub Copilot agent mode to evaluate to build the OctoFit Tracker app
 
 ```text
 I want to build an OctoFit Tracker app that will include the following:
@@ -104,7 +104,8 @@ Important to avoid using public code and we do NOT need to initialize the git re
 
 ```
 
-### Cheat sheet of commands to use to create the OctoFit Tracker structure
+<details>
+<summary>Cheat sheet of commands to use to create the OctoFit Tracker structure</summary>
 
 ```bash
 mkdir -p octofit-tracker/{backend,frontend}
@@ -128,3 +129,5 @@ sudo apt-get install -y mongodb
 sudo service mongodb start
 sudo service mongodb status
 ```
+
+</details>
