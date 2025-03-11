@@ -13,7 +13,7 @@ Let's take this step by step
 5 - Provide commands to run the application.
 ```
 
-#### Content for GitHub Copilot agent mode to evaluate to build the OctoFit Tracker app
+#### Context for GitHub Copilot agent mode to evaluate to build the OctoFit Tracker application structure based on our step by step instructions
 
 ```text
 I want to build an OctoFit Tracker app that will include the following:
@@ -105,7 +105,7 @@ Important to avoid using public code and we do NOT need to initialize the git re
 ```
 
 <details>
-<summary>Instructions for Copilot agent mode to use to create the OctoFit Tracker structure</summary>
+<summary>Instructions for Copilot agent mode to use to create the OctoFit Tracker application</summary>
 
 ```bash
 mkdir -p octofit-tracker/{backend,frontend}
