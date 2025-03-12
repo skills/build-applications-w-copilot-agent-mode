@@ -1,7 +1,6 @@
-## Step 4: Creat and run tests for the OctoFit Tracker application
+## Step 4: Create and run tests for the OctoFit Tracker application
 
-### :keyboard: Creat tests for the OctoFit Tracker application
-
+### :keyboard: Create tests for the OctoFit Tracker application
 The OctoFit Tracker application should have tests to ensure that the functionality works as expected. The tests will be divided into two parts: backend tests and frontend tests.
 
 - **Backend Tests**: These tests will be written using Django's built-in testing framework. They will cover the models, views, and serializers.
