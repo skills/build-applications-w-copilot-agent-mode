@@ -16,9 +16,10 @@ Create a full stack application based on the markdown files in the markdown file
 
 Let's take this step by step and generate instructions in this order and execute one command at a time.
 1. Understand the story of creating the fitness application from the docs/exercise_background.md file.
-2.  Create the frontend and backend in the octofit-tracker directory structure of this repository in one command based on the instructions provided in the docs/app_instructions_for_copilot.md.
-3. Setup backend python venv and create a octofit-tracker/requirements.txt file
-4. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker
+2. Create the frontend and backend in the octofit-tracker directory structure of this repository in one command based on the instructions provided in the docs/app_instructions_for_copilot.md.
+3. Setup backend python venv and create a octofit-tracker/requirements.txt file.
+4. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
+5. Execute all commands one by one.
 ```
 
 Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
