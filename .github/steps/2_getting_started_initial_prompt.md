@@ -4,9 +4,9 @@ In this step, as the gym teacher at Mergington High School, you will use GitHub 
 
 ### :keyboard: Activity: Prompt for GitHub Copilot in agent mode to start the creation of our application
 
-1 - Click the GitHub Copilot Chat "COPILOT EDITS" tab click the :paperclip: and add the codebase and the folder/docs to the context
-
-2 - Copy and past the following prompt in the GitHub Copilot Chat "COPILOT EDITS" tab and select the "Agent" instead of "Edit" from the drop down where you are adding the prompt.
+1. Open all files in the `docs` folder and keep this file open in the editor.
+2. Click the GitHub Copilot Chat "COPILOT EDITS" tab click the :paperclip: and add "Open Editors" to the prompt.
+3. Copy and past the following prompt in the GitHub Copilot Chat "COPILOT EDITS" tab and select the "Agent" instead of "Edit" from the drop down where you are inserting the the prompt.
 
 >[!NOTE]
 > Do not change the model from GPT-4o this will be an optional activity at the end of the course.
@@ -37,7 +37,8 @@ Now let's prompt agent mode to create and update all files required for the Reac
 ```text
 Now that we have the structure and the requirements installed let's continue to create Python Django project based on the docs/app_instructions_for_copilot.md file.
 
-The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
+1. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
+2. Install and run the mongodb database according to docs/app_instructions_for_copilot.md.
 ```
 
 Wait a moment for the Copilot to respond and press the continue button to execute each command presented by Copilot agent mode.
