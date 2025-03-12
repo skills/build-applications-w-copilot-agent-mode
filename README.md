@@ -22,7 +22,7 @@ In this exercise, you will:
 
 1. Start up a preconfigured development environment for making a full stack application.
 2. Prompt in GitHub Copilot Chat and select the edit tab and select agent mode from the edit/agent drop down.
-3. Try creating the application with the the GPT-4o.
+3. Try creating the application with GPT-4o.
 4. Try other LLM models to see other output.
 
 ### How to start this exercise
