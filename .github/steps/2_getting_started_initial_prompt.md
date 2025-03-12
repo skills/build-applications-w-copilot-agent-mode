@@ -14,8 +14,8 @@ In this step, as the gym teacher at Mergington High School, you will use GitHub 
 Create a full stack application based on the markdown files in the markdown files provided in the main README.md and docs directory.
 
 Let's take this step by step and generate instructions in this order and execute one command at a time.
-1. Understand the story of creating the fitness application from the docs/exercise_background.md file.
-2. Create the frontend and backend in the octofit-tracker directory structure of this repository in one command based on the instructions provided in the docs/app_instructions_for_copilot.md.
+1. Understand the story of creating the fitness application from the docs/octofit_story.md file.
+2. Create the frontend and backend in the octofit-tracker directory structure of this repository in one command based on the instructions provided in the docs/mergington-tech-policies.md.
 3. Setup backend python venv and create a octofit-tracker/requirements.txt file.
 4. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
 5. Copilot agent mode guide me in executing commands one by one.
@@ -35,10 +35,10 @@ Keep files creating and updating until the Copilot agent mode has finished.
 Now let's prompt agent mode to create and update all files required for the React framework, Python Django, and Mongodb.
 
 ```text
-Now that we have the structure and the requirements installed let's continue to create Python Django project based on the docs/app_instructions_for_copilot.md file.
+Now that we have the structure and the requirements installed let's continue to create Python Django project based on the docs/mergington-tech-policies.md file.
 
 1. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
-2. Install and run the mongodb database according to docs/app_instructions_for_copilot.md.
+2. Install and run the mongodb database according to docs/mergington-tech-policies.md.
 ```
 
 Wait a moment for the Copilot to respond and press the continue button to execute each command presented by Copilot agent mode.
