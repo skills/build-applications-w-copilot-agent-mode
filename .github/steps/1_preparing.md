@@ -36,13 +36,6 @@ Your most common interactions with Gitub Copilot will likely be:
 > [!TIP]
 > You can also select different [models](https://docs.github.com/en/github-models) and [extensions](https://github.com/features/copilot/extensions), but that's for a different lesson!
 
-### OctoFit tracker fitness application technology stack
-
-- NodeJS: Version v20.17.0
-- ReactJS: Version v18.3.1
-- Python Django: Version v4.1
-
-### Ok, let's get to developing! :mechanical_arm:
 
 Before we get started on developing an application in GitHub Copilot agent mode, we have to configure our development environment.
 Fortunately, this has been bootstrapped for us with a pre-configured [Codespace](https://github.com/features/codespaces).
@@ -55,6 +48,10 @@ This development environment includes:
     - 3000, // React default port
     - 8000, // Django default port
     - 27017 // MongoDB default port
+- VS Code extensions:
+  - GitHub Copilot/Copilot Chat insiders
+  - Python
+  - Markdown linter
 - [VS Code](https://code.visualstudio.com/) launch settings to start your application in debug mode.
 
 ### :keyboard: Activity: Getting to know your GitHub Copilot agent mode development environment
@@ -77,8 +74,7 @@ This development environment includes:
 
    - The left navigation bar is where you can access the file explorer, debugger, and search.
    - The lower panel (Ctrl+J) shows the debugger output, allows running terminal commands, and allows configuring the web service ports.
-   - Our `.github/steps` folder contains the instructions to guide Copilot agent mode to build your application. More on that in the next steps!
-
+   - Our docs folder contains the instructions that will give Copilot agent mode context to build your application. More on that in the next steps!
 
 1. Create a new branch named `my-ghc-application`. Ensure it is checked out in VS Code and published to GitHub.
 
