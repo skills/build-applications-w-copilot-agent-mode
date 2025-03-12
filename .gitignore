@@ -3,7 +3,7 @@
 # Virtual Environment
 venv/
 
-# octofit tracker app frontend and backend
-backend/
-frontend/
-management/
+# octofit tracker app
+# octfit-tracker
+
+node_modules
