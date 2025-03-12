@@ -2,7 +2,10 @@
 
 ## Building a Fitness App with GitHub Copilot agent mode for Mergington High School
 
-Welcome to Mergington High School! In this hands-on skills session, you'll step into the shoes of a high school gym teacher tasked with creating a cutting-edge fitness tracker app in record time. We'll leverage the power of **GitHub Copilot: agent mode** to rapidly develop a functional prototype of **OctoFit Tracker**, a social fitness app that encourages students to stay active and to compete with their peers.
+Welcome to Mergington High School! In this hands-on skills session, you'll step into the shoes of Paul a high school gym teacher. He has
+been looking for a way to motivate his students to stay fit outside school hours. Paul has been consulting with the IT team at the high school
+and they came up with a plan to use GitHub Copilot agent mode combine with Mergington's technology policies defined in docs/mergington-tech-policies.md. Paul and his IT counterpars believe that with the help of GitHub Copilot agent mode they can create a cutting-edge fitness tracker app in record time. Paul is going to leverage the power of **GitHub Copilot: agent mode** to rapidly develop a functional prototype of **OctoFit Tracker**, a social fitness app that encourages his students to stay active and to compete with their peers. Let's follow along with Paul and see if we can also use GitHub Copilot agent mode to create
+an application of our own.
 
 ### Workshop Overview
 
