@@ -1,3 +1,7 @@
+# Getting started - app frontend and backend creation
+
+## Explain to GitHub Copilot the goals and steps
+
 ```text
 I want to build an OctoFit Tracker app that will include the following:
 
@@ -43,7 +47,7 @@ octofit-tracker/
     ├── package.json
     └── README.md
 
-Make a requirements.txt with the followng Python required packages
+Create a requirements.txt with the following Python required packages
 
 Django==4.1
 djangorestframework==3.14.0
@@ -82,9 +86,9 @@ Layout the directory structure with no redundant backend and frontend subdirecto
 Use bootstrap for the frontend
 
 Let's think about this step by step
-
-Important to avoid using public code and we do NOT need to initialize the git repository
 ```
+
+### Cheat sheet of commands to use to create the OctoFit Tracker structure
 
 ```bash
 mkdir -p octofit-tracker/{backend,frontend}
@@ -97,8 +101,7 @@ django-admin startproject octofit_tracker octofit-tracker/backend
 
 npx create-react-app octofit-tracker/frontend
 
-cd ../frontend
-npm install bootstrap
+npm install bootstrap octofit-tracker/frontend
 
 echo "import 'bootstrap/dist/css/bootstrap.min.css';" >> src/index.js
 
@@ -108,3 +111,458 @@ sudo apt-get install -y mongodb
 sudo service mongodb start
 sudo service mongodb status
 ```
+
+## Initialize the database, setup database and install apps in settings.py, models, serializers, urls, and views
+
+Type the following prompt in GitHub Copilot Chat:
+
+```text
+In our next steps lets think step by step and setup the following in this order
+
+1. Initialize the mongo octofit_db database and create a correct table structure for users, teams, activity, leaderboard, and workouts collections
+2. Make sure there is a unique id for primary key for the user collection 
+   ex. db.users.createIndex({ "email": 1 }, { unique: true })
+3. settings.py in our django project for mongodb octofit_db database including localhost and the port
+4. settings.py in our django project setup for all installed apps. ex djongo, octofit_tracker, rest_framework
+5. In octofit_tracker project setup and use command touch models.py, serializers.py, urls.py, and views.py for users, teams, activity, leaderboard, and workouts
+6. Generate code for models.py, serializers.py, and views.py and
+7. make sure urls.py has a root, admin, and api endpoints
+    urlpatterns = [
+        path('', api_root, name='api-root'),  # Root endpoint
+        path('admin/', admin.site.urls),  # Admin endpoint
+        path('api/', include(router.urls)),  # API endpoint
+    ]
+```
+
+### MongoDB commands to setup `octofit_db`
+
+```bash
+mongo
+use octofit_db
+db.createCollection("users")
+db.createCollection("teams")
+db.createCollection("activity")
+db.createCollection("leaderboard")
+db.createCollection("workouts")
+db.users.createIndex({ "email": 1 }, { unique: true })
+db.teams.createIndex({ "name": 1 }, { unique: true })
+db.activity.createIndex({ "activity_id": 1 }, { unique: true })
+db.leaderboard.createIndex({ "leaderboard_id": 1 }, { unique: true })
+db.workouts.createIndex({ "workout_id": 1 }, { unique: true })
+exit
+```
+
+### Sample settings.py
+
+```json
+# FILE: octofit_tracker/settings.py
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'octofit_db',
+        'HOST': 'localhost',
+        'PORT': 27017,
+    }
+}
+```
+
+```json
+# FILE: octofit_tracker/settings.py
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest_framework',
+    'djongo',
+    'octofit_tracker',
+]
+```
+
+### Sample code for models.py, serializers.py, views.py, and urls.py
+
+#### models.py
+
+```python
+# FILE: octofit-tracker/backend/octofit_tracker/models.py
+
+from djongo import models
+
+class User(models.Model):
+    _id = models.ObjectIdField()
+    username = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=100)
+
+class Team(models.Model):
+    _id = models.ObjectIdField()
+    name = models.CharField(max_length=100)
+    members = models.ArrayReferenceField(to=User, on_delete=models.CASCADE)
+
+class Activity(models.Model):
+    _id = models.ObjectIdField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    activity_type = models.CharField(max_length=100)
+    duration = models.DurationField()
+
+class Leaderboard(models.Model):
+    _id = models.ObjectIdField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    score = models.IntegerField()
+
+class Workout(models.Model):
+    _id = models.ObjectIdField()
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+```
+
+#### serializers.py
+
+```python
+# FILE: octofit-tracker/backend/octofit_tracker/serializers.py
+
+from rest_framework import serializers
+from .models import User, Team, Activity, Leaderboard, Workout
+from bson import ObjectId
+
+class ObjectIdField(serializers.Field):
+    def to_representation(self, value):
+        return str(value)
+
+    def to_internal_value(self, data):
+        return ObjectId(data)
+
+class UserSerializer(serializers.ModelSerializer):
+    _id = ObjectIdField()
+
+    class Meta:
+        model = User
+        fields = '__all__'
+
+class TeamSerializer(serializers.ModelSerializer):
+    _id = ObjectIdField()
+    members = UserSerializer(many=True)
+
+    class Meta:
+        model = Team
+        fields = '__all__'
+
+class ActivitySerializer(serializers.ModelSerializer):
+    _id = ObjectIdField()
+    user = ObjectIdField()
+
+    class Meta:
+        model = Activity
+        fields = '__all__'
+
+class LeaderboardSerializer(serializers.ModelSerializer):
+    _id = ObjectIdField()
+    user = ObjectIdField()
+
+    class Meta:
+        model = Leaderboard
+        fields = '__all__'
+
+class WorkoutSerializer(serializers.ModelSerializer):
+    _id = ObjectIdField()
+
+    class Meta:
+        model = Workout
+        fields = '__all__'
+```
+
+#### views.py
+
+```python
+# FILE: octofit-tracker/backend/octofit_tracker/views.py
+
+from rest_framework import viewsets
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+from .serializers import UserSerializer, TeamSerializer, ActivitySerializer, LeaderboardSerializer, WorkoutSerializer
+from .models import User, Team, Activity, Leaderboard, Workout
+
+@api_view(['GET'])
+def api_root(request, format=None):
+    return Response({
+        'users': reverse('user-list', request=request, format=format),
+        'teams': reverse('team-list', request=request, format=format),
+        'activity': reverse('activity-list', request=request, format=format),
+        'leaderboard': reverse('leaderboard-list', request=request, format=format),
+        'workouts': reverse('workout-list', request=request, format=format),
+    })
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class TeamViewSet(viewsets.ModelViewSet):
+    queryset = Team.objects.all()
+    serializer_class = TeamSerializer
+
+class ActivityViewSet(viewsets.ModelViewSet):
+    queryset = Activity.objects.all()
+    serializer_class = ActivitySerializer
+
+class LeaderboardViewSet(viewsets.ModelViewSet):
+    queryset = Leaderboard.objects.all()
+    serializer_class = LeaderboardSerializer
+
+class WorkoutViewSet(viewsets.ModelViewSet):
+    queryset = Workout.objects.all()
+    serializer_class = WorkoutSerializer
+```
+
+#### urls.py
+
+```python
+# FILE: octofit-tracker/backend/octofit_tracker/urls.py
+
+from django.contrib import admin
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import UserViewSet, TeamViewSet, ActivityViewSet, LeaderboardViewSet, WorkoutViewSet, api_root
+
+router = DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'teams', TeamViewSet)
+router.register(r'activities', ActivityViewSet)
+router.register(r'leaderboards', LeaderboardViewSet)
+router.register(r'workouts', WorkoutViewSet)
+
+urlpatterns = [
+    path('', api_root, name='api-root'),  # Root endpoint
+    path('admin/', admin.site.urls),  # Admin endpoint
+    path('api/', include(router.urls)),  # API endpoint
+]
+```
+
+## Populate the databse with sample data
+
+```text
+Let's use manage.py to get the database setup and populated based on fields in models.py
+
+- Create populate_db.py as a manage.py command so it initializes and deletes previous data and recreates it
+- populate_db.py creates users, teams, activity, leaderboard, and workouts
+- users will be super hero users
+- Include steps to migrate in the octofit_tracker project
+```
+
+### Commands to create the directory structure for populate_db.py
+
+```bash
+mkdir -p octofit-tracker/backend/octofit_tracker/management/commands
+touch octofit-tracker/backend/octofit_tracker/management/__init__.py
+touch octofit-tracker/backend/octofit_tracker/management/commands/__init__.py
+touch octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py
+```
+### Sample code for populate_db.py
+
+```python
+# FILE: octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py
+
+from django.core.management.base import BaseCommand
+from octofit_tracker.models import User, Team, Activity, Leaderboard, Workout
+from django.conf import settings
+from pymongo import MongoClient
+from datetime import timedelta
+
+class Command(BaseCommand):
+    help = 'Populate the database with superhero users, teams, activity, leaderboard, and workouts'
+
+    def handle(self, *args, **kwargs):
+        # Connect to MongoDB
+        client = MongoClient(settings.DATABASES['default']['HOST'], settings.DATABASES['default']['PORT'])
+        db = client[settings.DATABASES['default']['NAME']]
+
+        # Drop existing collections
+        db.users.drop()
+        db.teams.drop()
+        db.activity.drop()
+        db.leaderboard.drop()
+        db.workouts.drop()
+
+        # Populate users
+        users = [
+            {'username': 'superman', 'email': 'superman@heroes.com', 'password': 'superpassword'},
+            {'username': 'batman', 'email': 'batman@heroes.com', 'password': 'batpassword'},
+            {'username': 'wonderwoman', 'email': 'wonderwoman@heroes.com', 'password': 'wonderpassword'},
+            {'username': 'flash', 'email': 'flash@heroes.com', 'password': 'flashpassword'},
+            {'username': 'aquaman', 'email': 'aquaman@heroes.com', 'password': 'aquapassword'},
+        ]
+
+        user_objects = []
+        for user_data in users:
+            user, created = User.objects.get_or_create(email=user_data['email'], defaults=user_data)
+            user_objects.append(user)
+            if created:
+                self.stdout.write(self.style.SUCCESS(f'Successfully created user {user.username}'))
+            else:
+                self.stdout.write(self.style.WARNING(f'User {user.username} already exists'))
+
+        # Ensure all user objects are saved
+        for user in user_objects:
+            user.save()
+
+        # Populate teams
+        teams = [
+            {'name': 'Justice League', 'members': [user_objects[0], user_objects[1], user_objects[2], user_objects[3], user_objects[4]]},
+        ]
+
+        for team_data in teams:
+            team, created = Team.objects.get_or_create(name=team_data['name'])
+            if created:
+                for member in team_data['members']:
+                    team.members.add(member)
+                self.stdout.write(self.style.SUCCESS(f'Successfully created team {team.name}'))
+            else:
+                self.stdout.write(self.style.WARNING(f'Team {team.name} already exists'))
+
+        # Populate activity
+        activities = [
+            {'user': user_objects[0], 'activity_type': 'Flying', 'duration': timedelta(hours=1)},
+            {'user': user_objects[1], 'activity_type': 'Martial Arts', 'duration': timedelta(hours=2)},
+            {'user': user_objects[2], 'activity_type': 'Training', 'duration': timedelta(hours=1, minutes=30)},
+            {'user': user_objects[3], 'activity_type': 'Running', 'duration': timedelta(minutes=30)},
+            {'user': user_objects[4], 'activity_type': 'Swimming', 'duration': timedelta(hours=1, minutes=15)},
+        ]
+
+        for activity_data in activities:
+            activity, created = Activity.objects.get_or_create(**activity_data)
+            if created:
+                self.stdout.write(self.style.SUCCESS(f'Successfully created activity for {activity.user.username}'))
+            else:
+                self.stdout.write(self.style.WARNING(f'Activity for {activity.user.username} already exists'))
+
+        # Populate leaderboard
+        leaderboards = [
+            {'user': user_objects[0], 'score': 100},
+            {'user': user_objects[1], 'score': 90},
+            {'user': user_objects[2], 'score': 95},
+            {'user': user_objects[3], 'score': 85},
+            {'user': user_objects[4], 'score': 80},
+        ]
+
+        for leaderboard_data in leaderboards:
+            leaderboard, created = Leaderboard.objects.get_or_create(**leaderboard_data)
+            if created:
+                self.stdout.write(self.style.SUCCESS(f'Successfully created leaderboard entry for {leaderboard.user.username}'))
+            else:
+                self.stdout.write(self.style.WARNING(f'Leaderboard entry for {leaderboard.user.username} already exists'))
+
+        # Populate workouts
+        workouts = [
+            {'name': 'Super Strength Training', 'description': 'Training for super strength'},
+            {'name': 'Martial Arts Training', 'description': 'Training for martial arts'},
+            {'name': 'Amazonian Training', 'description': 'Training for Amazonian warriors'},
+            {'name': 'Speed Training', 'description': 'Training for super speed'},
+            {'name': 'Aquatic Training', 'description': 'Training for underwater activity'},
+        ]
+
+        for workout_data in workouts:
+            workout, created = Workout.objects.get_or_create(**workout_data)
+            if created:
+                self.stdout.write(self.style.SUCCESS(f'Successfully created workout {workout.name}'))
+            else:
+                self.stdout.write(self.style.WARNING(f'Workout {workout.name} already exists'))
+```
+
+### Run the following commands to migrate the database and populate it with data
+
+```bash
+python octofit-tracker/backend/manage.py octofit-tracker/backend/makemigrations
+python octofit-tracker/backend/manage.py octofit-tracker/backend/migrate
+python octofit-tracker/backendmanage.py octofit-tracker/backend/populate_db
+```
+
+## Using the Codespace endpoint to access the Django REST Framework
+
+```text
+Let's do the following step by step
+
+- update #file:views.py to replace the return for the rest api url endpiints with the codespace url http://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev for django
+- Replace <codespace-name> with [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]
+- Run the Django server
+
+HTTP 200 OK
+Allow: GET, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+{
+    "users": "http://localhost:8000/api/users/?format=api",
+    "teams": "http://localhost:8000/api/teams/?format=api",
+    "activity": "http://localhost:8000/api/activity/?format=api",
+    "leaderboard": "http://localhost:8000/api/leaderboard/?format=api",
+    "workouts": "http://localhost:8000/api/workouts/?format=api"
+}
+
+becomes
+
+HTTP 200 OK Allow: GET, HEAD, OPTIONS Content-Type: application/json Vary: Accept
+
+{ 
+    "users": "http://<codespace-name>-8000.app.github.dev/users/api/users/?format=api",
+    "teams": "http://<codespace-name>-8000.app.github.dev/api/teams/?format=api",
+    "activity": "http://<codespace-name>-8000.app.github.dev/api/activity/?format=api",
+    "leaderboard": "http://<codespace-name>-8000.app.github.dev/api/leaderboard/?format=api",
+    "workouts": "http://<codespace-name>-8000.app.github.dev/api/workouts/?format=api" 
+}
+```
+
+## Update to views.py
+
+```python
+# FILE: octofit_tracker/views.py
+
+from rest_framework import viewsets
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+from .serializers import UserSerializer, TeamSerializer, ActivitySerializer, LeaderboardSerializer, WorkoutSerializer
+from .models import User, Team, Activity, Leaderboard, Workout
+
+@api_view(['GET'])
+def api_root(request, format=None):
+    base_url = 'http://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev/'
+    return Response({
+        'users': base_url + 'api/users/?format=api',
+        'teams': base_url + 'api/teams/?format=api',
+        'activity': base_url + 'api/activity/?format=api',
+        'leaderboard': base_url + 'api/leaderboard/?format=api',
+        'workouts': base_url + 'api/workouts/?format=api'
+    })
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class TeamViewSet(viewsets.ModelViewSet):
+    queryset = Team.objects.all()
+    serializer_class = TeamSerializer
+
+class ActivityViewSet(viewsets.ModelViewSet):
+    queryset = Activity.objects.all()
+    serializer_class = ActivitySerializer
+
+class LeaderboardViewSet(viewsets.ModelViewSet):
+    queryset = Leaderboard.objects.all()
+    serializer_class = LeaderboardSerializer
+
+class WorkoutViewSet(viewsets.ModelViewSet):
+    queryset = Workout.objects.all()
+    serializer_class = WorkoutSerializer
+```
+
+## Run the server via manage.py
+
+```bash
+python manage.py runserver
+```
+
+
