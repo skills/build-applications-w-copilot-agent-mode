@@ -17,7 +17,7 @@ generate instructions in this order
 4. The Django project octofit-tracker directory will have all the backend components for the app
 5. Create the django app directly in the directory octofit_tracker/backend
 6. Setup the octofit-tracker/frontend directory will store the react app with no subdirectories
-7. install react framework
+7. Install react framework
 8. Install bootstrap and import it
 9. Commands to install mongodb via 'apt-get' 
 10. Commands start mongodb with the 'sudo service mongodb start' and 'sudo service mongodb status'
@@ -43,7 +43,7 @@ octofit-tracker/
     ├── package.json
     └── README.md
 
-Python required packages
+Make a requirements.txt with the followng Python required packages
 
 Django==4.1
 djangorestframework==3.14.0
