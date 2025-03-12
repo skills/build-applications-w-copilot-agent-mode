@@ -4,4 +4,6 @@
 venv/
 
 # octofit tracker app
-# octfit-tracker 
+# octfit-tracker
+
+node_modules
