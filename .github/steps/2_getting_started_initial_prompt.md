@@ -1,6 +1,9 @@
-## Step 2: Getting started: The initial prompt GitHub Copilot agent mode
+## Step 2: Getting started: The initial prompt to setup the application structure and Python requirements
 
-In this step, as the gym teacher at Mergington High School, you will use GitHub Copilot agent mode to create a full stack application based on markdown files in the `docs` directory provided in the codebase. 
+In this step, we will will accomplish the following:
+- Create the octofit-tracker application directory structure.
+- Create the octofit-tracker/backend and octofit-tracker/frontend directories.
+- Create the octofit-tracker/backend/requirements.txt file. 
 
 ### :keyboard: Activity: Prompt for GitHub Copilot in agent mode to start the creation of our application
 
@@ -11,14 +14,14 @@ In this step, as the gym teacher at Mergington High School, you will use GitHub 
 > Do not change the model from GPT-4o this will be an optional activity at the end of the course.
 
 ```text
-Create a full stack application based on the markdown files in the markdown files provided in the main README.md and docs directory.
+Let's take thhe following step by step and generate instructions in this order and execute the commands.
+Use docs/mergington-tech-policies.md as a guide for the project structure and requirements.
 
-Let's take this step by step and generate instructions in this order and execute one command at a time.
 1. Understand the story of creating the fitness application from the docs/octofit_story.md file.
-2. Create the frontend and backend in the octofit-tracker directory structure of this repository in one command based on the instructions provided in the docs/mergington-tech-policies.md.
-3. Setup backend python venv and create a octofit-tracker/requirements.txt file.
-4. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
-5. Copilot agent mode guide me in executing commands one by one.
+2. Create the initial directory structure for the octofit-tracker application octofit-tracker/backend, octofit-tracker/frontend.
+3. Setup the backend python virtual environment, requirements.txt, and install required packages.
+
+Don't proceed with the next activity until all of these steps are completed.
 ```
 
 Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
@@ -29,18 +32,29 @@ Keep files creating and updating until the Copilot agent mode has finished.
 > [!NOTE]
 > Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
 > GitHub Copilot agent mode will create the directory structure and install the required packages for the React framework, Python Django, and MongoDB. It will also create and edit files for the project as needed.
-> If there any questions, in the Copilot terminal answer `(y)` by hitting enter/return and follow the instructions provided.
+> If there any questions, in the Copilot terminal answer `(y)` by hitting enter/return key and follow the instructions provided.
 > It may not create the requirements.txt file at first but GitHub Copilot agent mode should recognize the error and create it in the next response.
 
-### :keyboard: Activity: GitHub Copilot agent mode creating and updating files
-
-Now let's prompt agent mode to create and update all files required for the React framework, Python Django, and Mongodb.
+### :keyboard: Activity: Setup the Python Django project/app
 
 ```text
-Now that we have the structure and the requirements installed let's continue to create Python Django project based on the docs/mergington-tech-policies.md file.
+Now let's prompt agent mode to setup the Python Django project/app based on the requirements in the docs/mergington-tech-policies.md file.
 
 1. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
-2. Install and run the mongodb database according to docs/mergington-tech-policies.md.
+2. Start the django project and app with the name octofit-tracker and verify it is running.
+
+Don't proceed with the next activity until all of these steps are completed.
+```
+
+Wait a moment for the Copilot to respond and press the continue button to execute each command presented by Copilot agent mode.
+Keep files creating and updating until the Copilot agent mode has finished.
+
+### :keyboard: Activity: Let's install and start the mongoDB database
+
+```text
+Now let's prompt GitHub Copilot agent mode install and start the mongoDB based on the requirements in the docs/mergington-tech-policies.md file.
+
+Don't proceed with the next activity until all of these steps are completed.
 ```
 
 Wait a moment for the Copilot to respond and press the continue button to execute each command presented by Copilot agent mode.
