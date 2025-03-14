@@ -1,7 +1,7 @@
 .DS_Store
 
 # Virtual Environment
-venv/
+venv
 
 # octofit tracker app
 # octfit-tracker
