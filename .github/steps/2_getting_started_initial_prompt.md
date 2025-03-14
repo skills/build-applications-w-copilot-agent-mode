@@ -27,6 +27,8 @@ Wait a moment for the Copilot to respond and press the continue button which wil
 Keep files creating and updating until the Copilot agent mode has finished.
 
 > [!NOTE]
+> Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
+> GitHub Copilot agent mode will create the directory structure and install the required packages for the React framework, Python Django, and MongoDB. It will also create and edit files for the project as needed.
 > If there any questions, in the Copilot terminal answer `(y)` by hitting enter/return and follow the instructions provided.
 > It may not create the requirements.txt file at first but GitHub Copilot agent mode should recognize the error and create it in the next response.
 
