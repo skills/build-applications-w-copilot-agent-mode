@@ -24,11 +24,12 @@ In this step, we will will accomplish the following:
 ```text
 Based on the requirements in the docs/mergington-tech-policies.md file. Let's initialize the octofit_db database.
 
-1. Initialize the mongo octofit_db database
-2. Create a correct table structure for users, teams, activity, leaderboard, and workouts collections
-3. Make sure there is a unique id for primary key for the user collection 
+1. Initialize the mongo octofit_db database.
+2. Create a correct table structure for users, teams, activity, leaderboard, and workouts collections.
+3. Make sure there is a unique id for primary key for the user collection.
    ex. db.users.createIndex({ "email": 1 }, { unique: true })
-4. List the collections in the octofit_db database
+4. Run the command for me to create the database.
+5. List the collections in the octofit_db database.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
@@ -37,6 +38,7 @@ Don't proceed with the next activity until all of these steps are completed.
 
 ```text
 Based on the requirements in the docs/mergington-tech-policies.md file. Let's update the octofit-tracker/backend/octofit_tracker app files.
+
 1. Update the octofit-tracker/backend/octofit_tracker/settings.py file to include the mongoDB database connection.
 2. Update the octofit-tracker/backend/octofit_tracker/models.py file to include the models for users, teams, activity, leaderboard, and workouts collections.
 3. Update the octofit-tracker/backend/octofit_tracker/serializers.py file to include the serializers for users, teams, activity, leaderboard, and workouts collections.
