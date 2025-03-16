@@ -59,7 +59,7 @@ Don't proceed with the next activity until all of these steps are completed.
 Based on the requirements in the docs/mergington-tech-policies.md file. Let's populate the octofit_db database with test data.
 
 1. Create a test data file in the octofit-tracker/backend/octofit_tracker directory.
-2. Run the server in the Python virtual environment makemigrations and migrate the database.
+2. Make sure the Python Django server is running in the Python virtual environment makemigrations and migrate the database.
 3. Populate the octofit_db database with test data for users, teams, activity, leaderboard, and workouts collections.
 4. Verify the test data is populated in the octofit_db database.
 
