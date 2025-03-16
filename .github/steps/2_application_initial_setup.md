@@ -30,6 +30,9 @@ Use docs/mergington-tech-policies.md as a guide for the project structure and re
 Don't proceed with the next activity until all of these steps are completed.
 ```
 
+> [!IMPORTANT]
+> Once the above activity installs all the required packages, proceed to the next activity.
+
 ### :keyboard: Activity: Setup the Python Django project/app
 
 ```text
@@ -37,7 +40,7 @@ based on the requirements in the docs/mergington-tech-policies.md file, let's se
 
 1. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
 2. Setup the additional configuration for the django project/app with the name octofit-tracker 
-3. Run the server and verify it is running.
+3. Run the server in the Python virtual environment and verify it is running.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
