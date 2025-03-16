@@ -105,11 +105,7 @@ npm install bootstrap octofit-tracker/frontend
 
 echo "import 'bootstrap/dist/css/bootstrap.min.css';" >> src/index.js
 
-sudo apt-get update
-sudo apt-get install -y mongodb
-
-sudo service mongodb start
-sudo service mongodb status
+sudo apt-get update && sudo apt-get install -y mongodb && sudo service mongodb start && sudo service mongodb status
 ```
 
 ## Initialize the database, setup database and install apps in settings.py, models, serializers, urls, and views
