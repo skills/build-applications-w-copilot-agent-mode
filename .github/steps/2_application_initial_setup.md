@@ -49,27 +49,18 @@ Don't proceed with the next activity until all of these steps are completed.
 Wait a moment for the Copilot to respond and press the continue button to execute each command presented by Copilot agent mode.
 Keep files creating and updating until the Copilot agent mode has finished.
 
-### :keyboard: Activity: Let's install and start the mongoDB database
+### :keyboard: Activity: Let's install, start, verify the mongoDB database is running
 
 ```text
-Based on the requirements in the docs/mergington-tech-policies.md file. Let's install the mongoDB database.
+Based on the requirements in the docs/mergington-tech-policies.md file. Let's install, start, and verify the mongoDB database is running.
 
 1. Install mongoDB and make sure the command is complete.
+2. Start the mongoDB with the service command.
+3. Verify the mongoDB is running with the service command.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
 
 > [!IMPORTANT]
-> You may need to stop if the copilot agent mode is in a spinning loop, but the command will have executed.
-
-### :keyboard: Activity: Let's start the mongoDB database and verify it is running
-
-```text
-Based on the requirements in the docs/mergington-tech-policies.md file. Let's start the mongoDB database and verify it is running.
-
-1. Install is complete so don't run the install command again.
-2. Start the mongoDB
-3. Verify the mongoDB is running
-
-Don't proceed with the next activity until all of these steps are completed.
-```
+> You may need to stop if the copilot agent mode command is spinning when installing the mongoDB database
+> Then ask agent mode to start and verify the mongoDB database is running using service commands.
