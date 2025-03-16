@@ -1,6 +1,6 @@
 ## Step 2: The initial application setup: Directory structure, Python requirements, Django project/app, and MongoDB
 
-In this step, we will will accomplish the following:
+In this step, we will accomplish the following:
 
 - Create the octofit-tracker application directory structure.
 - Create the octofit-tracker/backend and octofit-tracker/frontend directories.
@@ -39,8 +39,9 @@ Don't proceed with the next activity until all of these steps are completed.
 based on the requirements in the docs/mergington-tech-policies.md file, let's setup the Python Django project/app and run the server.
 
 1. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
-2. Setup the additional configuration for the django project/app with the name octofit-tracker 
-3. Run the server in the Python virtual environment and verify it is running.
+2. Setup the additional configuration for the django project/app with the name octofit-tracker
+3. Run makemigrations and migrate the database before running the server.
+4. Run the server in the Python virtual environment and verify it is running.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
@@ -51,14 +52,23 @@ Keep files creating and updating until the Copilot agent mode has finished.
 ### :keyboard: Activity: Let's install and start the mongoDB database
 
 ```text
-Based on the requirements in the docs/mergington-tech-policies.md file. Let's install and start the mongoDB database.
+Based on the requirements in the docs/mergington-tech-policies.md file. Let's install the mongoDB database.
 
 1. Install mongoDB and make sure the command is complete.
-2. Start the mongoDB
-3. Verify the mongoDB is running
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
 
 > [!NOTE]
 > You may need to stop if the copilot agent mode is in a spinning loop, but the command has executed.
+
+### :keyboard: Activity: Let's start the mongoDB database and verify it is running
+
+```text
+Based on the requirements in the docs/mergington-tech-policies.md file. Let's start the mongoDB database and verify it is running.
+
+1. Start the mongoDB
+2. Verify the mongoDB is running
+
+Don't proceed with the next activity until all of these steps are completed.
+```
