@@ -39,7 +39,7 @@ Don't proceed with the next activity until all of these steps are completed.
 based on the requirements in the docs/mergington-tech-policies.md file, let's setup the Python Django project/app and run the server.
 
 1. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
-2. Setup the additional configuration for the django project/app with the name octofit-tracker
+2. Setup the additional configuration for the django project/app with the name octofit-tracker.
 3. Run makemigrations and migrate the database before running the server.
 4. Run the server in the Python virtual environment and verify it is running.
 
@@ -60,7 +60,7 @@ Don't proceed with the next activity until all of these steps are completed.
 ```
 
 > [!NOTE]
-> You may need to stop if the copilot agent mode is in a spinning loop, but the command has executed.
+> You may need to stop if the copilot agent mode is in a spinning loop, but the command will have executed.
 
 ### :keyboard: Activity: Let's start the mongoDB database and verify it is running
 
