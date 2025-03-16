@@ -28,11 +28,14 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's in
 2. Create a correct table structure for users, teams, activity, leaderboard, and workouts collections.
 3. Make sure there is a unique id for primary key for the user collection.
    ex. db.users.createIndex({ "email": 1 }, { unique: true })
-4. Run the command for me to create the database.
+4. Execute the command for me to create the database.
 5. List the collections in the octofit_db database.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
+
+> [!IMPORTANT]
+> You may need to ask agent mode to run the command to create the database.
 
 ### :keyboard: Activity: Update the octofit-tracker/backend/octofit_tracker app files
 
