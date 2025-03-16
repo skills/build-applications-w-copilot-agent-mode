@@ -36,7 +36,7 @@ Don't proceed with the next activity until all of these steps are completed.
 ### :keyboard: Activity: Setup the Python Django project/app
 
 ```text
-based on the requirements in the docs/mergington-tech-policies.md file, let's setup the Python Django project/app and run the server.
+Based on the requirements in the docs/mergington-tech-policies.md file, let's setup the Python Django project/app and run the server.
 
 1. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
 2. Setup the additional configuration for the django project/app with the name octofit-tracker.
@@ -59,7 +59,7 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's in
 Don't proceed with the next activity until all of these steps are completed.
 ```
 
-> [!NOTE]
+> [!IMPORTANT]
 > You may need to stop if the copilot agent mode is in a spinning loop, but the command will have executed.
 
 ### :keyboard: Activity: Let's start the mongoDB database and verify it is running
@@ -67,8 +67,9 @@ Don't proceed with the next activity until all of these steps are completed.
 ```text
 Based on the requirements in the docs/mergington-tech-policies.md file. Let's start the mongoDB database and verify it is running.
 
-1. Start the mongoDB
-2. Verify the mongoDB is running
+1. Install is complete so don't run the install command again.
+2. Start the mongoDB
+3. Verify the mongoDB is running
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
