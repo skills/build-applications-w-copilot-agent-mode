@@ -55,14 +55,12 @@ Keep files creating and updating until the Copilot agent mode has finished.
 Based on the requirements in the docs/mergington-tech-policies.md file. Let's install mongoDB.
 
 1. Install mongoDB and make sure the command is complete.
-2. Start the mongoDB with the service command.
-3. Verify the mongoDB is running with the service command.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
 
 > [!IMPORTANT]
-> You may need to stop if the copilot agent mode command is spinning when installing the mongoDB database.
+> You will need to hit the stop button in GitHub Copilot chat since the copilot agent mode command is spinning when installing the mongoDB database.
 
 ### :keyboard: Activity: Let's start and verify mongoDB is running
 
