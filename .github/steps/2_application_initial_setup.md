@@ -25,7 +25,7 @@ Use docs/mergington-tech-policies.md as a guide for the project structure and re
 
 1. Understand the story of creating the fitness application from the docs/octofit_story.md file.
 2. Create the initial directory structure for the octofit-tracker application octofit-tracker/backend, octofit-tracker/frontend.
-3. Setup the backend python virtual environment, requirements.txt, and install required packages.
+3. Setup the backend python virtual environment, requirements.txt based on docs/mergington-tech-polocies.md, and install required packages.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
