@@ -1,0 +1,67 @@
+## Step 5: Setup the frontend React framework, update the components, and start OctoFit Tracker app
+
+In this step, we will will accomplish the following:
+
+- Setup the octofit-tracker frontend React framework.
+- Update the folowing components to include the React framework:
+  - src/App.js
+  - src/index.js
+  - src/components/Activities.js
+  - src/components/Leaderboard.js
+  - src/components/Teams.js
+  - src/components/Users.js
+  - src/components/Workouts.js
+- Start the react app and check the output.
+
+1. Open all files in the `docs` folder and keep this file open in the editor.
+2. Click the GitHub Copilot Chat "COPILOT EDITS" tab click the :paperclip: and add "Open Editors" to the prompt.
+3. Copy and paste the following prompt in the GitHub Copilot Chat "COPILOT EDITS" tab and select the "Agent" instead of "Edit" from the drop down where you are inserting the prompt.
+
+>[!NOTE]
+> Do not change the model from GPT-4o this will be an optional activity at the end of the course.
+> Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
+> Wait a moment for the Copilot to respond and press the continue button to execute commands presented by Copilot agent mode.
+> Keep files created and updated by Copilot agent mode until it is finished.
+> Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
+
+### :keyboard: Activity: Install the octofit-tracker frontend React framework
+
+```text
+Based on the requirements in the docs/mergington-tech-policies.md file. Let's setup codespace for the octofit-tracker frontend React framework.
+
+1. Make the octofit-tracker/frontend directory.
+2. Create the react app in the octofit-tracker/frontend directory.
+3. Install bootstrap in the octofit-tracker/frontend directory.
+4. Import bootstrap css in the src/index.js file.
+
+Don't proceed with the next activity until all of these steps are completed.
+```
+
+### :keyboard: Activity: Update the octofit-tracker frontend React components
+
+```text
+Based on the requirements in the docs/mergington-tech-policies.md file. Let's update the octofit-tracker frontend React components.
+
+- Update the folowing components to include the React framework:
+  - src/App.js
+  - src/index.js
+  - src/components/Activities.js
+  - src/components/Leaderboard.js
+  - src/components/Teams.js
+  - src/components/Users.js
+  - src/components/Workouts.js
+
+Don't proceed with the next activity until all of these steps are completed.
+```
+
+### :keyboard: Activity: Start the react app and check the output
+
+```text
+Based on the requirements in the docs/mergington-tech-policies.md file. Let's start the react app and check the output.
+
+1. Start the react app in the octofit-tracker/frontend directory.
+2. Check the output in the browser.
+3. Check the output in the terminal.
+
+Don't proceed with the next activity until all of these steps are completed.
+```

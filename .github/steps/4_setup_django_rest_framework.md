@@ -30,6 +30,8 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's se
 2. Update #file:octofit-tracker/backend/octofit_tracker/views.py to replace the return for the rest api url endpiints with the codespace url http://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev for django
 3. Run the Django server.
 4. Test the API end points using curl command.
+
+Don't proceed with the next activity until all of these steps are completed.
 ```
 
 >[!IMPORTANT]
