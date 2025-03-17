@@ -441,7 +441,7 @@ python octofit-tracker/backendmanage.py octofit-tracker/backend/populate_db
 ```text
 Let's do the following step by step
 
-- update #file:views.py to replace the return for the rest api url endpiints with the codespace url http://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev for django
+- Update #file:octofit-tracker/backend/octofit_tracker/views.py to replace the return for the rest api url endpiints with the codespace url http://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev for django
 - Replace <codespace-name> with [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]
 - Run the Django server
 
@@ -474,7 +474,7 @@ HTTP 200 OK Allow: GET, HEAD, OPTIONS Content-Type: application/json Vary: Accep
 ## Update to views.py
 
 ```python
-# FILE: octofit_tracker/views.py
+# FILE: octofit-tracker/backend/octofit_tracker/views.py
 
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
@@ -489,7 +489,7 @@ def api_root(request, format=None):
     return Response({
         'users': base_url + 'api/users/?format=api',
         'teams': base_url + 'api/teams/?format=api',
-        'activity': base_url + 'api/activity/?format=api',
+        'activities': base_url + 'api/activities/?format=api',
         'leaderboard': base_url + 'api/leaderboard/?format=api',
         'workouts': base_url + 'api/workouts/?format=api'
     })
