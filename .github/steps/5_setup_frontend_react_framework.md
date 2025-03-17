@@ -33,6 +33,7 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's se
 2. Create the react app in the octofit-tracker/frontend directory.
 3. Install bootstrap in the octofit-tracker/frontend directory.
 4. Import bootstrap css in the src/index.js file.
+5. Install the reactor-router-dom in the octofit-tracker/frontend directory.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
@@ -59,9 +60,14 @@ Don't proceed with the next activity until all of these steps are completed.
 ```text
 Based on the requirements in the docs/mergington-tech-policies.md file. Let's start the react app and check the output.
 
-1. Start the react app in the octofit-tracker/frontend directory.
-2. Check the output in the browser.
-3. Check the output in the terminal.
+1. Change localhost for the codespace url in the src/App.js file to http://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-3000.app.github.dev for react.
+2. Start the react app in the octofit-tracker/frontend directory.
+3. Check the output in the browser.
+4. Check the output in the terminal.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
+
+> [!NOTE]
+> Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
+> ex. redesigned-spork-g6pj46rr9hpp6x
