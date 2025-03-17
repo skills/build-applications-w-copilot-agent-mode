@@ -521,3 +521,14 @@ class WorkoutViewSet(viewsets.ModelViewSet):
 python manage.py runserver
 ```
 
+## Setup the frontend React app
+
+```bash
+mkdir -p octofit-tracker/frontend
+
+npx create-react-app octofit-tracker/frontend
+
+npm install bootstrap octofit-tracker/frontend
+
+echo "import 'bootstrap/dist/css/bootstrap.min.css';" >> src/index.js
+```
