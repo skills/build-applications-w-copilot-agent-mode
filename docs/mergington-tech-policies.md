@@ -351,6 +351,7 @@ touch octofit-tracker/backend/octofit_tracker/management/__init__.py
 touch octofit-tracker/backend/octofit_tracker/management/commands/__init__.py
 touch octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py
 ```
+
 ### Sample code for populate_db.py
 
 ```python
@@ -361,9 +362,10 @@ from octofit_tracker.models import User, Team, Activity, Leaderboard, Workout
 from django.conf import settings
 from pymongo import MongoClient
 from datetime import timedelta
+from bson import ObjectId
 
 class Command(BaseCommand):
-    help = 'Populate the database with superhero users, teams, activity, leaderboard, and workouts'
+    help = 'Populate the database with test data for users, teams, activity, leaderboard, and workouts'
 
     def handle(self, *args, **kwargs):
         # Connect to MongoDB
@@ -377,89 +379,53 @@ class Command(BaseCommand):
         db.leaderboard.drop()
         db.workouts.drop()
 
-        # Populate users
+        # Create users
         users = [
-            {'username': 'superman', 'email': 'superman@heroes.com', 'password': 'superpassword'},
-            {'username': 'batman', 'email': 'batman@heroes.com', 'password': 'batpassword'},
-            {'username': 'wonderwoman', 'email': 'wonderwoman@heroes.com', 'password': 'wonderpassword'},
-            {'username': 'flash', 'email': 'flash@heroes.com', 'password': 'flashpassword'},
-            {'username': 'aquaman', 'email': 'aquaman@heroes.com', 'password': 'aquapassword'},
+            User(_id=ObjectId(), username='superman', email='superman@heroes.com', password='superpassword'),
+            User(_id=ObjectId(), username='batman', email='batman@heroes.com', password='batpassword'),
+            User(_id=ObjectId(), username='wonderwoman', email='wonderwoman@heroes.com', password='wonderpassword'),
+            User(_id=ObjectId(), username='flash', email='flash@heroes.com', password='flashpassword'),
+            User(_id=ObjectId(), username='aquaman', email='aquaman@heroes.com', password='aquapassword'),
         ]
+        User.objects.bulk_create(users)
 
-        user_objects = []
-        for user_data in users:
-            user, created = User.objects.get_or_create(email=user_data['email'], defaults=user_data)
-            user_objects.append(user)
-            if created:
-                self.stdout.write(self.style.SUCCESS(f'Successfully created user {user.username}'))
-            else:
-                self.stdout.write(self.style.WARNING(f'User {user.username} already exists'))
+        # Create teams
+        team = Team(_id=ObjectId(), name='Justice League')
+        team.save()
+        for user in users:
+            team.members.add(user)
 
-        # Ensure all user objects are saved
-        for user in user_objects:
-            user.save()
-
-        # Populate teams
-        teams = [
-            {'name': 'Justice League', 'members': [user_objects[0], user_objects[1], user_objects[2], user_objects[3], user_objects[4]]},
-        ]
-
-        for team_data in teams:
-            team, created = Team.objects.get_or_create(name=team_data['name'])
-            if created:
-                for member in team_data['members']:
-                    team.members.add(member)
-                self.stdout.write(self.style.SUCCESS(f'Successfully created team {team.name}'))
-            else:
-                self.stdout.write(self.style.WARNING(f'Team {team.name} already exists'))
-
-        # Populate activity
+        # Create activities
         activities = [
-            {'user': user_objects[0], 'activity_type': 'Flying', 'duration': timedelta(hours=1)},
-            {'user': user_objects[1], 'activity_type': 'Martial Arts', 'duration': timedelta(hours=2)},
-            {'user': user_objects[2], 'activity_type': 'Training', 'duration': timedelta(hours=1, minutes=30)},
-            {'user': user_objects[3], 'activity_type': 'Running', 'duration': timedelta(minutes=30)},
-            {'user': user_objects[4], 'activity_type': 'Swimming', 'duration': timedelta(hours=1, minutes=15)},
+            Activity(_id=ObjectId(), user=users[0], activity_type='Flying', duration=timedelta(hours=1)),
+            Activity(_id=ObjectId(), user=users[1], activity_type='Martial Arts', duration=timedelta(hours=2)),
+            Activity(_id=ObjectId(), user=users[2], activity_type='Training', duration=timedelta(hours=1, minutes=30)),
+            Activity(_id=ObjectId(), user=users[3], activity_type='Running', duration=timedelta(minutes=30)),
+            Activity(_id=ObjectId(), user=users[4], activity_type='Swimming', duration=timedelta(hours=1, minutes=15)),
         ]
+        Activity.objects.bulk_create(activities)
 
-        for activity_data in activities:
-            activity, created = Activity.objects.get_or_create(**activity_data)
-            if created:
-                self.stdout.write(self.style.SUCCESS(f'Successfully created activity for {activity.user.username}'))
-            else:
-                self.stdout.write(self.style.WARNING(f'Activity for {activity.user.username} already exists'))
-
-        # Populate leaderboard
-        leaderboard = [
-            {'user': user_objects[0], 'score': 100},
-            {'user': user_objects[1], 'score': 90},
-            {'user': user_objects[2], 'score': 95},
-            {'user': user_objects[3], 'score': 85},
-            {'user': user_objects[4], 'score': 80},
+        # Create leaderboard entries
+        leaderboard_entries = [
+            Leaderboard(_id=ObjectId(), user=users[0], score=100),
+            Leaderboard(_id=ObjectId(), user=users[1], score=90),
+            Leaderboard(_id=ObjectId(), user=users[2], score=95),
+            Leaderboard(_id=ObjectId(), user=users[3], score=85),
+            Leaderboard(_id=ObjectId(), user=users[4], score=80),
         ]
+        Leaderboard.objects.bulk_create(leaderboard_entries)
 
-        for leaderboard_data in leaderboard:
-            leaderboard, created = Leaderboard.objects.get_or_create(**leaderboard_data)
-            if created:
-                self.stdout.write(self.style.SUCCESS(f'Successfully created leaderboard entry for {leaderboard.user.username}'))
-            else:
-                self.stdout.write(self.style.WARNING(f'Leaderboard entry for {leaderboard.user.username} already exists'))
-
-        # Populate workouts
+        # Create workouts
         workouts = [
-            {'name': 'Super Strength Training', 'description': 'Training for super strength'},
-            {'name': 'Martial Arts Training', 'description': 'Training for martial arts'},
-            {'name': 'Amazonian Training', 'description': 'Training for Amazonian warriors'},
-            {'name': 'Speed Training', 'description': 'Training for super speed'},
-            {'name': 'Aquatic Training', 'description': 'Training for underwater activity'},
+            Workout(_id=ObjectId(), name='Super Strength Training', description='Training for super strength'),
+            Workout(_id=ObjectId(), name='Martial Arts Training', description='Training for martial arts'),
+            Workout(_id=ObjectId(), name='Amazonian Training', description='Training for Amazonian warriors'),
+            Workout(_id=ObjectId(), name='Speed Training', description='Training for super speed'),
+            Workout(_id=ObjectId(), name='Aquatic Training', description='Training for underwater activity'),
         ]
+        Workout.objects.bulk_create(workouts)
 
-        for workout_data in workouts:
-            workout, created = Workout.objects.get_or_create(**workout_data)
-            if created:
-                self.stdout.write(self.style.SUCCESS(f'Successfully created workout {workout.name}'))
-            else:
-                self.stdout.write(self.style.WARNING(f'Workout {workout.name} already exists'))
+        self.stdout.write(self.style.SUCCESS('Successfully populated the database with test data.'))
 ```
 
 ### Run the following commands to migrate the database and populate it with data
