@@ -36,6 +36,7 @@ Don't proceed with the next activity until all of these steps are completed.
 
 > [!IMPORTANT]
 > You may need to prompt agent mode and tell it that "the command is cutoff".
+> you can also click in the command and go to the end to view the "Continue" button.
 
 ### :keyboard: Activity: Update the octofit-tracker/backend/octofit_tracker app files
 

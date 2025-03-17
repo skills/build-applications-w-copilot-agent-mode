@@ -60,16 +60,15 @@ Don't proceed with the next activity until all of these steps are completed.
 ```
 
 > [!IMPORTANT]
-> You will need to hit the stop button in GitHub Copilot chat since the copilot agent mode command is spinning when installing the mongoDB database.
+> You will need to hit the done button in GitHub Copilot chat since the copilot agent mode command is spinning when installing the mongoDB database.
 
 ### :keyboard: Activity: Let's start and verify mongoDB is running
 
 ```text
 Based on the requirements in the docs/mergington-tech-policies.md file. Let's start and verify mongoDB is running.
 
-1. Next command
-2. Start the mongoDB with the service command.
-3. Verify the mongoDB is running with the service command.
+1. Start the mongoDB service.
+2. Verify the mongoDB service running.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
