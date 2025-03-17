@@ -69,8 +69,9 @@ Don't proceed with the next activity until all of these steps are completed.
 ```text
 Based on the requirements in the docs/mergington-tech-policies.md file. Let's start and verify mongoDB is running.
 
-1. Start the mongoDB with the service command.
-2. Verify the mongoDB is running with the service command.
+1. Next command
+2. Start the mongoDB with the service command.
+3. Verify the mongoDB is running with the service command.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
