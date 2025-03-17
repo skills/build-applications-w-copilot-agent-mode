@@ -322,7 +322,7 @@ router = DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'teams', TeamViewSet)
 router.register(r'activities', ActivityViewSet)
-router.register(r'leaderboards', LeaderboardViewSet)
+router.register(r'leaderboard', LeaderboardViewSet)
 router.register(r'workouts', WorkoutViewSet)
 
 urlpatterns = [
@@ -430,7 +430,7 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING(f'Activity for {activity.user.username} already exists'))
 
         # Populate leaderboard
-        leaderboards = [
+        leaderboard = [
             {'user': user_objects[0], 'score': 100},
             {'user': user_objects[1], 'score': 90},
             {'user': user_objects[2], 'score': 95},
@@ -438,7 +438,7 @@ class Command(BaseCommand):
             {'user': user_objects[4], 'score': 80},
         ]
 
-        for leaderboard_data in leaderboards:
+        for leaderboard_data in leaderboard:
             leaderboard, created = Leaderboard.objects.get_or_create(**leaderboard_data)
             if created:
                 self.stdout.write(self.style.SUCCESS(f'Successfully created leaderboard entry for {leaderboard.user.username}'))

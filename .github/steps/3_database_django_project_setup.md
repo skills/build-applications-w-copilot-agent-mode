@@ -35,7 +35,7 @@ Don't proceed with the next activity until all of these steps are completed.
 ```
 
 > [!IMPORTANT]
-> You may need to ask agent mode to run the command to create the database.
+> You may need to prompt agent mode and tell it that "the command is cutoff".
 
 ### :keyboard: Activity: Update the octofit-tracker/backend/octofit_tracker app files
 
@@ -65,3 +65,6 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's po
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
+
+> [!IMPORTANT]
+> You may need to prompt agent mode and tell it that "the command is cutoff".
