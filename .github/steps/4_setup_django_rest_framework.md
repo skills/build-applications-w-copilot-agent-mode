@@ -24,16 +24,13 @@ In this step, we will will accomplish the following:
 > ex. redesigned-spork-g6pj46rr9hpp6x
 
 ```text
-Based on the requirements in the docs/mergington-tech-policies.md file. Let's setup the django REST Framework, restart the server, and test the API.
+Based on the requirements in the docs/mergington-tech-policies.md file. Let's setup codespace for the url, restart the server, and test the API.
 
-1. Activate the python virtual environment and install the django REST Framework.
-2. Update the octofit-tracker/backend/octofit_tracker/settings.py file to include the django REST Framework.
-3. update views.py to replace the return for the rest api url endpoints with the codespace url https://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev for django
-4. In the Python virtual environment makemigrations and migrate the database.
-5. Test the API using curl.
-6. Verify the API is working and displaying the test data from the database.
+1. Activate the python virtual environment
+2. update views.py and urls.py to replace the return for the rest api url endpiints with the codespace url http://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev for django
+3. Run the Django server
+4. Test the API end points using curl command
 
-Don't proceed with the next activity until all of these steps are completed.
 ```
 
 >[!IMPORTANT]

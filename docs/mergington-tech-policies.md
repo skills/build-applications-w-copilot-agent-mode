@@ -470,7 +470,7 @@ python octofit-tracker/backend/manage.py octofit-tracker/backend/migrate
 python octofit-tracker/backendmanage.py octofit-tracker/backend/populate_db
 ```
 
-## Using the Codespace endpoint to access the Django REST Framework
+## Using the Codespace endpoint to access the Django REST API endpoints
 
 ```text
 Let's do the following step by step
@@ -554,5 +554,3 @@ class WorkoutViewSet(viewsets.ModelViewSet):
 ```bash
 python manage.py runserver
 ```
-
-
