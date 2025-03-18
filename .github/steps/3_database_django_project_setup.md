@@ -1,4 +1,4 @@
-## Step 3: Setup of the Django project, and setup and populate the MongoDB database
+## Step 3: Initialize and create the octofit_db MongoDB database, update Django project/app files, and populate the MongoDB database
 
 In this step, we will will accomplish the following:
 
@@ -19,7 +19,7 @@ In this step, we will will accomplish the following:
 > Keep files created and updated by Copilot agent mode until it is finished.
 > Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
 
-### :keyboard: Activity: Initialize and create the octofit_db database
+### :keyboard: Activity: Initialize and create the octofit_db MongoDB database
 
 ```text
 Based on the requirements in the docs/mergington-tech-policies.md file. Let's initialize the octofit_db database.
@@ -38,7 +38,7 @@ Don't proceed with the next activity until all of these steps are completed.
 > You may need to prompt agent mode and tell it that "the command is cutoff".
 > you can also click in the command and go to the end to view the "Continue" button.
 
-### :keyboard: Activity: Update the octofit-tracker/backend/octofit_tracker app files
+### :keyboard: Activity: Update the pdate Django project/app files
 
 ```text
 Based on the requirements in the docs/mergington-tech-policies.md file. Let's update the octofit-tracker/backend/octofit_tracker app files.
@@ -54,14 +54,14 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's up
 Don't proceed with the next activity until all of these steps are completed.
 ```
 
-### :keyboard: Activity: populate the octofit_db database with test data
+### :keyboard: Activity: populate the octofit_db database with test data from Django project/app files
 
 ```text
 Based on the requirements in the docs/mergington-tech-policies.md file. Let's populate the octofit_db database with test data.
 
 1. Create a test data file in the octofit-tracker/backend/octofit_tracker directory.
 2. Make sure the Python Django server is running in the Python virtual environment makemigrations and migrate the database.
-3. Populate the octofit_db database with test data for users, teams, activity, leaderboard, and workouts collections.
+3. Populate the octofit_db database with test data for users, teams, activities, leaderboard, and workouts collections.
 4. Verify the test data is populated in the octofit_db database.
 
 Don't proceed with the next activity until all of these steps are completed.

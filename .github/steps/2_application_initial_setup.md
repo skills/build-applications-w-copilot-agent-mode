@@ -4,7 +4,7 @@ In this step, we will accomplish the following:
 
 - Create the octofit-tracker application directory structure.
 - Create the octofit-tracker/backend and octofit-tracker/frontend directories.
-- Create the octofit-tracker/backend/requirements.txt file. 
+- Create the octofit-tracker/backend/requirements.txt file.
 
 1. Open all files in the `docs` folder and keep this file open in the editor.
 2. Click the GitHub Copilot Chat "COPILOT EDITS" tab click the :paperclip: and add "Open Editors" to the prompt.
@@ -60,7 +60,7 @@ Don't proceed with the next activity until all of these steps are completed.
 ```
 
 > [!IMPORTANT]
-> You will need to hit the done button in GitHub Copilot chat since the copilot agent mode command is spinning when installing the mongoDB database.
+> You will need to hit the stop button in GitHub Copilot chat since the copilot agent mode command is spinning when installing the mongoDB database service.
 
 ### :keyboard: Activity: Let's start and verify mongoDB is running
 
@@ -72,3 +72,6 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's st
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
+
+> [!IMPORTANT]
+> You will need to hit the stop button in GitHub Copilot chat since the copilot agent mode command is spinning when installing the mongoDB database service. Then type next command to start and verify the mongoDB service is running.

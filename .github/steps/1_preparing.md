@@ -42,6 +42,9 @@ Fortunately, this has been bootstrapped for us with a pre-configured [Codespace]
 
 This development environment includes:
 
+- React.js frontend.
+- Django REST Framework backend.
+- MongoDB database.
 - The Node.js runtime.
 - The Python runtime.
   - forwardPorts
@@ -75,7 +78,3 @@ This development environment includes:
    - The left navigation bar is where you can access the file explorer, debugger, and search.
    - The lower panel (Ctrl+J) shows the debugger output, allows running terminal commands, and allows configuring the web service ports.
    - Our docs folder contains the instructions that will give Copilot agent mode context to build your application. More on that in the next steps!
-
-1. Create a new branch named `my-ghc-application`. Ensure it is checked out in VS Code and published to GitHub.
-
-   - Note: Creating this branch triggers the next step in your exercise.

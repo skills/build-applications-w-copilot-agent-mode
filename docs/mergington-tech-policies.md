@@ -88,7 +88,7 @@ Use bootstrap for the frontend
 Let's think about this step by step
 ```
 
-### Cheat sheet of commands to use to create the OctoFit Tracker structure
+### Commands to use to create the OctoFit Tracker structure
 
 ```bash
 mkdir -p octofit-tracker/{backend,frontend}
@@ -105,7 +105,8 @@ npm install bootstrap octofit-tracker/frontend
 
 echo "import 'bootstrap/dist/css/bootstrap.min.css';" >> src/index.js
 
-sudo apt-get update && sudo apt-get install -y mongodb && sudo service mongodb start && sudo service mongodb status
+sudo apt-get update && sudo apt-get install -y mongodb
+sudo service mongodb start && sudo service mongodb status
 ```
 
 ## Initialize the database, setup database and install apps in settings.py, models, serializers, urls, and views
@@ -115,7 +116,7 @@ Type the following prompt in GitHub Copilot Chat:
 ```text
 In our next steps lets think step by step and setup the following in this order
 
-1. Initialize the mongo octofit_db database and create a correct table structure for users, teams, activity, leaderboard, and workouts collections
+1. Initialize the mongo octofit_db database and create a correct table structure for users, teams, activities, leaderboard, and workouts collections
 2. Make sure there is a unique id for primary key for the user collection 
    ex. db.users.createIndex({ "email": 1 }, { unique: true })
 3. settings.py in our django project for mongodb octofit_db database including localhost and the port
