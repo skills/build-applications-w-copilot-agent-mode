@@ -353,7 +353,7 @@ touch octofit-tracker/backend/octofit_tracker/management/commands/__init__.py
 touch octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py
 ```
 
-### Sample code for populate_db.py
+### Sample code for populate_db.py to populate the database
 
 ```python
 # FILE: octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py
