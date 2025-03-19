@@ -61,9 +61,10 @@ Don't proceed with the next activity until all of these steps are completed.
 Based on the requirements in the docs/mergington-tech-policies.md file. Let's start the react app and check the output.
 
 1. Change localhost for the codespace url in the src/App.js file to http://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-3000.app.github.dev for react.
-2. Start the react app in the octofit-tracker/frontend directory.
-3. Check the output in the browser.
-4. Check the output in the terminal.
+2. Make sure the react front end is talking to the Django rest framework backend.
+3. Create a main dashboard and all the components are working correctly and presenting the data correctly. 
+4. Start the react app from the octofit-tracker/frontend directory.
+5. Check the output in the terminal.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
