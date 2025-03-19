@@ -529,9 +529,9 @@ mkdir -p octofit-tracker/frontend
 
 npx create-react-app octofit-tracker/frontend
 
-npm install bootstrap octofit-tracker/frontend
+npm install bootstrap --prefix octofit-tracker/frontend
 
 echo "import 'bootstrap/dist/css/bootstrap.min.css';" >> src/index.js
 
-npm install react-router-dom octofit-tracker/frontend
+npm install react-router-dom --prefix octofit-tracker/frontend
 ```
