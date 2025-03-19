@@ -43,7 +43,7 @@ Don't proceed with the next activity until all of these steps are completed.
 ```text
 Based on the requirements in the docs/mergington-tech-policies.md file. Let's update the octofit-tracker frontend React components.
 
-- Update the folowing components to include the React framework:
+- Update the folowing components to include the React framework to point to the backend API:
   - src/App.js
   - src/index.js
   - src/components/Activities.js
@@ -62,8 +62,8 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's st
 
 1. What is the url for the react frontend app? What port is it running on? What protocol http or https?
 2. Make sure the react front end is talking to the Django rest framework backend.
-3. Create a main dashboard and all the components are working correctly and presenting the data correctly. 
-4. Start the react app from the octofit-tracker/frontend directory.
+3. Create main navigation for all components all the components are working correctly and presenting the data correctly. 
+4. Start the react app from the octofit-tracker/frontend directory in the background with "&"
 5. Check the output in the terminal.
 
 Don't proceed with the next activity until all of these steps are completed.
