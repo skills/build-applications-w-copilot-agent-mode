@@ -41,7 +41,6 @@ Based on the requirements in the docs/mergington-tech-policies.md file, let's se
 1. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
 2. Setup the additional configuration for the django project/app with the name octofit-tracker.
 3. Run makemigrations and migrate the database before running the server.
-4. Run the server in the Python virtual environment and verify it is running.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
@@ -74,4 +73,4 @@ Don't proceed with the next activity until all of these steps are completed.
 ```
 
 > [!IMPORTANT]
-> You will need to hit the stop button in GitHub Copilot chat since the copilot agent mode command is spinning when installing the mongoDB database service. Then type next command to start and verify the mongoDB service is running.
+> You may need to hit the stop button in GitHub Copilot chat since the copilot agent mode command is spinning when installing the mongoDB database service. Then type next command to start and verify the mongoDB service is running.
