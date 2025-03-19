@@ -68,6 +68,6 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's st
 Don't proceed with the next activity until all of these steps are completed.
 ```
 
-> [!NOTE]
+> [!IMPORTANT]
 > Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
 > ex. redesigned-spork-g6pj46rr9hpp6x
