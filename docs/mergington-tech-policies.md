@@ -214,8 +214,6 @@ class Workout(models.Model):
 #### serializers.py
 
 ```python
-# FILE: octofit-tracker/backend/octofit_tracker/serializers.py
-
 from rest_framework import serializers
 from .models import User, Team, Activity, Leaderboard, Workout
 from bson import ObjectId
@@ -252,7 +250,7 @@ class ActivitySerializer(serializers.ModelSerializer):
 
 class LeaderboardSerializer(serializers.ModelSerializer):
     _id = ObjectIdField()
-    user = ObjectIdField()
+    user = UserSerializer()  # Expand the user object
 
     class Meta:
         model = Leaderboard
@@ -271,21 +269,25 @@ class WorkoutSerializer(serializers.ModelSerializer):
 ```python
 # FILE: octofit-tracker/backend/octofit_tracker/views.py
 
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from .serializers import UserSerializer, TeamSerializer, ActivitySerializer, LeaderboardSerializer, WorkoutSerializer
 from .models import User, Team, Activity, Leaderboard, Workout
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def api_root(request, format=None):
+    if request.method == 'POST':
+        return Response({"message": "POST request received"}, status=status.HTTP_201_CREATED)
+
+    base_url = '[USE CODESPACE URL]'
     return Response({
-        'users': reverse('user-list', request=request, format=format),
-        'teams': reverse('team-list', request=request, format=format),
-        'activity': reverse('activity-list', request=request, format=format),
-        'leaderboard': reverse('leaderboard-list', request=request, format=format),
-        'workouts': reverse('workout-list', request=request, format=format),
+        'users': base_url + 'api/users/?format=api',
+        'teams': base_url + 'api/teams/?format=api',
+        'activities': base_url + 'api/activities/?format=api',
+        'leaderboard': base_url + 'api/leaderboard/?format=api',
+        'workouts': base_url + 'api/workouts/?format=api'
     })
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -355,6 +357,8 @@ touch octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py
 
 ### Sample code for populate_db.py to populate the database
 
+Mergington Physical Education sample data
+
 ```python
 # FILE: octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py
 
@@ -382,26 +386,27 @@ class Command(BaseCommand):
 
         # Create users
         users = [
-            User(_id=ObjectId(), username='superman', email='superman@heroes.com', password='superpassword'),
-            User(_id=ObjectId(), username='batman', email='batman@heroes.com', password='batpassword'),
-            User(_id=ObjectId(), username='wonderwoman', email='wonderwoman@heroes.com', password='wonderpassword'),
-            User(_id=ObjectId(), username='flash', email='flash@heroes.com', password='flashpassword'),
-            User(_id=ObjectId(), username='aquaman', email='aquaman@heroes.com', password='aquapassword'),
+            User(_id=ObjectId(), username='thundergod', email='thundergod@mhigh.edu', password='thundergodpassword'),
+            User(_id=ObjectId(), username='metalgeek', email='metalgeek@mhigh.edu', password='metalgeekpassword'),
+            User(_id=ObjectId(), username='zerocool', email='zerocool@mhigh.edu', password='zerocoolpassword'),
+            User(_id=ObjectId(), username='crashoverride', email='crashoverride@hmhigh.edu', password='crashoverridepassword'),
+            User(_id=ObjectId(), username='sleeptoken', email='sleeptoken@mhigh.edu', password='sleeptokenpassword'),
         ]
         User.objects.bulk_create(users)
 
         # Create teams
-        team = Team(_id=ObjectId(), name='Justice League')
+        team = Team(_id=ObjectId(), name='Blue Team')
+        team = Team(_id=ObjectId(), name='Gold Team')
         team.save()
         for user in users:
             team.members.add(user)
 
         # Create activities
         activities = [
-            Activity(_id=ObjectId(), user=users[0], activity_type='Flying', duration=timedelta(hours=1)),
-            Activity(_id=ObjectId(), user=users[1], activity_type='Martial Arts', duration=timedelta(hours=2)),
-            Activity(_id=ObjectId(), user=users[2], activity_type='Training', duration=timedelta(hours=1, minutes=30)),
-            Activity(_id=ObjectId(), user=users[3], activity_type='Running', duration=timedelta(minutes=30)),
+            Activity(_id=ObjectId(), user=users[0], activity_type='Cycling', duration=timedelta(hours=1)),
+            Activity(_id=ObjectId(), user=users[1], activity_type='Crossfit', duration=timedelta(hours=2)),
+            Activity(_id=ObjectId(), user=users[2], activity_type='Running', duration=timedelta(hours=1, minutes=30)),
+            Activity(_id=ObjectId(), user=users[3], activity_type='Strength', duration=timedelta(minutes=30)),
             Activity(_id=ObjectId(), user=users[4], activity_type='Swimming', duration=timedelta(hours=1, minutes=15)),
         ]
         Activity.objects.bulk_create(activities)
@@ -418,11 +423,11 @@ class Command(BaseCommand):
 
         # Create workouts
         workouts = [
-            Workout(_id=ObjectId(), name='Super Strength Training', description='Training for super strength'),
-            Workout(_id=ObjectId(), name='Martial Arts Training', description='Training for martial arts'),
-            Workout(_id=ObjectId(), name='Amazonian Training', description='Training for Amazonian warriors'),
-            Workout(_id=ObjectId(), name='Speed Training', description='Training for super speed'),
-            Workout(_id=ObjectId(), name='Aquatic Training', description='Training for underwater activity'),
+            Workout(_id=ObjectId(), name='Cycling Training', description='Training for a road cycling event')
+            Workout(_id=ObjectId(), name='Crossfit', description='Training for a crossfit competition'),
+            Workout(_id=ObjectId(), name='Running Training', description='Training for a marathon'),
+            Workout(_id=ObjectId(), name='Strength Training', description='Training for strength'),
+            Workout(_id=ObjectId(), name='Swimming Training', description='Training for a swimming competition'),
         ]
         Workout.objects.bulk_create(workouts)
 
@@ -534,4 +539,225 @@ npm install bootstrap --prefix octofit-tracker/frontend
 echo "import 'bootstrap/dist/css/bootstrap.min.css';" >> src/index.js
 
 npm install react-router-dom --prefix octofit-tracker/frontend
+```
+
+## OctoFit App components
+
+Create the following components
+
+- Users
+- Ativities
+- Teams
+- Leaderboard
+- Workouts
+- Login
+- Register
+- Profile
+- Dashboard
+- Settings
+- Home
+
+Basic username password authentication is fine
+
+### Example leaderboard component
+
+Always use the Codespace URL for the API endpoint
+
+```javascript
+import React, { useEffect, useState } from 'react';
+
+function Leaderboard() {
+  const [leaderboard, setLeaderboard] = useState([]);
+
+  useEffect(() => {
+    fetch('https://[USE CODESPACE URL]/api/leaderboard/')
+      .then(response => response.json())
+      .then(data => setLeaderboard(data))
+      .catch(error => console.error('Error fetching leaderboard:', error));
+  }, []);
+
+  return (
+    <div>
+      <h1>Leaderboard</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {leaderboard.map(entry => (
+            <tr key={entry._id}>
+              <td>{entry.user}</td>
+              <td>{entry.score}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default Leaderboard;
+```
+
+## App.css example
+
+```css
+/* General styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f8ff; /* Light blue background */
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+/* Navigation styles */
+nav {
+  background-color: #4682b4; /* Steel blue */
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  color: #0f0be4; /* White text for visibility */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #f0f8ff; /* Light blue */
+  text-decoration: underline;
+}
+
+/* Component styles */
+h1 {
+  color: #00008b; /* Dark blue header name */
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Table styles */
+table {
+  width: 90%;
+  margin: 1rem auto;
+  border-collapse: collapse;
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  text-align: left;
+  font-size: 1rem;
+}
+
+table th {
+  background-color: #4682b4; /* Steel blue */
+  color: white;
+  font-size: 1.2rem;
+}
+
+table tr:nth-child(even) {
+  background-color: #f0f8ff; /* Light blue */
+}
+
+table tr:hover {
+  background-color: #e0ffff; /* Light cyan */
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  color: #4682b4; /* Steel blue text */
+  background-color: #fff;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 1.1rem;
+}
+
+/* Text styles */
+.component-text {
+  color: #00008b; /* Dark blue center title */
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+/* Button styles */
+button {
+  background-color: #4682b4; /* Steel blue */
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #5a9bd4; /* Lighter steel blue */
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #2b2834;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 ```
