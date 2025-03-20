@@ -28,7 +28,7 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's se
 
 1. Activate the python virtual environment.
 2. Update #file:octofit-tracker/backend/octofit_tracker/views.py to replace the return for the rest api url endpoints with the codespace url https://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev for django and avoid certificate HTHS issues.
-3. Make sure the django backend works on [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME].app.github.dev.
+3. Make sure the django backend works on [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME].app.github.dev and localhost:8000.
 4. Run the Django server in the background with "&".
 5. Test the API end points using curl command.
 6. Make the Forwarded port public in the codespace
@@ -39,3 +39,6 @@ Don't proceed with the next activity until all of these steps are completed.
 >[!IMPORTANT]
 > Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
 > ex. redesigned-spork-g6pj46rr9hpp6x
+> Make sure the pop-up shows to open the browser to also choose to make it public
+
+![make-public](https://github.com/user-attachments/assets/97350507-de62-44c5-b7f2-02531e7f9f9d)
