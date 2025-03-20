@@ -3,7 +3,7 @@
 <!-- ![](../../actions/workflows/0-start-course.yml/badge.svg?branch=main) -->
 <img src="https://github.com/user-attachments/assets/1b3ea5df-f18d-4ed8-9ae6-f96dc1861818" alt="octofit-tracker" width="300"/>
 
-_Develop an application with GitHub Copilot agent mode in less than an hour._
+_Build an application with GitHub Copilot agent mode in less than an hour._
 
 ## Welcome
 
@@ -15,7 +15,7 @@ In this exercise, we will prompt GitHub Copilot agent mode to create us a comple
 - **Who is this for**: Intermediate developers familiar with GitHub Copilot, basic GitHub, and basic web development
 - **What you'll learn**: We'll introduce GitHub Copilot agent mode and how to use it for application development.
 - **What you'll build**: You'll use GitHub Copilot agent mode to create a fitness application as the gym teacher of a high school.
-- **Prerequisites**: Skills Exercise: Getting Started with GitHub Copilot
+- **Prerequisites**: Skills Exercise: Getting Started with GitHub Copilot.
 - **How long**: This course takes less than one hour to complete.
 
 In this exercise, you will:
