@@ -77,5 +77,13 @@ Don't proceed with the next activity until all of these steps are completed.
 ### :keyboard: Activity: Let's make the octofit tracker app look nice and pretty and add some color
 
 ```text
-- Soft link octofitapp-small.png in public directory from the docs folder
+Based on the requirements in the docs/mergington-tech-policies.md file. Let's style this like App.css and make it look nice.
+
+1. Let's make this prettier and use tables for our data in each component.
+2. Add some color to the app and make it look nice.
+3. Add a logo to the app and make it look nice.
+4. Add a favicon to the app and make it look nice.
+5. Soft link octofitapp-small.png in public directory from the docs folder
+
+Don't proceed with the next activity until all of these steps are completed.
 ```
