@@ -52,6 +52,7 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's up
   - src/components/Users.js
   - src/components/Workouts.js
 - In each compenent replace the fetch url with the codespace url for the Django rest framework backend.
+- Make sure to use the correct port and protocol http or https.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
@@ -70,6 +71,8 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's st
 Don't proceed with the next activity until all of these steps are completed.
 ```
 
-> [!IMPORTANT]
-> Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
-> ex. redesigned-spork-g6pj46rr9hpp6x
+### :keyboard: Activity: Let's make the octofit tracker app look nicer and pretty
+
+```text
+- Soft link octofitapp-small.png in public directory from the docs folder
+```
