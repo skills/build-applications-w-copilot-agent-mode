@@ -39,3 +39,6 @@ Don't proceed with the next activity until all of these steps are completed.
 >[!IMPORTANT]
 > Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
 > ex. redesigned-spork-g6pj46rr9hpp6x
+> Make sure the pop-up shows to open the browser to also choose to make it public
+
+![make-public](https://github.com/user-attachments/assets/97350507-de62-44c5-b7f2-02531e7f9f9d)
