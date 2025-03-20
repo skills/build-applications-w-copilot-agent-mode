@@ -75,8 +75,7 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's st
 Don't proceed with the next activity until all of these steps are completed.
 ```
 
-### :keyboard: Activity: Let's add some formatting structing and styling to the octofit tracker app
-
+### :keyboard: Activity: Let's add some formatting, structuring, and styling to the octofit tracker app
 ```text
 Based on the requirements in the docs/mergington-tech-policies.md file. Let's style this like App.css and make it look nice.
 
