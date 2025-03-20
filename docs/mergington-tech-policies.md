@@ -357,7 +357,7 @@ touch octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py
 
 ### Sample code for populate_db.py to populate the database
 
-Mergington Physical Education sample data
+Mergington Physical Education sample data use for populate_db.py
 
 ```python
 # FILE: octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py
