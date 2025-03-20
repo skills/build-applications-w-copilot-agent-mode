@@ -65,13 +65,13 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's st
 1. What is the url for the react frontend app? What port is it running on? What protocol http or https?
 2. Make sure the react front end is talking to the Django rest framework backend.
 3. Create main navigation for all components all the components are working correctly and presenting the data correctly. 
-4. Start the react app from the octofit-tracker/frontend directory in the background with "&"
+4. Start the react app in the background  with "&" and point to the octofit-tracker/frontend directory.
 5. Check the output in the terminal.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
 
-### :keyboard: Activity: Let's make the octofit tracker app look nicer and pretty
+### :keyboard: Activity: Let's make the octofit tracker app look nice and pretty and add some color
 
 ```text
 - Soft link octofitapp-small.png in public directory from the docs folder
