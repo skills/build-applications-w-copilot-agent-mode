@@ -67,9 +67,28 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's st
 
 1. What is the url for the react frontend app? What port is it running on? What protocol http or https?
 2. Make sure the react front end is talking to the Django rest framework backend.
-3. Create main navigation for all components all the components are working correctly and presenting the data correctly. 
-4. Start the react app in the background  with "&" and point to the octofit-tracker/frontend directory.
-5. Check the output in the terminal.
+3. Create main navigation for all components all the components are working correctly and presenting the data correctly.
+4. Make sure each component heading is using a css tag so it can be styled later.
+5. Start the react app in the background  with "&" and point to the octofit-tracker/frontend directory.
+6. Check the output in the terminal.
+
+Don't proceed with the next activity until all of these steps are completed.
+```
+
+### :keyboard: Activity: Let's add some formatting structing and styling to the octofit tracker app
+
+```text
+Based on the requirements in the docs/mergington-tech-policies.md file. Let's style this like App.css and make it look nice.
+
+1. Let's make the App.js and all components js files in the app do the following:
+   - Use bootstrap tables for the data.
+   - Use bootstrap buttons for the buttons.
+   - Use bootstrap headings for the headings.
+   - Use bootstrap links for the links.
+   - Use bootstrap navigation for the navigation menu.
+   - Use bootstrap forms for the forms.
+   - Use bootstrap cards for the cards.
+   - Use bootstrap modals for the modals.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
@@ -79,11 +98,16 @@ Don't proceed with the next activity until all of these steps are completed.
 ```text
 Based on the requirements in the docs/mergington-tech-policies.md file. Let's style this like App.css and make it look nice.
 
-1. Let's make this prettier and use tables for our data in each component.
-2. Add some color to the app and make it look nice.
-3. Add a logo to the app and make it look nice.
-4. Add a favicon to the app and make it look nice.
-5. Soft link octofitapp-small.png in public directory from the docs folder
+1. Edit the App.css file to do the following:
+   - Add some color to the background.
+   - Add some color to the text.
+   - Add some color to the tables.
+   - Add some color to the buttons.
+   - Add some color to the headings.
+   - Add some color to the links.
+   - Add some color to the navigation menu.
+2. Add the octofitapp-small logo justified to the left to the app and make it look nice.
+3. Add a favicon to the app and make it look nice.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
