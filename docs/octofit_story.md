@@ -1,6 +1,6 @@
 # Building a Fitness App with GitHub Copilot agent mode for Mergington High School
 
-## OctoFit Tracker appllication story for Merginton High School
+## OctoFit Tracker application story for Mergington High School
 
 Paul Octo has been a physical education teacher at Mergington High School for over 8 years. Despite his enthusiasm and creative approach to gym class, he's been increasingly concerned about students' physical activity declining once they leave school grounds. Many students admitted they rarely exercised outside of the required PE classes.
 After attending a professional development conference on "Technology Integration in Physical Education," Paul became inspired to create a solution. He wanted something that would:
@@ -14,8 +14,10 @@ After attending a professional development conference on "Technology Integration
 
 Paul initially sketched his idea on a notepad during lunch breaks. He envisioned an app where students could log workouts, earn achievement badges, and compete in monthly fitness challenges. However, as a PE teacher with only basic coding knowledge, the technical aspects seemed daunting.
 That's when he approached Jessica Cat, the head of Mergington High's IT department. She immediately saw potential in Paul's concept and suggested leveraging GitHub Copilot's agent mode to rapidly develop a prototype without requiring extensive coding expertise.
-Technical Planning Phase
-Before starting development, Paul and Jessica carefully reviewed the school's technology policies defined in docs/mergington-tech-policies.md. This crucial document outlined requirements for student data protection, acceptable technology use, and compliance standards that any school-related application must follow.
+
+### Technical Planning Phase
+
+Before starting development, Paul and Jessica carefully reviewed the school's technology policies defined in `docs/mergington-tech-policies.md`. This crucial document outlined requirements for student data protection, acceptable technology use, and compliance standards that any school-related application must follow.
 Together, Paul and the IT team identified key requirements for OctoFit Tracker:
 
 ### User Experience Goals
@@ -49,7 +51,7 @@ With the basic infrastructure in place, Paul is now focused on:
 3. Building a notification system that encourages consistency without being intrusive
 4. Designing reports that help him identify students who might need additional support or motivation
 
-The IT department has been impressed with how GitHub Copilot agent mode has accelerated development, allowing Paul to focus on the educational aspects while the AI handles much of the technical implementation. Jessica Cat has been particularly pleased with how OctoFit Tracker maintains compliance with all requirements specified in docs/mergington-tech-policies.md.
+The IT department has been impressed with how GitHub Copilot agent mode has accelerated development, allowing Paul to focus on the educational aspects while the AI handles much of the technical implementation. Jessica Cat has been particularly pleased with how OctoFit Tracker maintains compliance with all requirements specified in `docs/mergington-tech-policies.md`.
 
 ### Workshop Overview
 

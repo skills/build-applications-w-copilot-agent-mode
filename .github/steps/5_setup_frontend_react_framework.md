@@ -51,6 +51,7 @@ Based on the requirements in the docs/mergington-tech-policies.md file. Let's up
   - src/components/Teams.js
   - src/components/Users.js
   - src/components/Workouts.js
+- In each compenent replace the fetch url with the codespace url for the Django rest framework backend.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
