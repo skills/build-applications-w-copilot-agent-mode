@@ -39,7 +39,7 @@ In this step, we will will accomplish the following:
 > [!IMPORTANT]
 > You may need to copy and paste this in the terminal if there is no "Continue" button.
 
-### :keyboard: Activity: Update the pdate Django project/app files
+### :keyboard: Activity: Update the Python Django project/app files
 
 > **Prompt**
 >
@@ -54,6 +54,7 @@ In this step, we will will accomplish the following:
 > 6. Update the octofit-tracker/backend/octofit_tracker/tests.py file to include the tests for users, teams, activity, leaderboard, and workouts collections.
 > 7. Update the octofit-tracker/backend/octofit_tracker/admin.py file to include the admin for users, teams, activity, leaderboard, and workouts collections.
 > 8. Enable CORS in the octofit-tracker/backend/octofit_tracker/settings.py file to allow cross-origin requests from the frontend React app and allow all origins, methods, and headers.
+> 9. Make sure all host endpoints are allowed in settings.py file.
 >
 >Don't proceed with the next activity until all of these steps are completed.
 >```
