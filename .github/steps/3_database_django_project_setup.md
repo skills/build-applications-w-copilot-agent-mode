@@ -22,7 +22,7 @@ In this step, we will will accomplish the following:
 ### :keyboard: Activity: Initialize and create the octofit_db MongoDB database
 
 ```text
-Based on the requirements in the docs/mergington-tech-policies.md file. Let's initialize the octofit_db database.
+Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's initialize the octofit_db database.
 
 1. Initialize the mongo octofit_db database.
 2. Create a correct table structure for users, teams, activity, leaderboard, and workouts collections.
@@ -41,7 +41,7 @@ Don't proceed with the next activity until all of these steps are completed.
 ### :keyboard: Activity: Update the pdate Django project/app files
 
 ```text
-Based on the requirements in the docs/mergington-tech-policies.md file. Let's update the octofit-tracker/backend/octofit_tracker app files.
+Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's update the octofit-tracker/backend/octofit_tracker app files.
 
 1. Update the octofit-tracker/backend/octofit_tracker/settings.py file to include the mongoDB database connection.
 2. Update the octofit-tracker/backend/octofit_tracker/models.py file to include the models for users, teams, activity, leaderboard, and workouts collections.
@@ -58,7 +58,7 @@ Don't proceed with the next activity until all of these steps are completed.
 ### :keyboard: Activity: populate the octofit_db database with test data from Django project/app files
 
 ```text
-Based on the requirements in the docs/mergington-tech-policies.md file. Let's populate the octofit_db database with test data. Use same data from docs/mergington-tech-policies.md file.
+Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's populate the octofit_db database with test data. Use same data from docs/mona-high-school-fitness-tracker.md file.
 
 1. Create a test data file in the octofit-tracker/backend/octofit_tracker directory.
 2. Make sure the Python Django server is running in the Python virtual environment makemigrations and migrate the database.

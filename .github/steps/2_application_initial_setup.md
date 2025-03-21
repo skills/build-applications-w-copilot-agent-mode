@@ -21,7 +21,7 @@ In this step, we will accomplish the following:
 
 ```text
 Let's take the following step by step and generate instructions in this order and execute the commands.
-Use docs/mergington-tech-policies.md as a guide for the project structure and requirements.
+Use docs/mona-high-school-fitness-tracker.md as a guide for the project structure and requirements.
 
 1. Understand the story of creating the fitness application from the docs/octofit_story.md file.
 2. Create the initial directory structure for the octofit-tracker application octofit-tracker/backend, octofit-tracker/frontend.
@@ -36,7 +36,7 @@ Don't proceed with the next activity until all of these steps are completed.
 ### :keyboard: Activity: Setup the Python Django project/app
 
 ```text
-Based on the requirements in the docs/mergington-tech-policies.md file, let's setup the Python Django project/app and run the server.
+Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app, let's setup the Python Django project/app and run the server.
 
 1. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
 2. Setup the additional configuration for the django project/app with the name octofit-tracker.
@@ -51,7 +51,7 @@ Keep files creating and updating until the Copilot agent mode has finished.
 ### :keyboard: Activity: Let's install mongoDB
 
 ```text
-Based on the requirements in the docs/mergington-tech-policies.md file. Let's install mongoDB.
+Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's install mongoDB.
 
 1. Install mongoDB and make sure the command is complete.
 
@@ -64,7 +64,7 @@ Don't proceed with the next activity until all of these steps are completed.
 ### :keyboard: Activity: Let's start and verify mongoDB is running
 
 ```text
-Based on the requirements in the docs/mergington-tech-policies.md file. Let's start and verify mongoDB is running.
+Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's start and verify mongoDB is running.
 
 1. Start the mongoDB service.
 2. Verify the mongoDB service running.

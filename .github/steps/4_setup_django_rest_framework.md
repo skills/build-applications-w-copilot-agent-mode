@@ -24,7 +24,7 @@ In this step, we will will accomplish the following:
 > ex. redesigned-spork-g6pj46rr9hpp6x
 
 ```text
-Based on the requirements in the docs/mergington-tech-policies.md file. Let's setup codespace for the url, restart the server, and test the API.
+Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's setup codespace for the url, restart the server, and test the API.
 
 1. Activate the python virtual environment.
 2. Update #file:octofit-tracker/backend/octofit_tracker/views.py to replace the return for the rest api url endpoints with the codespace url https://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev for django and avoid certificate HTHS issues.

@@ -27,7 +27,7 @@ In this step, we will will accomplish the following:
 ### :keyboard: Activity: Install the octofit-tracker frontend React framework
 
 ```text
-Based on the requirements in the docs/mergington-tech-policies.md file. Let's setup codespace for the octofit-tracker frontend React framework.
+Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's setup codespace for the octofit-tracker frontend React framework.
 
 1. Make the octofit-tracker/frontend directory.
 2. Create the react app in the octofit-tracker/frontend directory.
@@ -41,7 +41,7 @@ Don't proceed with the next activity until all of these steps are completed.
 ### :keyboard: Activity: Update the octofit-tracker frontend React components
 
 ```text
-Based on the requirements in the docs/mergington-tech-policies.md file. Let's update the octofit-tracker frontend React components.
+Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's update the octofit-tracker frontend React components.
 
 - Update the folowing components to include the React framework to point to the backend API:
   - src/App.js
@@ -63,7 +63,7 @@ Don't proceed with the next activity until all of these steps are completed.
 ### :keyboard: Activity: Start the react app and check the output
 
 ```text
-Based on the requirements in the docs/mergington-tech-policies.md file. Let's start the react app and check the output.
+Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's start the react app and check the output.
 
 1. What is the url for the react frontend app? What port is it running on? What protocol http or https?
 2. Make sure the react front end is talking to the Django rest framework backend.
@@ -77,7 +77,7 @@ Don't proceed with the next activity until all of these steps are completed.
 
 ### :keyboard: Activity: Let's add some formatting, structuring, and styling to the octofit tracker app
 ```text
-Based on the requirements in the docs/mergington-tech-policies.md file. Let's style this like App.css and make it look nice.
+Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's style this like App.css and make it look nice.
 
 1. Let's make the App.js and all components js files in the app do the following:
    - Use bootstrap tables for the data.
@@ -95,7 +95,7 @@ Don't proceed with the next activity until all of these steps are completed.
 ### :keyboard: Activity: Let's make the octofit tracker app look nice and pretty and add some color
 
 ```text
-Based on the requirements in the docs/mergington-tech-policies.md file. Let's style this like App.css and make it look nice.
+Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's style this like App.css and make it look nice.
 
 1. Edit the App.css file to do the following:
    - Add some color to the background.
