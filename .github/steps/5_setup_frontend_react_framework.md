@@ -100,7 +100,7 @@ In this step, we will will accomplish the following:
 > Don't proceed with the next activity until all of these steps are completed.
 >```
 
-### :keyboard: Activity: Let's make the octofit tracker app look nice and pretty and add some color
+### :keyboard: Activity: Let's make the octofit tracker app look nice, pretty, and add some color
 
 > **Prompt**
 >
