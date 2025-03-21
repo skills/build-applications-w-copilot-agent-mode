@@ -35,8 +35,7 @@ Don't proceed with the next activity until all of these steps are completed.
 ```
 
 > [!IMPORTANT]
-> You may need to prompt agent mode and tell it that "the command is cutoff".
-> you can also click in the command and go to the end to view the "Continue" button.
+> You may need to copy and paste this in the terminal if there is no "Continue" button.
 
 ### :keyboard: Activity: Update the pdate Django project/app files
 
@@ -62,7 +61,7 @@ Based on the example monafit tracker app in the docs/mona-high-school-fitness-tr
 
 1. Create a test data file in the octofit-tracker/backend/octofit_tracker directory.
 2. Make sure the Python Django server is running in the Python virtual environment makemigrations and migrate the database.
-3. Populate the octofit_db database with test data for users, teams, activities, leaderboard, and workouts collections.
+3. Populate the octofit_db database with test data for users, teams, activities, leaderboard, and workouts collections based on test data in docs/mona-high-school-fitness-tracker.md populate_db.py.
 4. Verify the test data is populated in the octofit_db database.
 
 Don't proceed with the next activity until all of these steps are completed.

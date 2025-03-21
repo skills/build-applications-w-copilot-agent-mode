@@ -40,7 +40,7 @@ Based on the example monafit tracker app in the docs/mona-high-school-fitness-tr
 
 1. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
 2. Setup the additional configuration for the django project/app with the name octofit-tracker.
-3. Run makemigrations and migrate the database before running the server.
+3. Run makemigrations and migrate the database but don't start the server yet.
 
 Don't proceed with the next activity until all of these steps are completed.
 ```
@@ -59,7 +59,7 @@ Don't proceed with the next activity until all of these steps are completed.
 ```
 
 > [!IMPORTANT]
-> You will need to hit the stop button in GitHub Copilot chat since the copilot agent mode command is spinning when installing the mongoDB database service.
+> You may need to hit the stop button in GitHub Copilot chat since the copilot agent mode command is spinning when installing the mongoDB database service.
 
 ### :keyboard: Activity: Let's start and verify mongoDB is running
 
@@ -72,5 +72,7 @@ Based on the example monafit tracker app in the docs/mona-high-school-fitness-tr
 Don't proceed with the next activity until all of these steps are completed.
 ```
 
+> [!NOTE]
+> You may not need to run this step if it was already started in the previous step.
 > [!IMPORTANT]
 > You may need to hit the stop button in GitHub Copilot chat since the copilot agent mode command is spinning when installing the mongoDB database service. Then type next command to start and verify the mongoDB service is running.
