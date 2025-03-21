@@ -8,7 +8,13 @@
       "program": "${workspaceFolder}/octofit-tracker/backend/manage.py",
       "args": ["runserver", "0.0.0.0:8000"],
       "django": true,
-      "justMyCode": true
+      "justMyCode": true,
+      "python": "${workspaceFolder}/octofit-tracker/backend/venv/bin/python",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/octofit-tracker/backend/venv/bin/python",
+        "VIRTUAL_ENV": "${workspaceFolder}/octofit-tracker/backend/venv",
+        "PATH": "${workspaceFolder}/octofit-tracker/backend/venv/bin:${env:PATH}"
+      }
     },
     {
       "name": "Launch React Frontend",
