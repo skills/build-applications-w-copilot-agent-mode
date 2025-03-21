@@ -88,7 +88,7 @@ In this step, we will will accomplish the following:
 > Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's style this like App.css and make it look nice.
 >
 > - Let's make the App.js and all components js files in the app do the following:
->   - Use bootstrap tables for the data.
+>   - Use bootstrap tables for the data in all javascript components.
 >   - Use bootstrap buttons for the buttons.
 >   - Use bootstrap headings for the headings.
 >   - Use bootstrap links for the links.
