@@ -10,6 +10,8 @@ In this step, we will accomplish the following:
 2. Click the GitHub Copilot Chat "COPILOT EDITS" tab click the :paperclip: and add "Open Editors" to the prompt.
 3. Copy and paste the following prompt in the GitHub Copilot Chat "COPILOT EDITS" tab and select the "Agent" instead of "Edit" from the drop down where you are inserting the prompt.
 
+<img src="https://github.com/user-attachments/assets/e172f5c0-bc2a-45a9-a301-9af8bfbd6a2e](https://github.com/user-attachments/assets/71493505-626d-4a0e-8a7b-ac0424ae2ddb" width=30% height=30%>
+
 >[!NOTE]
 > Do not change the model from GPT-4o this will be an optional activity at the end of the course.
 > Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
