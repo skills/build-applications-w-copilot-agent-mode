@@ -80,6 +80,10 @@ In this step, we will will accomplish the following:
 > Don't proceed with the next activity until all of these steps are completed.
 >```
 
+Now, let's actually try running the react application! In the left sidebar, select the `Run and Debug` tab and then press the **Start Debugging** icon.
+
+![ghcp-build-app-launch-react](https://github.com/user-attachments/assets/db8a9702-de86-492d-876a-54282f8795f0)
+
 ### :keyboard: Activity: Let's add some formatting, structuring, and styling to the octofit tracker app
 
 > **Prompt**
