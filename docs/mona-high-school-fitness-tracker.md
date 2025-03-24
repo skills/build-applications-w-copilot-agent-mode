@@ -26,8 +26,7 @@ generate instructions in this order
 9. Commands to install mongodb via 'apt-get' 
 10. Commands start mongodb with the 'sudo service mongodb start' and 'sudo service mongodb status'
 
-Tha directory tree for the monafit Tracker App
-
+The directory tree for the monafit Tracker App
 monafit-tracker/
 ├── backend/
 │   ├── venv/
