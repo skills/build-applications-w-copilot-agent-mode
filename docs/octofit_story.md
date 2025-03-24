@@ -13,31 +13,31 @@ After attending a professional development conference on "Technology Integration
 ## The Birth of OctoFit Tracker
 
 Paul initially sketched his idea on a notepad during lunch breaks. He envisioned an app where students could log workouts, earn achievement badges, and compete in monthly fitness challenges. However, as a PE teacher with only basic coding knowledge, the technical aspects seemed daunting.
-That's when he approached Jessica Cat, the head of Mergington High's IT department. She immediately saw potential in Paul's concept and suggested leveraging GitHub Copilot's agent mode to rapidly develop a prototype without requiring extensive coding expertise.
+That's when he approached Jessica Cat, the head of Mergington High's IT department. Jessica recommended basing the app on the Monafit Tracker developed by Mona High School, which was documented in `docs/mona-high-school-fitness-tracker.md`. She saw potential in adapting the Monafit Tracker's structure and features to meet Mergington High School's needs.
 
 ### Technical Planning Phase
 
-Before starting development, Paul and Jessica carefully reviewed the school's technology policies defined in `docs/mergington-tech-policies.md`. This crucial document outlined requirements for student data protection, acceptable technology use, and compliance standards that any school-related application must follow.
+Before starting development, Paul and Jessica carefully reviewed the Monafit Tracker's repository and documentation. This provided a solid foundation for OctoFit Tracker, ensuring compliance with technical standards and leveraging proven design patterns.
 Together, Paul and the IT team identified key requirements for OctoFit Tracker:
 
 ### User Experience Goals
 
 - Simple, intuitive interface designed specifically for teenagers
 - Quick activity logging to minimize friction
-- Social features that respect student privacy according to Mergington's technology policies
+- Social features that respect student privacy
 - Gamification elements to maintain engagement
 
 ### Technical Specifications
 
 - Mobile-responsive web application (accessible on school Chromebooks and personal devices)
-- Secure authentication compliant with Mergington's data policies as specified in the tech-policies document
+- Secure authentication based on Monafit Tracker's implementation
 - Activity verification system to prevent cheating
 
 ## Current Development Status
 
-Paul and Jessica have set up a GitHub Codespace environment and are making remarkable progress with GitHub Copilot agent mode. The OctoFit Tracker prototype already includes:
+Paul and Jessica have set up a GitHub Codespace environment and are making remarkable progress with GitHub Copilot agent mode. By adapting the Monafit Tracker's structure, the OctoFit Tracker prototype already includes:
 
-- A functional user registration system that adheres to the student information guidelines in Mergington's technology policy documentation
+- A functional user registration system
 - Basic activity logging for running, walking, and strength training
 - The beginning framework for team competitions
 - A simple dashboard showing student progress
@@ -51,7 +51,7 @@ With the basic infrastructure in place, Paul is now focused on:
 3. Building a notification system that encourages consistency without being intrusive
 4. Designing reports that help him identify students who might need additional support or motivation
 
-The IT department has been impressed with how GitHub Copilot agent mode has accelerated development, allowing Paul to focus on the educational aspects while the AI handles much of the technical implementation. Jessica Cat has been particularly pleased with how OctoFit Tracker maintains compliance with all requirements specified in `docs/mergington-tech-policies.md`.
+The IT department has been impressed with how GitHub Copilot agent mode has accelerated development, allowing Paul to focus on the educational aspects while the AI handles much of the technical implementation. Jessica Cat has been particularly pleased with how OctoFit Tracker leverages the Monafit Tracker's foundation to meet Mergington High School's unique requirements.
 
 ### Workshop Overview
 

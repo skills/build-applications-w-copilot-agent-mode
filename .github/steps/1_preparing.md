@@ -16,8 +16,8 @@ Monitors the correctness of code edits and terminal command output and iterates 
 
 > [!TIP]
 > You can learn more about GitHub Copilot agent mode in the [Use agent mode documentation](https://code.visualstudio.com/docs/copilot/copilot-edits#_use-agent-mode-preview).
-
-> [!Note]
+>
+> [!NOTE]
  Copilot agent mode is a preview feature available in [Visual Studio Code Insiders](https://code.visualstudio.com/insiders).
 
 Your most common interactions with Gitub Copilot will likely be:
@@ -32,10 +32,9 @@ Your most common interactions with Gitub Copilot will likely be:
 
 > [!TIP]
 > You can learn more about current and preview features in the [GitHub Copilot Features](https://docs.github.com/en/copilot/about-github-copilot/github-copilot-features) documentation.
-
+>
 > [!TIP]
 > You can also select different [models](https://docs.github.com/en/github-models) and [extensions](https://github.com/features/copilot/extensions), but that's for a different lesson!
-
 
 Before we get started on developing an application in GitHub Copilot agent mode, we have to configure our development environment.
 Fortunately, this has been bootstrapped for us with a pre-configured [Codespace](https://github.com/features/codespaces).
@@ -77,4 +76,67 @@ This development environment includes:
 
    - The left navigation bar is where you can access the file explorer, debugger, and search.
    - The lower panel (Ctrl+J) shows the debugger output, allows running terminal commands, and allows configuring the web service ports.
-   - Our docs folder contains the instructions that will give Copilot agent mode context to build your application. More on that in the next steps!
+   - Our docs folder contains the another sample application repository that will give Copilot agent mode context to build your application. More on that in the next steps!
+
+1. At the top of VS Code, locate and click the Copilot icon to open a Copilot Chat panel.
+
+<img width="150" alt="image" src="https://github.com/user-attachments/assets/5e64db46-95cb-415d-badc-b6b8677f10c1" />
+
+1. If this is your first, time using GitHub Copilot, you will have to accept the usage terms to continue.
+    - Click the **Accept** button to continue.
+    - If you are using Copilot Chat for the first time, you will also have to accept the usage terms to continue.
+    - Click the **Accept** button to continue.
+
+### :keyboard: Activity: Use Copilot to help remember a terminal command 🙋
+
+Great work! Now that we are familiar with the app and we know it works, let's ask copilot for help starting a branch so we can do some customizing.
+
+1. If not already there, return to VS Code.
+
+1. In the bottom panel, select the **Terminal** tab. On the right side, click the plus `+` sign to create a new terminal window.
+
+   > **Note:** This will avoid stopping the existing debug session that is hosting our web application service.
+
+1. Within the new terminal window, `right click` and select `Copilot` then `Terminal Inline Chat`. Alternately, you can use the keyboard shortcut `Ctrl + I` (windows) or `Cmd + I` (mac).
+
+1. Let's ask Copilot to help us remember a command we have forgotten: creating a branch and publishing it
+
+   > <img width="13px" src="https://github.com/user-attachments/assets/98fd5d2e-ea29-4a4a-9212-c7050e177a69" /> **Prompt**
+   >
+   > ```prompt
+   > Hey copilot, how can I create and publish a new Git branch?
+   > ```
+
+   > **Tip:** This is a simple example, but Copilot is great at providing more tailored commands that might involve loops, pattern matching, file modification, and more! Don't be afraid to ask Copilot for a suggestion. Just remember it is a suggestion and you should always verify it first to be safe.
+
+1. Copilot probably gave us a command like the following. Rather than manually modify it, let's respond back to tell Copilot to use a particular name.
+
+   ```bash
+   git checkout -b {new_branch_name}
+   git push -u origin {new_branch_name}
+   ```
+
+   > <img width="13px" src="https://github.com/user-attachments/assets/98fd5d2e-ea29-4a4a-9212-c7050e177a69" /> **Prompt**
+   >
+   > ```prompt
+   > Awesome! Thanks, Copilot! Let's use the
+   > branch name "build-ocotofit-app".
+   > ```
+
+   > **Tip:** If Copilot doesn't give you quite what you want, you can always continue explaining what you need. Copilot will remember the conversation history for follow-up responses.
+
+1. Now that we are happy with the command, press the `Run` button to let Copilot run it for us. No need to copy and paste!
+
+1. After a moment, look in the VS Code lower status bar, on the left, to see the active branch. It should now say `build-ocotofit-app`. If so, you are all done with this step!
+
+1. Now that your branch is pushed to GitHub, Mona should already be busy checking your work. Give her a moment and keep watch in the comments. You will see her respond with progress info and the next lesson.
+
+<details>
+<summary>Having trouble? 🤷</summary><br/>
+
+If you don't get feedback, here are some things to check:
+
+- Make sure your created the branch with the exact name `build-ocotofit-app`. No prefixes or suffixes.
+- Make sure the branch was indeed published to your repository.
+
+</details>

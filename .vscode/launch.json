@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Django Backend",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/octofit-tracker/backend/manage.py",
+      "args": ["runserver", "0.0.0.0:8000"],
+      "django": true,
+      "justMyCode": true,
+      "python": "${workspaceFolder}/octofit-tracker/backend/venv/bin/python",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/octofit-tracker/backend/venv/bin/python",
+        "VIRTUAL_ENV": "${workspaceFolder}/octofit-tracker/backend/venv",
+        "PATH": "${workspaceFolder}/octofit-tracker/backend/venv/bin:${env:PATH}"
+      }
+    },
+    {
+      "name": "Launch React Frontend",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/octofit-tracker/frontend/node_modules/react-scripts/scripts/start.js",
+      "cwd": "${workspaceFolder}/octofit-tracker/frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["start"],
+      "port": 3000
+    }
+  ]
+}
