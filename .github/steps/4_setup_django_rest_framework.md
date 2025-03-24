@@ -37,7 +37,11 @@ In this step, we will will accomplish the following:
 >
 > Don't proceed with the next activity until all of these steps are completed.
 >```
->
+
+Now, let's actually try running the Django application! In the left sidebar, select the `Run and Debug` tab and then press the **Start Debugging** icon.
+
+![launch-django-light](https://github.com/user-attachments/assets/7e79880c-daf9-4b0e-bda9-01f0f2d29c66)
+
 >[!IMPORTANT]
 > Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
 > ex. redesigned-spork-g6pj46rr9hpp6x
