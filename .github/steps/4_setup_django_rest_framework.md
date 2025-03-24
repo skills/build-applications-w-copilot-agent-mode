@@ -41,6 +41,6 @@ In this step, we will will accomplish the following:
 >[!IMPORTANT]
 > Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
 > ex. redesigned-spork-g6pj46rr9hpp6x
-> Make sure the pop-up shows to open the browser to also choose to make it public
+> Make sure the pop-up shows to open the browser to also choose to make it public.
 
-![make-public](https://github.com/user-attachments/assets/97350507-de62-44c5-b7f2-02531e7f9f9d)
+![make-public-light](https://github.com/user-attachments/assets/db483bad-4ddf-4321-869a-9bc3ad165e2e)
