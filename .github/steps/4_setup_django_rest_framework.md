@@ -40,7 +40,7 @@ In this step, we will will accomplish the following:
 
 Now, let's actually try running the Django application! In the left sidebar, select the `Run and Debug` tab and then press the **Start Debugging** icon.
 
-![launch-django-light](https://github.com/user-attachments/assets/7e79880c-daf9-4b0e-bda9-01f0f2d29c66)
+![ghcp-build-app-launch-django](https://github.com/user-attachments/assets/73a1ed5b-66a5-4f2c-8039-a5de3e9ce0f9)
 
 >[!IMPORTANT]
 > Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
