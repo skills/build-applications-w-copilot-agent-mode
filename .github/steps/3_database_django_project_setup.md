@@ -9,8 +9,8 @@ In this step, we will will accomplish the following:
 - Verify the test data is populated in the octofit_db database.
 
 1. Open all files in the `docs` folder and keep this file open in the editor.
-2. Click the GitHub Copilot Chat "COPILOT EDITS" tab click the :paperclip: and add "Open Editors" to the prompt.
-3. Copy and paste the following prompt in the GitHub Copilot Chat "COPILOT EDITS" tab and select the "Agent" instead of "Edit" from the drop down where you are inserting the prompt.
+2. Click the GitHub Copilot Chat click the :paperclip: and add "Open Editors" to the prompt.
+3. Copy and paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
 
 >[!NOTE]
 > Do not change the model from GPT-4o this will be an optional activity at the end of the course.

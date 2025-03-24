@@ -7,8 +7,8 @@ In this step, we will accomplish the following:
 - Create the octofit-tracker/backend/requirements.txt file.
 
 1. Open all files in the `docs` folder and keep this file open in the editor.
-2. Click the GitHub Copilot Chat "COPILOT EDITS" tab click the :paperclip: and add "Open Editors" to the prompt.
-3. Copy and paste the following prompt in the GitHub Copilot Chat "COPILOT EDITS" tab and select the "Agent" instead of "Edit" from the drop down where you are inserting the prompt.
+2. Click the GitHub Copilot Chat click the :paperclip: and add "Open Editors" to the prompt.
+3. Copy and paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
 
 <img src="https://github.com/user-attachments/assets/e172f5c0-bc2a-45a9-a301-9af8bfbd6a2e](https://github.com/user-attachments/assets/71493505-626d-4a0e-8a7b-ac0424ae2ddb" width=30% height=30%>
 
