@@ -74,8 +74,6 @@ In this step, we will will accomplish the following:
 > 2. Make sure the react front end is talking to the Django rest framework backend.
 > 3. Create main navigation for all components all the components are working correctly and presenting the data correctly.
 > 4. Make sure each component heading is using a css tag so it can be styled later.
-> 5. Start the react app in the background  with "&" and point to the octofit-tracker/frontend directory.
-> 6. Check the output in the terminal.
 >
 > Don't proceed with the next activity until all of these steps are completed.
 >```
