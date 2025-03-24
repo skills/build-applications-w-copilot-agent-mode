@@ -16,8 +16,8 @@ Monitors the correctness of code edits and terminal command output and iterates 
 
 > [!TIP]
 > You can learn more about GitHub Copilot agent mode in the [Use agent mode documentation](https://code.visualstudio.com/docs/copilot/copilot-edits#_use-agent-mode-preview).
-
-> [!Note]
+>
+> [!NOTE]
  Copilot agent mode is a preview feature available in [Visual Studio Code Insiders](https://code.visualstudio.com/insiders).
 
 Your most common interactions with Gitub Copilot will likely be:
@@ -32,7 +32,7 @@ Your most common interactions with Gitub Copilot will likely be:
 
 > [!TIP]
 > You can learn more about current and preview features in the [GitHub Copilot Features](https://docs.github.com/en/copilot/about-github-copilot/github-copilot-features) documentation.
-
+>
 > [!TIP]
 > You can also select different [models](https://docs.github.com/en/github-models) and [extensions](https://github.com/features/copilot/extensions), but that's for a different lesson!
 
@@ -77,4 +77,13 @@ This development environment includes:
 
    - The left navigation bar is where you can access the file explorer, debugger, and search.
    - The lower panel (Ctrl+J) shows the debugger output, allows running terminal commands, and allows configuring the web service ports.
-   - Our docs folder contains the instructions that will give Copilot agent mode context to build your application. More on that in the next steps!
+   - Our docs folder contains the another sample application repository that will give Copilot agent mode context to build your application. More on that in the next steps!
+
+1. At the top of VS Code, locate and click the Copilot icon to open a Copilot Chat panel.
+
+<img width="150" alt="image" src="https://github.com/user-attachments/assets/5e64db46-95cb-415d-badc-b6b8677f10c1" />
+
+1. If this is your first, time using GitHub Copilot, you will have to accept the usage terms to continue.
+    - Click the **Accept** button to continue.
+    - If you are using Copilot Chat for the first time, you will also have to accept the usage terms to continue.
+    - Click the **Accept** button to continue.
