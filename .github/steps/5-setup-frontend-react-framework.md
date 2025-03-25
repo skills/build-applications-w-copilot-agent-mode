@@ -122,3 +122,9 @@ Now, let's actually try running the react application! In the left sidebar, sele
 >
 >Don't proceed with the next activity until all of these steps are completed.
 >```
+
+### :keyboard: Optional Activity: Iterate on the appearance and try different models
+
+>[!NOTE]
+> Try creating your own prompts to change the application appearance, add features, and try different models.
+> Once you are happy with the application you can commit the changes and push them to your branch `build-octofit-app`.
