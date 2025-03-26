@@ -55,9 +55,10 @@ In this step, we will will accomplish the following:
 >   - src/components/Teams.js
 >   - src/components/Users.js
 >   - src/components/Workouts.js
-> - In each compenent replace the fetch url with the codespace url for the Django rest framework backend.
+> - In each compenent replace the fetch url with the codespace url [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] for the Django rest framework backend.
 > - Make sure to use the correct port and protocol http or https.
 > - Update src/App.js to include the main navigation for all components.
+> - Make sure react-router-dom is used for the navigation menu.
 > - The react app should show the navigation menu and the components.
 >
 > Don't proceed with the next activity until all of these steps are completed.

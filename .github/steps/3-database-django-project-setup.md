@@ -67,7 +67,7 @@ In this step, we will will accomplish the following:
 > Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. > Let's populate the octofit_db database with test data. Use same data from docs/mona-high-school-fitness-tracker.md file.
 > 
 > 1. Create a test data file in the octofit-tracker/backend/octofit_tracker directory.
-> 2. Make sure the Python Django server is running in the Python virtual environment makemigrations and migrate the database.
+> 2. Run makemigrations and migrate the database in a Python virtual environment.
 > 3. Populate the octofit_db database with test data for users, teams, activities, leaderboard, and workouts collections based on test data in docs/mona-high-school-fitness-tracker.md populate_db.py.
 > 4. Verify the test data is populated in the octofit_db database.
 > 
