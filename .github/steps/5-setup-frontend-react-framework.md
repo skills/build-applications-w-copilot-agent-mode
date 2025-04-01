@@ -66,19 +66,6 @@ In this step, we will will accomplish the following:
 
 ### :keyboard: Activity: Start the react app and check the output
 
-> **Prompt**
->
-> ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's start the react app and check the output.
-> 
-> 1. What is the url for the react frontend app? What port is it running on? What protocol http or https?
-> 2. Make sure the react front end is talking to the Django rest framework backend.
-> 3. Create main navigation for all components all the components are working correctly and presenting the data correctly.
-> 4. Make sure each component heading is using a css tag so it can be styled later.
->
-> Don't proceed with the next activity until all of these steps are completed.
->```
-
 Now, let's actually try running the react application! In the left sidebar, select the `Run and Debug` tab and then press the **Start Debugging** icon.
 
 <img src="https://github.com/user-attachments/assets/8ab08e4e-539a-4ca9-8270-be4b1f0df176"  width=30% height=30%>
@@ -90,7 +77,7 @@ Now, let's actually try running the react application! In the left sidebar, sele
 > ```prompt
 > Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's style this like App.css and make it look nice.
 >
-> - Let's make the App.js and all components js files in the app do the following:
+> - Let's make the App.js and all components javascript files in the app are consistent with the following:
 >   - Use bootstrap tables for the data in all javascript components.
 >   - Use bootstrap buttons for the buttons.
 >   - Use bootstrap headings for the headings.

@@ -10,7 +10,7 @@ In this step, we will accomplish the following:
 2. Click the GitHub Copilot Chat click the :paperclip: and add "Open Editors" to the prompt.
 3. Copy and paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
 
-<img src="https://github.com/user-attachments/assets/e172f5c0-bc2a-45a9-a301-9af8bfbd6a2e](https://github.com/user-attachments/assets/71493505-626d-4a0e-8a7b-ac0424ae2ddb" width=30% height=30%>
+<img src="https://github.com/user-attachments/assets/e172f5c0-bc2a-45a9-a301-9af8bfbd6a2e" width=60% height=60%>
 
 >[!NOTE]
 > Do not change the model from GPT-4o this will be an optional activity at the end of the course.
@@ -46,7 +46,6 @@ In this step, we will accomplish the following:
 >
 > 1. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
 > 2. Setup the additional configuration for the django project/app with the name octofit-tracker.
-> 3. Run makemigrations and migrate the database but don't start the server yet.
 >
 > Don't proceed with the next activity until all of these steps are completed.
 >```
@@ -65,9 +64,10 @@ Keep files creating and updating until the Copilot agent mode has finished.
 >
 > Don't proceed with the next activity until all of these steps are completed.
 >```
->
+
 > [!IMPORTANT]
-> You may need to hit the stop button in GitHub Copilot chat since the copilot agent mode command is spinning when installing the mongoDB database service.
+> If the command completes in the terminal but agent mode shows it is still running click stop.
+> You may need to paste the prompt again in agent mode.
 
 ### :keyboard: Activity: Let's start and verify mongoDB is running
 
@@ -81,8 +81,10 @@ Keep files creating and updating until the Copilot agent mode has finished.
 >
 > Don't proceed with the next activity until all of these steps are completed.
 >```
->
+
 > [!NOTE]
 > You may not need to run this step if it was already started in the previous step.
+
 > [!IMPORTANT]
-> You may need to hit the stop button in GitHub Copilot chat since the copilot agent mode command is spinning when installing the mongoDB database service. Then type next command to start and verify the mongoDB service is running.
+> If the command completes in the terminal but agent mode shows it is still running click stop.
+> You may need to paste the prompt again in agent mode.

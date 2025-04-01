@@ -35,9 +35,10 @@ In this step, we will will accomplish the following:
 > 
 > Don't proceed with the next activity until all of these steps are completed.
 > ```
->
+
 > [!IMPORTANT]
-> You may need to copy and paste this in the terminal if there is no "Continue" button.
+> You may need to copy and paste the resppnse in the terminal if there is no "Continue" button.
+> Sometimes there is a scrolling issue and there may not be a "Continue" button.
 
 ### :keyboard: Activity: Update the Python Django project/app files
 
@@ -54,7 +55,8 @@ In this step, we will will accomplish the following:
 > 6. Update the octofit-tracker/backend/octofit_tracker/tests.py file to include the tests for users, teams, activity, leaderboard, and workouts collections.
 > 7. Update the octofit-tracker/backend/octofit_tracker/admin.py file to include the admin for users, teams, activity, leaderboard, and workouts collections.
 > 8. Enable CORS in the octofit-tracker/backend/octofit_tracker/settings.py file to allow cross-origin requests from the frontend React app and allow all origins, methods, and headers.
-> 9. Make sure all host endpoints are allowed in settings.py file.
+> 9. Allow all hosts in settings.py file.
+> 10 Install CORS middleware components.
 >
 >Don't proceed with the next activity until all of these steps are completed.
 >```
@@ -73,6 +75,6 @@ In this step, we will will accomplish the following:
 > 
 > Don't proceed with the next activity until all of these steps are completed.
 >```
->
+
 > [!IMPORTANT]
 > You may need to prompt agent mode and tell it that "the command is cutoff".
