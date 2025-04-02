@@ -22,6 +22,7 @@ In this step, we will will accomplish the following:
 > [!NOTE]
 > Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
 > ex. redesigned-spork-g6pj46rr9hpp6x
+> You can get the codespace name by running the following command in the terminal: `echo $CODESPACE_NAME`
 >
 > **Prompt**
 >
@@ -44,6 +45,7 @@ Now, let's actually try running the Django application! In the left sidebar, sel
 >[!IMPORTANT]
 > Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
 > ex. redesigned-spork-g6pj46rr9hpp6x
+> You can get the codespace name by running the following command in the terminal: `echo $CODESPACE_NAME`
 > Make sure the pop-up shows to open the browser to also choose to make it public.
 
 ![make-public-light](https://github.com/user-attachments/assets/db483bad-4ddf-4321-869a-9bc3ad165e2e)

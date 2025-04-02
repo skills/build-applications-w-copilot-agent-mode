@@ -1,0 +1,186 @@
+name: Step 0 # Start Exercise
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  actions: write
+  issues: write
+
+env:
+  EXERCISE_NAME: "Build Applications with GitHub Copilot Agent Mode"
+  INTRO_MESSAGE: "Welcome to the exciting world of GitHub Copilot agent mode! 🚀 In this exercise, you'll unlock the potential of this AI-powered coding assistant to accelerate your development process. Let's dive in and have some fun exploring the future of coding together! 💻✨"
+  STEP_1_FILE: ".github/steps/1-preparing.md"
+
+jobs:
+  disable_workflows:
+    name: Disable workflows
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Disable all workflows
+        run: |
+          workflows=$(git ls-files | grep -E '\.yml$|\.yaml$')
+          for workflow in $workflows; do
+            workflow_name=$(basename $workflow)
+            gh workflow disable "$workflow_name" || true
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  start_exercise:
+    if: |
+      !github.event.repository.is_template
+    name: Start Exercise
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Git user
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+
+      - name: Deactivate 'Start Excercise' button
+        run: |
+          # Remove href from 'Start Exercise' button
+          target='id="copy-exercise"[^>]*href="[^"]*"'
+          replacement='id="copy-exercise"'
+          sed -i "s|$target|$replacement|g" README.md
+
+          # Change color from green to gray
+          target=Copy_Exercise-008000
+          replacement=Copy_Exercise-AAA
+          sed -i "s|$target|$replacement|g" README.md
+
+      - name: Activate 'Start Exercise' button
+        run: |
+          # Add link to issue
+          target='id="start-exercise"'
+          replacement='id="start-exercise" href="../../issues/1"'
+          sed -i "s|$target|$replacement|g" README.md
+
+          # Change color from gray to green
+          target=Start_Exercise-AAA
+          replacement=Start_Exercise-008000
+          sed -i "s|$target|$replacement|g" README.md
+
+      - name: Replace relative links in readme
+        run: |
+          target=../../
+          replacement=https://github.com/${{ github.repository }}/
+          sed -i "s|$target|$replacement|g" README.md
+
+      - name: Push README changes
+        run: |
+          git add README.md
+          git commit --message="Start exercise"
+          git push
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  create_exercise:
+    if: |
+      !github.event.repository.is_template
+    name: Create exercise issue
+    runs-on: ubuntu-latest
+
+    outputs:
+      issue-url: ${{ steps.create-issue.outputs.ISSUE_URL }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get response templates
+        uses: actions/checkout@v4
+        with:
+          repository: skills/response-templates
+          path: skills-response-templates
+
+      - name: Configure Git user
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+
+      - name: Build welcome message from template
+        id: build-issue-description
+        uses: skills/action-text-variables@v1
+        with:
+          template-file: skills-response-templates/step-feedback/welcome.md
+          template-vars: |
+            title=${{ env.EXERCISE_NAME }}
+            login=${{ github.actor }}
+            intro_message=${{ env.INTRO_MESSAGE }}
+
+      - name: Create issue - add welcome message
+        id: create-issue
+        run: |
+          issue_url=$(gh issue create \
+            --title "Exercise: $EXERCISE_NAME" \
+            --body "$ISSUE_BODY")
+          echo "ISSUE_URL=$issue_url" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_BODY: ${{ steps.build-issue-description.outputs.updated-text }}
+
+  post_next_step_content:
+    name: Post next step content
+    runs-on: ubuntu-latest
+    needs: [create_exercise]
+    env:
+      ISSUE_URL: ${{ needs.create_exercise.outputs.issue-url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get response templates
+        uses: actions/checkout@v4
+        with:
+          repository: skills/response-templates
+          path: skills-response-templates
+
+      - name: Configure Git user
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+
+      - name: Build comment - add step content
+        id: build-comment
+        uses: skills/action-text-variables@v1
+        with:
+          template-file: ${{ env.STEP_1_FILE }}
+          template-vars: |
+            login=${{ github.actor }}
+            full_repo_name=${{ github.repository }}
+
+      - name: Create comment - add step content
+        run: |
+          gh issue comment "$ISSUE_URL" \
+            --body "$ISSUE_BODY"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_BODY: ${{ steps.build-comment.outputs.updated-text }}
+
+      - name: Create comment - watching for progress
+        run: |
+          gh issue comment "$ISSUE_URL" \
+            --body-file "skills-response-templates/step-feedback/watching-for-progress.md"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Disable current workflow and enable next one
+        run: |
+          # gh workflow enable "Step 0" # Already disabled
+          gh workflow enable "Step 1"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
