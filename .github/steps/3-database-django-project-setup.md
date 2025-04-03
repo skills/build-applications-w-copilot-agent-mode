@@ -79,8 +79,7 @@ In this step, we will will accomplish the following:
 
 > [!IMPORTANT]
 > If there is no "Continue" button just pull the left side of the GitHub Copilot Chat panel over to the left and it should appear.
-> If this doesn't work you may need to copy and paste the resppnse in the terminal if there is no "Continue" button.
-
+> If this doesn't work you may need to copy and paste the response in the terminal if there is no "Continue" button.
 1. Now that we have created the database structure, updated our Django project files, and populated the database let's check our changes in to our `build-ocotofit-app` branch.
 
 1. With our new changes complete, please **commit** and **push** the changes to GitHub.
