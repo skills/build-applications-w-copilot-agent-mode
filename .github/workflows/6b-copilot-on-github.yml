@@ -55,7 +55,7 @@ jobs:
           # Check if PR has a description and minimum length
           min_length=15
           body_length=$(echo "$PR_Body" | wc -c)
-          echo "PR decription length: $body_length"
+          echo "PR description length: $body_length"
           if [ "$body_length" -lt $min_length ]; then
             checks=$(echo $checks | jq '.pr_description.passed = false')
             checks=$(echo $checks | jq '.pr_description.message = "Please use Copilot to generate a pull request description."')
