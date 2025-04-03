@@ -1,9 +1,9 @@
 ## Step 5: Setup the frontend React framework, update the components, and start OctoFit Tracker app
 
-In this step, we will will accomplish the following:
+In this step, we will accomplish the following:
 
 - Setup the octofit-tracker frontend React framework.
-- Update the folowing components to include the React framework:
+- Update the following components to include the React framework:
   - src/App.js
   - src/index.js
   - src/components/Activities.js
@@ -11,7 +11,7 @@ In this step, we will will accomplish the following:
   - src/components/Teams.js
   - src/components/Users.js
   - src/components/Workouts.js
-- Start the react app and check the output.
+- Start the React app and check the output.
 
 1. Open all files in the `docs` folder and keep this file open in the editor.
 2. Click the GitHub Copilot Chat click the :paperclip: and add "Open Editors" to the prompt.
@@ -35,7 +35,7 @@ In this step, we will will accomplish the following:
 > 2. Create the react app in the octofit-tracker/frontend directory.
 > 3. Install bootstrap in the octofit-tracker/frontend directory.
 > 4. Import bootstrap css in the src/index.js file.
-> 5. Install the reactor-router-dom in the octofit-tracker/frontend directory.
+> 5. Install the react-router-dom in the octofit-tracker/frontend directory.
 >
 > Don't proceed with the next activity until all of these steps are completed.
 >```
@@ -47,7 +47,7 @@ In this step, we will will accomplish the following:
 > ```prompt
 > Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's update the octofit-tracker frontend React components.
 >
-> - Update the folowing components to include the React framework to point to the backend API:
+> - Update the following components to include the React framework to point to the backend API:
 >   - src/App.js
 >   - src/index.js
 >   - src/components/Activities.js
@@ -117,7 +117,7 @@ Now, let's actually try running the react application! In the left sidebar, sele
 > Try creating your own prompts to change the application appearance, add features, and try different models.
 > Once you are happy with the application you can commit the changes and push them to your branch `build-octofit-app`.
 
-1. Now that we have created the REACT frontend for all application components let's check our changes in to our `build-ocotofit-app` branch.
+1. Now that we have created the REACT frontend for all application components let's check our changes in to our `build-octofit-app` branch.
 
 1. With our new changes complete, please **commit** and **push** the changes to GitHub.
 
@@ -128,7 +128,7 @@ Now, let's actually try running the react application! In the left sidebar, sele
 
 If you don't get feedback, here are some things to check:
 
-- Make sure your commit changes were made for the following files to the branch `build-ocotofit-app` and pushed/synchronized to GitHub:
+- Make sure your commit changes were made for the following files to the branch `build-octofit-app` and pushed/synchronized to GitHub:
   - `octofit-tracker/frontend/src/components/Activities.js` and it contains `-8000.app.github.dev/api/activities/`
   - `octofit-tracker/frontend/src/components/Leaderboard.js` and it contains `-8000.app.github.dev/api/leaderboard/`
   - `octofit-tracker/frontend/src/components/Teams.js` and it contains `-8000.app.github.dev/api/teams/`
