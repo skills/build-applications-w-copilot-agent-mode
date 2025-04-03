@@ -4,7 +4,10 @@
         "cpus": 4
     },
     "name": "OctoFit App codespace",
-    "postCreateCommand": "sudo cp --force ./.devcontainer/welcome-message.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt",
+    "postCreateCommand": [
+        "chmod +x ./.devcontainer/post-create.sh",
+        "./.devcontainer/post-create.sh"
+    ],
     "customizations": {
         "vscode": {
         "extensions": [
