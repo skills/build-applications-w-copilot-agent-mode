@@ -37,8 +37,9 @@ In this step, we will will accomplish the following:
 > ```
 
 > [!IMPORTANT]
-> You may need to copy and paste the resppnse in the terminal if there is no "Continue" button.
-> Sometimes there is a scrolling issue and there may not be a "Continue" button.
+> If there is no "Continue" button just pull the left side of the GitHub Copilot Chat panel over to the left and it should appear.
+> If this doesn't work you may need to copy and paste the resppnse in the terminal if there is no "Continue" button.
+
 
 ### :keyboard: Activity: Update the Python Django project/app files
 
@@ -77,4 +78,22 @@ In this step, we will will accomplish the following:
 >```
 
 > [!IMPORTANT]
-> You may need to prompt agent mode and tell it that "the command is cutoff".
+> If there is no "Continue" button just pull the left side of the GitHub Copilot Chat panel over to the left and it should appear.
+> If this doesn't work you may need to copy and paste the resppnse in the terminal if there is no "Continue" button.
+
+1. Now that we have created the database structure, updated our Django project files, and populated the database let's check our changes in to our `build-ocotofit-app` branch.
+
+1. With our new changes complete, please **commit** and **push** the changes to GitHub.
+
+1. Wait a moment for Mona to check your work, provide feedback, and share the final lesson. Almost done!
+
+<details>
+<summary>Having trouble? 🤷</summary><br/>
+
+If you don't get feedback, here are some things to check:
+
+- Make sure your commit changes were made for the following file to the branch `build-ocotofit-app` and pushed/synchronized to GitHub:
+  - `octofit-tracker/backend/requirements.txt` and it contains package `Django==4.1`
+- If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
+
+</details>

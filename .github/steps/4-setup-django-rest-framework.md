@@ -49,3 +49,22 @@ Now, let's actually try running the Django application! In the left sidebar, sel
 > Make sure the pop-up shows to open the browser to also choose to make it public.
 
 ![make-public-light](https://github.com/user-attachments/assets/db483bad-4ddf-4321-869a-9bc3ad165e2e)
+
+1. Now that we have updated our Django product to include our codespace name for the url endpoint,
+   let's check our changes in to our `build-ocotofit-app` branch.
+
+1. With our new changes complete, please **commit** and **push** the changes to GitHub.
+
+1. Wait a moment for Mona to check your work, provide feedback, and share the final lesson. Almost done!
+
+<details>
+<summary>Having trouble? 🤷</summary><br/>
+
+If you don't get feedback, here are some things to check:
+
+- Make sure your commit changes were made for the following files to the branch `build-ocotofit-app` and pushed/synchronized to GitHub:
+  - `octofit-tracker/backend/octofit_tracker/settings.py`
+  - `octofit-tracker/backend/octofit_tracker/views.py`
+- If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
+
+</details>

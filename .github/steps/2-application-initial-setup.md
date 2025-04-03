@@ -88,3 +88,21 @@ Keep files creating and updating until the Copilot agent mode has finished.
 > [!IMPORTANT]
 > If the command completes in the terminal but agent mode shows it is still running click stop.
 > You may need to paste the prompt again in agent mode.
+
+1. Now that we have created the app directory structure, setup a Python virtual environmnet, and Copilot agent mode helped write a requirements.txt to install all project dependencies let's check our changes in to our `build-ocotofit-app` branch.
+
+1. With our new changes complete, please **commit** and **push** the changes to GitHub.
+
+1. Wait a moment for Mona to check your work, provide feedback, and share the final lesson. Almost done!
+
+<details>
+<summary>Having trouble? 🤷</summary><br/>
+
+If you don't get feedback, here are some things to check:
+
+- Make sure your commit changes were made for the following files to the branch `build-ocotofit-app` and pushed/synchronized to GitHub:
+  - `octofit-tracker/backend/octofit_tracker/settings.py`
+  - `octofit-tracker/backend/octofit_tracker/views.py`
+- If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
+
+</details>
