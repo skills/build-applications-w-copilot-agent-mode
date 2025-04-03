@@ -75,7 +75,7 @@ jobs:
           fi
 
           # Check for codespace Django REST API endpoint suffix in views.py
-          file="octofit-tracker/backend/octofit_tracker/viewss.py"
+          file="octofit-tracker/backend/octofit_tracker/views.py"
           keyphrase='djongo'
           minimum_occurences=1
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
