@@ -35,9 +35,11 @@ In this step, we will will accomplish the following:
 > 
 > Don't proceed with the next activity until all of these steps are completed.
 > ```
->
+
 > [!IMPORTANT]
-> You may need to copy and paste this in the terminal if there is no "Continue" button.
+> If there is no "Continue" button just pull the left side of the GitHub Copilot Chat panel over to the left and it should appear.
+> If this doesn't work you may need to copy and paste the response in the terminal if there is no "Continue" button.
+
 
 ### :keyboard: Activity: Update the Python Django project/app files
 
@@ -54,7 +56,8 @@ In this step, we will will accomplish the following:
 > 6. Update the octofit-tracker/backend/octofit_tracker/tests.py file to include the tests for users, teams, activity, leaderboard, and workouts collections.
 > 7. Update the octofit-tracker/backend/octofit_tracker/admin.py file to include the admin for users, teams, activity, leaderboard, and workouts collections.
 > 8. Enable CORS in the octofit-tracker/backend/octofit_tracker/settings.py file to allow cross-origin requests from the frontend React app and allow all origins, methods, and headers.
-> 9. Make sure all host endpoints are allowed in settings.py file.
+> 9. Allow all hosts in settings.py file.
+> 10 Install CORS middleware components.
 >
 >Don't proceed with the next activity until all of these steps are completed.
 >```
@@ -67,12 +70,29 @@ In this step, we will will accomplish the following:
 > Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. > Let's populate the octofit_db database with test data. Use same data from docs/mona-high-school-fitness-tracker.md file.
 > 
 > 1. Create a test data file in the octofit-tracker/backend/octofit_tracker directory.
-> 2. Make sure the Python Django server is running in the Python virtual environment makemigrations and migrate the database.
+> 2. Run makemigrations and migrate the database in a Python virtual environment.
 > 3. Populate the octofit_db database with test data for users, teams, activities, leaderboard, and workouts collections based on test data in docs/mona-high-school-fitness-tracker.md populate_db.py.
 > 4. Verify the test data is populated in the octofit_db database.
 > 
 > Don't proceed with the next activity until all of these steps are completed.
 >```
->
+
 > [!IMPORTANT]
-> You may need to prompt agent mode and tell it that "the command is cutoff".
+> If there is no "Continue" button just pull the left side of the GitHub Copilot Chat panel over to the left and it should appear.
+> If this doesn't work you may need to copy and paste the response in the terminal if there is no "Continue" button.
+1. Now that we have created the database structure, updated our Django project files, and populated the database let's check our changes in to our `build-ocotofit-app` branch.
+
+1. With our new changes complete, please **commit** and **push** the changes to GitHub.
+
+1. Wait a moment for Mona to check your work, provide feedback, and share the final lesson. Almost done!
+
+<details>
+<summary>Having trouble? 🤷</summary><br/>
+
+If you don't get feedback, here are some things to check:
+
+- Make sure your commit changes were made for the following file to the branch `build-ocotofit-app` and pushed/synchronized to GitHub:
+  - `octofit-tracker/backend/requirements.txt` and it contains package `Django==4.1`
+- If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
+
+</details>

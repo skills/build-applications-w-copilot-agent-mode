@@ -16,7 +16,7 @@ Monitors the correctness of code edits and terminal command output and iterates 
 
 > [!TIP]
 > You can learn more about GitHub Copilot agent mode in the [Use agent mode documentation](https://code.visualstudio.com/docs/copilot/copilot-edits#_use-agent-mode-preview).
->
+
 > [!NOTE]
  Copilot agent mode is a preview feature available in [Visual Studio Code Insiders](https://code.visualstudio.com/insiders).
 
@@ -32,7 +32,7 @@ Your most common interactions with Gitub Copilot will likely be:
 
 > [!TIP]
 > You can learn more about current and preview features in the [GitHub Copilot Features](https://docs.github.com/en/copilot/about-github-copilot/github-copilot-features) documentation.
->
+
 > [!TIP]
 > You can also select different [models](https://docs.github.com/en/github-models) and [extensions](https://github.com/features/copilot/extensions), but that's for a different lesson!
 

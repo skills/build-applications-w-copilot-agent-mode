@@ -55,9 +55,10 @@ In this step, we will will accomplish the following:
 >   - src/components/Teams.js
 >   - src/components/Users.js
 >   - src/components/Workouts.js
-> - In each compenent replace the fetch url with the codespace url for the Django rest framework backend.
+> - In each component replace the fetch url with the codespace url [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] for the Django rest framework backend.
 > - Make sure to use the correct port and protocol http or https.
 > - Update src/App.js to include the main navigation for all components.
+> - Make sure react-router-dom is used for the navigation menu.
 > - The react app should show the navigation menu and the components.
 >
 > Don't proceed with the next activity until all of these steps are completed.
@@ -65,22 +66,9 @@ In this step, we will will accomplish the following:
 
 ### :keyboard: Activity: Start the react app and check the output
 
-> **Prompt**
->
-> ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's start the react app and check the output.
-> 
-> 1. What is the url for the react frontend app? What port is it running on? What protocol http or https?
-> 2. Make sure the react front end is talking to the Django rest framework backend.
-> 3. Create main navigation for all components all the components are working correctly and presenting the data correctly.
-> 4. Make sure each component heading is using a css tag so it can be styled later.
->
-> Don't proceed with the next activity until all of these steps are completed.
->```
-
 Now, let's actually try running the react application! In the left sidebar, select the `Run and Debug` tab and then press the **Start Debugging** icon.
 
-![ghcp-build-app-launch-react](https://github.com/user-attachments/assets/db8a9702-de86-492d-876a-54282f8795f0)
+<img src="https://github.com/user-attachments/assets/8ab08e4e-539a-4ca9-8270-be4b1f0df176"  width=30% height=30%>
 
 ### :keyboard: Activity: Let's add some formatting, structuring, and styling to the octofit tracker app
 
@@ -89,7 +77,7 @@ Now, let's actually try running the react application! In the left sidebar, sele
 > ```prompt
 > Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's style this like App.css and make it look nice.
 >
-> - Let's make the App.js and all components js files in the app do the following:
+> - Let's make the App.js and all components javascript files in the app are consistent with the following:
 >   - Use bootstrap tables for the data in all javascript components.
 >   - Use bootstrap buttons for the buttons.
 >   - Use bootstrap headings for the headings.
@@ -122,3 +110,30 @@ Now, let's actually try running the react application! In the left sidebar, sele
 >
 >Don't proceed with the next activity until all of these steps are completed.
 >```
+
+### :keyboard: Optional Activity: Iterate on the appearance and try different models
+
+>[!NOTE]
+> Try creating your own prompts to change the application appearance, add features, and try different models.
+> Once you are happy with the application you can commit the changes and push them to your branch `build-octofit-app`.
+
+1. Now that we have created the REACT frontend for all application components let's check our changes in to our `build-ocotofit-app` branch.
+
+1. With our new changes complete, please **commit** and **push** the changes to GitHub.
+
+1. Wait a moment for Mona to check your work, provide feedback, and share the final lesson. Almost done!
+
+<details>
+<summary>Having trouble? 🤷</summary><br/>
+
+If you don't get feedback, here are some things to check:
+
+- Make sure your commit changes were made for the following files to the branch `build-ocotofit-app` and pushed/synchronized to GitHub:
+  - `octofit-tracker/frontend/src/components/Activities.js` and it contains `-8000.app.github.dev/api/activities/`
+  - `octofit-tracker/frontend/src/components/Leaderboard.js` and it contains `-8000.app.github.dev/api/leaderboard/`
+  - `octofit-tracker/frontend/src/components/Teams.js` and it contains `-8000.app.github.dev/api/teams/`
+  - `octofit-tracker/frontend/src/components/Users.js` and it contains `-8000.app.github.dev/api/users/`
+  - `octofit-tracker/frontend/src/components/Workouts.js` and it contains `-8000.app.github.dev/api/workouts/`
+- If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
+
+</details>

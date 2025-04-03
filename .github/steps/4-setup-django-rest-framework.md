@@ -22,6 +22,7 @@ In this step, we will will accomplish the following:
 > [!NOTE]
 > Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
 > ex. redesigned-spork-g6pj46rr9hpp6x
+> You can get the codespace name by running the following command in the terminal: `echo $CODESPACE_NAME`.
 >
 > **Prompt**
 >
@@ -39,11 +40,31 @@ In this step, we will will accomplish the following:
 
 Now, let's actually try running the Django application! In the left sidebar, select the `Run and Debug` tab and then press the **Start Debugging** icon.
 
-![ghcp-build-app-launch-django](https://github.com/user-attachments/assets/73a1ed5b-66a5-4f2c-8039-a5de3e9ce0f9)
+<img src="https://github.com/user-attachments/assets/baef4dfe-0751-45cb-9e16-8ff26ba9ff58" width=30% height=30%>
 
 >[!IMPORTANT]
 > Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
 > ex. redesigned-spork-g6pj46rr9hpp6x
+> You can get the codespace name by running the following command in the terminal: `echo $CODESPACE_NAME`.
 > Make sure the pop-up shows to open the browser to also choose to make it public.
 
 ![make-public-light](https://github.com/user-attachments/assets/db483bad-4ddf-4321-869a-9bc3ad165e2e)
+
+1. Now that we have updated our Django product to include our codespace name for the url endpoint,
+   let's check our changes in to our `build-ocotofit-app` branch.
+
+1. With our new changes complete, please **commit** and **push** the changes to GitHub.
+
+1. Wait a moment for Mona to check your work, provide feedback, and share the final lesson. Almost done!
+
+<details>
+<summary>Having trouble? 🤷</summary><br/>
+
+If you don't get feedback, here are some things to check:
+
+- Make sure your commit changes were made for the following files to the branch `build-ocotofit-app` and pushed/synchronized to GitHub:
+  - `octofit-tracker/backend/octofit_tracker/settings.py`
+  - `octofit-tracker/backend/octofit_tracker/views.py`
+- If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
+
+</details>

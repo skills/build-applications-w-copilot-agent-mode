@@ -1,0 +1,150 @@
+name: Step 6 # Copilot on GitHub
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+permissions:
+  contents: write
+  actions: write
+  issues: write
+
+env:
+  REVIEW_FILE: ".github/steps/x-review.md"
+
+jobs:
+  find_exercise:
+    name: Find Exercise Issue
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.1.0
+
+  check_step_work:
+    name: Check step work
+    runs-on: ubuntu-latest
+    needs: [find_exercise]
+    env:
+      ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get response templates
+        uses: actions/checkout@v4
+        with:
+          repository: skills/response-templates
+          path: skills-response-templates
+
+      # START: Check practical exercise
+
+      # Nothing to check. Merging the pull request is enough.
+
+      # END: Check practical exercise
+
+      - name: Create comment - step finished - final review next
+        run: |
+          gh issue comment "$ISSUE_URL" \
+            --body-file skills-response-templates/step-feedback/lesson-review.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  post_review_content:
+    name: Post review content
+    needs: [find_exercise, check_step_work]
+    runs-on: ubuntu-latest
+    env:
+      ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get response templates
+        uses: actions/checkout@v4
+        with:
+          repository: skills/response-templates
+          path: skills-response-templates
+
+      - name: Create comment - add step content
+        run: |
+          gh issue comment "$ISSUE_URL" \
+            --body-file "$REVIEW_FILE"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  finish_exercise:
+    name: Finish exercise
+    needs: [find_exercise, post_review_content]
+    runs-on: ubuntu-latest
+    env:
+      ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Get response templates
+        uses: actions/checkout@v4
+        with:
+          repository: skills/response-templates
+          path: skills-response-templates
+
+      - name: Configure Git user
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+
+      - name: Build message - congratulations
+        id: build-message-congratulations
+        uses: skills/action-text-variables@v1
+        with:
+          template-file: skills-response-templates/readme/congratulations.md
+          template-vars: |
+            login=${{ github.actor }}
+
+      - name: Update README - congratulations
+        run: |
+          # Add "Congratulations" to the start of the README
+          orig_readme=$(cat README.md)
+          new_readme="${{ steps.build-message-congratulations.outputs.updated-text }} $orig_readme"
+
+          # Update file and push
+          echo "$new_readme" > README.md
+          git add README.md
+          git commit --message="Congratulations!🎉"
+          git push
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build message - exercise finished
+        id: build-finish-message
+        uses: skills/action-text-variables@v1
+        with:
+          template-file: skills-response-templates/step-feedback/lesson-finished.md
+          template-vars: |
+            login=${{ github.actor }}
+            repo_full_name=${{ github.repository }}
+
+      - name: Create comment - exercise finished
+        run: |
+          gh issue comment "$ISSUE_URL" \
+            --body "$ISSUE_BODY"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_BODY: ${{ steps.build-finish-message.outputs.updated-text }}
+
+      - name: Close issue
+        run: gh issue close "$ISSUE_URL"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Disable current workflow
+        run: |
+          gh workflow disable "Step 6"
+          gh workflow disable "Step 6b"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
