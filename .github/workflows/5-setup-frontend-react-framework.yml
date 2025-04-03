@@ -57,25 +57,21 @@ jobs:
                 "passed": true,
                 "message": ""
               },
-            checks='{
               "leadership_js": {
               "name": "Leadership.js",
               "passed": true,
               "message": ""
-            }
-            checks='{
+              },
               "teams_js": {
               "name": "Teams.js",
               "passed": true,
               "message": ""
-            }
-            checks='{
+              },
               "users_js": {
               "name": "Users.js",
               "passed": true,
               "message": ""
-            }
-            checks='{
+              },
               "workouts_js": {
               "name": "Workouts.js",
               "passed": true,
@@ -90,7 +86,7 @@ jobs:
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
           if [ "$found_occurences" -lt "$minimum_occurences" ]; then
             checks=$(echo $checks | jq '.activities_js.passed = false')
-            checks=$(echo $checks | jq '.activities_js.message = Please use Copilot agent mode to add the codespace Django REST API endpoint suffix to Activities.js."')
+            checks=$(echo $checks | jq '.activities_js.message = "Please use Copilot agent mode to add the codespace Django REST API endpoint suffix to Activities.js."')
           fi
 
           # Check for codespace Django REST API endpoint suffix in Leadership.js
@@ -100,7 +96,7 @@ jobs:
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
           if [ "$found_occurences" -lt "$minimum_occurences" ]; then
             checks=$(echo $checks | jq '.leadership_js.passed = false')
-            checks=$(echo $checks | jq '.leadership_js.message = Please use Copilot agent mode to add the codespace Django REST API endpoint suffix to Leadership.js."')
+            checks=$(echo $checks | jq '.leadership_js.message = "Please use Copilot agent mode to add the codespace Django REST API endpoint suffix to Leadership.js."')
           fi
 
           # Check for codespace Django REST API endpoint suffix in Teams.js
@@ -110,7 +106,7 @@ jobs:
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
           if [ "$found_occurences" -lt "$minimum_occurences" ]; then
             checks=$(echo $checks | jq '.teams_js.passed = false')
-            checks=$(echo $checks | jq '.teams_js.message = Please use Copilot agent mode to add the codespace Django REST API endpoint suffix to Teams.js."')
+            checks=$(echo $checks | jq '.teams_js.message = "Please use Copilot agent mode to add the codespace Django REST API endpoint suffix to Teams.js."')
           fi
 
           # Check for codespace Django REST API endpoint suffix in Users.js
@@ -120,7 +116,7 @@ jobs:
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
           if [ "$found_occurences" -lt "$minimum_occurences" ]; then
             checks=$(echo $checks | jq '.users_js.passed = false')
-            checks=$(echo $checks | jq '.users_js.message = Please use Copilot agent mode to add the codespace Django REST API endpoint suffix to Users.js."')
+            checks=$(echo $checks | jq '.users_js.message = "Please use Copilot agent mode to add the codespace Django REST API endpoint suffix to Users.js."')
           fi
 
           # Check for codespace Django REST API endpoint suffix in Workouts.js
@@ -130,7 +126,7 @@ jobs:
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
           if [ "$found_occurences" -lt "$minimum_occurences" ]; then
             checks=$(echo $checks | jq '.workouts_js.passed = false')
-            checks=$(echo $checks | jq '.workouts_js.message = Please use Copilot agent mode to add the codespace Django REST API endpoint suffix to Workouts.js."')
+            checks=$(echo $checks | jq '.workouts_js.message = "Please use Copilot agent mode to add the codespace Django REST API endpoint suffix to Workouts.js."')
           fi
 
           # Verify all checks passed
