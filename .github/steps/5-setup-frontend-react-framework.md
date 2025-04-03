@@ -129,11 +129,11 @@ Now, let's actually try running the react application! In the left sidebar, sele
 If you don't get feedback, here are some things to check:
 
 - Make sure your commit changes were made for the following files to the branch `build-ocotofit-app` and pushed/synchronized to GitHub:
-  - `octofit-tracker/frontend/src/components/Activities.js` and it contains package `-8000.app.github.dev/api/activities/`
-  - `octofit-tracker/frontend/src/components/Leaderboard.js` and it contains package `-8000.app.github.dev/api/leaderboard/`
-  - `octofit-tracker/frontend/src/components/Teams.js` and it contains package `-8000.app.github.dev/api/teams/`
-  - `octofit-tracker/frontend/src/components/Users.js` and it contains package `-8000.app.github.dev/api/users/`
-  - `octofit-tracker/frontend/src/components/Workouts.js` and it contains package `-8000.app.github.dev/api/workouts/`
+  - `octofit-tracker/frontend/src/components/Activities.js` and it contains `-8000.app.github.dev/api/activities/`
+  - `octofit-tracker/frontend/src/components/Leaderboard.js` and it contains `-8000.app.github.dev/api/leaderboard/`
+  - `octofit-tracker/frontend/src/components/Teams.js` and it contains `-8000.app.github.dev/api/teams/`
+  - `octofit-tracker/frontend/src/components/Users.js` and it contains `-8000.app.github.dev/api/users/`
+  - `octofit-tracker/frontend/src/components/Workouts.js` and it contains `-8000.app.github.dev/api/workouts/`
 - If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
 
 </details>
