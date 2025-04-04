@@ -666,6 +666,27 @@ Create the following components
 
 Basic username password authentication is fine
 
+### index.js potential React version issues
+
+The error indicates that the ReactDOM.render function is not available in the version of React you are using. This is because React 18 introduced a new root API for rendering.
+
+To fix this issue, update your src/index.js file to use the new createRoot API provided by React 18. Here's the updated code:
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom/client'; // Use the new root API
+import './index.css';
+import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const root = ReactDOM.createRoot(document.getElementById('root')); // Create a root
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
 ### Example leaderboard component
 
 Always use the Codespace URL for the API endpoint
