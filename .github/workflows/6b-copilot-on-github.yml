@@ -97,7 +97,7 @@ jobs:
         with:
           template-file: skills-response-templates/step-feedback/step-results.md
           template-vars: '{
-            "step_number": 4,
+            "step_number": 6,
             "passed": ${{ steps.check-user-work.outputs.passed }},
             "results_table": ${{ steps.check-user-work.outputs.results }},
             "tips": [
