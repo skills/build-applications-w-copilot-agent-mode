@@ -57,8 +57,8 @@ jobs:
                 "passed": true,
                 "message": ""
               },
-              "leadership_js": {
-                "name": "Leadership.js",
+              "leaderboard_js": {
+                "name": "Leaderboard.js",
                 "passed": true,
                 "message": ""
               },
@@ -89,14 +89,14 @@ jobs:
             checks=$(echo $checks | jq '.activities_js.message = "Please use Copilot agent mode to add the codespace Django REST API endpoint suffix to Activities.js."')
           fi
 
-          # Check for codespace Django REST API endpoint suffix in Leadership.js
-          file="octofit-tracker/frontend/src/components/Leadership.js"
-          keyphrase='\-8000.app.github.dev\/api\/leadership\/'
+          # Check for codespace Django REST API endpoint suffix in Leaderboard.js
+          file="octofit-tracker/frontend/src/components/Leaderboard.js"
+          keyphrase='\-8000.app.github.dev\/api\/leaderboard\/'
           minimum_occurences=1
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
           if [ "$found_occurences" -lt "$minimum_occurences" ]; then
-            checks=$(echo $checks | jq '.leadership_js.passed = false')
-            checks=$(echo $checks | jq '.leadership_js.message = "Please use Copilot agent mode to add the codespace Django REST API endpoint suffix to Leadership.js."')
+            checks=$(echo $checks | jq '.leaderboard_js.passed = false')
+            checks=$(echo $checks | jq '.leaderboard_js.message = "Please use Copilot agent mode to add the codespace Django REST API endpoint suffix to Leaderboard.js."')
           fi
 
           # Check for codespace Django REST API endpoint suffix in Teams.js

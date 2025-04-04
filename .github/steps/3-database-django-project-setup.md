@@ -1,4 +1,4 @@
-## Step 3: Initialize and create the octofit_db MongoDB database, update Django project/app files, and populate the MongoDB database
+## Step 3: Initialize and create the octofit_db MongoDB database, Django project/app, update Django project/app files, and populate the MongoDB database
 
 In this step, we will accomplish the following:
 
@@ -18,6 +18,23 @@ In this step, we will accomplish the following:
 > Wait a moment for the Copilot to respond and press the continue button to execute commands presented by Copilot agent mode.
 > Keep files created and updated by Copilot agent mode until it is finished.
 > Agent mode has the ability to evaluate your codebase and execute commands and add/refactor/delete parts of your codebase and automatically self-heal if it or you make a mistake in the process.
+
+### :keyboard: Activity: Setup the Python Django project/app
+
+> **Prompt**
+>
+> ```prompt
+> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app,  > let's setup the Python Django project/app and run the server.
+>
+> 1. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
+> 2. Setup the additional configuration for the django project/app with the name octofit-tracker.
+>
+> Don't proceed with the next activity until all of these steps are completed.
+>```
+
+>[!NOTE]
+> Wait a moment for the Copilot to respond and press the continue button to execute each command presented by Copilot agent mode.
+> Keep files created and updated until the Copilot agent mode has finished.
 
 ### :keyboard: Activity: Initialize and create the octofit_db MongoDB database
 

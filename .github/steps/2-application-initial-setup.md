@@ -1,4 +1,4 @@
-## Step 2: The initial application setup: Directory structure, Python requirements, Django project/app, and MongoDB
+## Step 2: The initial application setup: Directory structure, Python requirements, and MongoDB
 
 In this step, we will accomplish the following:
 
@@ -36,22 +36,6 @@ In this step, we will accomplish the following:
 >
 > [!IMPORTANT]
 > Once the above activity installs all the required packages, proceed to the next activity.
-
-### :keyboard: Activity: Setup the Python Django project/app
-
-> **Prompt**
->
-> ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app,  > let's setup the Python Django project/app and run the server.
->
-> 1. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
-> 2. Setup the additional configuration for the django project/app with the name octofit-tracker.
->
-> Don't proceed with the next activity until all of these steps are completed.
->```
-
-Wait a moment for the Copilot to respond and press the continue button to execute each command presented by Copilot agent mode.
-Keep files created and updated until the Copilot agent mode has finished.
 
 ### :keyboard: Activity: Let's install mongoDB
 
