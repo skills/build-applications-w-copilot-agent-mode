@@ -93,7 +93,7 @@ If you don't get feedback, here are some things to check:
 
 - Make sure your commit changes were made for the following files to the branch `build-octofit-app` and pushed/synchronized to GitHub:
   - `octofit-tracker/backend/octofit_tracker/settings.py`
-  - `octofit-tracker/backend/octofit_tracker/views.py`
+  - `octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py`
 - If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
 
 </details>
