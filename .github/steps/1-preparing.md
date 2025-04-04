@@ -120,14 +120,14 @@ Great work! Now that we are familiar with the app and we know it works, let's as
    >
    > ```prompt
    > Awesome! Thanks, Copilot! Let's use the
-   > branch name "build-ocotofit-app".
+   > branch name "build-octofit-app".
    > ```
 
    > **Tip:** If Copilot doesn't give you quite what you want, you can always continue explaining what you need. Copilot will remember the conversation history for follow-up responses.
 
 1. Now that we are happy with the command, press the `Run` button to let Copilot run it for us. No need to copy and paste!
 
-1. After a moment, look in the VS Code lower status bar, on the left, to see the active branch. It should now say `build-ocotofit-app`. If so, you are all done with this step!
+1. After a moment, look in the VS Code lower status bar, on the left, to see the active branch. It should now say `build-octofit-app`. If so, you are all done with this step!
 
 1. Now that your branch is pushed to GitHub, Mona should already be busy checking your work. Give her a moment and keep watch in the comments. You will see her respond with progress info and the next lesson.
 
@@ -136,7 +136,7 @@ Great work! Now that we are familiar with the app and we know it works, let's as
 
 If you don't get feedback, here are some things to check:
 
-- Make sure your created the branch with the exact name `build-ocotofit-app`. No prefixes or suffixes.
+- Make sure your created the branch with the exact name `build-octofit-app`. No prefixes or suffixes.
 - Make sure the branch was indeed published to your repository.
 
 </details>
