@@ -36,6 +36,7 @@ In this step, we will accomplish the following:
 > 3. Install bootstrap in the octofit-tracker/frontend directory.
 > 4. Import bootstrap css in the src/index.js file.
 > 5. Install the react-router-dom in the octofit-tracker/frontend directory.
+> 6. Don't change .gitignore file
 >
 > Don't proceed with the next activity until all of these steps are completed.
 >```
