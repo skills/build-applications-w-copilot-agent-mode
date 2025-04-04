@@ -5,6 +5,7 @@
     },
     "name": "OctoFit App codespace",
     "postCreateCommand": "sudo chmod +x ./.devcontainer/post_create.sh && ./.devcontainer/post_create.sh",
+    "postStartCommand": "sudo chmod +x ./.devcontainer/post_start.sh && ./.devcontainer/post_start.sh",
     "customizations": {
         "vscode": {
         "extensions": [

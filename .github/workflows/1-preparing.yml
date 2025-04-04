@@ -3,7 +3,7 @@ name: Step 1 # Preparing to make your extension
 on:
   push:
     branches:
-      - "accelerate-with-copilot"
+      - "build-octofit-app"
 
 permissions:
   contents: read
