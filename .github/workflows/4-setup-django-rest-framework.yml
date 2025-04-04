@@ -66,7 +66,7 @@ jobs:
 
           # Check for codespace Django REST API endpoint suffix in settings.py
           file="octofit-tracker/backend/octofit_tracker/settings.py"
-          keyphrase='-8000.app.github.dev'
+          keyphrase='\-8000.app.github.dev'
           minimum_occurences=1
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
           if [ "$found_occurences" -lt "$minimum_occurences" ]; then
@@ -76,7 +76,7 @@ jobs:
 
           # Check for codespace Django REST API endpoint suffix in views.py
           file="octofit-tracker/backend/octofit_tracker/views.py"
-          keyphrase='djongo'
+          keyphrase='\-8000.app.github.dev'
           minimum_occurences=1
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
           if [ "$found_occurences" -lt "$minimum_occurences" ]; then
