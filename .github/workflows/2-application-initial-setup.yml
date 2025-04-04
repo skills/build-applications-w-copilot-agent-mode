@@ -5,7 +5,7 @@ on:
     branches:
       - "build-octofit-app"
     paths:
-      - "octofit-tracker/requirements.txt"
+      - "octofit-tracker/backend/requirements.txt"
 
 permissions:
   contents: read
@@ -51,7 +51,7 @@ jobs:
       - name: Check file and contents of 'octofit-tracker/backend/requirements.txt'
         run: |
           # File and expected Python requirement
-          file="octofit-tracker/requirements.txt"
+          file="octofit-tracker/backend/requirements.txt"
           keyphrase="Django==4.1"
 
           # Fail the workflow if the file content is missing
