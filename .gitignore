@@ -6,4 +6,9 @@ venv
 # octofit tracker app
 # octfit-tracker
 
+# React node_modules
 node_modules
+
+# Python files
+*.pyc
+__pycache__/
