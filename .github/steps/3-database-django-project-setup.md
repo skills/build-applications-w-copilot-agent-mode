@@ -54,9 +54,10 @@ In this step, we will accomplish the following:
 > 5. Update the octofit-tracker/backend/octofit_tracker/views.py file to include the views for users, teams, activity, leaderboard, and workouts collections.
 > 6. Update the octofit-tracker/backend/octofit_tracker/tests.py file to include the tests for users, teams, activity, leaderboard, and workouts collections.
 > 7. Update the octofit-tracker/backend/octofit_tracker/admin.py file to include the admin for users, teams, activity, leaderboard, and workouts collections.
-> 8. Enable CORS in the octofit-tracker/backend/octofit_tracker/settings.py file to allow cross-origin requests from the frontend React app and allow all origins, methods, and headers.
-> 9. Allow all hosts in the settings.py file.
-> 10. Install CORS middleware components.
+> 8. Make sure api_root is in octofit-tracker/backend/octofit_tracker/urls.py
+> 9. Enable CORS in the octofit-tracker/backend/octofit_tracker/settings.py file to allow cross-origin requests from the frontend React app and allow all origins, methods, and headers.
+> 10. Allow all hosts in the settings.py file.
+> 11. Install CORS middleware components.
 >
 > Don't proceed with the next activity until all of these steps are completed.
 > ```
