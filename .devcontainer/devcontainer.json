@@ -5,7 +5,7 @@
     },
     "name": "OctoFit App codespace",
     "postCreateCommand": [
-        "chmod +x ./.devcontainer/post-create.sh",
+        "chmod +x ./.devcontainer/post_create.sh",
         "./.devcontainer/post_create.sh"
     ],
     "customizations": {
