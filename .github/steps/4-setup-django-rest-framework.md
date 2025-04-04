@@ -48,7 +48,7 @@ Now, let's actually try running the Django application! In the left sidebar, sel
 > You can get the codespace name by running the following command in the terminal: `echo $CODESPACE_NAME`.
 
 1. Now that we have updated our Django product to include our codespace name for the URL endpoint,
-   let's check our changes in to our `build-ocotofit-app` branch.
+   let's check our changes in to our `build-octofit-app` branch.
 
 1. With our new changes complete, please **commit** and **push** the changes to GitHub.
 
@@ -59,7 +59,7 @@ Now, let's actually try running the Django application! In the left sidebar, sel
 
 If you don't get feedback, here are some things to check:
 
-- Make sure your commit changes were made for the following files to the branch `build-ocotofit-app` and pushed/synchronized to GitHub:
+- Make sure your commit changes were made for the following files to the branch `build-octofit-app` and pushed/synchronized to GitHub:
   - `octofit-tracker/backend/octofit_tracker/settings.py`
   - `octofit-tracker/backend/octofit_tracker/views.py`
 - If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
