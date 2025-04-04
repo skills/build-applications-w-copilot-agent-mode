@@ -74,7 +74,7 @@ In this workshop, you'll:
 
 ### GitHub Copilot Chat
 
-These are the current models supported for GitHub Copilot Chat.
+These are the current models supported for GitHub Copilot Chat:
 
 - Claude Sonnet 3.5 (Preview)
 - Claude Sonnet 3.7 (Preview)
@@ -86,14 +86,14 @@ These are the current models supported for GitHub Copilot Chat.
 
 #### [LLM models explained](https://docs.github.com/en/copilot/using-github-copilot/ai-models/changing-the-ai-model-for-copilot-chat#ai-models-for-copilot-chat-1)
 
-![Github Copilot Chat models](https://github.com/user-attachments/assets/f2f8d0bd-366b-4ecf-b88d-d092ae7b8b10)
+![GitHub Copilot Chat models](https://github.com/user-attachments/assets/f2f8d0bd-366b-4ecf-b88d-d092ae7b8b10)
 
 #### Prompt engineering
 
 - [GitHub documentation prompt engineering](https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot)
 - [How to use GitHub Copilot: Prompts, tips, and use cases](https://github.blog/2023-06-20-how-to-write-better-prompts-for-github-copilot/)
 - [Using GitHub Copilot in your IDE: Tips, tricks, and best practices](https://github.blog/2024-03-25-how-to-use-github-copilot-in-your-ide-tips-tricks-and-best-practices/)
-- [A developer’s guide to prompt engineering and LLMs](https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot#:~:text=A%20developer%E2%80%99s%20guide%20to%20prompt%20engineering%20and%20LLMs)
+- [A developer's guide to prompt engineering and LLMs](https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot#:~:text=A%20developer%E2%80%99s%20guide%20to%20prompt%20engineering%20and%20LLMs)
 - [GitHub Copilot: The Agent Awakens](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/#agent-mode-available-in-preview-%f0%9f%a4%96)
 
 ### OctoFit tracker fitness application technology stack
@@ -123,7 +123,7 @@ We'll be using a modern web application stack:
 4. **Building Core Features**
    - Activity logging API
    - Team management
-   - Leader board functionality
+   - Leaderboard functionality
 
 5. **Frontend and Backend Development**
    - Setting up React components

@@ -15,14 +15,14 @@ Here's a recap of your accomplishments:
 
 - Continue working on the project
   - Use Copilot to add an ability for login and authentication.
-  - Keep eolving the look of the application through app.css.
+  - Keep evolving the look of the application through app.css.
   - Use Copilot to fix issues found during a pull request review.
   - Use Copilot to generate tests and documentation.
   - Use Copilot with different models.
 - Check out the other [GitHub Skills exercises](https://skills.github.com).
 - Try building your first [GitHub Copilot Extension](https://github.com/skills/your-first-extension-for-github-copilot)
 
-Check out these resources to learn more about GitHub Copilot :
+Check out these resources to learn more about GitHub Copilot:
 
 - Take a look at this blog on GitHub Copilot agent mode [Mastering GitHub Copilot: When to use AI agent mode](https://github.blog/ai-and-ml/github-copilot/mastering-github-copilot-when-to-use-ai-agent-mode/)
 - Are you not getting the responses you want from Copilot? [Learn prompt engineering](https://docs.github.com/en/copilot/using-github-copilot/copilot-chat/prompt-engineering-for-copilot-chat)
