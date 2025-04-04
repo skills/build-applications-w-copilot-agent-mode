@@ -4,10 +4,7 @@
         "cpus": 4
     },
     "name": "OctoFit App codespace",
-    "postCreateCommand": [
-        "chmod +x ./.devcontainer/post_create.sh",
-        "./.devcontainer/post_create.sh"
-    ],
+    "postCreateCommand": "sudo chmod +x ./.devcontainer/post_create.sh && ./.devcontainer/post_create.sh",
     "customizations": {
         "vscode": {
         "extensions": [
