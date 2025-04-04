@@ -58,25 +58,25 @@ jobs:
                 "message": ""
               },
               "leadership_js": {
-              "name": "Leadership.js",
-              "passed": true,
-              "message": ""
+                "name": "Leadership.js",
+                "passed": true,
+                "message": ""
               },
               "teams_js": {
-              "name": "Teams.js",
-              "passed": true,
-              "message": ""
+                "name": "Teams.js",
+                "passed": true,
+                "message": ""
               },
               "users_js": {
-              "name": "Users.js",
-              "passed": true,
-              "message": ""
+                "name": "Users.js",
+                "passed": true,
+                "message": ""
               },
               "workouts_js": {
-              "name": "Workouts.js",
-              "passed": true,
-              "message": ""
-            }            
+                "name": "Workouts.js",
+                "passed": true,
+                "message": ""
+              }            
            }'
 
           # Check for codespace Django REST API endpoint suffix in Activities.js
