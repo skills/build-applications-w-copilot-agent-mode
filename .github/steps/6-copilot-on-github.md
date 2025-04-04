@@ -25,7 +25,7 @@ Both **pull request summaries** and **copilot review** have limited access, so t
 1. You might notice a **notification banner** suggesting to create a new pull request. Click that or use the **Pull Requests** tab at the top to create a new pull request. Please use the following details:
 
    - **base:** `main`
-   - **compare:** `accelerate-with-copilot`
+   - **compare:** `build-octofit-app`
    - **title:** `Add registration validation and more activities`
 
 1. (Optional) In the **Add a description** area, enter edit mode if needed, then click the **Copilot actions** icon and **Summary** action. After a moment, Copilot will add a description. :memo:
