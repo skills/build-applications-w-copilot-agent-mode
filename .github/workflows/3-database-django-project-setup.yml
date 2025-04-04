@@ -85,7 +85,7 @@ jobs:
           fi
 
           # Check for 'test data' in populate_db.py
-          file="octofit-tracker/backend/octofit_tracker/management/populate_db.py"
+          file="octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py"
           keyphrase='test data for'
           minimum_occurences=1
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
