@@ -16,7 +16,7 @@ It should be in one app
 generate instructions in this order
 
 1. Create the frontend and backend in the monafit-tracker directory structure of this repository in one command
-2. Setup backend python venv and create a monafit-tracker/requirements.txt file
+2. Setup backend python venv and create a monafit-tracker/backend/requirements.txt file
 3. The monafit-tracker/backend directory will store the django project and app with the name monafit-tracker
 4. The Django project monafit-tracker directory will have all the backend components for the app
 5. Create the django app directly in the directory monafit_tracker/backend
@@ -76,9 +76,9 @@ websocket-client==1.8.0
 
 All of the backend django app will be in monafit_tracker and do NOT create another app of any kind
 
-Use a Python virtual environment and install all python dependencies from file monafit-tracker/requirements.txt in this workspace
+Use a Python virtual environment and install all python dependencies from file monafit-tracker/backend/requirements.txt in this workspace
 
-The monafit-tracker/requirements.txt already contains all Django requirements. Django, djongo, sqlparse
+The monafit-tracker/backend/requirements.txt already contains all Django requirements. Django, djongo, sqlparse
 
 Layout the directory structure with no redundant backend and frontend subdirectories
 
@@ -94,7 +94,7 @@ mkdir -p monafit-tracker/{backend,frontend}
 
 python3 -m venv monafit-tracker/backend/venv
 source monafit-tracker/backend/venv/bin/activate
-pip install -r monafit-tracker/requirements.txt
+pip install -r monafit-tracker/backend/requirements.txt
 
 django-admin startproject monafit_tracker monafit-tracker/backend
 
