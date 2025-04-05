@@ -71,7 +71,7 @@ This development environment includes:
    - ❌ Original: `/skills/build-applications-w-copilot-agent-mode`
 
 1. Wait a moment for Visual Studio Code to load.
-    1. You may need to switch to insiders mode in the codespace since agent mode was released on 4/4 as a phased rollout to users.
+    1. You may need to switch to VS Code insiders edition in the codespace since agent mode was released on 4/4 as a phased rollout to users.
        ![switch-to-insiders-version-light](https://github.com/user-attachments/assets/457f60eb-8c20-48d8-83b3-533fc1d93f88)
 
 1. Before we continue let's take a moment to familiarize ourselves with the project folder.
