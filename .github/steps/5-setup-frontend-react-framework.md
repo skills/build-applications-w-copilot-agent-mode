@@ -101,7 +101,7 @@ Now, let's actually try running the react application! In the left sidebar, sele
 > Don't proceed with the next activity until all of these steps are completed.
 >```
 
-### :keyboard: Activity: Let's make the octofit tracker app look nice, pretty, and add some color
+### :keyboard: Optional Activity: Let's make the octofit tracker app look nice, pretty, and add some color
 
 > **Prompt**
 >
