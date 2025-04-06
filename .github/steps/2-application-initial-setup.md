@@ -12,7 +12,7 @@ In this step, we will accomplish the following:
 
 <img src="https://github.com/user-attachments/assets/e172f5c0-bc2a-45a9-a301-9af8bfbd6a2e" width=60% height=60%>
 
->[!NOTE]
+> [!NOTE]
 > Do not change the model from GPT-4o this will be an optional activity at the end of the course.
 > Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
 > Wait a moment for the Copilot to respond and press the continue button to execute commands presented by Copilot agent mode.
@@ -34,6 +34,7 @@ In this step, we will accomplish the following:
 > Don't proceed with the next activity until all of these steps are completed.
 >```
 >
+
 > [!IMPORTANT]
 > Once the above activity installs all the required packages, proceed to the next activity.
 
