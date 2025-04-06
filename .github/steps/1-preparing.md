@@ -95,40 +95,26 @@ Great work! Now that we are familiar with the app and we know it works, let's as
 
 1. If not already there, return to VS Code.
 
-1. In the bottom panel, select the **Terminal** tab. On the right side, click the plus `+` sign to create a new terminal window.
+1. Open the GitHub Copilot Chat window if not already open. 
+2. Click the GitHub Copilot Chat click the :paperclip: and add "Open Editors" to the prompt.
+3. Copy and paste the following prompt in the GitHub Copilot Chat and select the **Agent** instead of **Ask** or **Edit** from the drop down where you are inserting the prompt.
 
-   > **Note:** This will avoid stopping the existing debug session that is hosting our web application service.
+<img src="https://github.com/user-attachments/assets/e172f5c0-bc2a-45a9-a301-9af8bfbd6a2e" width=30% height=30%>
 
-1. Within the new terminal window, `right click` and select `Copilot` then `Terminal Inline Chat`. Alternately, you can use the keyboard shortcut `Ctrl + I` (windows) or `Cmd + I` (mac).
+> [!NOTE]
+> Do not change the model from GPT-4o this will be an optional activity at the end of the course.
+> Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
+> Wait a moment for the Copilot to respond and press the continue button to execute commands presented by Copilot agent mode.
 
-1. Let's ask Copilot to help us remember a command we have forgotten: creating a branch and publishing it
-
-   > <img width="13px" src="https://github.com/user-attachments/assets/98fd5d2e-ea29-4a4a-9212-c7050e177a69" /> **Prompt**
-   >
-   > ```prompt
-   > Hey copilot, how can I create and publish a new Git branch?
-   > ```
-
-   > **Tip:** This is a simple example, but Copilot is great at providing more tailored commands that might involve loops, pattern matching, file modification, and more! Don't be afraid to ask Copilot for a suggestion. Just remember it is a suggestion and you should always verify it first to be safe.
-
-1. Copilot probably gave us a command like the following. Rather than manually modify it, let's respond back to tell Copilot to use a particular name.
-
-   ```bash
-   git checkout -b {new_branch_name}
-   git push -u origin {new_branch_name}
-   ```
+1. Let's ask Copilot agent mode to help us remember the command and create the branch `build-octofit-app` and publishing it
 
    > <img width="13px" src="https://github.com/user-attachments/assets/98fd5d2e-ea29-4a4a-9212-c7050e177a69" /> **Prompt**
    >
    > ```prompt
-   > Awesome! Thanks, Copilot! Let's use the
-   > branch name "build-octofit-app".
+   > Hey copilot, how can I create and publish a new Git branch called build-octofit-app?
    > ```
 
-   > [!TIP]
-   > If Copilot doesn't give you quite what you want, you can always continue explaining what you need. Copilot will remember the conversation history for follow-up responses.
-
-1. Now that we are happy with the command, press the `Run` button to let Copilot run it for us. No need to copy and paste!
+1. Now that we are happy with the command, press the `Continue` button to let Copilot agent mode run it for us. No need to copy and paste!
 
 1. After a moment, look in the VS Code lower status bar, on the left, to see the active branch. It should now say `build-octofit-app`. If so, you are all done with this step!
 
