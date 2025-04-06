@@ -125,7 +125,8 @@ Great work! Now that we are familiar with the app and we know it works, let's as
    > branch name "build-octofit-app".
    > ```
 
-   > **Tip:** If Copilot doesn't give you quite what you want, you can always continue explaining what you need. Copilot will remember the conversation history for follow-up responses.
+   > [!TIP]
+   > If Copilot doesn't give you quite what you want, you can always continue explaining what you need. Copilot will remember the conversation history for follow-up responses.
 
 1. Now that we are happy with the command, press the `Run` button to let Copilot run it for us. No need to copy and paste!
 
