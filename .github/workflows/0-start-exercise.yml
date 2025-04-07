@@ -49,7 +49,7 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
 
-      - name: Deactivate 'Start Excercise' button
+      - name: Deactivate 'Start Exercise' button
         run: |
           # Remove href from 'Start Exercise' button
           target='id="copy-exercise"[^>]*href="[^"]*"'
