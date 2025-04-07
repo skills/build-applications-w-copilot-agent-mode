@@ -577,7 +577,7 @@ becomes
 HTTP 200 OK Allow: GET, HEAD, OPTIONS Content-Type: application/json Vary: Accept
 
 { 
-    "users": "http://<codespace-name>-8000.app.github.dev/users/api/users/?format=api",
+    "users": "http://<codespace-name>-8000.app.github.dev/api/users/?format=api",
     "teams": "http://<codespace-name>-8000.app.github.dev/api/teams/?format=api",
     "activities": "http://<codespace-name>-8000.app.github.dev/api/activities/?format=api",
     "leaderboard": "http://<codespace-name>-8000.app.github.dev/api/leaderboard/?format=api",
