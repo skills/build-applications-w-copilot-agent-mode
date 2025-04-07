@@ -50,8 +50,8 @@ In this exercise, you will:
       <img src="https://img.shields.io/badge/🚀_Start_Exercise-AAA" height="25pt"/>
    </a>
 
-> [!IMPORTANT]
-> The **Start Exercise** button will activate after copying the repository. You will probably need to refresh the page.
+
+> ❕ **Important:** The **Start Exercise** button will activate after copying the repository. You will probably need to refresh the page.
 
 ---
 

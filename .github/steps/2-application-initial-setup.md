@@ -6,10 +6,9 @@ In this step, we will accomplish the following:
 - Create the octofit-tracker/backend and octofit-tracker/frontend directories.
 - Create the octofit-tracker/backend/requirements.txt file.
 
-1. Open all files in the `docs` folder and keep this file open in the editor.
+1. Open all files in the `docs` folder and keep this file open in the editor throughout this exercise.
     1.  agent mode uses `mona-high-school-fitness-tracker.md` and `octofit_story.md` as a reference to create the application
-2. Click the GitHub Copilot Chat click the :paperclip: and add "Open Editors" to the prompt.
-3. Copy and paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
+2. Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
 
 <img src="https://github.com/user-attachments/assets/e172f5c0-bc2a-45a9-a301-9af8bfbd6a2e" width=60% height=60%>
 
