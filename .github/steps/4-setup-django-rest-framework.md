@@ -1,9 +1,9 @@
-## Step 4: Setup Django REST Framework, restart the server, and test the API
+## Step 4: Setup Django REST Framework, start the server, and test the API
 
 In this step, we will accomplish the following:
 
 - Setup the Django REST Framework.
-- Restart the server.
+- Start the server.
 - Test the API using curl.
 
 1. Open all files in the `docs` folder and keep this file open in the editor throughout this exercise.
@@ -27,7 +27,7 @@ In this step, we will accomplish the following:
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
->Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for Mergington's high school's app. Let's setup codespace for the URL, restart the server, and test the API.
+>Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for Mergington's high school's app. Let's setup codespace for the URL, start the server via VS Code launch.json, and test the API.
 > 
 > 1. Activate the Python virtual environment.
 > 2. Update #file:octofit-tracker/backend/octofit_tracker/views.py to replace the return for the REST API URL endpoints with the codespace URL https://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev for Django and avoid certificate HTTPS issues.
