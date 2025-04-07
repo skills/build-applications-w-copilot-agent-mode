@@ -635,7 +635,7 @@ class WorkoutViewSet(viewsets.ModelViewSet):
 python manage.py runserver
 ```
 
-## Setup the frontend React app
+## Setup the frontend React app use the below package.json
 
 ```bash
 mkdir -p monafit-tracker/frontend
@@ -647,6 +647,52 @@ npm install bootstrap --prefix monafit-tracker/frontend
 echo "import 'bootstrap/dist/css/bootstrap.min.css';" >> src/index.js
 
 npm install react-router-dom --prefix monafit-tracker/frontend
+```
+
+### package.json
+
+```json
+{
+  "name": "octofit-tracker",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/dom": "^9.3.1",
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
+    "bootstrap": "^5.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
 ```
 
 ## monafit App components
@@ -667,7 +713,7 @@ Create the following components
 
 Basic username password authentication is fine
 
-### App,js
+### App.js
 
 ```javascript
 import React from 'react';
