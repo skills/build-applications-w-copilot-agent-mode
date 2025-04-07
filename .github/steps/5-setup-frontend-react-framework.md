@@ -132,7 +132,7 @@ Now, let's actually try running the react application! In the left sidebar, sele
 
 1. With our new changes complete, please **commit** and **push** the changes to GitHub.
 
-1. Wait a moment for Mona to check your work, provide feedback, and share the final lesson. Almost done!
+1. Wait a moment for Mona to check your work, provide feedback, and share the next lesson so we can keep working!
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>

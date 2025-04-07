@@ -70,11 +70,11 @@ In this step, we will accomplish the following:
 - If the command completes in the terminal but agent mode shows it is still running click stop.
 - You may need to paste the prompt again in agent mode.
 
-1. Now that we have created the app directory structure, setup a Python virtual environment, and Copilot agent mode helped write a requirements.txt to install all project dependencies let's check our changes in to our `build-octofit-app` branch.
+1. Now that we have created the app directory structure, setup a Python virtual environment, and Copilot agent mode helped write a `requirements.txt` to install all project dependencies let's check our changes in to our `build-octofit-app` branch.
 
 1. With our new changes complete, please **commit** and **push** the changes to GitHub.
 
-1. Wait a moment for Mona to check your work, provide feedback, and share the final lesson. Almost done!
+1. Wait a moment for Mona to check your work, provide feedback, and share the next lesson so we can keep working!
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
