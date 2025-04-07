@@ -33,10 +33,10 @@ In this step, we will accomplish the following:
 >
 > 1. Make the octofit-tracker/frontend directory.
 > 2. Create the react app in the octofit-tracker/frontend directory.
-> 3. Install stable versions of React framework and modules.
+> 3. Install stable versions of React framework and modules based on docs/mona-high-school-fitness-tracker.md.
 > 4. Install stable bootstrap in the octofit-tracker/frontend directory.
 > 5. Import bootstrap css in the src/index.js file.
-> 6. Install the react-router-dom in the octofit-tracker/frontend directory.
+> 6. Install the stable react-router-dom in the octofit-tracker/frontend directory.
 > 7. Don't change .gitignore file
 >
 > Don't proceed with the next activity until all of these steps are completed.
