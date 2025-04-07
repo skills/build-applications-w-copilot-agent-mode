@@ -36,6 +36,9 @@ In this step, we will accomplish the following:
 - Wait a moment for the Copilot to respond and press the continue button to execute each command presented by Copilot agent mode.
 - Keep files created and updated until the Copilot agent mode has finished.
 
+> ❕ **Important:**
+- Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel**.
+
 ### :keyboard: Activity: Initialize and create the octofit_db MongoDB database
 
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
