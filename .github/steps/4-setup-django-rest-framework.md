@@ -38,6 +38,10 @@ In this step, we will accomplish the following:
 > Don't proceed with the next activity until all of these steps are completed.
 >```
 
+> ❕ **Important:** Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel**. Follow the next activity instead.
+
+### :keyboard: Activity: Start the Python Django app and check the output
+
 Now, let's actually try running the Django application! In the left sidebar, select the `Run and Debug` tab and then press the **Start Debugging** icon.
 
 <img src="https://github.com/user-attachments/assets/baef4dfe-0751-45cb-9e16-8ff26ba9ff58" width=30% height=30%>
