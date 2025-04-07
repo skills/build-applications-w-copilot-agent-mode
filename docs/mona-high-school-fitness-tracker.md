@@ -465,6 +465,7 @@ touch monafit-tracker/backend/monafit_tracker/management/commands/populate_db.py
 ### Sample code for populate_db.py to populate the database
 
 Mergington Physical Education sample data use for populate_db.py
+Should reside under monafit-tracker/backend/monafit_tracker/management/commands/populate_db.py
 
 ```python
 # FILE: monafit-tracker/backend/monafit_tracker/management/commands/populate_db.py

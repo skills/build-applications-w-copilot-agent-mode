@@ -14,47 +14,7 @@ Determines the relevant context and files to edit autonomously.
 Offers both code changes and terminal commands to complete the task. For example, Copilot might compile code, install packages, run tests, and more.
 Monitors the correctness of code edits and terminal command output and iterates to remediate issues.
 
-> [!TIP]
-> You can learn more about GitHub Copilot agent mode in the [Use agent mode documentation](https://code.visualstudio.com/docs/copilot/copilot-edits#_use-agent-mode-preview).
-
-> [!NOTE]
- Copilot agent mode is a preview feature available in [Visual Studio Code Insiders](https://code.visualstudio.com/insiders).
-
-Your most common interactions with Gitub Copilot will likely be:
-
-- **Inline suggestions**: As you type, Copilot uses the nearby context to suggest code directly in your editor. This will be a familiar interaction if you have used code completion tools like [Intellisense](https://code.visualstudio.com/docs/editor/intellisense), except that the completions may be entire functions.
-- **Copilot Chat**: A dedicated chat panel that lets you ask coding related questions. This will feel familiar if you have used online AI assistant chats. The big difference however, is that your project files will provide automatic context to provide tailored responses.
-- **Copilot Edits**: Similar to Copilot Chat, but less conversational and more big picture or goal oriented.
-- **Copilot agent mode**: Operates in a more autonomous and dynamic manner to achieve the desired outcome. To process a request, Copilot loops over the following steps and iterates multiple times as needed:
-  - Determines the relevant context and files to edit autonomously.
-  - Offers both code changes and terminal commands to complete the task. For example, Copilot might compile code, install packages, run tests, and more.
-  - Monitors the correctness of code edits and terminal command output and iterates to remediate issues.
-
-> [!TIP]
-> You can learn more about current and preview features in the [GitHub Copilot Features](https://docs.github.com/en/copilot/about-github-copilot/github-copilot-features) documentation.
-
-> [!TIP]
-> You can also select different [models](https://docs.github.com/en/github-models) and [extensions](https://github.com/features/copilot/extensions), but that's for a different lesson!
-
-Before we get started on developing an application in GitHub Copilot agent mode, we have to configure our development environment.
-Fortunately, this has been bootstrapped for us with a pre-configured [Codespace](https://github.com/features/codespaces).
-
-This development environment includes:
-
-- React.js frontend.
-- Django REST Framework backend.
-- MongoDB database.
-- The Node.js runtime.
-- The Python runtime.
-  - forwardPorts
-    - 3000, // React default port
-    - 8000, // Django default port
-    - 27017 // MongoDB default port
-- VS Code extensions:
-  - GitHub Copilot/Copilot Chat insiders
-  - Python
-  - Markdown linter
-- [VS Code](https://code.visualstudio.com/) launch settings to start your application in debug mode.
+> 💡 **Tip:** You can learn more about GitHub Copilot agent mode in the [Use agent mode documentation](https://code.visualstudio.com/docs/copilot/copilot-edits#_use-agent-mode-preview).
 
 ### :keyboard: Activity: Getting to know your GitHub Copilot agent mode development environment
 
@@ -89,26 +49,25 @@ This development environment includes:
     - If you are using Copilot Chat for the first time, you will also have to accept the usage terms to continue.
     - Click the **Accept** button to continue.
 
-### :keyboard: Activity: Use Copilot to help remember a terminal command 🙋
+### :keyboard: Activity: Use Copilot agent mode to create a branch and publish it. 🙋
 
 Great work! Now that we are familiar with the app and we know it works, let's ask copilot for help starting a branch so we can do some customizing.
 
 1. If not already there, return to VS Code.
 
 1. Open the GitHub Copilot Chat window if not already open. 
-2. Click the GitHub Copilot Chat click the :paperclip: and add "Open Editors" to the prompt.
-3. Copy and paste the following prompt in the GitHub Copilot Chat and select the **Agent** instead of **Ask** or **Edit** from the drop down where you are inserting the prompt.
+2. Copy and paste the following prompt in the GitHub Copilot Chat and select the **Agent** instead of **Ask** or **Edit** from the drop down where you are inserting the prompt.
 
 <img src="https://github.com/user-attachments/assets/e172f5c0-bc2a-45a9-a301-9af8bfbd6a2e" width=30% height=30%>
 
-> [!NOTE]
-> Do not change the model from GPT-4o this will be an optional activity at the end of the course.
-> Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
-> Wait a moment for the Copilot to respond and press the continue button to execute commands presented by Copilot agent mode.
+> 🪧 **Note:** 
+- Do not change the model from GPT-4o this will be an optional activity at the end of the course.
+- Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
+- Wait a moment for the Copilot to respond and press the continue button to execute commands presented by Copilot agent mode.
 
 1. Let's ask Copilot agent mode to help us remember the command and create the branch `build-octofit-app` and publishing it
 
-   > <img width="13px" src="https://github.com/user-attachments/assets/98fd5d2e-ea29-4a4a-9212-c7050e177a69" /> **Prompt**
+   > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
    >
    > ```prompt
    > Hey copilot, how can I create and publish a new Git branch called build-octofit-app?

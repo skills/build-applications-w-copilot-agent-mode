@@ -14,19 +14,20 @@ In this step, we will accomplish the following:
 - Start the React app and check the output.
 
 1. Open all files in the `docs` folder and keep this file open in the editor.
+    1.  agent mode uses `mona-high-school-fitness-tracker.md` and `octofit_story.md` as a reference to create the application
 2. Click the GitHub Copilot Chat click the :paperclip: and add "Open Editors" to the prompt.
 3. Copy and paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
 
->[!NOTE]
-> Do not change the model from GPT-4o this will be an optional activity at the end of the course.
-> Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
-> Wait a moment for the Copilot to respond and press the continue button to execute commands presented by Copilot agent mode.
-> Keep files created and updated by Copilot agent mode until it is finished.
-> Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
+> 🪧 **Note:** 
+- Do not change the model from GPT-4o this will be an optional activity at the end of the course.
+- Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
+- Wait a moment for the Copilot to respond and press the continue button to execute commands presented by Copilot agent mode.
+- Keep files created and updated by Copilot agent mode until it is finished.
+- Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
 
 ### :keyboard: Activity: Install the octofit-tracker frontend React framework
 
-> **Prompt**
+> ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
 > Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's setup codespace for the octofit-tracker frontend React framework.
@@ -43,12 +44,12 @@ In this step, we will accomplish the following:
 
 ### :keyboard: Activity: Update the octofit-tracker frontend React components
 
-> [!NOTE]
-> Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
-> ex. redesigned-spork-g6pj46rr9hpp6x
-> You can get the codespace name by running the following command in the terminal: `echo $CODESPACE_NAME`.
->
-> **Prompt**
+> 🪧 **Note:** 
+- Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
+  - ex. redesigned-spork-g6pj46rr9hpp6x
+- You can get the codespace name by running the following command in the terminal: `echo $CODESPACE_NAME`.
+
+> ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
 > Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's update the octofit-tracker frontend React components.
@@ -70,10 +71,10 @@ In this step, we will accomplish the following:
 > Don't proceed with the next activity until all of these steps are completed.
 > ```
 
->[!IMPORTANT]
-> Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
-> ex. redesigned-spork-g6pj46rr9hpp6x
-> You can get the codespace name by running the following command in the terminal: `echo $CODESPACE_NAME`.
+> ❕ **Important:**
+- Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
+  - ex. redesigned-spork-g6pj46rr9hpp6x
+- You can get the codespace name by running the following command in the terminal: `echo $CODESPACE_NAME`.
 
 ### :keyboard: Activity: Start the react app and check the output
 
@@ -83,7 +84,7 @@ Now, let's actually try running the react application! In the left sidebar, sele
 
 ### :keyboard: Activity: Let's add some formatting, structuring, and styling to the octofit tracker app
 
-> **Prompt**
+> ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
 > Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's style this like App.css and make it look nice.
@@ -103,7 +104,7 @@ Now, let's actually try running the react application! In the left sidebar, sele
 
 ### :keyboard: Optional Activity: Let's make the octofit tracker app look nice, pretty, and add some color
 
-> **Prompt**
+> ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
 > Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's style this like App.css and make it look nice.
@@ -124,9 +125,9 @@ Now, let's actually try running the react application! In the left sidebar, sele
 
 ### :keyboard: Optional Activity: Iterate on the appearance and try different models
 
->[!NOTE]
-> Try creating your own prompts to change the application appearance, add features, and try different models.
-> Once you are happy with the application you can commit the changes and push them to your branch `build-octofit-app`.
+> 🧪 **Try this:**
+- Try creating your own prompts to change the application appearance, add features, and try different models.
+- Once you are happy with the application you can commit the changes and push them to your branch `build-octofit-app`.
 
 1. Now that we have created the REACT frontend for all application components let's check our changes in to our `build-octofit-app` branch.
 

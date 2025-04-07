@@ -9,19 +9,20 @@ In this step, we will accomplish the following:
 - Verify the test data is populated in the octofit_db database.
 
 1. Open all files in the `docs` folder and keep this file open in the editor.
-2. Click the GitHub Copilot Chat, click the :paperclip:, and add "Open Editors" to the prompt.
-3. Copy and paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the dropdown where you are inserting the prompt.
+    1.  agent mode uses `mona-high-school-fitness-tracker.md` and `octofit_story.md` as a reference to create the application
+2. Click the GitHub Copilot Chat click the :paperclip: and add "Open Editors" to the prompt.
+3. Copy and paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
 
->[!NOTE]
-> Do not change the model from GPT-4; this will be an optional activity at the end of the course.
-> Keep in mind that the Copilot agent mode is conversational, so it may ask you questions, and you can ask it questions too.
-> Wait a moment for the Copilot to respond and press the continue button to execute commands presented by Copilot agent mode.
-> Keep files created and updated by Copilot agent mode until it is finished.
-> Agent mode has the ability to evaluate your codebase and execute commands and add/refactor/delete parts of your codebase and automatically self-heal if it or you make a mistake in the process.
+> 🪧 **Note:** 
+- Do not change the model from GPT-4o this will be an optional activity at the end of the course.
+- Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
+- Wait a moment for the Copilot to respond and press the continue button to execute commands presented by Copilot agent mode.
+- Keep files created and updated by Copilot agent mode until it is finished.
+- Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
 
 ### :keyboard: Activity: Setup the Python Django project/app
 
-> **Prompt**
+> ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
 > Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app,  > let's setup the Python Django project/app and run the server.
@@ -32,13 +33,13 @@ In this step, we will accomplish the following:
 > Don't proceed with the next activity until all of these steps are completed.
 >```
 
->[!NOTE]
-> Wait a moment for the Copilot to respond and press the continue button to execute each command presented by Copilot agent mode.
-> Keep files created and updated until the Copilot agent mode has finished.
+> 🪧 **Note:** 
+- Wait a moment for the Copilot to respond and press the continue button to execute each command presented by Copilot agent mode.
+- Keep files created and updated until the Copilot agent mode has finished.
 
 ### :keyboard: Activity: Initialize and create the octofit_db MongoDB database
 
-> **Prompt**
+> ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
 > Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for Merington's high school's app. Let's initialize the octofit_db database.
@@ -53,13 +54,13 @@ In this step, we will accomplish the following:
 > Don't proceed with the next activity until all of these steps are completed.
 > ```
 
-> [!IMPORTANT]
-> If there is no "Continue" button, just pull the left side of the GitHub Copilot Chat panel over to the left, and it should appear.
-> If this doesn't work, you may need to copy and paste the response in the terminal if there is no "Continue" button.
+> ❕ **Important:**
+- If there is no "Continue" button, just pull the left side of the GitHub Copilot Chat panel over to the left, and it should appear.
+-  If this doesn't work, you may need to copy and paste the response in the terminal if there is no "Continue" button.
 
 ### :keyboard: Activity: Update the Python Django project/app files
 
-> **Prompt**
+> ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
 > Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for Merington's high school's app. Let's update the octofit-tracker/backend/octofit_tracker app files.
@@ -81,22 +82,22 @@ In this step, we will accomplish the following:
 
 ### :keyboard: Activity: Populate the octofit_db database with test data from Django project/app files
 
-> **Prompt**
+> ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
 > Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for Merington's high school's app. Let's populate the octofit_db database with test data. Use the same data from docs/mona-high-school-fitness-tracker.md file.
 > 
 > 1. Create a test data file in the octofit-tracker/backend/octofit_tracker directory.
 > 2. Run makemigrations and migrate the database in a Python virtual environment.
-> 3. Populate the octofit_db database with test data for users, teams, activities, leaderboard, and workouts collections based on test data in docs/mona-high-school-fitness-tracker.md populate_db.py.
+> 3. Populate the octofit_db database with test data for users, teams, activities, leaderboard, and workouts collections based on test data in docs/mona-high-school-fitness-tracker.md octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py.
 > 4. Verify the test data is populated in the octofit_db database.
 > 
 > Don't proceed with the next activity until all of these steps are completed.
 > ```
 
-> [!IMPORTANT]
-> If there is no "Continue" button, just pull the left side of the GitHub Copilot Chat panel over to the left, and it should appear.
-> If this doesn't work, you may need to copy and paste the response in the terminal if there is no "Continue" button.
+> ❕ **Important:**
+- If there is no "Continue" button, just pull the left side of the GitHub Copilot Chat panel over to the left, and it should appear.
+- If this doesn't work, you may need to copy and paste the response in the terminal if there is no "Continue" button.
 
 1. Now that we have created the database structure, updated our Django project files, and populated the database, let's check our changes into our `build-octofit-app` branch.
 
