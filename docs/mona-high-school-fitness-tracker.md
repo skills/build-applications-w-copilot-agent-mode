@@ -16,7 +16,7 @@ It should be in one app
 generate instructions in this order
 
 1. Create the frontend and backend in the monafit-tracker directory structure of this repository in one command
-2. Setup backend python venv and create a monafit-tracker/backend/requirements.txt file
+2. Setup backend python venv 3.10.x and create a monafit-tracker/backend/requirements.txt file
 3. The monafit-tracker/backend directory will store the django project and app with the name monafit-tracker
 4. The Django project monafit-tracker directory will have all the backend components for the app
 5. Create the django app directly in the directory monafit_tracker/backend
