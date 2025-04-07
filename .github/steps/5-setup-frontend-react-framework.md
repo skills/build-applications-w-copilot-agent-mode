@@ -33,10 +33,11 @@ In this step, we will accomplish the following:
 >
 > 1. Make the octofit-tracker/frontend directory.
 > 2. Create the react app in the octofit-tracker/frontend directory.
-> 3. Install bootstrap in the octofit-tracker/frontend directory.
-> 4. Import bootstrap css in the src/index.js file.
-> 5. Install the react-router-dom in the octofit-tracker/frontend directory.
-> 6. Don't change .gitignore file
+> 3. Install stable versions of React framework and modules.
+> 4. Install stable bootstrap in the octofit-tracker/frontend directory.
+> 5. Import bootstrap css in the src/index.js file.
+> 6. Install the react-router-dom in the octofit-tracker/frontend directory.
+> 7. Don't change .gitignore file
 >
 > Don't proceed with the next activity until all of these steps are completed.
 >```
@@ -61,7 +62,7 @@ In this step, we will accomplish the following:
 >   - src/components/Teams.js
 >   - src/components/Users.js
 >   - src/components/Workouts.js
-> - In each component replace the fetch url with the codespace url https://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]/api/<component> for the Django rest framework backend.
+> - In each component replace the fetch url with the codespace url https://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev/api/<component> for the Django rest framework backend.
 > - Make sure to use the correct port and protocol http or https.
 > - Update src/App.js to include the main navigation for all components.
 > - Make sure react-router-dom is used for the navigation menu.
