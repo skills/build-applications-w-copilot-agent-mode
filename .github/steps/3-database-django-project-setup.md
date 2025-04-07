@@ -79,6 +79,8 @@ In this step, we will accomplish the following:
 > Don't proceed with the next activity until all of these steps are completed.
 > ```
 
+> ❕ **Important:** Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel**.
+
 ### :keyboard: Activity: Populate the octofit_db database with test data from Django project/app files
 
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
@@ -95,6 +97,7 @@ In this step, we will accomplish the following:
 > ```
 
 > ❕ **Important:**
+- Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel**.
 - If there is no "Continue" button, just pull the left side of the GitHub Copilot Chat panel over to the left, and it should appear.
 - If this doesn't work, you may need to copy and paste the response in the terminal if there is no "Continue" button.
 
