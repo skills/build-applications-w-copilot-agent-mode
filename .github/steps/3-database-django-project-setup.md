@@ -55,7 +55,7 @@ In this step, we will accomplish the following:
 
 > ❕ **Important:**
 - If there is no "Continue" button, just pull the left side of the GitHub Copilot Chat panel over to the left, and it should appear.
--  If this doesn't work, you may need to copy and paste the response in the terminal if there is no "Continue" button.
+- If this doesn't work, you may need to copy and paste the response in the terminal if there is no "Continue" button.
 
 ### :keyboard: Activity: Update the Python Django project/app files
 
