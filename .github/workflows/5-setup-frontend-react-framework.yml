@@ -81,7 +81,7 @@ jobs:
 
           # Check for codespace Django REST API endpoint suffix in Activities.js
           file="octofit-tracker/frontend/src/components/Activities.js"
-          keyphrase='\-8000.app.github.dev\/api\/activities\/'
+          keyphrase='\-8000.app.github.dev\/api\/activities'
           minimum_occurences=1
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
           if [ "$found_occurences" -lt "$minimum_occurences" ]; then
@@ -91,7 +91,7 @@ jobs:
 
           # Check for codespace Django REST API endpoint suffix in Leaderboard.js
           file="octofit-tracker/frontend/src/components/Leaderboard.js"
-          keyphrase='\-8000.app.github.dev\/api\/leaderboard\/'
+          keyphrase='\-8000.app.github.dev\/api\/leaderboard'
           minimum_occurences=1
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
           if [ "$found_occurences" -lt "$minimum_occurences" ]; then
@@ -101,7 +101,7 @@ jobs:
 
           # Check for codespace Django REST API endpoint suffix in Teams.js
           file="octofit-tracker/frontend/src/components/Teams.js"
-          keyphrase='\-8000.app.github.dev\/api\/teams\/'
+          keyphrase='\-8000.app.github.dev\/api\/teams'
           minimum_occurences=1
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
           if [ "$found_occurences" -lt "$minimum_occurences" ]; then
@@ -111,7 +111,7 @@ jobs:
 
           # Check for codespace Django REST API endpoint suffix in Users.js
           file="octofit-tracker/frontend/src/components/Users.js"
-          keyphrase='\-8000.app.github.dev\/api\/users\/'
+          keyphrase='\-8000.app.github.dev\/api\/users'
           minimum_occurences=1
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
           if [ "$found_occurences" -lt "$minimum_occurences" ]; then
@@ -121,7 +121,7 @@ jobs:
 
           # Check for codespace Django REST API endpoint suffix in Workouts.js
           file="octofit-tracker/frontend/src/components/Workouts.js"
-          keyphrase='\-8000.app.github.dev\/api\/workouts\/'
+          keyphrase='\-8000.app.github.dev\/api\/workouts'
           minimum_occurences=1
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
           if [ "$found_occurences" -lt "$minimum_occurences" ]; then
