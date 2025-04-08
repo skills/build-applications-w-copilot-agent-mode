@@ -32,8 +32,8 @@ Monitors the correctness of code edits and terminal command output and iterates 
 
 1. Wait a moment for Visual Studio Code to load.
     1. You may need to switch to VS Code insiders edition in the codespace since agent mode was released on 4/4 as a phased rollout to users.
-       ![switch-to-insiders-version-light](https://github.com/user-attachments/assets/457f60eb-8c20-48d8-83b3-533fc1d93f88)
-
+   <img src="https://github.com/user-attachments/assets/5a72c5b2-2d0f-4f84-bc3d-b276b90d44d7" width=30% height=30%>
+   
 1. Before we continue let's take a moment to familiarize ourselves with the project folder.
 
    - The left navigation bar is where you can access the file explorer, debugger, and search.
@@ -60,6 +60,7 @@ Great work! Now that we are familiar with the app and we know it works, let's as
 
 <img src="https://github.com/user-attachments/assets/e172f5c0-bc2a-45a9-a301-9af8bfbd6a2e" width=30% height=30%>
 
+
 > 🪧 **Note:** 
 - Do not change the model from GPT-4o this will be an optional activity at the end of the course.
 - Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
@@ -72,6 +73,12 @@ Great work! Now that we are familiar with the app and we know it works, let's as
    > ```prompt
    > Hey copilot, how can I create and publish a new Git branch called build-octofit-app?
    > ```
+
+
+   Copilot agent mode will respond and ask if you if you want to enable it to run the command. Respond with **Yes**</br>
+
+   <img src=https://github.com/user-attachments/assets/8dafaa5f-80db-41ea-a189-b5d603c11d63 width=40% height=40%>
+
 
 1. Now that we are happy with the command, press the `Continue` button to let Copilot agent mode run it for us. No need to copy and paste!
 
