@@ -74,14 +74,14 @@ jobs:
             checks=$(echo $checks | jq '.settings_py.message = "Please use Copilot agent mode to add the name of the database octofit_db to settings.py."')
           fi
 
-          # Check for djongo info in settings.py
+          # Check for django info in settings.py
           file="octofit-tracker/backend/octofit_tracker/settings.py"
-          keyphrase='djongo'
+          keyphrase='django'
           minimum_occurences=2
           found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
           if [ "$found_occurences" -lt "$minimum_occurences" ]; then
             checks=$(echo $checks | jq '.settings_py.passed = false')
-            checks=$(echo $checks | jq '.settings_py.message = "Please use Copilot agent mode to add the database engine djongo to settings.py."')
+            checks=$(echo $checks | jq '.settings_py.message = "Please use Copilot agent mode to add the database engine django to settings.py."')
           fi
 
           # Check for 'test data' in populate_db.py
