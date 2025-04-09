@@ -32,7 +32,7 @@ Monitors the correctness of code edits and terminal command output and iterates 
 
 1. Wait a moment for Visual Studio Code to load.
     1. You may need to switch to VS Code insiders edition in the codespace since agent mode was released on 4/4 as a phased rollout to users.
-   <img src="https://github.com/user-attachments/assets/5a72c5b2-2d0f-4f84-bc3d-b276b90d44d7" width=30% height=30%>
+   <img width="323" alt="vscode-insiders-light" src="https://github.com/user-attachments/assets/8ff8868b-9120-4055-8449-175e85552ba2" />
    
 1. Before we continue let's take a moment to familiarize ourselves with the project folder.
 
