@@ -75,7 +75,7 @@ Great work! Now that we are familiar with the app and we know it works, let's as
    > ```
 
 
-   Copilot agent mode will respond and ask if you if you want to enable it to run the command. Respond with **Yes**</br>
+   Copilot agent mode will respond and ask if you want agent mide to run the command. Respond with **Yes**.</br>
 
    <img src=https://github.com/user-attachments/assets/8dafaa5f-80db-41ea-a189-b5d603c11d63 width=40% height=40%>
 
