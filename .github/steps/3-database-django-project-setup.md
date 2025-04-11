@@ -15,7 +15,7 @@ In this step, we will accomplish the following:
 > 🪧 **Note:** 
 - Do not change the model from GPT-4o this will be an optional activity at the end of the course.
 - Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
-- Wait a moment for the Copilot to respond and press the continue button to execute commands presented by Copilot agent mode.
+- Wait a moment for the Copilot to respond and press the `Continue` button to execute commands presented by Copilot agent mode.
 - Keep files created and updated by Copilot agent mode until it is finished.
 - Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
 
@@ -33,7 +33,7 @@ In this step, we will accomplish the following:
 >```
 
 > 🪧 **Note:** 
-- Wait a moment for the Copilot to respond and press the continue button to execute each command presented by Copilot agent mode.
+- Wait a moment for the Copilot to respond and press the `Continue` button to execute each command presented by Copilot agent mode.
 - Keep files created and updated until the Copilot agent mode has finished.
 
 > ❕ **Important:**
@@ -57,8 +57,8 @@ In this step, we will accomplish the following:
 > ```
 
 > ❕ **Important:**
-- If there is no "Continue" button, just pull the left side of the GitHub Copilot Chat panel over to the left, and it should appear.
-- If this doesn't work, you may need to copy and paste the response in the terminal if there is no "Continue" button.
+- If there is no `Continue` button, just pull the left side of the GitHub Copilot Chat panel over to the left, and it should appear.
+- If this doesn't work, you may need to copy and paste the response in the terminal if there is no `Continue` button.
 
 ### :keyboard: Activity: Update the Python Django project/app files
 
@@ -101,8 +101,8 @@ In this step, we will accomplish the following:
 
 > ❕ **Important:**
 - Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel**.
-- If there is no "Continue" button, just pull the left side of the GitHub Copilot Chat panel over to the left, and it should appear.
-- If this doesn't work, you may need to copy and paste the response in the terminal if there is no "Continue" button.
+- If there is no `Continue` button, just pull the left side of the GitHub Copilot Chat panel over to the left, and it should appear.
+- If this doesn't work, you may need to copy and paste the response in the terminal if there is no `Continue` button.
 
 1. Now that we have created the database structure, updated our Django project files, and populated the database, let's check our changes into our `build-octofit-app` branch.
 
