@@ -6,7 +6,7 @@ In this exercise, you will be using GitHub Copilot agent mode to build an applic
 
 ### What is GitHub Copilot agent mode?
 
-Copilot agent mode can create apps from scratch, perform refactorings across multiple files, write and run tests, and migrate legacy code to modern frameworks. It can automatically generate documentation, integrate new libraries, or help answer questions about a complex codebase. Copilot agent mode helps you be super-productive by having an AI collaborator that understands the workspace. It can orchestrate your inner development flow while keeping you in control.
+Copilot agent mode can create apps from scratch, refactor across multiple files, write and run tests, and migrate legacy code to modern frameworks. It can automatically generate documentation, integrate new libraries, or help answer questions about a complex codebase. Copilot agent mode helps you be super-productive by having an AI collaborator that understands the workspace. It can orchestrate your inner development flow while keeping you in control.
 
 Copilot agent mode operates in a more autonomous and dynamic manner to achieve the desired outcome. To process a request, Copilot loops over the following steps and iterates multiple times as needed:
 
@@ -14,7 +14,7 @@ Determines the relevant context and files to edit autonomously.
 Offers both code changes and terminal commands to complete the task. For example, Copilot might compile code, install packages, run tests, and more.
 Monitors the correctness of code edits and terminal command output and iterates to remediate issues.
 
-> 💡 **Tip:** You can learn more about GitHub Copilot agent mode in the [Use agent mode documentation](https://code.visualstudio.com/docs/copilot/copilot-edits#_use-agent-mode-preview).
+> 💡 **Tip:** You can learn more about GitHub Copilot agent mode in the [Use agent mode documentation](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode).
 
 ### :keyboard: Activity: Getting to know your GitHub Copilot agent mode development environment
 
@@ -75,7 +75,7 @@ Great work! Now that we are familiar with the app and we know it works, let's as
    > ```
 
 
-   Copilot agent mode will respond and ask if you want agent mide to run the command. Respond with **Yes**.</br>
+   Copilot agent mode will respond and ask if you want agent mode to run the command. Respond with **Yes**.</br>
 
    <img src=https://github.com/user-attachments/assets/8dafaa5f-80db-41ea-a189-b5d603c11d63 width=40% height=40%>
 
