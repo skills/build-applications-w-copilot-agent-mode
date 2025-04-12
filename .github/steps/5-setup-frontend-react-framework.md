@@ -129,7 +129,7 @@ Now, let's actually try running the react application! In the left sidebar, sele
 - Try creating your own prompts to change the application appearance, add features, and try different models.
 - Once you are happy with the application you can commit the changes and push them to your branch `build-octofit-app`.
 
-1. Now that we have created the REACT frontend for all application components let's check our changes in to our `build-octofit-app` branch.
+1. Now that we have created the React frontend for all application components, let's check our changes in to our `build-octofit-app` branch.
 
 1. With our new changes complete, please **commit** and **push** the changes to GitHub.
 

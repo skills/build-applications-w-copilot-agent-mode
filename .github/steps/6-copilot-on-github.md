@@ -18,7 +18,7 @@ More eyes on our work is always useful so let's ask Copilot to do a first pass b
 
 ### :keyboard: Activity: Summarize and review a PR with Copilot
 
-Both **pull request summaries** and **copilot review** have limited access, so this activity is mostly optional. If you have access, Mona will gladly check your work though! If not, you can skip the optional steps.
+Both **pull request summaries** and **Copilot review** have limited access, so this activity is mostly optional. If you have access, Mona will gladly check your work though! If not, you can skip the optional steps.
 
 1. In a web browser, open another tab and navigate to your exercise repository.
 
