@@ -13,7 +13,11 @@
             "markdown-lint.markdownlinter",
             "ms-python.python", // Python extension
             "ms-python.vscode-pylance" // Pylance extension for Python
-        ]}
+        ],
+        "settings": {
+            "chat.agent.enabled": true,
+        }
+    }
     },
     "forwardPorts": [
         3000, // React default port
@@ -25,7 +29,7 @@
       "label": "octofit-tracker",
       "requireLocalPort": true,
       "visibility": "public"
-      },      
+      },
       "8000": { // Django port attributes
       "label": "octofit-api",
       "requireLocalPort": true,
