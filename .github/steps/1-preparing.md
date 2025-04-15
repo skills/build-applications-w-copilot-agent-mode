@@ -31,8 +31,6 @@ Monitors the correctness of code edits and terminal command output and iterates 
    - ❌ Original: `/skills/build-applications-w-copilot-agent-mode`
 
 1. Wait a moment for Visual Studio Code to load.
-    1. You may need to switch to VS Code insiders edition in the codespace since agent mode was released on 4/4 as a phased rollout to users.
-   <img width="323" alt="vscode-insiders-light" src="https://github.com/user-attachments/assets/8ff8868b-9120-4055-8449-175e85552ba2" />
    
 1. Before we continue let's take a moment to familiarize ourselves with the project folder.
 
