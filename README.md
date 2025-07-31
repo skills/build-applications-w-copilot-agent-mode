@@ -8,9 +8,9 @@ _Build an application with GitHub Copilot agent mode in less than an hour._
 ## Welcome
 
 People love how GitHub Copilot helps them write code faster and with fewer errors.
-But what if GitHub could create a full stack application for your job role based on requirements
+But what if GitHub could create a full stack application based on requirements
 written in natural language?
-In this exercise, we will prompt GitHub Copilot agent mode to create us a complete application.
+In this exercise, we will prompt GitHub Copilot agent mode to create a complete application.
 
 - **Who is this for**: Intermediate developers familiar with GitHub Copilot, basic GitHub, and basic web development
 - **What you'll learn**: We'll introduce GitHub Copilot agent mode and how to use it for application development.

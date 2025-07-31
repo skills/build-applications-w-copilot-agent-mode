@@ -9,7 +9,7 @@ In this step, we will accomplish the following:
 - Verify the test data is populated in the octofit_db database.
 
 1. Open all files in the `docs` folder and keep this file open in the editor throughout this exercise.
-    1.  agent mode uses `mona-high-school-fitness-tracker.md` and `octofit_story.md` as a reference to create the application
+    1. Agent mode uses `mona-high-school-fitness-tracker.md` and `octofit_story.md` as a reference to create the application
 2. Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
 
 > 🪧 **Note:** 
@@ -44,7 +44,7 @@ In this step, we will accomplish the following:
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for Merington's high school's app. Let's initialize the octofit_db database.
+> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit-tracker as the name for Mergington's high school's app. Let's initialize the octofit_db database.
 >
 > 1. Initialize the mongo octofit_db database.
 > 2. Create a correct table structure for users, teams, activity, leaderboard, and workouts collections.
@@ -65,7 +65,7 @@ In this step, we will accomplish the following:
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for Merington's high school's app. Let's update the octofit-tracker/backend/octofit_tracker app files.
+> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit-tracker as the name for Mergington's high school's app. Let's update the octofit-tracker/backend/octofit_tracker app files.
 >
 > 1. Update the octofit-tracker/backend/octofit_tracker/settings.py file to include the MongoDB database connection.
 > 2. Update the octofit-tracker/backend/octofit_tracker/models.py file to include the models for users, teams, activity, leaderboard, and workouts collections.
@@ -89,7 +89,7 @@ In this step, we will accomplish the following:
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for Merington's high school's app. Let's populate the octofit_db database with test data. Use the same data from docs/mona-high-school-fitness-tracker.md file.
+> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit-tracker as the name for Mergington's high school's app. Let's populate the octofit_db database with test data. Use the same data from docs/mona-high-school-fitness-tracker.md file.
 > 
 > 1. Create a test data file in the octofit-tracker/backend/octofit_tracker directory.
 > 2. Run makemigrations and migrate the database in a Python virtual environment.
