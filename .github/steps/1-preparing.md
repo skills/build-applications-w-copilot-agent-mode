@@ -44,7 +44,7 @@ Monitors the correctness of code edits and terminal command output and iterates 
 
 <img width="150" alt="image" src="https://github.com/user-attachments/assets/5e64db46-95cb-415d-badc-b6b8677f10c1" />
 
-1. If this is your first, time using GitHub Copilot, you will have to accept the usage terms to continue.
+1. If this is your first time using GitHub Copilot, you will have to accept the usage terms to continue.
     - Click the **Accept** button to continue.
     - If you are using Copilot Chat for the first time, you will also have to accept the usage terms to continue.
     - Click the **Accept** button to continue.

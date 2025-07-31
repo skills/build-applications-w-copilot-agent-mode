@@ -7,7 +7,7 @@ In this step, we will accomplish the following:
 - Create the octofit-tracker/backend/requirements.txt file.
 
 1. Open all files in the `docs` folder and keep this file open in the editor throughout this exercise.
-    1.  Agent mode uses `mona-high-school-fitness-tracker.md` and `octofit_story.md` as a reference to create the application
+    1. Agent mode uses `mona-high-school-fitness-tracker.md` and `octofit_story.md` as a reference to create the application
 2. Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
 
 <img src="https://github.com/user-attachments/assets/e172f5c0-bc2a-45a9-a301-9af8bfbd6a2e" width=40% height=40%>
@@ -42,7 +42,7 @@ In this step, we will accomplish the following:
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. > Let's install MongoDB.
+> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for Mergington's high school's app. Let's install MongoDB.
 >
 > 1. Install MongoDB and make sure the command is complete.
 >
@@ -58,7 +58,7 @@ In this step, we will accomplish the following:
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. > Let's start and verify MongoDB is running.
+> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for Mergington's high school's app. Let's start and verify MongoDB is running.
 >
 > 1. Start the MongoDB service.
 > 2. Verify the MongoDB service running.

@@ -14,7 +14,7 @@ In this step, we will accomplish the following:
 - Start the React app and check the output.
 
 1. Open all files in the `docs` folder and keep this file open in the editor throughout this exercise.
-    1.  agent mode uses `mona-high-school-fitness-tracker.md` and `octofit_story.md` as a reference to create the application
+    1. Agent mode uses `mona-high-school-fitness-tracker.md` and `octofit_story.md` as a reference to create the application
 2. Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
 
 > 🪧 **Note:** 
@@ -29,7 +29,7 @@ In this step, we will accomplish the following:
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's setup codespace for the octofit-tracker frontend React framework.
+> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit-tracker as the name for Mergington's high school's app. Let's setup the octofit-tracker frontend React framework.
 >
 > 1. Make the octofit-tracker/frontend directory.
 > 2. Create the react app in the octofit-tracker/frontend directory.
@@ -52,7 +52,7 @@ In this step, we will accomplish the following:
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's update the octofit-tracker frontend React components.
+> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit-tracker as the name for Mergington's high school's app. Let's update the octofit-tracker frontend React components.
 >
 > - Update the following components to include the React framework to point to the backend API:
 >   - src/App.js
@@ -87,7 +87,7 @@ Now, let's actually try running the react application! In the left sidebar, sele
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's style this like App.css and make it look nice.
+> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit-tracker as the name for Mergington's high school's app. Let's style this like App.css and make it look nice.
 >
 > - Let's make the App.js and all components javascript files in the app are consistent with the following:
 >   - Use bootstrap tables for the data in all javascript components.
@@ -107,7 +107,7 @@ Now, let's actually try running the react application! In the left sidebar, sele
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app. Let's style this like App.css and make it look nice.
+> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit-tracker as the name for Mergington's high school's app. Let's style this like App.css and make it look nice.
 > 
 > -  Edit the App.css file to do the following:
 >   - Add some color to the background.
