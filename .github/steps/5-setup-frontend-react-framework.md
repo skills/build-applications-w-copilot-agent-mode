@@ -44,7 +44,7 @@ In this step, we will accomplish the following:
 
 ### :keyboard: Activity: Update the octofit-tracker frontend React components
 
-> 🪧 **Note:** 
+> 🪧 **Note:**
 - Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
   - ex. redesigned-spork-g6pj46rr9hpp6x
 - You can get the codespace name by running the following command in the terminal: `echo $CODESPACE_NAME`.

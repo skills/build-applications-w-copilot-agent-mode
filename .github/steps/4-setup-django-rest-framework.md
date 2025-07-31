@@ -10,7 +10,7 @@ In this step, we will accomplish the following:
     1. Agent mode uses `mona-high-school-fitness-tracker.md` and `octofit_story.md` as a reference to create the application
 2. Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
 
-> 🪧 **Note:** 
+> 🪧 **Note:**
 - Do not change the model from GPT-4o this will be an optional activity at the end of the course.
 - Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
 - Wait a moment for the Copilot to respond and press the continue button to execute commands presented by Copilot agent mode.
@@ -19,7 +19,7 @@ In this step, we will accomplish the following:
 
 ### :keyboard: Activity: Setup Django REST Framework, restart the server, and test the API
 
-> 🪧 **Note:** 
+> 🪧 **Note:**
 - Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
   - ex. redesigned-spork-g6pj46rr9hpp6x
 - You can get the codespace name by running the following command in the terminal: `echo $CODESPACE_NAME`.
