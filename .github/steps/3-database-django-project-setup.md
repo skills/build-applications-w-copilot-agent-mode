@@ -89,7 +89,7 @@ In this step, we will accomplish the following:
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for Mergington's high school's app. Let's populate the octofit_db database with test data. Use the same data from docs/mona-high-school-fitness-tracker.md file.
+> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit-tracker as the name for Mergington's high school's app. Let's populate the octofit_db database with test data. Use the same data from docs/mona-high-school-fitness-tracker.md file.
 > 
 > 1. Create a test data file in the octofit-tracker/backend/octofit_tracker directory.
 > 2. Run makemigrations and migrate the database in a Python virtual environment.
