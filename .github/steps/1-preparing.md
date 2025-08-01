@@ -14,7 +14,7 @@ Determines the relevant context and files to edit autonomously.
 Offers both code changes and terminal commands to complete the task. For example, Copilot might compile code, install packages, run tests, and more.
 Monitors the correctness of code edits and terminal command output and iterates to remediate issues.
 
-> 💡 **Tip:** You can learn more about GitHub Copilot agent mode in the [Use agent mode documentation](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode).
+> [!NOTE] You can learn more about GitHub Copilot agent mode in the [Use agent mode documentation](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode).
 
 ### :keyboard: Activity: Getting to know your GitHub Copilot agent mode development environment
 
@@ -52,29 +52,26 @@ Monitors the correctness of code edits and terminal command output and iterates 
 Great work! Now that we are familiar with the app and we know it works, let's ask copilot for help starting a branch so we can do some customizing.
 
 1. If not already there, return to VS Code.
-
 1. Open the GitHub Copilot Chat window if not already open. 
-2. Copy and paste the following prompt in the GitHub Copilot Chat and select the **Agent** instead of **Ask** or **Edit** from the drop down where you are inserting the prompt.
+1. Copy and paste the following prompt in the GitHub Copilot Chat and select the **Agent** instead of **Ask** or **Edit** from the drop down where you are inserting the prompt.
 
 <img src="https://github.com/user-attachments/assets/e172f5c0-bc2a-45a9-a301-9af8bfbd6a2e" width=30% height=30%>
 
-> 🪧 **Note:**
-- Do not change the model from GPT-4o this will be an optional activity at the end of the course.
-- Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
-- Wait a moment for the Copilot to respond and press the continue button to execute commands presented by Copilot agent mode.
+> [!NOTE]
+> - Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
+> - Wait a moment for the Copilot to respond and press the **Continue** button to execute commands presented by Copilot agent mode.
 
 1. Let's ask Copilot agent mode to help us remember the command and create the branch `build-octofit-app` and publishing it
 
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
    >
    > ```prompt
-   > Hey copilot, how can I create and publish a new Git branch called build-octofit-app?
+   > Create and publish a new Git branch called build-octofit-app?
    > ```
 
    Copilot agent mode will respond and ask if you want agent mode to run the command. Respond with **Yes**.</br>
 
    <img src=https://github.com/user-attachments/assets/8dafaa5f-80db-41ea-a189-b5d603c11d63 width=40% height=40%>
-
 
 1. Now that we are happy with the command, press the `Continue` button to let Copilot agent mode run it for us. No need to copy and paste!
 

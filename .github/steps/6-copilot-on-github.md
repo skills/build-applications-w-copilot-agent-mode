@@ -36,7 +36,7 @@ Both **pull request summaries** and **Copilot review** have limited access, so t
 
    <img alt="Copilot review button" width="300px" src="https://github.com/user-attachments/assets/39b15002-a235-4c25-b09d-6a8097e27b62">
 
-   > **Tip:** Notice a log entry that Copilot was requested for a review.
+   > [!TIP] Notice a log entry that Copilot was requested for a review.
 
 1. At the bottom, press the **Merge pull request** button. Nice work! You are all done! :tada:
 

@@ -13,7 +13,7 @@ After attending a professional development conference on "Technology Integration
 ## The Birth of OctoFit Tracker
 
 Paul initially sketched his idea on a notepad during lunch breaks. He envisioned an app where students could log workouts, earn achievement badges, and compete in monthly fitness challenges. However, as a PE teacher with only basic coding knowledge, the technical aspects seemed daunting.
-That's when he approached Jessica Cat, the head of Mergington High's IT department. Jessica recommended basing the app on the Monafit Tracker developed by Mona High School, which was documented in `docs/mona-high-school-fitness-tracker.md`. She saw potential in adapting the Monafit Tracker's structure and features to meet Mergington High School's needs.
+That's when he approached Jessica Cat, the head of Mergington High's IT department. Jessica recommended using our repository instructions and prompts. She saw potential in adapting the Monafit Tracker's structure and features to meet Mergington High School's needs.
 
 ### Technical Planning Phase
 
