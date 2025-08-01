@@ -8,66 +8,60 @@ In this step, we will accomplish the following:
 - Populate the octofit_db database with test data.
 - Verify the test data is populated in the octofit_db database.
 
-1. Open all files in the `docs` folder and keep this file open in the editor throughout this exercise.
-    1. Agent mode uses `mona-high-school-fitness-tracker.md` and `octofit_story.md` as a reference to create the application
-2. Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
+Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
 
-> 🪧 **Note:** 
-- Do not change the model from GPT-4o this will be an optional activity at the end of the course.
-- Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
-- Wait a moment for the Copilot to respond and press the `Continue` button to execute commands presented by Copilot agent mode.
-- Keep files created and updated by Copilot agent mode until it is finished.
-- Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
+> [!NOTE]
+> - Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
+> - Wait a moment for the Copilot to respond and press the `Continue` button to execute commands presented by Copilot agent mode.
+> - Keep files created and updated by Copilot agent mode until it is finished.
+> - Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
 
 ### :keyboard: Activity: Setup the Python Django project/app
 
+In this activity we will leverage a feature in vscode called prompt files. A prompt file that has been created by the IT department for us to create our Django project application. Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
+
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit as the name for mergington's high schools app,  > let's setup the Python Django project/app and run the server.
->
-> 1. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker.
-> 2. Setup the additional configuration for the django project/app with the name octofit-tracker.
->
-> Don't proceed with the next activity until all of these steps are completed.
+> /create-django-project.prompt
 >```
 
-> 🪧 **Note:** 
-- Wait a moment for the Copilot to respond and press the `Continue` button to execute each command presented by Copilot agent mode.
-- Keep files created and updated until the Copilot agent mode has finished.
+> [!NOTE]
+> - Wait a moment for the Copilot to respond and press the `Continue` button to execute each command presented by Copilot agent mode.
+> - Keep files created and updated until the Copilot agent mode has finished.
 
-> ❕ **Important:**
-- Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel**.
+> [!IMPORTANT]
+> - Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel**.
 
 ### :keyboard: Activity: Initialize and create the octofit_db MongoDB database
 
+Let's continue to leverage a prompt file that has been created by the IT department for us to initialize and create the octofit_db MongoDB database. Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
+
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit-tracker as the name for Mergington's high school's app. Let's initialize the octofit_db database.
 >
-> 1. Initialize the mongo octofit_db database.
-> 2. Create a correct table structure for users, teams, activity, leaderboard, and workouts collections.
-> 3. Make sure there is a unique ID for the primary key for the user collection.
->   ex. db.users.createIndex({ "email": 1 }, { unique: true })
-> 4. Execute the command for me to create the database.
-> 5. List the collections in the octofit_db database.
-> 
-> Don't proceed with the next activity until all of these steps are completed.
+> /init-mongo-db.prompt
 > ```
-
-> ❕ **Important:**
-- If there is no `Continue` button, just pull the left side of the GitHub Copilot Chat panel over to the left, and it should appear.
-- If this doesn't work, you may need to copy and paste the response in the terminal if there is no `Continue` button.
 
 ### :keyboard: Activity: Update the Python Django project/app files
 
+Now let's create a prompt file of our own that we can share with other staff to develop to build the octofit-tracker app. Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
+
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit-tracker as the name for Mergington's high school's app. Let's update the octofit-tracker/backend/octofit_tracker app files.
+> Let's add the following to a prompt file called `update-octofit-tracker-app.prompt.md` in the `.github/prompts` directory and add mode: 'agent' and model: GPT-4.1 to the prompt file.
 >
-> 1. Update the octofit-tracker/backend/octofit_tracker/settings.py file to include the MongoDB database connection.
+> ## Use the existing Python virtual environment
+>
+>  - Use the existing Python virtual environment we already created in directory octofit-tracker/backend/venv.
+> - Do not create a new Python virtual environment as part of this process.
+> source octofit-tracker/backend/venv/bin/activate
+>
+> ## Update octofit-tracker/backend/octofit_tracker app files
+>
+> 1. Update the octofit-tracker/backend/octofit_tracker/settings.py file to include the MongoDB database connections for octofit_db and djongo.
 > 2. Update the octofit-tracker/backend/octofit_tracker/models.py file to include the models for users, teams, activity, leaderboard, and workouts collections.
 > 3. Update the octofit-tracker/backend/octofit_tracker/serializers.py file to include the serializers for users, teams, activity, leaderboard, and workouts collections.
 > 4. Update the octofit-tracker/backend/octofit_tracker/urls.py file to include the URLs for users, teams, activity, leaderboard, and workouts collections.
@@ -78,9 +72,26 @@ In this step, we will accomplish the following:
 > 9. Enable CORS in the octofit-tracker/backend/octofit_tracker/settings.py file to allow cross-origin requests from the frontend React app and allow all origins, methods, and headers.
 > 10. Allow all hosts in the settings.py file.
 > 11. Install CORS middleware components.
->
-> Don't proceed with the next activity until all of these steps are completed.
+> 12. Make sure there are apps for octofit_tracker, rest_framework, and djongo in the INSTALLED_APPS setting.
 > ```
+
+> [!TIP]
+> Use prompt files to define repeatable tasks and workflows.
+>
+> When writing prompts focus on **WHAT** needs to be done. You can reference instructions for the **HOW**.
+
+See the [VS Code Docs: Prompt Files](https://code.visualstudio.com/docs/copilot/copilot-customization#_prompt-files-experimental) page for more information.
+
+### :keyboard: Activity: Let's use the prompt file to update the Python Django project/app files
+
+Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
+
+> ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
+>
+> ```prompt
+> /update-octofit-tracker-app.prompt
+> ```
+>
 
 > ❕ **Important:** Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel**.
 
@@ -89,11 +100,11 @@ In this step, we will accomplish the following:
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Based on the example monafit tracker app in the docs/mona-high-school-fitness-tracker.md file and use octofit-tracker as the name for Mergington's high school's app. Let's populate the octofit_db database with test data. Use the same data from docs/mona-high-school-fitness-tracker.md file.
+> Let's populate the octofit_db database with test data.
 > 
 > 1. Create a test data file in the octofit-tracker/backend/octofit_tracker directory.
 > 2. Run makemigrations and migrate the database in a Python virtual environment.
-> 3. Populate the octofit_db database with test data for users, teams, activities, leaderboard, and workouts collections based on test data in docs/mona-high-school-fitness-tracker.md octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py.
+> 3. Populate the octofit_db database with test data for users, teams, activities, leaderboard, and workouts collections based on test data in our instructions to octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py.
 > 4. Verify the test data is populated in the octofit_db database.
 > 
 > Don't proceed with the next activity until all of these steps are completed.
