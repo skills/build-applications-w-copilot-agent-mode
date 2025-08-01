@@ -15,4 +15,5 @@ To init and populate the octofit_db database follow these steps.
 4. Make sure there is a unique ID for the primary key for the user collection.
   ex. db.users.createIndex({ "email": 1 }, { unique: true })
 4. Execute the command for me to create the database.
-5. List the collections in the octofit_db database.
+5. Execute the command for me to create the database.
+6. List the collections in the octofit_db database.
