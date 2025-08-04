@@ -74,7 +74,6 @@ websocket-client==1.8.0
 
 ## mongodb-org service
 
-## mongodb-org service
 
 - Running on Ubuntu 22.04
 - Using systemd for service management
