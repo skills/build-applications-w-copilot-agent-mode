@@ -72,7 +72,7 @@ Great work! Let's ask copilot for help starting a branch so we can do some custo
    > Create and publish a new Git branch called build-octofit-app?
    > ```
 
-   Copilot agent mode will respond and prompt you to **continue** to execute the command.</br>
+   Copilot agent mode will respond and prompt you to **continue** to execute the command.<br/>
 
    <img src=https://github.com/user-attachments/assets/d1652fc1-78e5-49c6-9303-b455815eea8f width=40% height=40%>
 
