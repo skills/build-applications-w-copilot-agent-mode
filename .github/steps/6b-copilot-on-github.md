@@ -16,18 +16,17 @@ GitHub Copilot can also assist with pull request reviews by:
 
 ### ⌨️ Activity: Experience Copilot's PR Review Capabilities
 
-If your organization has enabled Copilot review features, you can:
+If your organization has enabled Copilot code review features, you can:
 
 1. Navigate to your pull request that was just created
-2. Look for Copilot review suggestions in the **Files changed** tab
+2. Look for Copilot code review suggestions in the **Files changed** tab
 3. Review any automated feedback provided by Copilot
 4. Consider implementing suggested improvements
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
 
-- Copilot review features may not be available in all organizations
-- If you don't see Copilot review options, that's expected - this is a preview feature
+- Copilot code review features may not be available in all organizations
 - Focus on the learning experience of understanding how AI can assist with code reviews
 
 </details>

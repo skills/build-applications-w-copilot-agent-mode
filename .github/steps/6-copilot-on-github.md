@@ -9,16 +9,11 @@ Typically, you would review your notes and commit messages then summarize them f
 > [!NOTE]  
 > This is unavailable with the **Copilot Free** tier. [[docs]](https://docs.github.com/en/enterprise-cloud@latest/copilot/using-github-copilot/using-github-copilot-for-pull-requests/creating-a-pull-request-summary-with-github-copilot)
 
-#### Copilot Review
+#### Copilot code review
 
 More eyes on our work is always useful so let's ask Copilot to do a first pass before we do a normal peer review process. Copilot is great at catching common mistakes that can be fixed by simple adjustment, but please remember to use it responsibly.
 
-> [!NOTE]  
-> This is in **Public Preview** for organizations. [[docs]](https://docs.github.com/en/copilot/using-github-copilot/code-review/using-copilot-code-review)
-
 ### :keyboard: Activity: Summarize and review a PR with Copilot
-
-Both **pull request summaries** and **Copilot review** have limited access, so this activity is mostly optional. If you have access, Mona will gladly check your work though! If not, you can skip the optional steps.
 
 1. In a web browser, open another tab and navigate to your exercise repository.
 
