@@ -26,13 +26,14 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Let's setup the octofit-tracker frontend React framework and ensure everything is created in the octofit-tracker/frontend even if we are not in the directory.
+> Let's setup the octofit-tracker frontend React framework and
+> ensure everything is created in the octofit-tracker/frontend even if we are not in the directory.
 >
 > 1. Make sure the the octofit-tracker/frontend directory exists.
-> 2. Create the react app and point to the octofit-tracker/frontend directory in the command.
-> 3. Install stable bootstrap and point to the octofit-tracker/frontend directory in the command.
+> 2. Point to the octofit-tracker/frontend directory and create the react app in the command.
+> 3. Point to the octofit-tracker/frontend directory and install stable bootstrap in the command.
 > 4. Import bootstrap css in the src/index.js file.
-> 5. Install the stable react-router-dom and point to the octofit-tracker/frontend directory.
+> 5. Point to the octofit-tracker/frontend directory and install the stable react-router-dom in the command.
 > 6. Don't change .gitignore file
 >```
 
@@ -56,7 +57,9 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 >   - src/components/Teams.js
 >   - src/components/Users.js
 >   - src/components/Workouts.js
-> - In each component replace the fetch url with the codespace url https://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev/api/<component> for the Django rest framework backend.
+> - In each component replace the fetch url with the codespace url
+>   https://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev/api/<component>
+>   for the Django rest framework backend.
 > - Make sure to use the correct port and protocol http or https.
 > - Update src/App.js to include the main navigation for all components.
 > - Make sure react-router-dom is used for the navigation menu.

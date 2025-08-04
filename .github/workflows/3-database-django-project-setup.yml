@@ -83,7 +83,7 @@ jobs:
         uses: skills/action-keyphrase-checker@v1
         with:
           text-file: octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py
-          keyphrase: 'test data for'
+          keyphrase: 'create test'
           minimum-occurrences: 1
           case-sensitive: false
 
@@ -102,7 +102,7 @@ jobs:
                 passed: ${{ steps.check-octofit-db-settings.outcome == 'success' }}
               - description: "Check settings.py for djongo"
                 passed: ${{ steps.check-djongo-settings.outcome == 'success' }}
-              - description: "Check populate_db.py for test data"
+              - description: "Check populate_db.py for creation of test data"
                 passed: ${{ steps.check-populate-db.outcome == 'success' }}
 
       # END: Check practical exercise

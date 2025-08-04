@@ -13,19 +13,10 @@ I want to build an Octofit Tracker app that will include the following:
 * Competitive leader board
 * Personalized workout suggestions
 
-## Python Virtual environment and the OctoFit Tracker App structure
+## OctoFit Tracker App structure
 
-1. Create the frontend and backend in the octofit-tracker directory structure of this repository in one command
-2. Setup backend the Python virtual environment in octofit_tracker/backend/venv
-3. Create a octofit-tracker/backend/requirements.txt file
-4. The octofit-tracker/backend directory will store the django project and app with the name octofit-tracker
-5. The Django project octofit-tracker directory will have all the backend components for the app
-6. Create the django app directly in the directory octofit_tracker/backend
-7. Setup the octofit-tracker/frontend directory will store the react app with no subdirectories
-8. Install react framework
-9. Install bootstrap and import it
-10. Commands to install mongodb via 'apt-get' 
-11. Commands start mongodb with the 'sudo service mongodb start' and 'sudo service mongodb status'
+The section defines the OctoFit Tracker App's structure
+
 
 The directory tree for the monafit Tracker App
 monafit-tracker/
@@ -47,13 +38,18 @@ monafit-tracker/
     ├── package.json
     └── README.md
 
-Create a requirements.txt with the following Python required packages
+## Python virtual environment and requirements
 
-Django==4.1
+The virtual environment should be created in octofit-tracker/backend/venv
+
+Create a requirements.txt with the following Python required packages:
+
+```text
+Django==4.1.7
 djangorestframework==3.14.0
 django-allauth==0.51.0
 django-cors-headers==4.5.0
-dj-rest-auth
+dj-rest-auth==2.2.6
 djongo==1.3.6
 pymongo==3.12
 sqlparse==0.2.4
@@ -74,10 +70,19 @@ wcwidth==0.2.13
 webcolors==24.8.0
 webencodings==0.5.1
 websocket-client==1.8.0
+```
+
+## mongodb-org service
+
+
+- Running on Ubuntu 22.04
+- Using systemd for service management
+- mongodb-org is the official MongoDB package
+- mongosh is the official client tool
 
 ## REACT Frontend App structure
 
-```
+```bash
 npx create-react-app octofit-tracker/frontend
 
 npm install bootstrap --prefix octofit-tracker/frontend
@@ -87,5 +92,3 @@ echo "import 'bootstrap/dist/css/bootstrap.min.css';" >> src/index.js
 npm install react-router-dom --prefix octofit-tracker/frontend
 
 ```
-
-

@@ -1,4 +1,4 @@
-👋 Welcome to building a full stack fitness application with GitHub Copilot agent mode! 
+👋 Welcome to building a multi-tier fitness tracker application with GitHub Copilot agent mode! 
 We are thrilled that you are here and we hope you are excited to explore the capabilities of Copilot!
 🏋🏽🔥💪🏼🎧 As the gym teacher of Mergington High School you have been tasked with building a fitness app for your students.
 📃 GitHub Copilot documentation: https://docs.github.com/en/copilot

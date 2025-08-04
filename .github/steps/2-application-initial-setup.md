@@ -24,9 +24,8 @@ In this step, we will accomplish the following:
 > ```prompt
 > Let's take the following step by step and generate instructions in this order and execute the commands.
 >
-> 1. Understand the story of creating the fitness application from the docs/octofit_story.md file.
-> 2. Create the initial directory structure for the octofit-tracker application octofit-tracker/backend, octofit-tracker/frontend.
-> 3. Setup the backend python virtual environment, octofit-tracker/backend/requirements.txt based and install required packages.
+> - Follow the OctoFit Tracker App structure
+> - Follow the Python virtual environment and requirements
 >```
 
 ### :keyboard: Activity: Let's install, start and verify MongoDB is running
@@ -34,11 +33,11 @@ In this step, we will accomplish the following:
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Let's install MongoDB.
->
-> 1. Install MongoDB and make sure the command is complete.
-> 2. Start the MongoDB service.
-> 3. Verify the MongoDB service running.
+> Let's install, start, and verify mongodb-org service for Ubuntu 22.
+> 
+> 1. Install mongodb-org
+> 2. Start the mongodb service
+> 3. Verify the mongodb service running
 >
 >```
 

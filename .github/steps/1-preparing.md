@@ -55,7 +55,7 @@ Monitors the correctness of code edits and terminal command output and iterates 
 Great work! Let's ask copilot for help starting a branch so we can do some customizing.
 
 1. If not already there, return to VS Code.
-1. Open the GitHub Copilot Chat window if not already open. 
+1. Open the GitHub Copilot Chat window if not already open.
 1. Copy and paste the following prompt in the GitHub Copilot Chat and select the **Agent** instead of **Ask** or **Edit** from the drop down where you are inserting the prompt.
 
 <img src="https://github.com/user-attachments/assets/e172f5c0-bc2a-45a9-a301-9af8bfbd6a2e" width=30% height=30%>
@@ -74,7 +74,7 @@ Great work! Let's ask copilot for help starting a branch so we can do some custo
 
    Copilot agent mode will respond and ask if you want agent mode to run the command. Respond with **Yes**.</br>
 
-   <img src=https://github.com/user-attachments/assets/8dafaa5f-80db-41ea-a189-b5d603c11d63 width=40% height=40%>
+   <img src=https://github.com/user-attachments/assets/75826c7c-eabc-4ee2-933e-1beef27f8f5a width=40% height=40%>
 
 1. Now that we are happy with the command, press the `Continue` button to let Copilot agent mode run it for us. No need to copy and paste!
 
