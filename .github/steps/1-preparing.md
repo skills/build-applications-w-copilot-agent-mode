@@ -14,7 +14,8 @@ Determines the relevant context and files to edit autonomously.
 Offers both code changes and terminal commands to complete the task. For example, Copilot might compile code, install packages, run tests, and more.
 Monitors the correctness of code edits and terminal command output and iterates to remediate issues.
 
-> [!NOTE] You can learn more about GitHub Copilot agent mode in the [Use agent mode documentation](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode).
+> [!NOTE]
+> You can learn more about GitHub Copilot agent mode in the [Use agent mode documentation](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode).
 
 ### :keyboard: Activity: Getting to know your GitHub Copilot agent mode development environment
 
@@ -40,7 +41,9 @@ Monitors the correctness of code edits and terminal command output and iterates 
 
 1. At the top of VS Code, locate and click the Copilot icon to open a Copilot Chat panel.
 
-<img width="150" alt="image" src="https://github.com/user-attachments/assets/5e64db46-95cb-415d-badc-b6b8677f10c1" />
+   - If you don't see the Copilot icon, you can open the Command Palette (Ctrl+Shift+P) and type "Copilot Chat: Open Chat" to open it.
+
+   <img width="150" alt="image" src="https://github.com/user-attachments/assets/5e64db46-95cb-415d-badc-b6b8677f10c1" />
 
 1. If this is your first time using GitHub Copilot, you will have to accept the usage terms to continue.
     - Click the **Accept** button to continue.
@@ -49,7 +52,7 @@ Monitors the correctness of code edits and terminal command output and iterates 
 
 ### :keyboard: Activity: Use Copilot agent mode to create a branch and publish it. 🙋
 
-Great work! Now that we are familiar with the app and we know it works, let's ask copilot for help starting a branch so we can do some customizing.
+Great work! Let's ask copilot for help starting a branch so we can do some customizing.
 
 1. If not already there, return to VS Code.
 1. Open the GitHub Copilot Chat window if not already open. 

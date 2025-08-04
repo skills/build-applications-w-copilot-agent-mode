@@ -27,7 +27,6 @@ In this step, we will accomplish the following:
 > 1. Understand the story of creating the fitness application from the docs/octofit_story.md file.
 > 2. Create the initial directory structure for the octofit-tracker application octofit-tracker/backend, octofit-tracker/frontend.
 > 3. Setup the backend python virtual environment, octofit-tracker/backend/requirements.txt based and install required packages.
->
 >```
 
 ### :keyboard: Activity: Let's install, start and verify MongoDB is running
