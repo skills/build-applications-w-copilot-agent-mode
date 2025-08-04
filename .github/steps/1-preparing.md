@@ -58,11 +58,11 @@ Great work! Let's ask copilot for help starting a branch so we can do some custo
 1. Open the GitHub Copilot Chat window if not already open.
 1. Copy and paste the following prompt in the GitHub Copilot Chat and select the **Agent** instead of **Ask** or **Edit** from the drop down where you are inserting the prompt.
 
-<img src="https://github.com/user-attachments/assets/e172f5c0-bc2a-45a9-a301-9af8bfbd6a2e" width=30% height=30%>
+   <img src="https://github.com/user-attachments/assets/e172f5c0-bc2a-45a9-a301-9af8bfbd6a2e" width=30% height=30%>
 
-> [!NOTE]
-> - Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
-> - Wait a moment for the Copilot to respond and press the **Continue** button to execute commands presented by Copilot agent mode.
+   > [!NOTE]
+   > - Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
+   > - Wait a moment for the Copilot to respond and press the **Continue** button to execute commands presented by Copilot agent mode.
 
 1. Let's ask Copilot agent mode to help us remember the command and create the branch `build-octofit-app` and publishing it
 
@@ -74,7 +74,7 @@ Great work! Let's ask copilot for help starting a branch so we can do some custo
 
    Copilot agent mode will respond and ask if you want agent mode to run the command. Respond with **Yes**.</br>
 
-   <img src=https://github.com/user-attachments/assets/75826c7c-eabc-4ee2-933e-1beef27f8f5a width=40% height=40%>
+   <img src=https://github.com/user-attachments/assets/d1652fc1-78e5-49c6-9303-b455815eea8f width=40% height=40%>
 
 1. Now that we are happy with the command, press the `Continue` button to let Copilot agent mode run it for us. No need to copy and paste!
 
