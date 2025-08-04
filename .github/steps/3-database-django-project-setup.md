@@ -23,7 +23,7 @@ In this activity we will leverage a feature in vscode called prompt files. A pro
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> /create-django-project.prompt
+> /create-django-project
 >```
 
 > [!NOTE]
@@ -41,7 +41,7 @@ Let's continue to leverage a prompt file that has been created by the IT departm
 >
 > ```prompt
 >
-> /init-mongo-db.prompt
+> /init-mongo-db
 > ```
 
 ### :keyboard: Activity: Update the Python Django project/app files
@@ -61,13 +61,13 @@ Now let's create a prompt file of our own that we can share with other staff to 
 >
 > ## Update octofit-tracker/backend/octofit_tracker app files
 >
-> 1. Update the octofit-tracker/backend/octofit_tracker/settings.py file to include the MongoDB database connections for octofit_db and djongo.
-> 2. Update the octofit-tracker/backend/octofit_tracker/models.py file to include the models for users, teams, activity, leaderboard, and workouts collections.
-> 3. Update the octofit-tracker/backend/octofit_tracker/serializers.py file to include the serializers for users, teams, activity, leaderboard, and workouts collections.
-> 4. Update the octofit-tracker/backend/octofit_tracker/urls.py file to include the URLs for users, teams, activity, leaderboard, and workouts collections.
-> 5. Update the octofit-tracker/backend/octofit_tracker/views.py file to include the views for users, teams, activity, leaderboard, and workouts collections.
-> 6. Update the octofit-tracker/backend/octofit_tracker/tests.py file to include the tests for users, teams, activity, leaderboard, and workouts collections.
-> 7. Update the octofit-tracker/backend/octofit_tracker/admin.py file to include the admin for users, teams, activity, leaderboard, and workouts collections.
+> 1. Update the octofit-tracker/backend/octofit_tracker/settings.py file to include the MongoDB database connections for octofit_db and djongo with no authentication.
+> 2. Update the octofit-tracker/backend/octofit_tracker/models.py file to include the models for users, teams, activities, leaderboard, and workouts collections.
+> 3. Update the octofit-tracker/backend/octofit_tracker/serializers.py file to include the serializers for users, teams, activities, leaderboard, and workouts collections.
+> 4. Update the octofit-tracker/backend/octofit_tracker/urls.py file to include the URLs for users, teams, activities, leaderboard, and workouts collections.
+> 5. Update the octofit-tracker/backend/octofit_tracker/views.py file to include the views for users, teams, activities, leaderboard, and workouts collections.
+> 6. Update the octofit-tracker/backend/octofit_tracker/tests.py file to include the tests for users, teams, activities, leaderboard, and workouts collections.
+> 7. Update the octofit-tracker/backend/octofit_tracker/admin.py file to include the admin for users, teams, activities, leaderboard, and workouts collections.
 > 8. Make sure api_root is in octofit-tracker/backend/octofit_tracker/urls.py
 > 9. Enable CORS in the octofit-tracker/backend/octofit_tracker/settings.py file to allow cross-origin requests from the frontend React app and allow all origins, methods, and headers.
 > 10. Allow all hosts in the settings.py file.
@@ -89,7 +89,7 @@ Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> /update-octofit-tracker-app.prompt
+> /update-octofit-tracker-app
 > ```
 >
 
@@ -101,13 +101,15 @@ Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent
 >
 > ```prompt
 > Let's populate the octofit_db database with test data.
+>
+> - Create test data for users, teams, activities, leaderboard, and workouts collections.
+>
+> - Activate the Python existing virtual environment octofit_tracker/backend/venv/bin/activate.
 > 
-> 1. Create a test data file in the octofit-tracker/backend/octofit_tracker directory.
-> 2. Run makemigrations and migrate the database in a Python virtual environment.
-> 3. Populate the octofit_db database with test data for users, teams, activities, leaderboard, and workouts collections based on test data in our instructions to octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py.
-> 4. Verify the test data is populated in the octofit_db database.
+> 1. Run makemigrations and migrate the database in a Python virtual environment.
+> 2. Populate the octofit_db database with test data for users, teams, activities, leaderboard, and workouts collections based on test data in our instructions to octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py.
+> 3. Verify the test data is populated in the octofit_db database.
 > 
-> Don't proceed with the next activity until all of these steps are completed.
 > ```
 
 > ❕ **Important:**

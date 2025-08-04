@@ -27,8 +27,8 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > Let's setup codespace for the URL, start the server via VS Code launch.json, and test the API.
 > 
 > 1. Activate the Python existing virtual environment octofit_tracker/backend/venv/bin/activate.
-> 2. Update #file:octofit-tracker/backend/octofit_tracker/views.py to replace the return for the REST API URL endpoints with the codespace URL https://ideal-waddle-4v7x5jxwgqf5x74-8000.app.github.dev for Django and avoid certificate HTTPS issues.
-> 3. Make sure the Django backend works on ideal-waddle-4v7x5jxwgqf5x74-8000.app.github.dev by updating ALLOWED_HOSTS in #file:octofit-tracker/backend/octofit_tracker/settings.py
+> 2. Update octofit-tracker/backend/octofit_tracker/views.py and ctofit-tracker/backend/octofit_tracker/urls.py to replace the return for the REST API URL endpoints with the codespace URL https://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev for Django and avoid certificate HTTPS issues.
+> 3. Make sure the Django backend works on [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev by updating ALLOWED_HOSTS in #file:octofit-tracker/backend/octofit_tracker/settings.py
 > 4. Test the API endpoints using curl command.
 >```
 
