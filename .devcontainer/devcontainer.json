@@ -1,9 +1,15 @@
 {
-    "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
-    "hostRequirements": {
-        "cpus": 4
+    "name": "OctoFit Tracker App codespace",
+    "image": "mcr.microsoft.com/devcontainers/base:jammy",
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/node:1": {
+        "version": "lts",
+        "pnpmVersion": "latest",
+        "nvmVersion": "latest"
+        }
     },
-    "name": "OctoFit App codespace",
     "postCreateCommand": "sudo chmod +x ./.devcontainer/post_create.sh && ./.devcontainer/post_create.sh",
     "postStartCommand": "sudo chmod +x ./.devcontainer/post_start.sh && ./.devcontainer/post_start.sh",
     "customizations": {
