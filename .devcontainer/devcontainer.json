@@ -9,10 +9,11 @@
     "customizations": {
         "vscode": {
         "extensions": [
-            "github.copilot@insiders", // GitHub Copilot + Copilot Chat insiders
+            "github.copilot", // GitHub Copilot + Copilot Chat
             "markdown-lint.markdownlinter",
             "ms-python.python", // Python extension
-            "ms-python.vscode-pylance" // Pylance extension for Python
+            "ms-python.vscode-pylance", // Pylance extension for Python
+            "ms-python.debugpy" // Debugpy extension for Python
         ],
         "settings": {
             "chat.agent.enabled": true,
