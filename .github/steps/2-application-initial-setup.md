@@ -25,19 +25,19 @@ In this step, we will accomplish the following:
 > Let's take the following step by step and generate instructions in this order and execute the commands.
 >
 > - Follow the OctoFit Tracker App structure
-> - Follow the Python virtual environment and requirements
+> - Follow the Python virtual environment creation and requirements
+> - Install the Python requirements from the file created
 >```
 
-### :keyboard: Activity: Let's install, start and verify MongoDB is running
+### :keyboard: Activity: Let's start and verify MongoDB is running
 
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
 > Let's install, start, and verify mongodb-org service for Ubuntu 22.
 > 
-> 1. Install mongodb-org
-> 2. Start the mongodb service
-> 3. Verify the mongodb service running
+> 1. Start the mongodb service
+> 2. Verify the mongodb service running
 >
 >```
 
