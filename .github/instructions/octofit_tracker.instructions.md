@@ -22,21 +22,8 @@ The directory tree for the OctoFit Tracker App
 octofit-tracker/
 ├── backend/
 │   ├── venv/
-│   ├── octofit_tracker/
-│   │   ├── __init__.py
-│   │   ├── models.py
-│   │   ├── serializers.py
-│   │   ├── settings.py
-│   │   ├── views.py
-│   │   ├── urls.py
-│   │   ├── wsgi.py
-│   │   └── asgi.py
 └── frontend/
-    ├── node_modules/
-    ├── public/
-    ├── src/
-    ├── package.json
-    └── README.md
+
 
 ## Python virtual environment and requirements
 
