@@ -18,11 +18,11 @@ I want to build an Octofit Tracker app that will include the following:
 The section defines the OctoFit Tracker App's structure
 
 
-The directory tree for the monafit Tracker App
-monafit-tracker/
+The directory tree for the OctoFit Tracker App
+octofit-tracker/
 ├── backend/
 │   ├── venv/
-│   ├── monafit_tracker/
+│   ├── octofit_tracker/
 │   │   ├── __init__.py
 │   │   ├── models.py
 │   │   ├── serializers.py

@@ -13,11 +13,11 @@ After attending a professional development conference on "Technology Integration
 ## The Birth of OctoFit Tracker
 
 Paul initially sketched his idea on a notepad during lunch breaks. He envisioned an app where students could log workouts, earn achievement badges, and compete in monthly fitness challenges. However, as a PE teacher with only basic coding knowledge, the technical aspects seemed daunting.
-That's when he approached Jessica Cat, the head of Mergington High's IT department. Jessica recommended using our repository instructions and prompts. She saw potential in adapting the Monafit Tracker's structure and features to meet Mergington High School's needs.
+That's when he approached Jessica Cat, the head of Mergington High's IT department. Jessica recommended using our repository instructions and prompts.
 
 ### Technical Planning Phase
 
-Before starting development, Paul and Jessica carefully reviewed the Monafit Tracker's repository and documentation. This provided a solid foundation for OctoFit Tracker, ensuring compliance with technical standards and leveraging proven design patterns.
+Before starting development, Paul and Jessica carefully reviewed the OctoFit Tracker's instructions and prompts. This provided a solid foundation for OctoFit Tracker, ensuring compliance with technical standards and leveraging proven design patterns.
 Together, Paul and the IT team identified key requirements for OctoFit Tracker:
 
 ### User Experience Goals
@@ -27,15 +27,9 @@ Together, Paul and the IT team identified key requirements for OctoFit Tracker:
 - Social features that respect student privacy
 - Gamification elements to maintain engagement
 
-### Technical Specifications
-
-- Mobile-responsive web application (accessible on school Chromebooks and personal devices)
-- Secure authentication based on Monafit Tracker's implementation
-- Activity verification system to prevent cheating
-
 ## Current Development Status
 
-Paul and Jessica have set up a GitHub Codespace environment and are making remarkable progress with GitHub Copilot agent mode. By adapting the Monafit Tracker's structure, the OctoFit Tracker prototype already includes:
+Paul and Jessica have set up a GitHub Codespace environment and are making remarkable progress with GitHub Copilot agent mode. The OctoFit Tracker prototype will include:
 
 - A functional user registration system
 - Basic activity logging for running, walking, and strength training
@@ -51,7 +45,7 @@ With the basic infrastructure in place, Paul is now focused on:
 3. Building a notification system that encourages consistency without being intrusive
 4. Designing reports that help him identify students who might need additional support or motivation
 
-The IT department has been impressed with how GitHub Copilot agent mode has accelerated development, allowing Paul to focus on the educational aspects while the AI handles much of the technical implementation. Jessica Cat has been particularly pleased with how OctoFit Tracker leverages the Monafit Tracker's foundation to meet Mergington High School's unique requirements.
+The IT department has been impressed with how GitHub Copilot agent mode has accelerated development, allowing Paul to focus on the educational aspects while the AI handles much of the technical implementation. Jessica Cat has been particularly pleased with how OctoFit Tracker leverages the custom instructions and prompt files.
 
 ### Workshop Overview
 
