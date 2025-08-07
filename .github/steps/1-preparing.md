@@ -41,13 +41,9 @@ Monitors the correctness of code edits and terminal command output and iterates 
 
 1. At the top of VS Code, locate and click the Copilot icon to open a Copilot Chat panel.
 
-   - If you don't see the Copilot icon, you can open the Command Palette (Ctrl+Shift+P) and type "Copilot Chat: Open Chat" to open it.
-
    <img width="150" alt="image" src="https://github.com/user-attachments/assets/5e64db46-95cb-415d-badc-b6b8677f10c1" />
 
 1. If this is your first time using GitHub Copilot, you will have to accept the usage terms to continue.
-    - Click the **Accept** button to continue.
-    - If you are using Copilot Chat for the first time, you will also have to accept the usage terms to continue.
     - Click the **Accept** button to continue.
 
 ### :keyboard: Activity: Use Copilot agent mode to create a branch and publish it. 🙋

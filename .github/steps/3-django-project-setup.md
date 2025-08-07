@@ -41,7 +41,7 @@ Let's continue to leverage a prompt file that has been created by the IT departm
 >
 > ```prompt
 >
-> /init-mongo-db
+> /init-populate-octofit_db
 > ```
 
 ### :keyboard: Activity: Update the Python Django project/app files

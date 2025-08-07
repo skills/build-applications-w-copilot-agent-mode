@@ -66,11 +66,6 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > - The react app should show the navigation menu and the components.
 > ```
 
-> [!IMPORTANT]
-> - Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
->   - ex. redesigned-spork-g6pj46rr9hpp6x
-> - You can get the codespace name by running the following command in the terminal: `echo $CODESPACE_NAME`.
-
 ### :keyboard: Activity: Start the react app and check the output
 
 Now, let's actually try running the react application! In the left sidebar, select the `Run and Debug` tab and then press the **Start Debugging** icon.
