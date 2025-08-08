@@ -9,7 +9,7 @@ die() {
 }
 
 # Ensure CODESPACE_NAME is set
-: "${CODESPACE_NAME:?CODESPACE_NAME not set}"
+: "${CODESPACE_NAME:?CODESPACE_NAME environment variable not set. This script should be run in a GitHub Codespace environment.}"
 
 # Port visibility setup
 echo "Setting port visibility..."
