@@ -26,30 +26,23 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Let's setup the octofit-tracker frontend React framework and
-> ensure everything is created in the octofit-tracker/frontend even if we are not in the directory.
+> Let's setup the octofit-tracker frontend React  framework and
+> ensure everything is created in the `octofit-tracker/frontend` directory by using `--prefix`
 >
 > 1. Make sure the the octofit-tracker/frontend directory exists.
-> 2. Point to the octofit-tracker/frontend directory and create the react app in the command.
-> 3. Point to the octofit-tracker/frontend directory and install stable bootstrap in the command.
+> 2. create the react app
+> 3. Install react, bootstrap, and react-router-dom
 > 4. Import bootstrap css in the src/index.js file.
-> 5. Point to the octofit-tracker/frontend directory and install the stable react-router-dom in the command.
-> 6. Don't change .gitignore file
+> 5. Don't change .gitignore file
 >```
 
 ### :keyboard: Activity: Update the octofit-tracker frontend React components
-
-> [!NOTE]
-> - Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
->   - ex. redesigned-spork-g6pj46rr9hpp6x
-> - You can get the codespace name by running the following command in the terminal: `echo $CODESPACE_NAME`.
 
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
 > Let's update the octofit-tracker frontend React components.
 >
-> - Create an environment variable OCTOFIT_API_BASE_URL by executing this command in your terminal: `export OCTOFIT_API_BASE_URL="$CODESPACE_NAME-8000.app.github.dev"`
 > - Update the following components to include the React framework to point to the backend REST API:
 >   - src/App.js
 >   - src/index.js
@@ -59,7 +52,7 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 >   - src/components/Users.js
 >   - src/components/Workouts.js
 > - In each component replace the fetch url with the codespace url
->   https://{OCTOFIT_API_BASE_URL}/api/<component>
+>   https://$REACT_APP_CODESPACE_NAME-8000.app.github.dev/api/<component>
 >   for the Django rest framework backend.
 > - Make sure to use the correct port and protocol http or https.
 > - Update src/App.js to include the main navigation for all components.
