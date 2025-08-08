@@ -31,9 +31,8 @@ More eyes on our work is always useful so let's ask Copilot to do a first pass b
 
    <img alt="Copilot review button" width="300px" src="https://github.com/user-attachments/assets/39b15002-a235-4c25-b09d-6a8097e27b62">
 
-   > [!TIP]
-   > Notice a log entry that Copilot was requested for a review.
-
+   > 🪧 **Note:** Notice a log entry that Copilot was requested for a review.
+   
 1. At the bottom, press the **Merge pull request** button. Nice work! You are all done! :tada:
 
 1. Wait a moment for Mona to check your work, provide feedback, and post a final review of this lesson!
