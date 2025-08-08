@@ -49,7 +49,7 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > ```prompt
 > Let's update the octofit-tracker frontend React components.
 >
-> - Create an environment variable OCTOFIT_API_BASE_URL by executing this command in your terminal export OCTOFIT_API_BASE_URL="$CODESPACE_NAME-8000.app.github.dev"
+> - Create an environment variable OCTOFIT_API_BASE_URL by executing this command in your terminal: `export OCTOFIT_API_BASE_URL="$CODESPACE_NAME-8000.app.github.dev"`
 > - Update the following components to include the React framework to point to the backend REST API:
 >   - src/App.js
 >   - src/index.js
