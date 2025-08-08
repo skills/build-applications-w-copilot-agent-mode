@@ -21,7 +21,7 @@ sudo chmod 777 /data/db || die "chmod failed"
 
 echo "Starting mongod..."
 if mongod --dbpath /data/db --fork --logpath /tmp/mongod.log; then
-  sleep 2
+  sleep 5
   ps aux | grep '[m]ongod' || die "mongod not running"
   tail -20 /tmp/mongod.log || die "Cannot read mongod log"
 else
