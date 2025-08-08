@@ -83,7 +83,7 @@ jobs:
         uses: skills/action-keyphrase-checker@v1
         with:
           text-file: octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py
-          keyphrase: 'create test'
+          keyphrase: 'Populate the octofit_db database with test data'
           minimum-occurrences: 1
           case-sensitive: false
 

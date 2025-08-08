@@ -36,8 +36,8 @@ In this step, we will accomplish the following:
 > ```prompt
 > Let's install, start, and verify mongodb-org service for Ubuntu 22.
 > 
-> 1. Start the mongodb service
-> 2. Verify the mongodb service running
+> 1. Start mongo db manually
+> 2. Verify mongodb is running manually
 >
 >```
 

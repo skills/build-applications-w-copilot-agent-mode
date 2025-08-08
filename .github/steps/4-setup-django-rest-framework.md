@@ -26,24 +26,21 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > ```prompt
 > Let's setup codespace for the URL, start the server via VS Code launch.json, and test the API.
 > 
-> 1. Activate the Python existing virtual environment octofit_tracker/backend/venv/bin/activate.
-> 2. Update octofit-tracker/backend/octofit_tracker/views.py and octofit-tracker/backend/octofit_tracker/urls.py to replace the return for the REST API URL endpoints with the codespace URL https://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev for Django and avoid certificate HTTPS issues.
-> 3. Make sure the Django backend works on [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev by updating ALLOWED_HOSTS in #file:octofit-tracker/backend/octofit_tracker/settings.py
+> 1. create an environment variable OCTOFIT_API_BASE_URL to use [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev for the api endpoints in settings.py, urls.py, and views.py
+> 2. Update views.py and urls.py to replace the return for the REST API URL endpoints with the environment variable OCTOFIT_API_BASE_URL https://OCTOFIT_API_BASE_URL-8000.app.github.dev for Django and avoid certificate HTTPS issues.
+> 3. Make sure the Django backend works on OCTOFIT_API_BASE_URL-8000.app.github.dev by updating ALLOWED_HOSTS in octofit-tracker/backend/octofit_tracker/settings.py
 > 4. Test the API endpoints using curl command.
 >```
 
-> [!IMPORTANT] Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel**. Follow the next activity instead.
+> [!IMPORTANT]
+> Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit
+> **cancel**. Follow the next activity instead.
 
 ### :keyboard: Activity: Start the Python Django app and check the output
 
 Now, let's actually try running the Django application! In the left sidebar, select the `Run and Debug` tab and then press the **Start Debugging** icon.
 
 <img src="https://github.com/user-attachments/assets/baef4dfe-0751-45cb-9e16-8ff26ba9ff58" width=30% height=30%>
-
-> [!IMPORTANT]
-> - Make sure to replace [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME] with your codespace name.
-> - ex. redesigned-spork-g6pj46rr9hpp6x
-> - You can get the codespace name by running the following command in the terminal: `echo $CODESPACE_NAME`.
 
 1. Now that we have updated our Django product to include our codespace name for the URL endpoint,
    let's check our changes in to our `build-octofit-app` branch.

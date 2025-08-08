@@ -104,12 +104,13 @@ Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent
 >
 > - Create test data for users, teams, activities, leaderboard, and workouts collections.
 >
-> - Activate the Python existing virtual environment octofit_tracker/backend/venv/bin/activate.
+> - Activate the Python existing virtual environment octofit-tracker/backend/venv/bin/activate.
 > 
 > 1. Run makemigrations and migrate the database in a Python virtual environment.
 > 2. Populate the octofit_db database with test data for users, teams, activities, leaderboard, and workouts collections based on test data in our instructions to octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py.
-> 3. Verify the test data is populated in the octofit_db database.
-> 
+> 3. Help message in populate_db.py contains 'Populate the octofit_db database with test data'
+> 4. Verify the test data is populated in the octofit_db database.
+>
 > ```
 
 > ❕ **Important:**
