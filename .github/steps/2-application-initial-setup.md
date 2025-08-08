@@ -29,18 +29,6 @@ In this step, we will accomplish the following:
 > - Install the Python requirements from the file created
 >```
 
-### :keyboard: Activity: Let's start and verify MongoDB is running
-
-> ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
->
-> ```prompt
-> Let's install, start, and verify mongodb-org service for Ubuntu 22.
-> 
-> 1. Start mongo db manually
-> 2. Verify mongodb is running manually
->
->```
-
 1. Now that we have created the app directory structure, setup a Python virtual environment, and Copilot agent mode helped write a `requirements.txt` to install all project dependencies, let's check our changes in to our `build-octofit-app` branch.
 
 1. With our new changes complete, please **commit** and **push** the changes to branch `build-octofit-app`.

@@ -34,13 +34,11 @@
     "portAttributes": {
       "3000": { // React port attributes
       "label": "octofit-tracker",
-      "requireLocalPort": true,
-      "visibility": "public"
+      "requireLocalPort": true
       },
       "8000": { // Django port attributes
       "label": "octofit-api",
-      "requireLocalPort": true,
-      "visibility": "public"
+      "requireLocalPort": true
       }
     }
 }

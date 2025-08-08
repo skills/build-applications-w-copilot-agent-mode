@@ -65,7 +65,7 @@ Great work! Let's ask copilot for help starting a branch so we can do some custo
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
    >
    > ```prompt
-   > Create and publish a new Git branch called build-octofit-app?
+   > Create and publish a new Git branch called build-octofit-app
    > ```
 
    Copilot agent mode will respond and prompt you to **continue** to execute the command.<br/>

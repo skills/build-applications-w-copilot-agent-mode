@@ -1,21 +1,28 @@
 ---
 mode: 'agent'
 model: GPT-4.1
-description: 'Initialize and populate the octofit_db database'
+description: 'Setup, configure, and populate the octofit_db database with test data for the Octofit Tracker Django app.'
 ---
 
-- Your task is to create the Django project in octofit-tracker/backend/octofit_tracker directory
-- Activate the Python existing virtual environment octofit_tracker/backend/venv/bin/activate.
-- mongodb-org-shell is already installed
-- use mongosh as the client tool to talk to mongodb
+# Environment Setup
+- Use the existing Python virtual environment in `octofit-tracker/backend/venv`.
+- Do not create a new Python virtual environment.
+- Activate with: `source octofit-tracker/backend/venv/bin/activate`
+- `mongodb-org-shell` is already installed; use `mongosh` to interact with MongoDB.
 
+# Database Initialization & Population
+1. Ensure the MongoDB service is running.
+2. Configure Django in `octofit-tracker/backend/octofit_tracker/settings.py` to connect to the `octofit_db` database using Djongo, with no authentication.
+3. Make sure `octofit_tracker`, `rest_framework`, and `djongo` are in `INSTALLED_APPS`.
+4. Enable CORS in `settings.py` to allow all origins, methods, and headers. Allow all hosts.
+5. Install and configure CORS middleware components.
+6. Run `makemigrations` and `migrate` in the Python virtual environment.
+7. Initialize the `octofit_db` database and create collections for users, teams, activities, leaderboard, and workouts.
+8. Ensure a unique index on the `email` field for the user collection (e.g., `db.users.createIndex({ "email": 1 }, { unique: true })`).
+9. Populate the database with test data for all collections using the Django management command in `octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py` (help message: 'Populate the octofit_db database with test data').
+10. Verify the database and collections were created and populated successfully using `mongosh`.
+11. List the collections in the `octofit_db` database and show sample documents from each.
 
-To init and populate the octofit_db database follow these steps.
-1. Make sure the mongodb service is running.
-2. Initialize the mongodb octofit_db database.
-3. Create a correct table structure for users, teams, activities, leaderboard, and workouts collections.
-4. Make sure there is a unique ID for the primary key for the user collection.
-  ex. db.users.createIndex({ "email": 1 }, { unique: true })
-4. Execute the command for me to create the database.
-5. Verify that the database was created successfully.
-6. List the collections in the octofit_db database.
+# Verification
+- After population, verify with `mongosh` that the `octofit_db` database contains the correct collections and test data.
+- Confirm Django REST API endpoints are available for all collections.

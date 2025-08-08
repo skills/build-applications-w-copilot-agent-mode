@@ -49,7 +49,8 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > ```prompt
 > Let's update the octofit-tracker frontend React components.
 >
-> - Update the following components to include the React framework to point to the backend API:
+> - Create an environment variable OCTOFIT_API_BASE_URL by executing this command in your terminal export OCTOFIT_API_BASE_URL="$CODESPACE_NAME-8000.app.github.dev"
+> - Update the following components to include the React framework to point to the backend REST API:
 >   - src/App.js
 >   - src/index.js
 >   - src/components/Activities.js
@@ -58,7 +59,7 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 >   - src/components/Users.js
 >   - src/components/Workouts.js
 > - In each component replace the fetch url with the codespace url
->   https://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev/api/<component>
+>   https://{OCTOFIT_API_BASE_URL}-8000.app.github.dev/api/<component>
 >   for the Django rest framework backend.
 > - Make sure to use the correct port and protocol http or https.
 > - Update src/App.js to include the main navigation for all components.
