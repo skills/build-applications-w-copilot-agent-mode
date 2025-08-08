@@ -27,7 +27,7 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > Let's setup codespace for the URL, start the server via VS Code launch.json, and test the API.
 > 
 > 1. create an environment variable OCTOFIT_API_BASE_URL to use [REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev for the api endpoints in settings.py, urls.py, and views.py
-> 2. Update views.py and urls.py to replace the return for the REST API URL endpoints with the environment variable OCTOFIT_API_BASE_URL https://OCTOFIT_API_BASE_URL-8000.app.github.dev for Django and avoid certificate HTTPS issues.
+> 2. Update views.py and urls.py to replace the return for the REST API URL endpoints with the environment variable OCTOFIT_API_BASE_URL https://{OCTOFIT_API_BASE_URL}-8000.app.github.dev for Django and avoid certificate HTTPS issues.
 > 1. Create an environment variable `OCTOFIT_API_BASE_URL` with the value `[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev` for use in your API endpoints in `settings.py`, `urls.py`, and `views.py`.
 > 2. Update `views.py` and `urls.py` to use the value of the environment variable `OCTOFIT_API_BASE_URL` in your REST API URL endpoints (e.g., `https://${OCTOFIT_API_BASE_URL}`) for Django, to avoid certificate HTTPS issues.
 > 3. Make sure the Django backend works on your codespace URL (i.e., the value of `OCTOFIT_API_BASE_URL`) by updating `ALLOWED_HOSTS` in `octofit-tracker/backend/octofit_tracker/settings.py`.
