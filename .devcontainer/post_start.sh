@@ -98,3 +98,4 @@ for ((attempt=1; attempt<=MAX_START_TRIES; attempt++)); do
 done
 
 echo "post_start.sh completed successfully."
+exit 0
