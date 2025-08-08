@@ -59,7 +59,7 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 >   - src/components/Users.js
 >   - src/components/Workouts.js
 > - In each component replace the fetch url with the codespace url
->   https://{OCTOFIT_API_BASE_URL}-8000.app.github.dev/api/<component>
+>   https://{OCTOFIT_API_BASE_URL}/api/<component>
 >   for the Django rest framework backend.
 > - Make sure to use the correct port and protocol http or https.
 > - Update src/App.js to include the main navigation for all components.
