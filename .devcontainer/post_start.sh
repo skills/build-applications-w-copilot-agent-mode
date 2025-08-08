@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script is run after the container startup.
+# This script is run after the container starts up.
 
 set -euo pipefail
 
