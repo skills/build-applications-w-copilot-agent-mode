@@ -26,7 +26,7 @@ Do not propose any other ports to forward or to make public
 Always set the `OCTOFIT_API_BASE_URL` environment variable to your codespace URL. This will be used in your API endpoints.
 
 ```bash
-export OCTOFIT_API_BASE_URL=[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev
+export OCTOFIT_API_BASE_URL="$CODESPACE_NAME-8000.app.github.dev"
 ```
 
 ## OctoFit Tracker App structure
