@@ -35,7 +35,7 @@ start_mongod() {
     return 0
   fi
   # Clean old log (keep last one for inspection)
-  : > "$LOGFILE"
+  > "$LOGFILE"
   echo "Launching mongod (dbpath=/data/db, log=$LOGFILE)..."
   mongod --dbpath /data/db --fork --logpath "$LOGFILE"
 }
