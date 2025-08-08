@@ -27,8 +27,6 @@ octofit-tracker/
 
 ## Python virtual environment and requirements
 
-The virtual environment should be created in octofit-tracker/backend/venv
-
 Create a requirements.txt with the following Python required packages:
 
 ```text
@@ -58,6 +56,9 @@ webcolors==24.8.0
 webencodings==0.5.1
 websocket-client==1.8.0
 ```
+
+The virtual environment should be created in octofit-tracker/backend/venv/bin/activate
+install the requirements that we created in requirements.txt
 
 ## mongodb-org service
 
