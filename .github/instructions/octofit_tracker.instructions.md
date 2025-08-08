@@ -13,17 +13,35 @@ I want to build an Octofit Tracker app that will include the following:
 * Competitive leader board
 * Personalized workout suggestions
 
+## Forwarded ports
+
+- 8000: public
+- 3000: public
+- 27017: private
+
+Do not propose any other ports to forward or to make public
+
+## OctoFit Codespace variable for the API URL
+
+Always set the `OCTOFIT_API_BASE_URL` environment variable to your codespace URL. This will be used in your API endpoints.
+
+```bash
+export OCTOFIT_API_BASE_URL="$CODESPACE_NAME-8000.app.github.dev"
+```
+
 ## OctoFit Tracker App structure
 
 The section defines the OctoFit Tracker App's structure
 
 
 The directory tree for the OctoFit Tracker App
+
+```text
 octofit-tracker/
 ├── backend/
 │   ├── venv/
 └── frontend/
-
+```
 
 ## Python virtual environment and requirements
 
