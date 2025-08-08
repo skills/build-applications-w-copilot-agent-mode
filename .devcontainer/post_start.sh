@@ -24,7 +24,6 @@ LOGFILE=/tmp/mongod.log
 MAX_START_TRIES=3          # How many times to attempt (re)starting mongod
 READY_CHECK_RETRIES=15     # How many readiness checks per start attempt
 READY_CHECK_INTERVAL=1     # Seconds between readiness checks
-
 is_running() {
   pgrep -x mongod >/dev/null 2>&1
 }
