@@ -13,6 +13,11 @@ I want to build an Octofit Tracker app that will include the following:
 * Competitive leader board
 * Personalized workout suggestions
 
+## Never change directories when agent mode is running commands
+
+- Never change directories
+- Instead point to the directory when issuing commands
+
 ## Forwarded ports
 
 - 8000: public
@@ -21,20 +26,9 @@ I want to build an Octofit Tracker app that will include the following:
 
 Do not propose any other ports to forward or to make public
 
-## OctoFit Codespace variable for the API URL
-
-Always set the `OCTOFIT_API_BASE_URL` environment variable to your codespace URL. This will be used in your API endpoints.
-
-```bash
-export OCTOFIT_API_BASE_URL="$CODESPACE_NAME-8000.app.github.dev"
-```
-
 ## OctoFit Tracker App structure
 
 The section defines the OctoFit Tracker App's structure
-
-
-The directory tree for the OctoFit Tracker App
 
 ```text
 octofit-tracker/
@@ -80,9 +74,7 @@ install the requirements that we created in requirements.txt
 
 ## mongodb-org service
 
-
-- Running on Ubuntu 22.04
-- Using systemd for service management
+- always use `ps aux | grep mongod` for checking for mongod running
 - mongodb-org is the official MongoDB package
 - mongosh is the official client tool
 

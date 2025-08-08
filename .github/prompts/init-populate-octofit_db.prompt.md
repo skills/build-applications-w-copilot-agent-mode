@@ -19,7 +19,9 @@ description: 'Setup, configure, and populate the octofit_db database with test d
 6. Run `makemigrations` and `migrate` in the Python virtual environment.
 7. Initialize the `octofit_db` database and create collections for users, teams, activities, leaderboard, and workouts.
 8. Ensure a unique index on the `email` field for the user collection (e.g., `db.users.createIndex({ "email": 1 }, { unique: true })`).
-9. Populate the database with test data for all collections using the Django management command in `octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py` (help message: 'Populate the octofit_db database with test data').
+9. Populate the database with test data for all collections using the Django management command in `octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py` 
+  a. help message: 'Populate the octofit_db database with test data'.
+  b. Django ORM for data deletion and insertion
 10. Verify the database and collections were created and populated successfully using `mongosh`.
 11. List the collections in the `octofit_db` database and show sample documents from each.
 

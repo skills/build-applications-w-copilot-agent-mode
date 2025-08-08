@@ -54,9 +54,10 @@ Now let's create a prompt file of our own that we can share with other staff to 
 > Let's add the following to a prompt file called `update-octofit-tracker-app.prompt.md` in the `.github/prompts` directory and add mode: 'agent' and model: GPT-4.1 to the prompt file.
 >
 > # Django App Updates
+>
 > 1. Update `settings.py` for MongoDB connection and CORS.
 > 2. Update `models.py`, `serializers.py`, `urls.py`, `views.py`, `tests.py`, and `admin.py` to support users, teams, activities, leaderboard, and workouts collections.
-> 3. Ensure `api_root` is present in `urls.py`.
+> 3. Ensure `/` points to the api and `api_root` is present in `urls.py`.
 > ```
 
 > [!TIP]
