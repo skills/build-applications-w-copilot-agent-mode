@@ -21,7 +21,8 @@ In this step, we will accomplish the following:
 > Let's take the following step by step and generate instructions in this order and execute the commands.
 >
 > - Follow the OctoFit Tracker App structure
-> - Follow the Python virtual environment creation and requirements
+> - Follow the Python virtual environment creation
+> - Create the requirements.txt file
 > - Install the Python requirements from the file created
 >```
 

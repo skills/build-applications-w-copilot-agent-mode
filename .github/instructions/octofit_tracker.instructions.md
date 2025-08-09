@@ -38,9 +38,16 @@ octofit-tracker/
 └── frontend/
 ```
 
-## Python virtual environment and requirements
+## Python virtual environment 
 
-Create a requirements.txt with the following Python required packages:
+- To create the virtual environment, run the following command:
+  ```
+  python3 -m venv octofit-tracker/backend/venv
+  ```
+
+## Create file octofit-tracker/backend/requirements.txt
+
+- add the following to octofit-tracker/backend/requirements.txt
 
 ```text
 Django==4.1.7
@@ -70,8 +77,15 @@ webencodings==0.5.1
 websocket-client==1.8.0
 ```
 
-The virtual environment should be created in octofit-tracker/backend/venv/bin/activate
-install the requirements that we created in requirements.txt
+## Python virtual environment requirements
+
+Create a requirements.txt with the following Python required packages:
+Install the requirements that we created in requirements.txt.
+
+```bash
+source octofit-tracker/backend/venv/bin/activate 
+pip install -r octofit-tracker/backend/requirements.txt
+```
 
 ## mongodb-org service
 
