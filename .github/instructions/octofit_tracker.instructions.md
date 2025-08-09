@@ -81,7 +81,8 @@ Install the requirements that we created in requirements.txt.
 
 ```bash
 source octofit-tracker/backend/venv/bin/activate 
-&& pip install -r octofit-tracker/backend/requirements.txt
+source octofit-tracker/backend/venv/bin/activate
+pip install -r octofit-tracker/backend/requirements.txt
 ```
 
 ## mongodb-org service
