@@ -55,9 +55,11 @@ Now let's create a prompt file of our own that we can share with other staff to 
 >
 > # Django App Updates
 >
-> 1. Update `octofit-tracker/backend/octofit_tracker/settings.py` for MongoDB connection and CORS.
-> 2. Update `octofit-tracker/backend/octofit_tracker/models.py`, `octofit-tracker/backend/octofit_tracker/serializers.py`, `octofit-tracker/backend/octofit_tracker/urls.py`, `octofit-tracker/backend/octofit_tracker/views.py`, `octofit-tracker/backend/octofit_tracker/tests.py`, and `octofit-tracker/backend/octofit_tracker/admin.py` to support users, teams, activities, leaderboard, and workouts collections.
-> 3. Ensure `/` points to the api and `api_root` is present in `octofit-tracker/backend/octofit_tracker/urls.py`.
+> - All Django project files are in the `octofit-tracker/backend/octofit_tracker` directory.
+>
+> 1. Update `settings.py` for MongoDB connection and CORS.
+> 2. Update `models.py`, `serializers.py`, `urls.py`, `views.py`, `tests.py`, and `admin.py` to support users, teams, activities, leaderboard, and workouts collections.
+> 3. Ensure `/` points to the api and `api_root` is present in `urls.py`.
 > ```
 
 > [!TIP]

@@ -68,12 +68,12 @@ jobs:
           minimum-occurrences: 1
           case-sensitive: false
 
-      - name: Check for codespace url has been added to views.py
-        id: check-codespace-url-views
+      - name: Check for codespace url has been added to urls.py
+        id: check-codespace-url-urls
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v1
         with:
-          text-file: octofit-tracker/backend/octofit_tracker/views.py
+          text-file: octofit-tracker/backend/octofit_tracker/urls.py
           keyphrase: '-8000.app.github.dev'
           minimum-occurrences: 1
           case-sensitive: false
@@ -91,8 +91,8 @@ jobs:
             results_table:
               - description: "Check settings.py for codespace URL"
                 passed: ${{ steps.check-codespace-url-settings.outcome == 'success' }}
-              - description: "Check views.py for codespace URL"
-                passed: ${{ steps.check-codespace-url-views.outcome == 'success' }}
+              - description: "Check urls.py for codespace URL"
+                passed: ${{ steps.check-codespace-url-urls.outcome == 'success' }}
 
       # END: Check practical exercise
 
