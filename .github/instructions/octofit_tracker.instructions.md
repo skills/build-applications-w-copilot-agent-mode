@@ -77,7 +77,7 @@ websocket-client==1.8.0
 ## Python virtual environment requirements
 
 Create a requirements.txt with the following Python required packages:
-install the requirements that we created in requirements.txt
+Install the requirements that we created in requirements.txt.
 
 ```bash
 source octofit-tracker/backend/venv/bin/activate 
