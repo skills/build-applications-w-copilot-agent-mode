@@ -18,7 +18,9 @@ In this step, we will accomplish the following:
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> Let's take the following step by step and generate instructions in this order and execute the commands.
+> Let's take the following step by step execute the commands.
+> 
+> Follow the instructions
 >
 > - Follow the OctoFit Tracker App structure
 > - Follow the Python virtual environment creation
