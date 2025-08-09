@@ -34,6 +34,7 @@ The section defines the OctoFit Tracker App's structure
 octofit-tracker/
 ├── backend/
 │   ├── venv/
+|   ├── octofit_tracker/
 └── frontend/
 ```
 
