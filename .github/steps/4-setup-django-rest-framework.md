@@ -21,8 +21,8 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > ```prompt
 > Let's setup codespace for the URL, start the server via VS Code launch.json, and test the API.
 >
-> 1. Update `urls.py` to replace the return for the REST API URL endpoints with the environment variable $CODESPACE_NAME https://$CODESPACE_NAME-8000.app.github.dev for Django and avoid certificate HTTPS issues.
-> 2. Make sure the Django backend works on your codespace URL (i.e., the value of `$CODESPACE_NAME`) by updating `ALLOWED_HOSTS` in `settings.py`.
+> 1. Update `octofit-tracker/backend/octofit_tracker/views.py` to replace the return for the REST API URL endpoints with the environment variable $CODESPACE_NAME https://$CODESPACE_NAME-8000.app.github.dev for Django and avoid certificate HTTPS issues.
+> 2. Make sure the Django backend works on your codespace URL (i.e., the value of `$CODESPACE_NAME`) by updating `ALLOWED_HOSTS` in `octofit-tracker/backend/octofit_tracker/settings.py`.
 > 3. Test the API endpoints using curl command.
 >```
 
