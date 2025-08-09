@@ -14,7 +14,7 @@ description: 'Setup, configure, and populate the octofit_db database with test d
 1. Ensure the MongoDB service is running.
 2. Configure Django in `octofit-tracker/backend/octofit_tracker/settings.py` to connect to the `octofit_db` database using Djongo, with no authentication.
 3. Make sure `octofit_tracker`, `rest_framework`, and `djongo` are in `INSTALLED_APPS`.
-4. Enable CORS in `settings.py` to allow all origins, methods, and headers. Allow all hosts.
+4. Enable CORS in `octofit-tracker/backend/octofit_tracker/settings.py` to allow all origins, methods, and headers. Allow all hosts.
 5. Install and configure CORS middleware components.
 6. Run `makemigrations` and `migrate` in the Python virtual environment.
 7. Initialize the `octofit_db` database and create collections for users, teams, activities, leaderboard, and workouts.
