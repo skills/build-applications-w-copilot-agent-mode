@@ -60,6 +60,8 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > - Update src/App.js to include the main navigation for all components.
 > - Make sure react-router-dom is used for the navigation menu.
 > - The react app should show the navigation menu and the components.
+> - Update all components to log the fetched data and make them compatible with both paginated (.results) and plain array responses.
+> - Add console.log statements to each component to log the fetched data and the REST API endpoints.
 > ```
 
 ### :keyboard: Activity: Start the react app and check the output

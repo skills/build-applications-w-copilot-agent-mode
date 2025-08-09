@@ -23,6 +23,7 @@ description: 'Setup, configure, and populate the octofit_db database with test d
 9. Populate the database with test data for all collections using the Django management command in `octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py` 
   a. help message: 'Populate the octofit_db database with test data'.
   b. Django ORM for data deletion and insertion
+  c. Make the sample data super heroes and use team marvel and team dc.
 10. Verify the database and collections were created and populated successfully using `mongosh`.
 11. List the collections in the `octofit_db` database and show sample documents from each.
 
