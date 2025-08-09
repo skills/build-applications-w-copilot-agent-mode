@@ -52,7 +52,7 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 >   - src/components/Users.js
 >   - src/components/Workouts.js
 > - In each component replace the fetch url with the codespace url
->   https://$REACT_APP_CODESPACE_NAME-8000.app.github.dev/<component>/
+>   https://$REACT_APP_CODESPACE_NAME-8000.app.github.dev/api/[component>]/
 >   for the Django rest framework backend.
 >   make sure all components are pulling data from the REST api endpoint
 >   for display in the REACT frontend
