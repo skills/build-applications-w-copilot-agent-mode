@@ -45,7 +45,10 @@ octofit-tracker/
   python3 -m venv octofit-tracker/backend/venv
   ```
 
-## file:octofit-tracker/backend/requirements.txt
+## Create file octofit-tracker/backend/requirements.txt
+
+- add the following to octofit-tracker/backend/requirements.txt
+
 ```text
 Django==4.1.7
 djangorestframework==3.14.0
