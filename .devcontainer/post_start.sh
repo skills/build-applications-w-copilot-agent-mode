@@ -96,5 +96,21 @@ for ((attempt=1; attempt<=MAX_START_TRIES; attempt++)); do
   fi
 done
 
+# BEGIN_once_welcome
+SCRIPT_PATH="$(readlink -f "${BASH_SOURCE[0]}" 2>/dev/null || realpath "${BASH_SOURCE[0]}" 2>/dev/null || echo "${BASH_SOURCE[0]}")"
+SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
+sudo mkdir -p /usr/local/etc/vscode-dev-containers || true
+sudo cp --force "$SCRIPT_DIR/welcome-message.txt" /usr/local/etc/vscode-dev-containers/first-run-notice.txt || true
+# Remove this block so it runs only once
+FLAG_FILE="/usr/local/etc/vscode-dev-containers/.welcome-copied"
+if [ ! -f "$FLAG_FILE" ]; then
+  SCRIPT_PATH="$(readlink -f "${BASH_SOURCE[0]}" 2>/dev/null || realpath "${BASH_SOURCE[0]}" 2>/dev/null || echo "${BASH_SOURCE[0]}")"
+  SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
+  sudo mkdir -p /usr/local/etc/vscode-dev-containers || true
+  sudo cp --force "$SCRIPT_DIR/welcome-message.txt" /usr/local/etc/vscode-dev-containers/first-run-notice.txt || true
+  sudo touch "$FLAG_FILE" || true
+fi
+# END_once_welcome
+
 echo "post_start.sh completed successfully."
 exit 0
