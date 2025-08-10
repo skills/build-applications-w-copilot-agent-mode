@@ -7,4 +7,3 @@ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb
 sudo apt-get update
 sudo apt-get install -y python3-venv
 sudo apt-get install -y mongodb-org
-sudo apt-get install -y mongodb-clients
