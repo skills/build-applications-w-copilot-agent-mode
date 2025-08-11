@@ -8,8 +8,7 @@ _Build an application with GitHub Copilot agent mode in less than an hour._
 ## Welcome
 
 People love how GitHub Copilot helps them write code faster and with fewer errors.
-But what if GitHub could create a full stack application based on requirements
-written in natural language?
+But what if GitHub could create a multi-tier application with a presentation, logic, and data layers based on requirements written in natural language?
 In this exercise, we will prompt GitHub Copilot agent mode to create a complete application.
 
 - **Who is this for**: Intermediate developers familiar with GitHub Copilot, basic GitHub, and basic web development
@@ -20,7 +19,7 @@ In this exercise, we will prompt GitHub Copilot agent mode to create a complete 
 
 In this exercise, you will:
 
-1. Start up a preconfigured development environment for making a full stack application.
+1. Start up a preconfigured development environment for making a multi-tier application.
 2. Prompt in GitHub Copilot Chat and select the edit tab and select agent mode from the edit/agent drop-down.
 3. Try creating the application with GPT-4o.
 4. Try other LLM models to see other output.
