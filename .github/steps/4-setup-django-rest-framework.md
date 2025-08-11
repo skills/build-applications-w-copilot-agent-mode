@@ -29,7 +29,7 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > - Do not update the `views.py`
 >
 > 1. Update `urls.py` to replace the return for the REST API URL endpoints with the environment variable $CODESPACE_NAME https://$CODESPACE_NAME-8000.app.github.dev for Django and avoid certificate HTTPS issues.
-> 2. Make sure the Django backend works on your codespace URL (i.e., the value of `$CODESPACE_NAME`) by updating `ALLOWED_HOSTS` in `settings.py`.
+> 2. Make sure the Django backend works on your codespace URL and localhost (i.e., the value of `$CODESPACE_NAME`) by updating `ALLOWED_HOSTS` in `settings.py`.
 > 3. Test the API endpoints using curl command.
 >```
 
