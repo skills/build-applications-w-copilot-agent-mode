@@ -1,7 +1,7 @@
 ---
 applyTo: "**"
 ---
-# Octofit-tracker Fitness App Structure Guidelines
+# Octofit-tracker Fitness App Setup and Structure Guidelines
 
 ## Explain the Octofit Tracker App goals and steps
 
@@ -96,16 +96,3 @@ pip install -r octofit-tracker/backend/requirements.txt
 - always use `ps aux | grep mongod` for checking for mongod running
 - mongodb-org is the official MongoDB package
 - mongosh is the official client tool
-
-## REACT Frontend App structure
-
-```bash
-npx create-react-app octofit-tracker/frontend
-
-npm install bootstrap --prefix octofit-tracker/frontend
-
-echo "import 'bootstrap/dist/css/bootstrap.min.css';" >> src/index.js
-
-npm install react-router-dom --prefix octofit-tracker/frontend
-
-```
