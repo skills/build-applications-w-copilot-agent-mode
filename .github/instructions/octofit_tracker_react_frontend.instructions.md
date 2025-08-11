@@ -7,7 +7,7 @@ applyTo: "octofit-tracker/**"
 ## REACT Frontend App structure
 
 ```bash
-npx create-react-app octofit-tracker/frontend
+npx create-react-app octofit-tracker/frontend --template cra-template --use-npm
 
 npm install bootstrap --prefix octofit-tracker/frontend
 

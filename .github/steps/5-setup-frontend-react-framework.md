@@ -70,6 +70,14 @@ Now, let's actually try running the react application! In the left sidebar, sele
 
 <img src="https://github.com/user-attachments/assets/8ab08e4e-539a-4ca9-8270-be4b1f0df176"  width=30% height=30%>
 
+Go to the running React Frontend url that pops up for port 3000 that looks like the following:
+
+<img alt="react-frontend-port" src="https://github.com/user-attachments/assets/a0c8b213-ee5f-46dd-8675-686a7ba0818f" width=30% height=30%>
+
+Once you open it in your web browser it should look like the following:
+
+<img alt="react-frontend-app" src="https://github.com/user-attachments/assets/f7f1a076-c259-49f6-8aa5-9ebcd5f0698d" width=50% height=50%>
+
 ### :keyboard: Activity: Let's add some formatting, structuring, and styling to the octofit tracker app
 
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
