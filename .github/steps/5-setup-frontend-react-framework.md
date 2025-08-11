@@ -74,7 +74,7 @@ Go to the running React Frontend url that pops up for port 3000 that looks like 
 
 <img alt="react-frontend-port" src="https://github.com/user-attachments/assets/a0c8b213-ee5f-46dd-8675-686a7ba0818f" width=30% height=30%>
 
-Once you open it in your web brwoser it should look like the following:
+Once you open it in your web browser it should look like the following:
 
 <img alt="react-frontend-app" src="https://github.com/user-attachments/assets/f7f1a076-c259-49f6-8aa5-9ebcd5f0698d" width=50% height=50%>
 
