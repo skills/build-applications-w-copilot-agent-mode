@@ -8,12 +8,22 @@ applyTo: "octofit-tracker/backend/**"
 
 ### settings.py
 
-Should always contain the following
+Should always contain the following:
 
 ```python
-# WARNING: The following setting is only safe for development.
-# Do NOT use ALLOWED_HOSTS = ['*'] in production, as it allows any host to access your application.
-# For production, set ALLOWED_HOSTS to a list of your domain names, e.g.:
-# ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+if CODESPACE_NAME:
+    ALLOWED_HOSTS.append(f'{CODESPACE_NAME}-8000.app.github.dev')
+```
+
+## serializers.py
+
+```text
+serializers should convert ObjectId fields to strings
+```
+
+## REST API Endpoints
+
+```text
+use curl to test the endpoints
 ```

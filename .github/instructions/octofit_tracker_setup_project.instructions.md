@@ -91,8 +91,9 @@ source octofit-tracker/backend/venv/bin/activate
 pip install -r octofit-tracker/backend/requirements.txt
 ```
 
-## mongodb-org service
+## mongodb-org service and data creation
 
 - always use `ps aux | grep mongod` for checking for mongod running
 - mongodb-org is the official MongoDB package
 - mongosh is the official client tool
+- Always use Django's ORM, not direct MongoDB scripts to create the database structure and data
