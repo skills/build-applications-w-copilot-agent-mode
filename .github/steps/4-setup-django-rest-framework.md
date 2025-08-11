@@ -43,7 +43,7 @@ Now, let's actually try running the Django application! In the left sidebar, sel
 
 <img src="https://github.com/user-attachments/assets/baef4dfe-0751-45cb-9e16-8ff26ba9ff58" width=30% height=30%>
 
-Go to the running Django REST api url that pops up that looks like the following:
+Go to the running Django REST api url that pops up for port 8000 that looks like the following:
 
 <img alt="django-rest-api-port" src="https://github.com/user-attachments/assets/627f3cbe-96ae-4a30-b38b-acd3cecf96ee" width=30% height=30%>
 
