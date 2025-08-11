@@ -43,6 +43,14 @@ Now, let's actually try running the Django application! In the left sidebar, sel
 
 <img src="https://github.com/user-attachments/assets/baef4dfe-0751-45cb-9e16-8ff26ba9ff58" width=30% height=30%>
 
+Go to the running Django REST api url that pops up that looks like the following:
+
+<img alt="django-rest-api-port" src="https://github.com/user-attachments/assets/627f3cbe-96ae-4a30-b38b-acd3cecf96ee" width=30% height=30%>
+
+Once you open it in your web brwoser it should look like the following:
+
+<img alt="django-rest-api" src="https://github.com/user-attachments/assets/45ac98ba-aa7b-4953-81d6-e38bba97ae35" width=50% height=50%>
+
 1. Now that we have updated our Django product to include our codespace name for the URL endpoint,
    let's check our changes in to our `build-octofit-app` branch.
 
