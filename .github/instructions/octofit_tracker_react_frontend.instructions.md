@@ -11,7 +11,7 @@ npx create-react-app octofit-tracker/frontend
 
 npm install bootstrap --prefix octofit-tracker/frontend
 
-echo "import 'bootstrap/dist/css/bootstrap.min.css';" >> src/index.js
+echo "import 'bootstrap/dist/css/bootstrap.min.css';" >> octofit-tracker/frontend/src/index.js
 
 npm install react-router-dom --prefix octofit-tracker/frontend
 
