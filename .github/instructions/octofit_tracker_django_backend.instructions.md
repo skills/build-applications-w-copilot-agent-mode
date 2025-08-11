@@ -11,8 +11,6 @@ applyTo: "octofit-tracker/backend/**"
 Should always contain the following:
 
 ```python
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-if CODESPACE_NAME:
 import os
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 if os.environ.get('CODESPACE_NAME'):
