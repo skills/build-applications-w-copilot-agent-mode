@@ -18,14 +18,15 @@ env:
 jobs:
   find_exercise:
     name: Find Exercise Issue
-    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.1.0
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.7.0
 
   check_step_work:
     name: Check step work
     runs-on: ubuntu-latest
     needs: [find_exercise]
     env:
-      ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
+      ISSUE_REPOSITORY: ${{ github.repository }}
+      ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
 
     steps:
       - name: Checkout
@@ -34,134 +35,89 @@ jobs:
       - name: Get response templates
         uses: actions/checkout@v4
         with:
-          repository: skills/response-templates
-          path: skills-response-templates
+          repository: skills/exercise-toolkit
+          path: exercise-toolkit
+          ref: v0.7.0
+
+      - name: Find last comment
+        id: find-last-comment
+        uses: peter-evans/find-comment@v3
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          direction: last
 
       - name: Update comment - checking work
-        run: |
-          gh issue comment "$ISSUE_URL" \
-            --body-file skills-response-templates/step-feedback/checking-work.md \
-            --edit-last
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          comment-id: ${{ steps.find-last-comment.outputs.comment-id }}
+          file: exercise-toolkit/markdown-templates/step-feedback/checking-work.md
+          edit-mode: replace
 
       # START: Check practical exercise
-
-      - name: Check octofit_db and djongo has been added to settings.py and populate_db.py has been created
-        id: check-user-work
-        run: |
-          # Checks to perform
-            checks='{
-              "settings_py": {
-                "name": "settings.py",
-                "passed": true,
-                "message": ""
-              },
-              "populate_db": {
-                "name": "populate_db.py",
-                "passed": true,
-                "message": ""
-              }
-            }'
-
-          # Check for octofit_db info in settings.py
-          file="octofit-tracker/backend/octofit_tracker/settings.py"
-          keyphrase='octofit_db'
-          minimum_occurences=1
-          found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
-          if [ "$found_occurences" -lt "$minimum_occurences" ]; then
-            checks=$(echo $checks | jq '.settings_py.passed = false')
-            checks=$(echo $checks | jq '.settings_py.message = "Please use Copilot agent mode to add the name of the database octofit_db to settings.py."')
-          fi
-
-          # Check for djongo info in settings.py
-          file="octofit-tracker/backend/octofit_tracker/settings.py"
-          keyphrase='djongo'
-          minimum_occurences=2
-          found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
-          if [ "$found_occurences" -lt "$minimum_occurences" ]; then
-            checks=$(echo $checks | jq '.settings_py.passed = false')
-            checks=$(echo $checks | jq '.settings_py.message = "Please use Copilot agent mode to add the database engine djongo to settings.py."')
-          fi
-
-          # Check for 'test data' in populate_db.py
-          file="octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py"
-          keyphrase='test data for'
-          minimum_occurences=1
-          found_occurences=$(grep -o "$keyphrase" "$file" | wc -l)
-          if [ "$found_occurences" -lt "$minimum_occurences" ]; then
-            checks=$(echo $checks | jq '.populate_db.passed = false')
-            checks=$(echo $checks | jq '.populate_db.message = "Please use Copilot agent mode to add test data with the file populate_db.py."')
-          fi
-
-          # Verify all checks passed
-          passed=$(echo $checks | jq '. | all(.passed?)')
-
-          # Flatten to an array for returning. Allows iteration during rendering.
-          results=$(echo $checks | jq 'to_entries | map({name: .key} + .value)')
-
-          # Save pass status to output
-          echo "passed=$passed" >> $GITHUB_OUTPUT
-
-          # Save results to output
-          echo 'results<<EOF' >> $GITHUB_OUTPUT
-          echo $results >> $GITHUB_OUTPUT
-          echo 'EOF' >> $GITHUB_OUTPUT
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build message - step results
-        id: build-message-step-results
-        uses: skills/action-text-variables@v1
+      - name: Check octofit_db settings.py
+        id: check-octofit-db-settings
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
         with:
-          template-file: skills-response-templates/step-feedback/step-results.md
-          template-vars: '{
-            "step_number": 3,
-            "passed": ${{ steps.check-user-work.outputs.passed }},
-            "results_table": ${{ steps.check-user-work.outputs.results }},
-            "tips": [
-            "Copilot agent mode is becoming more capable everyday. Make sure to always be experimenting!",
-            "Try different prompts and models."
-            ]
-            }'
+          text-file: octofit-tracker/backend/octofit_tracker/settings.py
+          keyphrase: 'octofit_db'
+          minimum-occurrences: 1
+          case-sensitive: false
 
-      - name: Create comment - step results
-        run: |
-          gh issue comment "$ISSUE_URL" \
-            --body "$COMMENT_BODY" \
-            --edit-last
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COMMENT_BODY: ${{ steps.build-message-step-results.outputs.updated-text }}
+      - name: Check djongo settings.py
+        id: check-djongo-settings
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: octofit-tracker/backend/octofit_tracker/settings.py
+          keyphrase: 'djongo'
+          minimum-occurrences: 2
+          case-sensitive: false
 
-      - name: Fail job if not all checks passed
-        if: steps.check-user-work.outputs.passed == 'false'
-        run: exit 1
+      - name: Check populate_db.py
+        id: check-populate-db
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py
+          keyphrase: 'Populate the octofit_db database with test data'
+          minimum-occurrences: 1
+          case-sensitive: false
+
+      - name: Update comment - step results
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          comment-id: ${{ steps.find-last-comment.outputs.comment-id }}
+          edit-mode: replace
+          file: exercise-toolkit/markdown-templates/step-feedback/step-results-table.md
+          vars: |
+            step_number: 3
+            results_table:
+              - description: "Check settings.py for octofit_db"
+                passed: ${{ steps.check-octofit-db-settings.outcome == 'success' }}
+              - description: "Check settings.py for djongo"
+                passed: ${{ steps.check-djongo-settings.outcome == 'success' }}
+              - description: "Check populate_db.py for creation of test data"
+                passed: ${{ steps.check-populate-db.outcome == 'success' }}
 
       # END: Check practical exercise
 
-      - name: Build message - step finished
-        id: build-message-step-finish
-        uses: skills/action-text-variables@v1
-        with:
-          template-file: skills-response-templates/step-feedback/step-finished-prepare-next-step.md
-          template-vars: |
-            next_step_number=4
-
-      - name: Update comment - step finished
-        run: |
-          gh issue comment "$ISSUE_URL" \
-            --body "$ISSUE_BODY"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ISSUE_BODY: ${{ steps.build-message-step-finish.outputs.updated-text }}
+      - name: Fail job if not all checks passed
+        if: contains(steps.*.outcome, 'failure')
+        run: exit 1      
 
   post_next_step_content:
     name: Post next step content
     needs: [find_exercise, check_step_work]
     runs-on: ubuntu-latest
     env:
-      ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
+      ISSUE_REPOSITORY: ${{ github.repository }}
+      ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
 
     steps:
       - name: Checkout
@@ -170,26 +126,36 @@ jobs:
       - name: Get response templates
         uses: actions/checkout@v4
         with:
-          repository: skills/response-templates
-          path: skills-response-templates
+          repository: skills/exercise-toolkit
+          path: exercise-toolkit
+          ref: v0.7.0
+
+      - name: Create comment - step finished
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: exercise-toolkit/markdown-templates/step-feedback/step-finished-prepare-next-step.md
+          vars: |
+            next_step_number: 4
 
       - name: Create comment - add step content
-        run: |
-          gh issue comment "$ISSUE_URL" \
-            --body-file "$STEP_4_FILE"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: ${{ env.STEP_4_FILE }}
 
       - name: Create comment - watching for progress
-        run: |
-          gh issue comment "$ISSUE_URL" \
-            --body-file skills-response-templates/step-feedback/watching-for-progress.md
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: exercise-toolkit/markdown-templates/step-feedback/watching-for-progress.md
 
       - name: Disable current workflow and enable next one
         run: |
-          gh workflow disable "Step 3"
+          gh workflow disable "${{github.workflow}}"
           gh workflow enable "Step 4"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

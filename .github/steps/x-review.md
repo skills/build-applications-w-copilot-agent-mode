@@ -19,8 +19,8 @@ Here's a recap of your accomplishments:
   - Use Copilot to fix issues found during a pull request review.
   - Use Copilot to generate tests and documentation.
   - Use Copilot with different models.
-- Check out the other [GitHub Skills exercises](https://skills.github.com).
-- Try building your first [GitHub Copilot Extension](https://github.com/skills/your-first-extension-for-github-copilot)
+- Check out the other [GitHub Skills exercises](https://learn.github.com/skills).
+- Try [Modernize Your Legacy Code with GitHub Copilot](https://github.com/skills/modernize-your-legacy-code-with-github-copilot)
 
 Check out these resources to learn more about GitHub Copilot:
 
