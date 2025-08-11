@@ -1,5 +1,5 @@
 ---
-applyTo: "octofit-tracker/**"
+applyTo: "**"
 ---
 # Octofit-tracker Fitness App Structure Guidelines
 
@@ -38,16 +38,20 @@ octofit-tracker/
 └── frontend/
 ```
 
-## Python virtual environment 
+## Create the OctoFit Tracker Python virtual environment 
 
 - To create the virtual environment, run the following command:
-  ```
+  
+  ```bash
   python3 -m venv octofit-tracker/backend/venv
   ```
 
-## Create file octofit-tracker/backend/requirements.txt
+## OctoFit Tracker Python required packages
+
+### Create file octofit-tracker/backend/requirements.txt
 
 - add the following to octofit-tracker/backend/requirements.txt
+- Install the Python packages below only for our OctoFit Tracker project
 
 ```text
 Django==4.1.7
