@@ -1,0 +1,112 @@
+
+body {
+  background: linear-gradient(135deg, #f0f4f9 0%, #e0e7ef 100%);
+  color: #222b45;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+
+.navbar {
+  background: linear-gradient(90deg, #0d47a1 0%, #1976d2 100%) !important;
+  box-shadow: 0 2px 8px rgba(13, 71, 161, 0.08);
+}
+.navbar .navbar-brand, .navbar .nav-link {
+  color: #fff !important;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.navbar .navbar-brand {
+  display: flex;
+  align-items: center;
+  font-size: 1.7rem;
+}
+.navbar .navbar-brand .octofit-logo {
+  height: 38px;
+  margin-right: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.navbar .nav-link.active, .navbar .nav-link:hover {
+  color: #ffd600 !important;
+}
+
+.container {
+  margin-top: 30px;
+}
+
+.card {
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 2px 12px rgba(25, 118, 210, 0.08);
+}
+
+.table {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.table thead {
+  background: linear-gradient(90deg, #1976d2 0%, #64b5f6 100%);
+  color: #fff;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #e3f2fd;
+}
+.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: #f8fafc;
+}
+
+.btn-primary, .btn-info, .btn-warning, .btn-danger {
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(25, 118, 210, 0.08);
+  transition: background 0.2s;
+}
+.btn-primary {
+  background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%);
+}
+.btn-info {
+  background: linear-gradient(90deg, #00bcd4 0%, #64b5f6 100%);
+}
+.btn-warning {
+  background: linear-gradient(90deg, #ffa000 0%, #ffd600 100%);
+  color: #222b45;
+}
+.btn-danger {
+  background: linear-gradient(90deg, #d32f2f 0%, #ff5252 100%);
+}
+.btn-primary:hover, .btn-info:hover, .btn-warning:hover, .btn-danger:hover {
+  filter: brightness(1.08);
+}
+
+h1, h2, h3, h4, h5 {
+  color: #0d47a1;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.card-title.text-primary { color: #1976d2 !important; }
+.card-title.text-success { color: #388e3c !important; }
+.card-title.text-info { color: #00bcd4 !important; }
+.card-title.text-warning { color: #ffa000 !important; }
+.card-title.text-danger { color: #d32f2f !important; }
+
+a, .App-link {
+  color: #1976d2;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover, .App-link:hover {
+  color: #ffd600;
+}
+
+/* Custom modal style for better look */
+.modal-content {
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(25, 118, 210, 0.12);
+}
+
+/* Logo spin animation (optional) */
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
