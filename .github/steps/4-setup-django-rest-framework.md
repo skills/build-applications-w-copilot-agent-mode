@@ -14,6 +14,8 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > - Keep files created and updated by Copilot agent mode until it is finished.
 > - Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
 
+**Open up a new Copilot Chat session by hitting the plus `+` icon in the Copilot Chat pane.**
+
 ### :keyboard: Activity: Setup Django REST Framework and test the REST API endpoints
 
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)

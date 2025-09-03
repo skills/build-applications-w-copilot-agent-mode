@@ -21,6 +21,8 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > - Keep files created and updated by Copilot agent mode until it is finished.
 > - Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
 
+**Open up a new Copilot Chat session by hitting the plus `+` icon in the Copilot Chat pane.**
+
 ### :keyboard: Activity: Install the octofit-tracker frontend React framework
 
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
@@ -94,6 +96,7 @@ Once you open it in your web browser it should look like the following:
 >   - Use bootstrap forms for the forms.
 >   - Use bootstrap cards for the cards.
 >   - Use bootstrap modals for the modals.
+>   - Consistent table layouts for all components data.
 >```
 
 ### :keyboard: Optional Activity: Let's make the octofit tracker app look nice, pretty, and add some color
