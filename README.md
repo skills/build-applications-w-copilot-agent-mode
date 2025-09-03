@@ -20,9 +20,10 @@ In this exercise, we will prompt GitHub Copilot agent mode to create a complete 
 In this exercise, you will:
 
 1. Start up a preconfigured development environment for making a multi-tier application.
-2. Prompt in GitHub Copilot Chat and select the edit tab and select agent mode from the edit/agent drop-down.
-3. Try creating the application with GPT-4o.
-4. Try other LLM models to see other output.
+1. Prompt in GitHub Copilot Chat and select the edit tab and select agent mode from the edit/agent drop-down.
+1. In this exercise I primarily used the latest default LLM.
+1. Try other LLM models to see other output.
+1. For each step open up a new Copilot Chat session by hitting the plus `+` icon in the Copilot Chat pane.
 
 ### How to start this exercise
 
