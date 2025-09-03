@@ -58,7 +58,7 @@ Great work! Let's ask copilot for help starting a branch so we can do some custo
 1. Open the GitHub Copilot Chat window if not already open.
 1. Copy and paste the following prompt in the GitHub Copilot Chat and select the **Agent** instead of **Ask** or **Edit** from the drop down where you are inserting the prompt.
 
-   <img src="https://github.com/user-attachments/assets/e172f5c0-bc2a-45a9-a301-9af8bfbd6a2e" width=30% height=30%>
+   <img src="https://github.com/user-attachments/assets/b9e291be-d835-4de0-ac1c-35a6ec3ea72d" width=30% height=30%>
 
 1. Let's ask Copilot agent mode to help us remember the command and create the branch `build-octofit-app` and publishing it
 
