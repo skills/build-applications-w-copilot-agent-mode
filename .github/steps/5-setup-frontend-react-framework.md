@@ -76,7 +76,11 @@ Go to the running React Frontend url that pops up for port 3000 that looks like 
 
 <img alt="react-frontend-port" src="https://github.com/user-attachments/assets/a0c8b213-ee5f-46dd-8675-686a7ba0818f" width=30% height=30%>
 
-Once you open it in your web browser it should look like the following:
+Once you open it in your web browser you will get a warning like the following:
+
+<img alt="django-rest-api" src="https://github.com/user-attachments/assets/cb52d137-e78d-440b-8e9c-c322d7c49b48" width=30% height=30%>
+
+Once you click `Continue` it should look similar the following:
 
 <img alt="react-frontend-app" src="https://github.com/user-attachments/assets/f7f1a076-c259-49f6-8aa5-9ebcd5f0698d" width=50% height=50%>
 
