@@ -41,7 +41,9 @@ See the [VS Code Docs: Prompt Files](https://code.visualstudio.com/docs/copilot/
 > - Keep files created and updated until the Copilot agent mode has finished.
 
 > [!IMPORTANT]
-> - Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel**.
+> - Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel** when you see this image.
+
+<img src="https://github.com/user-attachments/assets/02a875c1-19a4-417b-ab03-aefbbe2186d4" width=50% height=50%>
 
 ### :keyboard: Activity: Initialize, create, and populate the octofit_db MongoDB database
 
@@ -90,7 +92,10 @@ Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent
 > ```
 >
 
-> ❕ **Important:** Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel**.
+> [!IMPORTANT]
+> - Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel** when you see this image.
+
+<img src="https://github.com/user-attachments/assets/02a875c1-19a4-417b-ab03-aefbbe2186d4" width=50% height=50%>
 
 1. Now that we have created the database structure, updated our Django project files, and populated the database, let's check our changes into our `build-octofit-app` branch.
 
