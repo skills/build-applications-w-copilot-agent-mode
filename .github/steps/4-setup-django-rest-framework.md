@@ -49,7 +49,7 @@ Go to the running Django REST api url that pops up for port 8000 that looks like
 
 <img alt="django-rest-api-port" src="https://github.com/user-attachments/assets/627f3cbe-96ae-4a30-b38b-acd3cecf96ee" width=30% height=30%>
 
-Once you open it in your web browser you will get a warning like the following
+Once you open it in your web browser you will get a warning like the following:
 
 <img alt="django-rest-api" src="https://github.com/user-attachments/assets/cb52d137-e78d-440b-8e9c-c322d7c49b48" width=30% height=30%>
 
