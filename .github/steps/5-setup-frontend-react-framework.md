@@ -21,6 +21,8 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > - Keep files created and updated by Copilot agent mode until it is finished.
 > - Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
 
+**Open up a new Copilot Chat session by hitting the plus `+` icon in the Copilot Chat pane.**
+
 ### :keyboard: Activity: Install the octofit-tracker frontend React framework
 
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
@@ -74,7 +76,11 @@ Go to the running React Frontend url that pops up for port 3000 that looks like 
 
 <img alt="react-frontend-port" src="https://github.com/user-attachments/assets/a0c8b213-ee5f-46dd-8675-686a7ba0818f" width=30% height=30%>
 
-Once you open it in your web browser it should look like the following:
+Once you open it in your web browser you will get a warning like the following:
+
+<img alt="django-rest-api" src="https://github.com/user-attachments/assets/cb52d137-e78d-440b-8e9c-c322d7c49b48" width=30% height=30%>
+
+Once you click `Continue` it should look similar the following:
 
 <img alt="react-frontend-app" src="https://github.com/user-attachments/assets/f7f1a076-c259-49f6-8aa5-9ebcd5f0698d" width=50% height=50%>
 
@@ -94,6 +100,7 @@ Once you open it in your web browser it should look like the following:
 >   - Use bootstrap forms for the forms.
 >   - Use bootstrap cards for the cards.
 >   - Use bootstrap modals for the modals.
+>   - Consistent table layouts for all components data.
 >```
 
 ### :keyboard: Optional Activity: Let's make the octofit tracker app look nice, pretty, and add some color

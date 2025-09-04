@@ -16,9 +16,19 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > - Keep files created and updated by Copilot agent mode until it is finished.
 > - Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
 
+**Open up a new Copilot Chat session by hitting the plus `+` icon in the Copilot Chat pane.**
+
 ### :keyboard: Activity: Setup the Python Django project/app
 
-In this activity we will leverage a feature in vscode called prompt files. A prompt file that has been created by the IT department for us to create our Django project application. Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
+In this activity we will leverage a feature in VS Code called prompt files. A prompt file that has been created by the IT department for us to create our Django project application. Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
+
+What are prompt files?
+
+Prompt files let you define reusable prompts for common and repeatable development tasks in a Markdown file.
+Prompt files are standalone prompts that you can run directly in chat. You can include task-specific context and guidelines about how the task should be performed.
+Combine prompt files with custom instructions to ensure consistent execution of complex tasks.
+
+See the [VS Code Docs: Prompt Files](https://code.visualstudio.com/docs/copilot/customization/overview#_prompt-files) page for more information.
 
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
@@ -31,7 +41,9 @@ In this activity we will leverage a feature in vscode called prompt files. A pro
 > - Keep files created and updated until the Copilot agent mode has finished.
 
 > [!IMPORTANT]
-> - Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel**.
+> - Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel** when you see this image.
+
+<img src="https://github.com/user-attachments/assets/02a875c1-19a4-417b-ab03-aefbbe2186d4" width=50% height=50%>
 
 ### :keyboard: Activity: Initialize, create, and populate the octofit_db MongoDB database
 
@@ -44,7 +56,7 @@ Let's continue to leverage a prompt file that has been created by the IT departm
 > /init-populate-octofit_db
 > ```
 
-### :keyboard: Activity: Update the Python Django project/app files
+### :keyboard: Activity: Let's create a prompt file that will update the Python Django project/app files
 
 Now let's create a prompt file of our own that we can share with other staff to develop to build the octofit-tracker app. Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
 
@@ -67,7 +79,7 @@ Now let's create a prompt file of our own that we can share with other staff to 
 >
 > When writing prompts focus on **WHAT** needs to be done. You can reference instructions for the **HOW**.
 
-See the [VS Code Docs: Prompt Files](https://code.visualstudio.com/docs/copilot/copilot-customization#_prompt-files-experimental) page for more information.
+See the [VS Code Docs: Prompt Files](https://code.visualstudio.com/docs/copilot/customization/overview#_prompt-files) page for more information.
 
 ### :keyboard: Activity: Let's use the prompt file to update the Python Django project/app files
 
@@ -80,7 +92,10 @@ Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent
 > ```
 >
 
-> ❕ **Important:** Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel**.
+> [!IMPORTANT]
+> - Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel** when you see this image.
+
+<img src="https://github.com/user-attachments/assets/02a875c1-19a4-417b-ab03-aefbbe2186d4" width=50% height=50%>
 
 1. Now that we have created the database structure, updated our Django project files, and populated the database, let's check our changes into our `build-octofit-app` branch.
 

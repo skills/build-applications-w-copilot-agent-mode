@@ -14,6 +14,8 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 > - Keep files created and updated by Copilot agent mode until it is finished.
 > - Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
 
+**Open up a new Copilot Chat session by hitting the plus `+` icon in the Copilot Chat pane.**
+
 ### :keyboard: Activity: Setup Django REST Framework and test the REST API endpoints
 
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
@@ -47,7 +49,11 @@ Go to the running Django REST api url that pops up for port 8000 that looks like
 
 <img alt="django-rest-api-port" src="https://github.com/user-attachments/assets/627f3cbe-96ae-4a30-b38b-acd3cecf96ee" width=30% height=30%>
 
-Once you open it in your web browser it should look like the following:
+Once you open it in your web browser you will get a warning like the following:
+
+<img alt="django-rest-api" src="https://github.com/user-attachments/assets/cb52d137-e78d-440b-8e9c-c322d7c49b48" width=30% height=30%>
+
+Once you click `Continue` it should look similar the following with your codespace name:
 
 <img alt="django-rest-api" src="https://github.com/user-attachments/assets/45ac98ba-aa7b-4953-81d6-e38bba97ae35" width=50% height=50%>
 

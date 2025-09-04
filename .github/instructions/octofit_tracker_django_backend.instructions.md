@@ -3,7 +3,6 @@ applyTo: "octofit-tracker/backend/**"
 ---
 # Octofit-tracker Fitness App Django backend Guidelines
 
-
 ## Django Backend App structure
 
 ### settings.py
@@ -27,4 +26,23 @@ serializers should convert ObjectId fields to strings
 
 ```text
 use curl to test the endpoints
+```
+
+### urls.py
+
+Should always use the codespace environment variable for the URL
+
+```python
+import os
+codespace_name = os.environ.get('CODESPACE_NAME')
+if codespace_name:
+    base_url = f"https://{codespace_name}-8000.app.github.dev"
+else:
+    base_url = "http://localhost:8000"
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/', api_root, name='api-root'),
+    path('api/', include(router.urls)),
+]
 ```

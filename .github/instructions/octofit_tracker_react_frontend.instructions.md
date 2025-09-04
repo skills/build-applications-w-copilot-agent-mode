@@ -3,8 +3,9 @@ applyTo: "octofit-tracker/**"
 ---
 # Octofit-tracker Fitness App React frontend Guidelines
 
-
 ## REACT Frontend App structure
+
+Make sure in all commands we point to the `octofit-tracker/frontend` directory
 
 ```bash
 npx create-react-app octofit-tracker/frontend --template cra-template --use-npm
@@ -17,3 +18,7 @@ sed -i "1iimport 'bootstrap/dist/css/bootstrap.min.css';" octofit-tracker/fronte
 npm install react-router-dom --prefix octofit-tracker/frontend
 
 ```
+
+## Images for the OctoFit Tracker App
+
+The image to use for the app is in the root of this repository docs/octofitapp-small.png

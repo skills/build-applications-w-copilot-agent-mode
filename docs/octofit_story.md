@@ -68,34 +68,28 @@ In this workshop, you'll:
 
 ### GitHub Copilot Chat
 
-These are the current models supported for GitHub Copilot Chat:
+- [Getting started with GitHub Copilot Chat](https://docs.github.com/en/copilot/how-tos/use-chat/get-started-with-chat?tool=vscode)
+- [Use Chat in the IDE](https://docs.github.com/en/copilot/how-tos/use-chat/use-chat-in-ide?tool=vscode)
 
-- Claude Sonnet 3.5 (Preview)
-- Claude Sonnet 3.7 (Preview)
-- Claude Sonnet 3.7 Thinking (Preview)
-- Gemini 2.0 Flash (Preview)
-- GPT-4o
-- o1 (Preview)
-- o3-mini (Preview)
+#### LLM models references
 
-#### [LLM models explained](https://docs.github.com/en/copilot/using-github-copilot/ai-models/changing-the-ai-model-for-copilot-chat#ai-models-for-copilot-chat-1)
-
-![GitHub Copilot Chat models](https://github.com/user-attachments/assets/f2f8d0bd-366b-4ecf-b88d-d092ae7b8b10)
+- [Supported AI models in GitHub Copilot](https://docs.github.com/en/copilot/reference/ai-models/supported-models)
+- [AI model comparison](https://docs.github.com/en/copilot/reference/ai-models/model-comparison)
+- [Changing the AI model for GitHub Copilot Chat](https://docs.github.com/en/copilot/how-tos/use-ai-models/change-the-chat-model?tool=vscode)
+- [Changing the AI model for GitHub Copilot code completion](https://docs.github.com/en/copilot/how-tos/use-ai-models/change-the-completion-model?tool=vscode)
 
 #### Prompt engineering
 
-- [GitHub documentation prompt engineering](https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot)
+- [Prompt engineering for GitHub Copilot Chat](https://docs.github.com/en/copilot/concepts/prompt-engineering)
 - [How to use GitHub Copilot: Prompts, tips, and use cases](https://github.blog/2023-06-20-how-to-write-better-prompts-for-github-copilot/)
 - [Using GitHub Copilot in your IDE: Tips, tricks, and best practices](https://github.blog/2024-03-25-how-to-use-github-copilot-in-your-ide-tips-tricks-and-best-practices/)
-- [A developer's guide to prompt engineering and LLMs](https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot#:~:text=A%20developer%E2%80%99s%20guide%20to%20prompt%20engineering%20and%20LLMs)
-- [GitHub Copilot: The Agent Awakens](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/#agent-mode-available-in-preview-%f0%9f%a4%96)
 
 ### OctoFit tracker fitness application technology stack
 
 We'll be using a modern web application stack:
 
 - **Frontend**: React.js
-- **Backend**: Python with Django REST Framework
+- **Backend**: Python with Django REST API Framework
 - **Database**: MongoDB
 - **Development Environment**: GitHub Codespaces
 
@@ -115,7 +109,8 @@ We'll be using a modern web application stack:
    - Implementing basic models, serializers, urls, and views
 
 4. **Building Core Features**
-   - Activity logging API
+   - Activity logging and tracking
+   - User profiles
    - Team management
    - Leaderboard functionality
 
