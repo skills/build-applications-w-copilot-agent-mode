@@ -70,7 +70,7 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 
 Now, let's actually try running the react application! In the left sidebar, select the `Run and Debug` tab and then press the **Start Debugging** icon.
 
-<img src="https://github.com/user-attachments/assets/8ab08e4e-539a-4ca9-8270-be4b1f0df176"  width=30% height=30%>
+<img alt="Run React Frontend" src="https://github.com/user-attachments/assets/b76a8e82-8435-4cbd-9540-8143756d1c60"  width=30% height=30%>
 
 Go to the running React Frontend url that pops up for port 3000 that looks like the following:
 
