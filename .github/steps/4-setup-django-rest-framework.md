@@ -43,7 +43,7 @@ Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the
 
 Now, let's actually try running the Django application! In the left sidebar, select the `Run and Debug` tab and then press the **Start Debugging** icon.
 
-<img src="https://github.com/user-attachments/assets/baef4dfe-0751-45cb-9e16-8ff26ba9ff58" width=30% height=30%>
+<img alt="Run Django" src="https://github.com/user-attachments/assets/a6c32898-bbeb-41ed-a8c5-488c8a42d507" width=30% height=30%>
 
 Go to the running Django REST api url that pops up for port 8000 that looks like the following:
 
