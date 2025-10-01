@@ -1,5 +1,5 @@
 ---
-applyTo: "octofit-tracker/**"
+applyTo: "octofit-tracker/frontend/**"
 ---
 # Octofit-tracker Fitness App React frontend Guidelines
 
