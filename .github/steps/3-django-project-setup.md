@@ -1,5 +1,8 @@
 ## Step 3: Initialize and create the octofit_db MongoDB database, Django project/app, update Django project/app files, and populate the MongoDB database
 
+> [!NOTE]
+> **Behind the scenes:** This exercise uses custom instruction files that help guide GitHub Copilot's responses. The instruction files `.github/instructions/octofit_tracker_setup_project.instructions.md` and `.github/instructions/octofit_tracker_django_backend.instructions.md` contain Django backend guidelines, MongoDB configuration, and project structure that Copilot references when generating code for this step.
+
 In this step, we will accomplish the following:
 
 - Set up the octofit_db MongoDB database structure.
