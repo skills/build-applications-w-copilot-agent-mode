@@ -16,6 +16,7 @@
         "vscode": {
         "extensions": [
             "github.copilot", // GitHub Copilot + Copilot Chat
+            "github.copilot-chat",
             "markdown-lint.markdownlinter",
             "ms-python.python", // Python extension
             "ms-python.vscode-pylance", // Pylance extension for Python
