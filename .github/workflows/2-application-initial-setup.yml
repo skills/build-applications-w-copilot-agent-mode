@@ -5,7 +5,8 @@ on:
     branches:
       - "build-octofit-app"
     paths:
-      - "octofit-tracker/backend/requirements.txt"
+      - "octofit-tracker/frontend/package.json"
+      - "octofit-tracker/backend/package.json"
 
 permissions:
   contents: read
@@ -18,7 +19,7 @@ env:
 jobs:
   find_exercise:
     name: Find Exercise Issue
-    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.7.0
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.9.0
 
   check_step_work:
     name: Check step work
@@ -30,14 +31,14 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Get response templates
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.7.0
+          ref: v0.9.0
 
       - name: Find last comment
         id: find-last-comment
@@ -55,17 +56,36 @@ jobs:
           comment-id: ${{ steps.find-last-comment.outputs.comment-id }}
           file: exercise-toolkit/markdown-templates/step-feedback/checking-work.md
           edit-mode: replace
-          
+
       # START: Check practical exercise
 
-      # Search for the comment about registration validation
-      - name: Check Django version
-        id: check-django-version
+      - name: Check React 19 dependency
+        id: check-react-19
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
+        uses: skills/action-keyphrase-checker@v1.1.0
         with:
-          text-file: octofit-tracker/backend/requirements.txt
-          keyphrase: 'Django==4.1'
+          text-file: octofit-tracker/frontend/package.json
+          keyphrase: '"react": "^19'
+          minimum-occurrences: 1
+          case-sensitive: false
+
+      - name: Check Express dependency
+        id: check-express
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1.1.0
+        with:
+          text-file: octofit-tracker/backend/package.json
+          keyphrase: '"express"'
+          minimum-occurrences: 1
+          case-sensitive: false
+
+      - name: Check Mongoose dependency
+        id: check-mongoose
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1.1.0
+        with:
+          text-file: octofit-tracker/backend/package.json
+          keyphrase: '"mongoose"'
           minimum-occurrences: 1
           case-sensitive: false
 
@@ -80,8 +100,12 @@ jobs:
           vars: |
             step_number: 2
             results_table:
-              - description: "Check requirements.txt for Django version"
-                passed: ${{ steps.check-django-version.outcome == 'success' }}
+              - description: "Check frontend package.json for React 19"
+                passed: ${{ steps.check-react-19.outcome == 'success' }}
+              - description: "Check backend package.json for Express"
+                passed: ${{ steps.check-express.outcome == 'success' }}
+              - description: "Check backend package.json for Mongoose"
+                passed: ${{ steps.check-mongoose.outcome == 'success' }}
 
       # END: Check practical exercise
 
@@ -99,14 +123,14 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Get response templates
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.7.0
+          ref: v0.9.0
 
       - name: Create comment - step finished
         uses: GrantBirki/comment@v2.1.1

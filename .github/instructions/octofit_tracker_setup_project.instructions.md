@@ -1,99 +1,66 @@
 ---
 applyTo: "**"
 ---
-# Octofit-tracker Fitness App Setup and Structure Guidelines
+# Octofit Tracker Multi-tier Application Setup Guidelines
 
-## Explain the Octofit Tracker App goals and steps
+## Application goals
 
-I want to build an Octofit Tracker app that will include the following:
+Build an Octofit Tracker **multi-tier application** with:
 
-* User authentication and profiles
-* Activity logging and tracking
-* Team creation and management
-* Competitive leader board
-* Personalized workout suggestions
+- User authentication and profiles
+- Activity logging and tracking
+- Team creation and management
+- Competitive leaderboard
+- Personalized workout suggestions
 
-## Never change directories when agent mode is running commands
+## Command execution rules
 
-- Never change directories
-- Instead point to the directory when issuing commands
+- Never change directories in commands.
+- Always reference target paths directly.
 
 ## Forwarded ports
 
-- 8000: public
-- 3000: public
-- 27017: private
+- 8000: public (logic/API tier)
+- 3000: public (presentation tier)
+- 27017: private (data tier)
 
-Do not propose any other ports to forward or to make public
+Do not propose any other ports to forward or make public.
 
-## OctoFit Tracker App structure
-
-The section defines the OctoFit Tracker App's structure
+## Project structure
 
 ```text
 octofit-tracker/
 ├── backend/
-│   ├── venv/
-|   ├── octofit_tracker/
+│   ├── src/
+│   ├── package.json
+│   └── tsconfig.json
 └── frontend/
+    ├── src/
+    └── package.json
 ```
 
-## Create the OctoFit Tracker Python virtual environment 
+## Stack requirements
 
-- To create the virtual environment, run the following command:
-  
-  ```bash
-  python3 -m venv octofit-tracker/backend/venv
-  ```
+### Presentation tier
 
-## OctoFit Tracker Python required packages
+- React 19 with Vite
+- react-router-dom for navigation
+- bootstrap for styling
 
-### Create file octofit-tracker/backend/requirements.txt
+### Logic tier
 
-- add the following to octofit-tracker/backend/requirements.txt
-- Install the Python packages below only for our OctoFit Tracker project
+- Node.js (LTS)
+- Express
+- TypeScript
 
-```text
-Django==4.1.7
-djangorestframework==3.14.0
-django-allauth==0.51.0
-django-cors-headers==4.5.0
-dj-rest-auth==2.2.6
-djongo==1.3.6
-pymongo==3.12
-sqlparse==0.2.4
-stack-data==0.6.3
-sympy==1.12
-tenacity==9.0.0
-terminado==0.18.1
-threadpoolctl==3.5.0
-tinycss2==1.3.0
-tornado==6.4.1
-traitlets==5.14.3
-types-python-dateutil==2.9.0.20240906
-typing_extensions==4.9.0
-tzdata==2024.2
-uri-template==1.3.0
-urllib3==2.2.3
-wcwidth==0.2.13
-webcolors==24.8.0
-webencodings==0.5.1
-websocket-client==1.8.0
-```
+### Data tier
 
-## Python virtual environment requirements
+- MongoDB (`mongodb-org`)
+- Mongoose for data access
 
-Create a requirements.txt with the following Python required packages:
-Install the requirements that we created in requirements.txt.
+## MongoDB service expectations
 
-```bash
-source octofit-tracker/backend/venv/bin/activate 
-pip install -r octofit-tracker/backend/requirements.txt
-```
-
-## mongodb-org service and data creation
-
-- always use `ps aux | grep mongod` for checking for mongod running
-- mongodb-org is the official MongoDB package
-- mongosh is the official client tool
-- Always use Django's ORM, not direct MongoDB scripts to create the database structure and data
+- Always use `ps aux | grep mongod` to check whether mongod is running.
+- `mongodb-org` is the official MongoDB package.
+- `mongosh` is the official client tool.
+- Use Mongoose models from the logic tier for schema/data work instead of ad-hoc raw scripts.

@@ -1,11 +1,12 @@
-name: Step 3 # Django project setup and database test data population
+name: Step 3 # Logic tier setup and MongoDB test data population
 
 on:
   push:
     branches:
       - "build-octofit-app"
     paths:
-      - "octofit-tracker/backend/octofit_tracker/**"
+      - "octofit-tracker/backend/src/**"
+      - "octofit-tracker/backend/package.json"
 
 permissions:
   contents: read
@@ -18,7 +19,7 @@ env:
 jobs:
   find_exercise:
     name: Find Exercise Issue
-    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.7.0
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.9.0
 
   check_step_work:
     name: Check step work
@@ -30,14 +31,14 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Get response templates
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.7.0
+          ref: v0.9.0
 
       - name: Find last comment
         id: find-last-comment
@@ -57,33 +58,33 @@ jobs:
           edit-mode: replace
 
       # START: Check practical exercise
-      - name: Check octofit_db settings.py
-        id: check-octofit-db-settings
+      - name: Check database config file for octofit_db
+        id: check-octofit-db
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
+        uses: skills/action-keyphrase-checker@v1.1.0
         with:
-          text-file: octofit-tracker/backend/octofit_tracker/settings.py
+          text-file: octofit-tracker/backend/src/config/database.ts
           keyphrase: 'octofit_db'
           minimum-occurrences: 1
           case-sensitive: false
 
-      - name: Check djongo settings.py
-        id: check-djongo-settings
+      - name: Check database config file for mongoose
+        id: check-mongoose-config
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
+        uses: skills/action-keyphrase-checker@v1.1.0
         with:
-          text-file: octofit-tracker/backend/octofit_tracker/settings.py
-          keyphrase: 'djongo'
-          minimum-occurrences: 2
+          text-file: octofit-tracker/backend/src/config/database.ts
+          keyphrase: 'mongoose'
+          minimum-occurrences: 1
           case-sensitive: false
 
-      - name: Check populate_db.py
-        id: check-populate-db
+      - name: Check seed script description
+        id: check-seed-script
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
+        uses: skills/action-keyphrase-checker@v1.1.0
         with:
-          text-file: octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py
-          keyphrase: 'Populate the octofit_db database with test data'
+          text-file: octofit-tracker/backend/src/scripts/seed.ts
+          keyphrase: 'Seed the octofit_db database with test data'
           minimum-occurrences: 1
           case-sensitive: false
 
@@ -98,18 +99,18 @@ jobs:
           vars: |
             step_number: 3
             results_table:
-              - description: "Check settings.py for octofit_db"
-                passed: ${{ steps.check-octofit-db-settings.outcome == 'success' }}
-              - description: "Check settings.py for djongo"
-                passed: ${{ steps.check-djongo-settings.outcome == 'success' }}
-              - description: "Check populate_db.py for creation of test data"
-                passed: ${{ steps.check-populate-db.outcome == 'success' }}
+              - description: "Check database.ts for octofit_db"
+                passed: ${{ steps.check-octofit-db.outcome == 'success' }}
+              - description: "Check database.ts for mongoose"
+                passed: ${{ steps.check-mongoose-config.outcome == 'success' }}
+              - description: "Check seed.ts for test data seed description"
+                passed: ${{ steps.check-seed-script.outcome == 'success' }}
 
       # END: Check practical exercise
 
       - name: Fail job if not all checks passed
         if: contains(steps.*.outcome, 'failure')
-        run: exit 1      
+        run: exit 1
 
   post_next_step_content:
     name: Post next step content
@@ -121,14 +122,14 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Get response templates
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.7.0
+          ref: v0.9.0
 
       - name: Create comment - step finished
         uses: GrantBirki/comment@v2.1.1

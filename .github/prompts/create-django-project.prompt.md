@@ -1,16 +1,21 @@
 ---
 mode: 'agent'
-model: GPT-4.1
-description: 'Create a Django project, start it, and run it'
+model: GPT-5.3-Codex
+description: 'Create the Node.js logic tier for the Octofit multi-tier application'
 ---
 
-Your task is to create the Django project in octofit-tracker/backend/octofit_tracker directory using the Python
-virtual environment we already created in directory octofit-tracker/backend/venv which contains all the prerequisites.
+Create the logic tier in `octofit-tracker/backend` for the Octofit Tracker multi-tier application.
 
+Requirements:
 
-To create the Django project follow these steps.
-1. Make sure we are in the root directory and don't change directories
-2. source octofit-tracker/backend/venv/bin/activate
-3. django-admin startproject octofit_tracker in the octofit-tracker/backend directory
-4. python manage.py migrate
-5. Instruct the user to run the django app from the .vscode/launch.json configuration that is in the repository
+1. Do not change directories; use path-qualified commands.
+2. Initialize a TypeScript Node.js API with Express.
+3. Configure scripts for build/dev/start.
+4. Add route handlers for:
+   - `/api/users/`
+   - `/api/teams/`
+   - `/api/activities/`
+   - `/api/leaderboard/`
+   - `/api/workouts/`
+5. Keep server port on `8000`.
+6. Add Codespaces-aware API URL support using `CODESPACE_NAME`.

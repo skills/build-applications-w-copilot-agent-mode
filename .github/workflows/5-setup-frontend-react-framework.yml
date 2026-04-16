@@ -1,4 +1,4 @@
-name: Step 5 # Setup the REACT framework frontend
+name: Step 5 # Setup the React presentation tier
 
 on:
   push:
@@ -18,7 +18,7 @@ env:
 jobs:
   find_exercise:
     name: Find Exercise Issue
-    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.7.0
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.9.0
 
   check_step_work:
     name: Check step work
@@ -30,14 +30,14 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Get response templates
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.7.0
+          ref: v0.9.0
 
       - name: Find last comment
         id: find-last-comment
@@ -58,50 +58,50 @@ jobs:
 
       # START: Check practical exercise
 
-      - name: Check for codespace Django REST API endpoint in Activities.js
+      - name: Check for codespace API endpoint in Activities.js
         id: check-activities
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
+        uses: skills/action-keyphrase-checker@v1.1.0
         with:
           text-file: octofit-tracker/frontend/src/components/Activities.js
           keyphrase: '-8000.app.github.dev/api/activities'
           minimum-occurrences: 1
           case-sensitive: false
 
-      - name: Check for codespace Django REST API endpoint in Leaderboard.js
+      - name: Check for codespace API endpoint in Leaderboard.js
         id: check-leaderboard
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
+        uses: skills/action-keyphrase-checker@v1.1.0
         with:
           text-file: octofit-tracker/frontend/src/components/Leaderboard.js
           keyphrase: '-8000.app.github.dev/api/leaderboard'
           minimum-occurrences: 1
           case-sensitive: false
 
-      - name: Check for codespace Django REST API endpoint in Teams.js
+      - name: Check for codespace API endpoint in Teams.js
         id: check-teams
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
+        uses: skills/action-keyphrase-checker@v1.1.0
         with:
           text-file: octofit-tracker/frontend/src/components/Teams.js
           keyphrase: '-8000.app.github.dev/api/teams'
           minimum-occurrences: 1
           case-sensitive: false
 
-      - name: Check for codespace Django REST API endpoint in Users.js
+      - name: Check for codespace API endpoint in Users.js
         id: check-users
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
+        uses: skills/action-keyphrase-checker@v1.1.0
         with:
           text-file: octofit-tracker/frontend/src/components/Users.js
           keyphrase: '-8000.app.github.dev/api/users'
           minimum-occurrences: 1
           case-sensitive: false
 
-      - name: Check for codespace Django REST API endpoint in Workouts.js
+      - name: Check for codespace API endpoint in Workouts.js
         id: check-workouts
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
+        uses: skills/action-keyphrase-checker@v1.1.0
         with:
           text-file: octofit-tracker/frontend/src/components/Workouts.js
           keyphrase: '-8000.app.github.dev/api/workouts'
@@ -119,15 +119,15 @@ jobs:
           vars: |
             step_number: 5
             results_table:
-              - description: "Check activities for the Django API endpoint"
+              - description: "Check activities for the API endpoint"
                 passed: ${{ steps.check-activities.outcome == 'success' }}
-              - description: "Check leaderboard for the Django API endpoint"
+              - description: "Check leaderboard for the API endpoint"
                 passed: ${{ steps.check-leaderboard.outcome == 'success' }}
-              - description: "Check teams for the Django API endpoint"
+              - description: "Check teams for the API endpoint"
                 passed: ${{ steps.check-teams.outcome == 'success' }}
-              - description: "Check users for the Django API endpoint"
+              - description: "Check users for the API endpoint"
                 passed: ${{ steps.check-users.outcome == 'success' }}
-              - description: "Check workouts for the Django API endpoint"
+              - description: "Check workouts for the API endpoint"
                 passed: ${{ steps.check-workouts.outcome == 'success' }}
 
       # END: Check practical exercise
@@ -146,14 +146,14 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Get response templates
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.7.0
+          ref: v0.9.0
 
       - name: Create comment - step finished
         uses: GrantBirki/comment@v2.1.1
