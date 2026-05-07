@@ -25,7 +25,13 @@ SECRET_KEY = 'django-insecure-gpfs)=@_$bdlu53np31n!0r9&d0h_02ttv%*ciwc%r-v)3#+%5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+# Codespaces/localhost ALLOWED_HOSTS
+import os
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+codespace_name = os.environ.get("CODESPACE_NAME")
+if codespace_name:
+    ALLOWED_HOSTS.append(f"{codespace_name}-8000.app.github.dev")
 
 
 # Application definition
@@ -37,9 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -113,9 +121,37 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
+# Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# CORS settings for React frontend
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+CODESPACE_NAME = os.environ.get("CODESPACE_NAME")
+if CODESPACE_NAME:
+    CORS_ALLOWED_ORIGINS = [f"https://{CODESPACE_NAME}-3000.app.github.dev"]
+else:
+    CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
