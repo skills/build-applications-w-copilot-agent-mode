@@ -26,12 +26,12 @@
         }
     },
     "forwardPorts": [
-        3000,
+        5173,
         8000,
         27017
     ],
     "portsAttributes": {
-        "3000": {
+        "5173": {
             "label": "octofit-tracker-frontend",
             "requireLocalPort": true
         },
