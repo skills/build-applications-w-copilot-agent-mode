@@ -16,12 +16,12 @@ In this step, you will:
 > ```prompt
 > Let's update the React 19 presentation tier for this multi-tier application.
 >
-> - Update src/App.js and src/index.js
-> - Update src/components/Activities.js
-> - Update src/components/Leaderboard.js
-> - Update src/components/Teams.js
-> - Update src/components/Users.js
-> - Update src/components/Workouts.js
+> - Update src/App.jsx and src/main.jsx
+> - Update src/components/Activities.jsx
+> - Update src/components/Leaderboard.jsx
+> - Update src/components/Teams.jsx
+> - Update src/components/Users.jsx
+> - Update src/components/Workouts.jsx
 > - Use react-router-dom for navigation
 > - Use Vite environment variables via `import.meta.env`, for example `import.meta.env.VITE_CODESPACE_NAME`
 > - Use API endpoints under:
@@ -42,10 +42,10 @@ Run the React app from VS Code debug tools and open port `3000`.
 
 Confirm these files include the expected endpoint paths:
 
-- `Activities.js` -> `/api/activities/`
-- `Leaderboard.js` -> `/api/leaderboard/`
-- `Teams.js` -> `/api/teams/`
-- `Users.js` -> `/api/users/`
-- `Workouts.js` -> `/api/workouts/`
+- `Activities.jsx` -> `/api/activities/`
+- `Leaderboard.jsx` -> `/api/leaderboard/`
+- `Teams.jsx` -> `/api/teams/`
+- `Users.jsx` -> `/api/users/`
+- `Workouts.jsx` -> `/api/workouts/`
 
 </details>
