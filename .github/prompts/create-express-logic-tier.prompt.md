@@ -1,6 +1,6 @@
 ---
 mode: 'agent'
-model: GPT-5.3-Codex
+model: GPT-5.5
 description: 'Create the Node.js logic tier for the Octofit multi-tier application'
 ---
 

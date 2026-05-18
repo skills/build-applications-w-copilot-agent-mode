@@ -16,7 +16,7 @@ Use this prompt file:
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> /create-django-project
+> /create-express-logic-tier
 > ```
 
 ### :keyboard: Activity: Configure and seed the data tier
