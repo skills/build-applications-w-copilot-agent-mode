@@ -23,8 +23,9 @@ In this step, you will:
 > - Update src/components/Users.js
 > - Update src/components/Workouts.js
 > - Use react-router-dom for navigation
+> - Use Vite environment variables via `import.meta.env`, for example `import.meta.env.VITE_CODESPACE_NAME`
 > - Use API endpoints under:
->   https://$REACT_APP_CODESPACE_NAME-8000.app.github.dev/api/[component]/
+>   https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/[component]/
 > - Keep compatibility with paginated and array responses
 > ```
 
