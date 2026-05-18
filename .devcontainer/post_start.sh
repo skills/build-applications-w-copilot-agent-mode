@@ -81,9 +81,14 @@ for ((attempt=1; attempt<=MAX_START_TRIES; attempt++)); do
   fi
 
   echo "Cleaning up before next attempt..."
-  pid=$(mongod_pid)
-  if [ -n "$pid" ]; then
-    kill "$pid" || true
+  cleaned_up=false
+  while IFS= read -r pid; do
+    if [ -n "$pid" ]; then
+      kill "$pid" || true
+      cleaned_up=true
+    fi
+  done < <(mongod_pid)
+  if [ "$cleaned_up" = true ]; then
     sleep 2
   fi
 done
