@@ -33,7 +33,7 @@ In this step, you will:
 
 ### :keyboard: Activity: Run and verify the presentation tier
 
-Run the React app from VS Code debug tools and open port `3000`.
+Run the React app with the Vite dev server (for example, `npm run dev`) and open port `5173`.
 
 1. Commit and push your changes.
 
