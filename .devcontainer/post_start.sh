@@ -12,7 +12,7 @@ die() {
 
 echo "Setting multi-tier application port visibility..."
 gh cs ports visibility 8000:public -c "$CODESPACE_NAME" || die "Failed to set 8000 public"
-gh cs ports visibility 3000:public -c "$CODESPACE_NAME" || die "Failed to set 3000 public"
+gh cs ports visibility 5173:public -c "$CODESPACE_NAME" || die "Failed to set 5173 public"
 gh cs ports visibility 27017:private -c "$CODESPACE_NAME" || die "Failed to set 27017 private"
 
 echo "Preparing MongoDB data dir..."

@@ -61,7 +61,7 @@ jobs:
       - name: Check server.ts uses codespace env variable
         id: check-codespace-name
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1.1.0
+        uses: skills/action-keyphrase-checker@v2.0.0
         with:
           text-file: octofit-tracker/backend/src/server.ts
           keyphrase: 'CODESPACE_NAME'
@@ -71,7 +71,7 @@ jobs:
       - name: Check server.ts includes codespace URL pattern
         id: check-codespace-url
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1.1.0
+        uses: skills/action-keyphrase-checker@v2.0.0
         with:
           text-file: octofit-tracker/backend/src/server.ts
           keyphrase: '-8000.app.github.dev'

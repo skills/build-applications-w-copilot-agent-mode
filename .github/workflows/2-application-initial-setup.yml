@@ -62,7 +62,7 @@ jobs:
       - name: Check React 19 dependency
         id: check-react-19
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1.1.0
+        uses: skills/action-keyphrase-checker@v2.0.0
         with:
           text-file: octofit-tracker/frontend/package.json
           keyphrase: '"react": "^19'
@@ -72,7 +72,7 @@ jobs:
       - name: Check Express dependency
         id: check-express
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1.1.0
+        uses: skills/action-keyphrase-checker@v2.0.0
         with:
           text-file: octofit-tracker/backend/package.json
           keyphrase: '"express"'
@@ -82,7 +82,7 @@ jobs:
       - name: Check Mongoose dependency
         id: check-mongoose
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1.1.0
+        uses: skills/action-keyphrase-checker@v2.0.0
         with:
           text-file: octofit-tracker/backend/package.json
           keyphrase: '"mongoose"'

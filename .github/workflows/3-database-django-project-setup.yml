@@ -61,7 +61,7 @@ jobs:
       - name: Check database config file for octofit_db
         id: check-octofit-db
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1.1.0
+        uses: skills/action-keyphrase-checker@v2.0.0
         with:
           text-file: octofit-tracker/backend/src/config/database.ts
           keyphrase: 'octofit_db'
@@ -71,7 +71,7 @@ jobs:
       - name: Check database config file for mongoose
         id: check-mongoose-config
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1.1.0
+        uses: skills/action-keyphrase-checker@v2.0.0
         with:
           text-file: octofit-tracker/backend/src/config/database.ts
           keyphrase: 'mongoose'
@@ -81,7 +81,7 @@ jobs:
       - name: Check seed script description
         id: check-seed-script
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1.1.0
+        uses: skills/action-keyphrase-checker@v2.0.0
         with:
           text-file: octofit-tracker/backend/src/scripts/seed.ts
           keyphrase: 'Seed the octofit_db database with test data'

@@ -22,7 +22,7 @@ In this step, you will initialize a modern **multi-tier application** foundation
 > - Initialize React 19 in the frontend with Vite
 > - Initialize backend package.json for Node.js + Express + TypeScript
 > - Add mongoose for MongoDB data access
-> - Keep ports at 3000 (frontend), 8000 (backend), and 27017 (MongoDB)
+> - Keep ports at 5173 (frontend), 8000 (backend), and 27017 (MongoDB)
 > ```
 
 1. Commit and push to `build-octofit-app`.

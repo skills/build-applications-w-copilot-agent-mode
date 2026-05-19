@@ -6,7 +6,7 @@ You will build OctoFit Tracker using:
 - Data tier: MongoDB
 
 Ports used in this exercise:
-- 3000 (public)
+- 5173 (public)
 - 8000 (public)
 - 27017 (private)
 

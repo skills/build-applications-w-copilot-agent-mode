@@ -21,7 +21,7 @@ Build an Octofit Tracker **multi-tier application** with:
 ## Forwarded ports
 
 - 8000: public (logic/API tier)
-- 3000: public (presentation tier)
+- 5173: public (presentation tier)
 - 27017: private (data tier)
 
 Do not propose any other ports to forward or make public.
