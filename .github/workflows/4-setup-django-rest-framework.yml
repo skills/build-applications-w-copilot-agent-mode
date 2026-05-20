@@ -1,11 +1,11 @@
-name: Step 4 # Setup the Django REST API framework
+name: Step 4 # Setup API hosting for the logic tier
 
 on:
   push:
     branches:
       - "build-octofit-app"
     paths:
-      - "octofit-tracker/backend/octofit_tracker/**"
+      - "octofit-tracker/backend/src/**"
 
 permissions:
   contents: read
@@ -18,7 +18,7 @@ env:
 jobs:
   find_exercise:
     name: Find Exercise Issue
-    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.7.0
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.9.0
 
   check_step_work:
     name: Check step work
@@ -30,14 +30,14 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Get response templates
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.7.0
+          ref: v0.9.0
 
       - name: Find last comment
         id: find-last-comment
@@ -58,22 +58,22 @@ jobs:
 
       # START: Check practical exercise
 
-      - name: Check codespace url has been added to settings.py
-        id: check-codespace-url-settings
+      - name: Check server.ts uses codespace env variable
+        id: check-codespace-name
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
+        uses: skills/action-keyphrase-checker@v2.0.0
         with:
-          text-file: octofit-tracker/backend/octofit_tracker/settings.py
-          keyphrase: '-8000.app.github.dev'
+          text-file: octofit-tracker/backend/src/server.ts
+          keyphrase: 'CODESPACE_NAME'
           minimum-occurrences: 1
           case-sensitive: false
 
-      - name: Check for codespace url has been added to urls.py
-        id: check-codespace-url-urls
+      - name: Check server.ts includes codespace URL pattern
+        id: check-codespace-url
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
+        uses: skills/action-keyphrase-checker@v2.0.0
         with:
-          text-file: octofit-tracker/backend/octofit_tracker/urls.py
+          text-file: octofit-tracker/backend/src/server.ts
           keyphrase: '-8000.app.github.dev'
           minimum-occurrences: 1
           case-sensitive: false
@@ -89,10 +89,10 @@ jobs:
           vars: |
             step_number: 4
             results_table:
-              - description: "Check settings.py for codespace URL"
-                passed: ${{ steps.check-codespace-url-settings.outcome == 'success' }}
-              - description: "Check urls.py for codespace URL"
-                passed: ${{ steps.check-codespace-url-urls.outcome == 'success' }}
+              - description: "Check server.ts for CODESPACE_NAME"
+                passed: ${{ steps.check-codespace-name.outcome == 'success' }}
+              - description: "Check server.ts for codespace URL"
+                passed: ${{ steps.check-codespace-url.outcome == 'success' }}
 
       # END: Check practical exercise
 
@@ -110,14 +110,14 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Get response templates
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.7.0
+          ref: v0.9.0
 
       - name: Create comment - step finished
         uses: GrantBirki/comment@v2.1.1

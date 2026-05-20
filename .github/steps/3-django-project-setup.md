@@ -1,119 +1,44 @@
-## Step 3: Initialize and create the octofit_db MongoDB database, Django project/app, update Django project/app files, and populate the MongoDB database
+## Step 3: Build the logic and data tiers for the multi-tier application
 
 > [!NOTE]
-> **Behind the scenes:** This exercise uses custom instruction files that help guide GitHub Copilot's responses. The instruction files `.github/instructions/octofit_tracker_setup_project.instructions.md` and `.github/instructions/octofit_tracker_django_backend.instructions.md` contain Django backend guidelines, MongoDB configuration, and project structure that Copilot references when generating code for this step.
+> **Behind the scenes:** Custom instructions and prompt files guide Copilot while building the logic and data tiers.
 
-In this step, we will accomplish the following:
+In this step, you will implement the backend of the **multi-tier application**:
 
-- Set up the octofit_db MongoDB database structure.
-- Update the octofit-tracker/backend/octofit_tracker app files:
-  - settings, models, serializers, urls, views, tests, and admin files.
-- Populate the octofit_db database with test data.
-- Verify the test data is populated in the octofit_db database.
+- Configure MongoDB connection for `octofit_db`.
+- Create Express routes for users, teams, activities, leaderboard, and workouts.
+- Add a seed script to populate test data.
 
-Copy and paste the following prompt(s) in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
+### :keyboard: Activity: Scaffold the logic tier
 
-> [!NOTE]
-> - Keep in mind that the Copilot agent mode is conversational so it may ask you questions and you can ask it questions too.
-> - Wait a moment for the Copilot to respond and press the `Continue` button to execute commands presented by Copilot agent mode.
-> - Keep files created and updated by Copilot agent mode until it is finished.
-> - Agent mode has the ability to evaluate your code base and execute commands and add/refactor/delete parts of your code base and automatically self heal if it or you makes a mistake in the process.
-
-**Open up a new Copilot Chat session by hitting the plus `+` icon in the Copilot Chat pane.**
-
-### :keyboard: Activity: Setup the Python Django project/app
-
-In this activity we will leverage a feature in VS Code called prompt files. A prompt file that has been created by the IT department for us to create our Django project application. Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
-
-What are prompt files?
-
-Prompt files let you define reusable prompts for common and repeatable development tasks in a Markdown file.
-Prompt files are standalone prompts that you can run directly in chat. You can include task-specific context and guidelines about how the task should be performed.
-Combine prompt files with custom instructions to ensure consistent execution of complex tasks.
-
-See the [VS Code Docs: Prompt Files](https://code.visualstudio.com/docs/copilot/customization/overview#_prompt-files) page for more information.
+Use this prompt file:
 
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
-> /create-django-project
->```
+> /create-express-logic-tier
+> ```
 
-> [!NOTE]
-> - Wait a moment for the Copilot to respond and press the `Continue` button to execute each command presented by Copilot agent mode.
-> - Keep files created and updated until the Copilot agent mode has finished.
+### :keyboard: Activity: Configure and seed the data tier
 
-> [!IMPORTANT]
-> - Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel** when you see this image.
-
-<img src="https://github.com/user-attachments/assets/02a875c1-19a4-417b-ab03-aefbbe2186d4" width=50% height=50%>
-
-### :keyboard: Activity: Initialize, create, and populate the octofit_db MongoDB database
-
-Let's continue to leverage a prompt file that has been created by the IT department for us to initialize and create the octofit_db MongoDB database. Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
+Use this prompt file:
 
 > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
 >
 > ```prompt
->
 > /init-populate-octofit_db
 > ```
 
-### :keyboard: Activity: Let's create a prompt file that will update the Python Django project/app files
+1. Commit and push your backend changes.
 
-Now let's create a prompt file of our own that we can share with other staff to develop to build the octofit-tracker app. Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
-
-> ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
->
-> ```prompt
-> Let's add the following to a prompt file called `update-octofit-tracker-app.prompt.md` in the `.github/prompts` directory and add mode: 'agent' and model: GPT-4.1 to the prompt file.
->
-> # Django App Updates
->
-> - All Django project files are in the `octofit-tracker/backend/octofit_tracker` directory.
->
-> 1. Update `settings.py` for MongoDB connection and CORS.
-> 2. Update `models.py`, `serializers.py`, `urls.py`, `views.py`, `tests.py`, and `admin.py` to support users, teams, activities, leaderboard, and workouts collections.
-> 3. Ensure `/` points to the api and `api_root` is present in `urls.py`.
-> ```
-
-> [!TIP]
-> Use prompt files to define repeatable tasks and workflows.
->
-> When writing prompts focus on **WHAT** needs to be done. You can reference instructions for the **HOW**.
-
-See the [VS Code Docs: Prompt Files](https://code.visualstudio.com/docs/copilot/customization/overview#_prompt-files) page for more information.
-
-### :keyboard: Activity: Let's use the prompt file to update the Python Django project/app files
-
-Copy/paste the following prompt in the GitHub Copilot Chat and select the "Agent" instead of "Ask" or "Edit" from the drop down where you are inserting the prompt.
-
-> ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
->
-> ```prompt
-> /update-octofit-tracker-app
-> ```
->
-
-> [!IMPORTANT]
-> - Don't start the Python Django app in the way that GitHub Copilot agent mode suggests hit **cancel** when you see this image.
-
-<img src="https://github.com/user-attachments/assets/02a875c1-19a4-417b-ab03-aefbbe2186d4" width=50% height=50%>
-
-1. Now that we have created the database structure, updated our Django project files, and populated the database, let's check our changes into our `build-octofit-app` branch.
-
-1. With our new changes complete, please **commit** and **push** the changes to GitHub.
-
-1. Wait a moment for Mona to check your work, provide feedback, and share the next lesson so we can keep working!
+1. Wait for Mona to validate and unlock the next step.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
 
-If you don't get feedback, here are some things to check:
+Confirm these files include expected content:
 
-- Make sure your commit changes were made for the following files to the branch `build-octofit-app` and pushed/synchronized to GitHub:
-  - `octofit-tracker/backend/octofit_tracker/settings.py`
-  - `octofit-tracker/backend/octofit_tracker/management/commands/populate_db.py`
-- If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
+- `octofit-tracker/backend/src/config/database.ts` includes `octofit_db` and `mongoose`.
+- `octofit-tracker/backend/src/scripts/seed.ts` includes a seed command description.
 
 </details>
