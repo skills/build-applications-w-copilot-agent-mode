@@ -65,7 +65,7 @@ jobs:
         uses: skills/action-keyphrase-checker@v2.0.0
         with:
           text-file: octofit-tracker/frontend/package.json
-          keyphrase: '"react": "^19'
+          keyphrase: '"react": "\^19'
           minimum-occurrences: 1
           case-sensitive: false
 
