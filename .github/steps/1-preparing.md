@@ -8,9 +8,19 @@ In this exercise, you will build a **modern multi-tier application** for OctoFit
 - **Logic tier:** Node.js + Express + TypeScript
 - **Data tier:** MongoDB
 
-### :keyboard: Activity: Create and publish your working branch
+### :keyboard: Activity: Set up Codespaces and publish your working branch
 
-1. Open your Codespace for your repository copy.
+To work on this exercise, first create a Codespace for **your copy** of the repository.
+
+1. Open the button below in a new tab to launch the **Create Codespace** page. Use the default configuration.
+
+   [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/{{full_repo_name}}?quickstart=1)
+
+1. Confirm the **Repository** field is your copy of the exercise, not the original, then click the green **Create Codespace** button.
+   - ✅ Your copy: `{{full_repo_name}}`
+   - ❌ Original: `skills/build-applications-w-copilot-agent-mode`
+
+1. Wait for Visual Studio Code to load in your browser and extensions to finish installing.
 
 1. Open Copilot Chat and switch to **Agent** mode.
 
