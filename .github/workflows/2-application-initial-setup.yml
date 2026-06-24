@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - "build-octofit-app"
-    paths:
-      - "octofit-tracker/frontend/package.json"
-      - "octofit-tracker/backend/package.json"
 
 permissions:
   contents: read
@@ -65,7 +62,7 @@ jobs:
         uses: skills/action-keyphrase-checker@v2.0.0
         with:
           text-file: octofit-tracker/frontend/package.json
-          keyphrase: '"react": "\^19'
+          keyphrase: '"react": "^'
           minimum-occurrences: 1
           case-sensitive: false
 

@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - "build-octofit-app"
-    paths:
-      - "octofit-tracker/backend/src/**"
-      - "octofit-tracker/backend/package.json"
 
 permissions:
   contents: read
