@@ -7,10 +7,7 @@ const connectionString = process.env.MONGODB_URI || 'mongodb://localhost:27017/o
  */
 async function seedDatabase() {
   try {
-    await mongoose.connect(connectionString, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(connectionString);
 
     console.log('Connected to octofit_db');
 

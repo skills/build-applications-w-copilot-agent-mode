@@ -31,3 +31,6 @@ yarn-error.log*
 # Python files
 *.pyc
 __pycache__/
+
+# Local tool caches
+.impeccable/
