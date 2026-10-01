@@ -22,6 +22,25 @@ const resourceModels = {
   workouts: 'workout',
 };
 
+function resourceModelFile(root, resource) {
+  const modelName = resourceModels[resource];
+  const modelFiles = listFiles(root, 'octofit-tracker/backend/src/models', /\.(?:ts|js)$/);
+  const file = modelFiles.find((candidate) =>
+    path.basename(candidate, path.extname(candidate)).toLowerCase() === modelName,
+  );
+  assertValid(file, `Missing ${resource} model file`);
+  return readText(root, file);
+}
+
+function resourceComponent(root, resource) {
+  const files = listFiles(root, 'octofit-tracker/frontend/src', /\.(?:jsx|tsx)$/);
+  const file = files.find((candidate) =>
+    path.basename(candidate, path.extname(candidate)).toLowerCase().startsWith(resource),
+  );
+  assertValid(file, `Missing ${resource} React component`);
+  return { file, text: readText(root, file) };
+}
+
 export const checks = {
   'step2-react': (root) => {
     const packageJson = readJson(root, 'octofit-tracker/frontend/package.json');
@@ -50,13 +69,14 @@ export const checks = {
     );
   },
   'step3-models': (root) => {
-    const modelFiles = listFiles(root, 'octofit-tracker/backend/src/models', /\.(?:ts|js)$/);
-    const modelText = modelFiles.map((file) => `${file}\n${readText(root, file)}`).join('\n');
-    assertValid(modelFiles.length >= resources.length, 'Create a Mongoose model file for each application resource');
     for (const resource of resources) {
-      assertValid(new RegExp(resourceModels[resource], 'i').test(modelText), `Missing ${resource} model`);
+      const modelText = resourceModelFile(root, resource);
+      requirePatterns(
+        modelText,
+        [/\bSchema\s*\(/i, /\bmodel\s*\(/i],
+        `${resource} model file`,
+      );
     }
-    requirePatterns(modelText, [/Schema/i, /model\s*\(/i], 'Mongoose models');
   },
   'step3-seed': (root) => {
     const seed = readText(root, 'octofit-tracker/backend/src/scripts/seed.ts');
@@ -71,15 +91,23 @@ export const checks = {
       'Seed script',
     );
     for (const resource of resources) {
-      assertValid(new RegExp(resourceModels[resource], 'i').test(seed), `Seed script does not populate ${resource}`);
+      const modelName = resourceModels[resource];
+      assertValid(
+        new RegExp(`\\b${modelName}\\s*\\.\\s*(?:insertMany|create)\\s*\\(`, 'i').test(seed) ||
+          new RegExp(`new\\s+${modelName}\\s*\\([^)]*\\)\\s*\\.\\s*save\\s*\\(`, 'is').test(seed),
+        `Seed script does not write ${resource} data`,
+      );
     }
   },
   'step3-routes': (root) => {
     const backend = combinedText(root, 'octofit-tracker/backend/src');
     for (const resource of resources) {
       assertValid(
-        new RegExp(`/api/${resource}/?`, 'i').test(backend),
-        `Backend does not expose /api/${resource}/`,
+        new RegExp(
+          `\\b(?:app|router)\\s*\\.\\s*(?:use|get|post|put|patch|delete|all)\\s*\\(\\s*['"\`]\\/api\\/${resource}\\/?['"\`]`,
+          'i',
+        ).test(backend),
+        `Backend does not register an Express route for /api/${resource}/`,
       );
     }
   },
@@ -98,26 +126,32 @@ export const checks = {
     requireDependency(packageJson, 'bootstrap');
   },
   'step5-components': (root) => {
-    const frontendFiles = listFiles(root, 'octofit-tracker/frontend/src', /\.(?:jsx|tsx)$/);
-    const names = frontendFiles.map((file) => path.basename(file).toLowerCase());
     for (const resource of resources) {
-      assertValid(
-        names.some((name) => name.startsWith(resource.toLowerCase())),
-        `Missing ${resource} React component`,
-      );
+      resourceComponent(root, resource);
     }
     readText(root, 'octofit-tracker/frontend/src/App.jsx');
     readText(root, 'octofit-tracker/frontend/src/main.jsx');
   },
   'step5-api-config': (root) => {
     const frontend = combinedText(root, 'octofit-tracker/frontend/src');
+    const app = readText(root, 'octofit-tracker/frontend/src/App.jsx');
     requirePatterns(
       frontend,
       [/import\.meta\.env/, /VITE_CODESPACE_NAME/, /localhost:8000/, /react-router-dom/i],
       'React presentation tier',
     );
     for (const resource of resources) {
-      assertValid(new RegExp(`/api/${resource}/?`, 'i').test(frontend), `Frontend does not use /api/${resource}/`);
+      const { file, text } = resourceComponent(root, resource);
+      assertValid(
+        new RegExp(`/api/${resource}/?`, 'i').test(text) && /\b(?:fetch|axios)\b/i.test(text),
+        `${file} must request /api/${resource}/`,
+      );
+      const componentName = path.basename(file, path.extname(file));
+      assertValid(
+        new RegExp(`\\b${componentName}\\b`).test(app) &&
+          new RegExp(`(?:path\\s*=\\s*|path\\s*:)\\s*['"\`]\\/?${resource}\\/?['"\`]`, 'i').test(app),
+        `App.jsx must route /${resource} to ${componentName}`,
+      );
     }
     assertValid(!/https:\/\/\$\{[^}]*VITE_CODESPACE_NAME[^}]*\}-8000/.test(frontend) || /localhost:8000/.test(frontend),
       'Codespaces API URL must include a localhost fallback');

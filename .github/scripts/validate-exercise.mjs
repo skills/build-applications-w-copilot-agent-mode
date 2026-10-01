@@ -14,6 +14,36 @@ import {
 const numberedStepPattern = /^\.github\/steps\/(\d+)-.+\.md$/;
 const workflowPattern = /^\.github\/workflows\/(.+)\.yml$/;
 
+function withoutComments(content) {
+  return content.replace(/^\s*#.*$/gm, '');
+}
+
+function jobBlocks(content) {
+  const jobs = new Map();
+  const matches = [...content.matchAll(/^ {2}([A-Za-z0-9_-]+):\s*$/gm)]
+    .filter((match) => content.slice(0, match.index).trimEnd().endsWith('jobs:') ||
+      /^ {2}[A-Za-z0-9_-]+:\s*$/m.test(content.slice(match.index)));
+
+  for (let index = 0; index < matches.length; index += 1) {
+    const match = matches[index];
+    const end = matches[index + 1]?.index ?? content.length;
+    const block = content.slice(match.index, end);
+    if (/^ {4}(?:name|uses|runs-on|if|needs|permissions|steps):/m.test(block)) {
+      jobs.set(match[1], block);
+    }
+  }
+  return jobs;
+}
+
+function needsForJob(block) {
+  const inline = block.match(/^ {4}needs:\s*\[([^\]]*)\]/m);
+  if (inline) {
+    return inline[1].split(',').map((value) => value.trim()).filter(Boolean);
+  }
+  const multiline = block.match(/^ {4}needs:\s*\n((?:^ {6}-\s*\S+\s*$\n?)*)/m);
+  return multiline ? [...multiline[1].matchAll(/^ {6}-\s*(\S+)/gm)].map((match) => match[1]) : [];
+}
+
 export function validateExercise(root = process.cwd()) {
   const stepFiles = listFiles(root, '.github/steps', /^\S+\.md$/)
     .filter((file) => numberedStepPattern.test(file))
@@ -78,13 +108,34 @@ export function validateExercise(root = process.cwd()) {
     }],
     ['Workflow safety', () => {
       for (const file of workflowFiles) {
-        const content = readText(root, file);
-        assertValid(!/^permissions:\n(?: {2}\w+:\s*write\n?)+/m.test(content),
-          `${file} grants write permissions at workflow scope`);
-        if (/edit-mode:\s*replace/.test(content)) {
-          assertValid(/comment-author:\s*github-actions\[bot\]/.test(content) &&
-            /body-includes:\s*["']<!-- skills-step-feedback -->["']/.test(content),
-          `${file} replaces an issue comment without author and marker scoping`);
+        const content = withoutComments(readText(root, file));
+        const topLevelPermissions = content.match(/^permissions:\s*(.*)\n((?:^ {2}.+\n?)*)/m);
+        if (topLevelPermissions) {
+          const permissionText = `${topLevelPermissions[1]}\n${topLevelPermissions[2]}`;
+          assertValid(
+            !/\bwrite-all\b|(?:^|[,{])\s*[\w-]+\s*:\s*write\b/m.test(permissionText),
+            `${file} grants write permissions at workflow scope`,
+          );
+        }
+
+        const steps = content.split(/(?=^ {6}-\s+(?:name|id|uses):)/m);
+        const findComments = new Set();
+        for (const step of steps) {
+          if (/uses:\s*peter-evans\/find-comment@/.test(step) &&
+              /comment-author:\s*github-actions\[bot\]/.test(step) &&
+              /body-includes:\s*["']<!-- skills-step-feedback -->["']/.test(step)) {
+            const id = step.match(/^ {8}id:\s*([A-Za-z0-9_-]+)/m)?.[1];
+            if (id) {
+              findComments.add(id);
+            }
+          }
+        }
+        for (const step of steps.filter((candidate) => /edit-mode:\s*replace/.test(candidate))) {
+          const sourceId = step.match(/comment-id:\s*\$\{\{\s*steps\.([A-Za-z0-9_-]+)\.outputs\.comment-id\s*\}\}/)?.[1];
+          assertValid(
+            sourceId && findComments.has(sourceId),
+            `${file} replaces an issue comment without a matching scoped find-comment step`,
+          );
         }
       }
 
@@ -92,9 +143,29 @@ export function validateExercise(root = process.cwd()) {
       assertValid(/!github\.event\.repository\.is_template/.test(start), 'Start workflow lacks template guard');
       const finalWorkflow = workflowFiles.find((file) => /-last-step\.yml$/.test(file));
       assertValid(finalWorkflow, 'Final workflow is missing');
-      const finalContent = readText(root, finalWorkflow);
-      assertValid(/github\.event\.pull_request\.merged\s*==\s*true/.test(finalContent),
-        'Final workflow must require a merged pull request');
+      const finalContent = withoutComments(readText(root, finalWorkflow));
+      const jobs = jobBlocks(finalContent);
+      const mergeCondition = /github\.event\.pull_request\.merged\s*==\s*true/;
+      const gated = new Map();
+      const isGated = (name, visiting = new Set()) => {
+        if (gated.has(name)) return gated.get(name);
+        if (visiting.has(name)) return false;
+        const block = jobs.get(name);
+        if (!block) return false;
+        if (mergeCondition.test(block.match(/^ {4}if:\s*(.+)$/m)?.[1] ?? '')) {
+          gated.set(name, true);
+          return true;
+        }
+        const next = new Set(visiting).add(name);
+        const needs = needsForJob(block);
+        const result = needs.length > 0 && needs.every((dependency) => isGated(dependency, next));
+        gated.set(name, result);
+        return result;
+      };
+      assertValid(
+        jobs.size > 0 && [...jobs.keys()].every((name) => isGated(name)),
+        'Every final workflow job must require a merged pull request directly or through gated dependencies',
+      );
     }],
     ['Placeholder cleanup', () => {
       const files = ['README.md', ...listFiles(root, '.github', /\.(?:md|yml|yaml)$/)];

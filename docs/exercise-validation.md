@@ -17,6 +17,13 @@ The negative fixture suite confirms that:
 - A fresh template cannot pass Step 2 before the learner creates the application.
 - A placeholder seed script cannot pass Step 3.
 - Frontend API configuration without a localhost fallback cannot pass Step 5.
+- Every resource defines its own Mongoose schema and model.
+- Seed data is written for every required resource.
+- API path strings without Express route registration are rejected.
+- Every resource view requests its own endpoint and is connected to React Router.
+- Mixed read/write workflow-level permissions are rejected.
+- Every replace-mode comment update traces to its own safely scoped lookup.
+- A merge expression in an unused comment cannot satisfy final workflow gating.
 
 ## Fresh-template publication check
 
