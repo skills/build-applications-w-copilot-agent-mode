@@ -9,23 +9,60 @@ on:
     types:
       - closed
 
-permissions:
-  contents: write
-  actions: write
-  issues: write
-
 env:
   REVIEW_FILE: ".github/steps/x-review.md"
 
 jobs:
   find_exercise:
+    if: github.event.pull_request.merged == true
     name: Find Exercise Issue
+    permissions:
+      contents: read
+      issues: read
     uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.9.0
+
+  validate_application:
+    if: github.event.pull_request.merged == true
+    name: Validate completed application
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout merged application
+        uses: actions/checkout@v6
+
+      - name: Validate exercise structure
+        run: node .github/scripts/validate-exercise.mjs
+
+      - name: Validate learner outcomes
+        run: |
+          for check in \
+            step2-react step2-express step2-mongoose \
+            step3-database step3-models step3-seed step3-routes \
+            step4-hosting step4-api \
+            step5-dependencies step5-components step5-api-config
+          do
+            node .github/scripts/grade-step.mjs "$check"
+          done
+
+      - name: Install application dependencies
+        run: |
+          npm install --prefix octofit-tracker/backend --ignore-scripts
+          npm install --prefix octofit-tracker/frontend --ignore-scripts
+
+      - name: Build application tiers
+        run: |
+          npm run build --prefix octofit-tracker/backend
+          npm run build --prefix octofit-tracker/frontend
 
   post_review_content:
     name: Post review content
-    needs: [find_exercise]
+    needs: [find_exercise, validate_application]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
+      issues: write
     env:
       ISSUE_REPOSITORY: ${{ github.repository }}
       ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
@@ -62,7 +99,10 @@ jobs:
 
   finish_exercise:
     name: Finish Exercise
-    needs: [find_exercise, post_review_content]
+    needs: [find_exercise, validate_application, post_review_content]
+    permissions:
+      contents: write
+      issues: write
     uses: skills/exercise-toolkit/.github/workflows/finish-exercise.yml@v0.9.0
     with:
       issue-url: ${{ needs.find_exercise.outputs.issue-url }}

@@ -8,7 +8,11 @@ In this exercise, you will build a **modern multi-tier application** for OctoFit
 - **Logic tier:** Node.js + Express + TypeScript
 - **Data tier:** MongoDB
 
-### :keyboard: Activity: Set up Codespaces and publish your working branch
+### 📖 Theory:
+
+GitHub Skills uses branch events to detect progress. Creating a dedicated branch keeps your exercise work isolated from `main`, while publishing it gives the step workflows a branch event they can validate. Copilot agent mode can perform both Git operations while explaining what changed.
+
+### ⌨️ Activity: Set up Codespaces and publish your working branch
 
 To work on this exercise, first create a Codespace for **your copy** of the repository.
 

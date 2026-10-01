@@ -1,7 +1,7 @@
 # Build applications with GitHub Copilot agent mode
 
 <!-- ![](../../actions/workflows/0-start-course.yml/badge.svg?branch=main) -->
-<img src="https://github.com/user-attachments/assets/1b3ea5df-f18d-4ed8-9ae6-f96dc1861818" alt="octofit-tracker" width="300"/>
+<img src=".github/images/octofit-tracker.png" alt="OctoFit Tracker application dashboard" width="300"/>
 
 _Build an application with GitHub Copilot agent mode in less than an hour._
 
@@ -20,7 +20,7 @@ In this exercise, we will prompt GitHub Copilot agent mode to create a complete 
 In this exercise, you will:
 
 1. Start up a preconfigured development environment for making a multi-tier application.
-1. Prompt in GitHub Copilot Chat and select the edit tab and select agent mode from the edit/agent drop-down.
+1. Open GitHub Copilot Chat and select **Agent** mode from the mode picker.
 1. In this exercise I primarily used the latest default LLM.
 1. Try other LLM models to see other output.
 1. For each step open up a new Copilot Chat session by hitting the plus `+` icon in the Copilot Chat pane.
@@ -40,7 +40,7 @@ When copying the exercise, we recommend the following settings:
 
 - We recommend creating a public repository, since private repositories will use Actions minutes.
 
-If the exercise isn't ready in 20 seconds, please check the "Actions" tab of your repository (or visit `https://github.com/<YOUR-USERNAME>/<YOUR-REPO>/actions`).
+If the exercise isn't ready in 20 seconds, open the **Actions** tab in your copied repository.
 
 - Check to see if a job is running. Sometimes it simply takes a bit longer.
 

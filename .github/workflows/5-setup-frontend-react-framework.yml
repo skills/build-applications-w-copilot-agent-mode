@@ -5,23 +5,24 @@ on:
     branches:
       - "build-octofit-app"
 
-permissions:
-  contents: read
-  actions: write
-  issues: write
-
 env:
   STEP_6_FILE: ".github/steps/6-copilot-on-github.md"
 
 jobs:
   find_exercise:
     name: Find Exercise Issue
+    permissions:
+      contents: read
+      issues: read
     uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.9.0
 
   check_step_work:
     name: Check step work
     runs-on: ubuntu-latest
     needs: [find_exercise]
+    permissions:
+      contents: read
+      issues: write
     env:
       ISSUE_REPOSITORY: ${{ github.repository }}
       ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
@@ -43,6 +44,8 @@ jobs:
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
+          comment-author: github-actions[bot]
+          body-includes: "<!-- skills-step-feedback -->"
           direction: last
 
       - name: Update comment - checking work
@@ -51,60 +54,36 @@ jobs:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
           comment-id: ${{ steps.find-last-comment.outputs.comment-id }}
-          file: exercise-toolkit/markdown-templates/step-feedback/checking-work.md
+          file: .github/step-feedback/checking-work.md
           edit-mode: replace
 
       # START: Check practical exercise
 
-      - name: Check for codespace API endpoint in Activities.jsx
-        id: check-activities
+      - name: Check frontend dependencies
+        id: check-dependencies
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v2.0.0
-        with:
-          text-file: octofit-tracker/frontend/src/components/Activities.jsx
-          keyphrase: '-8000.app.github.dev/api/activities'
-          minimum-occurrences: 1
-          case-sensitive: false
+        run: node .github/scripts/grade-step.mjs step5-dependencies
 
-      - name: Check for codespace API endpoint in Leaderboard.jsx
-        id: check-leaderboard
+      - name: Check required React components
+        id: check-components
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v2.0.0
-        with:
-          text-file: octofit-tracker/frontend/src/components/Leaderboard.jsx
-          keyphrase: '-8000.app.github.dev/api/leaderboard'
-          minimum-occurrences: 1
-          case-sensitive: false
+        run: node .github/scripts/grade-step.mjs step5-components
 
-      - name: Check for codespace API endpoint in Teams.jsx
-        id: check-teams
+      - name: Check routing and API configuration
+        id: check-api-config
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v2.0.0
-        with:
-          text-file: octofit-tracker/frontend/src/components/Teams.jsx
-          keyphrase: '-8000.app.github.dev/api/teams'
-          minimum-occurrences: 1
-          case-sensitive: false
+        run: node .github/scripts/grade-step.mjs step5-api-config
 
-      - name: Check for codespace API endpoint in Users.jsx
-        id: check-users
+      - name: Install frontend dependencies
+        id: install-frontend
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v2.0.0
-        with:
-          text-file: octofit-tracker/frontend/src/components/Users.jsx
-          keyphrase: '-8000.app.github.dev/api/users'
-          minimum-occurrences: 1
-          case-sensitive: false
+        run: npm install --prefix octofit-tracker/frontend --ignore-scripts
 
-      - name: Check for codespace API endpoint in Workouts.jsx
-        id: check-workouts
+      - name: Build frontend
+        id: build-frontend
+        if: steps.install-frontend.outcome == 'success'
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v2.0.0
-        with:
-          text-file: octofit-tracker/frontend/src/components/Workouts.jsx
-          keyphrase: '-8000.app.github.dev/api/workouts'
-          minimum-occurrences: 1
-          case-sensitive: false
+        run: npm run build --prefix octofit-tracker/frontend
 
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1
@@ -113,20 +92,18 @@ jobs:
           issue-number: ${{ env.ISSUE_NUMBER }}
           comment-id: ${{ steps.find-last-comment.outputs.comment-id }}
           edit-mode: replace
-          file: exercise-toolkit/markdown-templates/step-feedback/step-results-table.md
+          file: .github/step-feedback/step-results-table.md
           vars: |
             step_number: 5
             results_table:
-              - description: "Check activities for the API endpoint"
-                passed: ${{ steps.check-activities.outcome == 'success' }}
-              - description: "Check leaderboard for the API endpoint"
-                passed: ${{ steps.check-leaderboard.outcome == 'success' }}
-              - description: "Check teams for the API endpoint"
-                passed: ${{ steps.check-teams.outcome == 'success' }}
-              - description: "Check users for the API endpoint"
-                passed: ${{ steps.check-users.outcome == 'success' }}
-              - description: "Check workouts for the API endpoint"
-                passed: ${{ steps.check-workouts.outcome == 'success' }}
+              - description: "Check React Router and Bootstrap dependencies"
+                passed: ${{ steps.check-dependencies.outcome == 'success' }}
+              - description: "Check required React components"
+                passed: ${{ steps.check-components.outcome == 'success' }}
+              - description: "Check routing and environment-aware API configuration"
+                passed: ${{ steps.check-api-config.outcome == 'success' }}
+              - description: "Build the React application"
+                passed: ${{ steps.build-frontend.outcome == 'success' }}
 
       # END: Check practical exercise
 
@@ -138,6 +115,10 @@ jobs:
     name: Post next step content
     needs: [find_exercise, check_step_work]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
+      issues: write
     env:
       ISSUE_REPOSITORY: ${{ github.repository }}
       ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
@@ -174,7 +155,7 @@ jobs:
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
-          file: exercise-toolkit/markdown-templates/step-feedback/watching-for-progress.md
+          file: .github/step-feedback/watching-for-progress.md
 
       - name: Disable current workflow and enable next one
         run: |

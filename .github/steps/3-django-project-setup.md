@@ -9,25 +9,29 @@ In this step, you will implement the backend of the **multi-tier application**:
 - Create Express routes for users, teams, activities, leaderboard, and workouts.
 - Add a seed script to populate test data.
 
-### :keyboard: Activity: Scaffold the logic tier
+### 📖 Theory:
 
-Use this prompt file:
+Express routes expose application capabilities through HTTP, while Mongoose models define and validate the data stored in MongoDB. Seeding representative records lets you verify the complete path from persistent data through the API before building the user interface.
 
-> ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
->
-> ```prompt
-> /create-express-logic-tier
-> ```
+### ⌨️ Activity: Scaffold the logic tier
 
-### :keyboard: Activity: Configure and seed the data tier
+1. Run the logic-tier prompt file.
 
-Use this prompt file:
+   > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
+   >
+   > ```prompt
+   > /create-express-logic-tier
+   > ```
 
-> ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
->
-> ```prompt
-> /init-populate-octofit_db
-> ```
+### ⌨️ Activity: Configure and seed the data tier
+
+1. Run the data-tier prompt file.
+
+   > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
+   >
+   > ```prompt
+   > /init-populate-octofit_db
+   > ```
 
 1. Commit and push your backend changes.
 

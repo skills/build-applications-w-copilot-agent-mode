@@ -10,20 +10,26 @@ In this step, you will initialize a modern **multi-tier application** foundation
 - Initialize a Node.js + Express + TypeScript backend (logic tier).
 - Add MongoDB support with Mongoose (data tier).
 
-### :keyboard: Activity: Initialize frontend and backend package manifests
+### 📖 Theory:
 
-> ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
->
-> ```prompt
-> Let's initialize the OctoFit Tracker modern multi-tier application.
->
-> Follow the instructions exactly and execute step-by-step:
-> - Create octofit-tracker/frontend and octofit-tracker/backend
-> - Initialize React 19 in the frontend with Vite
-> - Initialize backend package.json for Node.js + Express + TypeScript
-> - Add mongoose for MongoDB data access
-> - Keep ports at 5173 (frontend), 8000 (backend), and 27017 (MongoDB)
-> ```
+A multi-tier application separates presentation, business logic, and data access so each concern can evolve independently. Initializing each tier with its required dependencies gives Copilot a concrete project structure to extend in later steps.
+
+### ⌨️ Activity: Initialize frontend and backend package manifests
+
+1. Ask Copilot to initialize the application foundation.
+
+   > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=flat-square&logo=github%20copilot&labelColor=512a97&color=ecd8ff)
+   >
+   > ```prompt
+   > Let's initialize the OctoFit Tracker modern multi-tier application.
+   >
+   > Follow the instructions exactly and execute step-by-step:
+   > - Create octofit-tracker/frontend and octofit-tracker/backend
+   > - Initialize React 19 in the frontend with Vite
+   > - Initialize backend package.json for Node.js + Express + TypeScript
+   > - Add mongoose for MongoDB data access
+   > - Keep ports at 5173 (frontend), 8000 (backend), and 27017 (MongoDB)
+   > ```
 
 1. Commit and push to `build-octofit-app`.
 
