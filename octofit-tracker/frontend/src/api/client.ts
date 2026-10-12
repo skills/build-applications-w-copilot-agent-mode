@@ -1,9 +1,5 @@
-const configuredBase = import.meta.env.VITE_API_BASE_URL as string | undefined;
-const codespaceName = (import.meta.env.VITE_CODESPACE_NAME as string | undefined) || undefined;
-
-export const apiBaseUrl = configuredBase ?? (codespaceName
-  ? `https://${codespaceName}-8000.app.github.dev`
-  : 'http://localhost:8000');
+// Relative /api paths go through the Vite dev proxy, so port 8000 never needs to be public.
+export const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? '';
 
 export async function getJson<T>(path: string): Promise<T> {
   const response = await fetch(`${apiBaseUrl}${path}`);

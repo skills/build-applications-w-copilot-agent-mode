@@ -40,6 +40,23 @@ function yamlScalar(value) {
   const trimmed = value.replace(/\s+#.*$/, '').trim();
   return trimmed.match(/^(['"])(.*)\1$/)?.[2] ?? trimmed;
 }
+function checkoutRepositories(text) {
+  const lines = text.split(/\n/);
+  return lines.flatMap((line, index) => {
+    const match = line.match(/^(\s*)(?:-\s+)?uses:\s*actions\/checkout@/);
+    if (!match) return [];
+    const stepIndent = line.startsWith(`${match[1]}- `) ? match[1].length : match[1].length - 2;
+    const repositories = [];
+    for (const next of lines.slice(index + 1)) {
+      if (!next.trim()) continue;
+      const indent = next.match(/^\s*/)[0].length;
+      if (indent < stepIndent || (indent === stepIndent && /^\s*-\s/.test(next))) break;
+      const repository = next.match(/^\s*repository:\s*(.+)$/)?.[1];
+      if (repository) repositories.push(yamlScalar(repository));
+    }
+    return repositories;
+  });
+}
 function toolkitCheckoutRefs(text) {
   const lines = text.split(/\n/);
   const refs = lines.flatMap((line, index) => {
@@ -139,6 +156,7 @@ export function validateExercise(root = process.cwd()) {
       for (const file of workflowFiles) {
         const text = readText(root, file);
         for (const match of text.matchAll(/skills\/exercise-toolkit[^\s]+@([^\s]+)/g)) assertValid(match[1] === TOOLKIT_REF, `${file} uses toolkit ${match[1]}`);
+        for (const repository of checkoutRepositories(text)) assertValid(!/\$\{\{/.test(repository), `${file} actions/checkout repository must be a literal value, found ${repository}`);
         for (const ref of toolkitCheckoutRefs(text)) assertValid(ref === TOOLKIT_REF, `${file} toolkit checkout must use ${TOOLKIT_REF} (found ${ref ?? 'no ref'})`);
         assertValid(!/actions\/checkout@(?!v6)/.test(text), `${file} must use actions/checkout@v6`);
         assertValid(!/GrantBirki\/comment@(?!v2\.1\.1)/.test(text), `${file} must use GrantBirki/comment@v2.1.1`);
@@ -157,7 +175,7 @@ export function validateExercise(root = process.cwd()) {
           const ids = [...check.matchAll(/^        id:\s*([A-Za-z0-9_-]+)/gm)].map(m => m[1]).filter(id => id !== 'find-last-comment');
           for (const id of ids) assertValid(new RegExp(`steps\\.${id}\\.outcome`).test(check), `${file} result table missing ${id}`);
           assertValid(/continue-on-error:\s*true/.test(check) && /contains\(steps\.\*\.outcome, 'failure'\)/.test(check), `${file} grading checks must be continue-on-error and close with failure gate`);
-          assertValid(/comment-author:\s*"?github-actions\[bot\]"?/.test(check) && /body-includes:\s*"[^"]+"/.test(check), `${file} find-comment must be scoped`);
+          assertValid(/comment-author:\s*"?github-actions\[bot\]"?/.test(check) && /body-(?:includes|regex):\s*(["'])\S[^\n]*\1/.test(check), `${file} find-comment must be scoped`);
         }
       }
       const start = readText(root, '.github/workflows/0-start-exercise.yml');
@@ -169,6 +187,14 @@ export function validateExercise(root = process.cwd()) {
       for (const jobId of finalJobs.keys()) {
         assertValid(isMergeGated(jobId, finalJobs), `5-last-step.yml job ${jobId} must be gated on a merged pull request`);
       }
+    }],
+    ['Codespaces API exposure', () => {
+      const vite = readText(root, 'octofit-tracker/frontend/vite.config.ts');
+      assertValid(/proxy:\s*\{[^}]*['"]\/api['"]\s*:\s*['"]http:\/\/localhost:8000['"]/.test(vite), 'Vite must proxy /api to http://localhost:8000 so the API port can stay private');
+      const postStart = readText(root, '.devcontainer/post_start.sh');
+      assertValid(!/\b(?:8000|5173):public\b/.test(postStart), 'post_start.sh must not make the unauthenticated API or frontend ports public');
+      const client = readText(root, 'octofit-tracker/frontend/src/api/client.ts');
+      assertValid(!/app\.github\.dev|CODESPACE_NAME/.test(client), 'The API client must use relative /api paths through the Vite proxy, not a public Codespaces URL');
     }],
     ['Placeholder cleanup', () => {
       const targets = ['README.md', ...files(root, '.github', /\.(?:md|ya?ml)$/), ...files(root, 'docs', /\.md$/), ...files(root, '.vscode', /\.json$/)];

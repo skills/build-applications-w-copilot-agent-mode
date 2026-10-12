@@ -48,7 +48,7 @@ jobs:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
           comment-author: "github-actions[bot]"
-          body-includes: "watch your progress in the background"
+          body-regex: 'watch your progress in the background|Looks like you are making progress|## Step \d+ - (Passed|Fail)'
           direction: last
       - name: Update comment - checking work
         uses: GrantBirki/comment@v2.1.1
