@@ -10,6 +10,8 @@ The logic tier owns request validation, business rules, status codes, and error 
 
 1. Inspect the route stubs, service stubs, and API contract tests.
 
+   The activity-create contract takes `userId` and `teamId` for existing records. Create valid team and user fixtures in the test before posting an activity; do not invent name-resolution behavior.
+
 1. Ask Copilot to start with one failing API behavior.
 
    > ![Static Badge](https://img.shields.io/badge/Prompt-text?style=for-the-badge&logo=github-copilot&logoColor=white&labelColor=purple&color=purple)

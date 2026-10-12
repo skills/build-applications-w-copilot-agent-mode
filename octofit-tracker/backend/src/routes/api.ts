@@ -18,6 +18,6 @@ apiRouter.post('/teams', async (request, response, next) => {
 apiRouter.get('/leaderboard', async (_request, response, next) => {
   try { response.json({ leaderboard: await getLeaderboard() }); } catch (error) { next(error); }
 });
-apiRouter.get('/workouts/suggestions/:userId', async (request, response, next) => {
-  try { response.json({ suggestions: await suggestWorkouts(request.params.userId) }); } catch (error) { next(error); }
+apiRouter.get('/workouts/suggestions/:userEmail', async (request, response, next) => {
+  try { response.json({ suggestions: await suggestWorkouts(request.params.userEmail) }); } catch (error) { next(error); }
 });

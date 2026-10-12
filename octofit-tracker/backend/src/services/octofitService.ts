@@ -20,7 +20,7 @@ export async function getLeaderboard() {
   return [];
 }
 
-export async function suggestWorkouts(_userId: string) {
+export async function suggestWorkouts(_userEmail: string) {
   return Workout.find().limit(1).lean();
 }
 

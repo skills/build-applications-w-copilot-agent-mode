@@ -18,7 +18,7 @@ Mongoose schemas should express the rules the rest of the application can rely o
    > Explain why the data-tier tests fail and propose changes limited to Mongoose models and seed data. Preserve the contracts and do not edit API or React files.
    > ```
 
-1. Implement schemas and seed records in small changes, running the data tests after each capability.
+1. Implement schemas and seed records in small changes, running the data tests after each capability. Use stable fixture keys and upserts so rerunning the seed preserves unrelated MongoDB records.
 
    > ![Static Badge](https://img.shields.io/badge/Terminal-text?logo=gnometerminal&labelColor=0969da&color=ddf4ff)
    >

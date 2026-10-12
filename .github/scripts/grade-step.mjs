@@ -31,12 +31,16 @@ export const checks = {
     }
     const seed = readText(root, 'octofit-tracker/backend/src/scripts/seed.ts');
     assertValid(!/Learners implement|pending|TODO/i.test(seed), 'Seed script still contains starter placeholder text');
-    containsAll(seed, ['User', 'Team', 'Activity', 'Workout', 'upsert|insertMany|create', 'deleteMany|bulkWrite'], 'Seed script');
+    containsAll(seed, ['User', 'Team', 'Activity', 'Workout', 'upsert|findOneAndUpdate|updateOne'], 'Seed script');
+    assertValid(!/deleteMany\s*\(\s*\{\s*\}\s*\)/.test(seed), 'Seed script must not clear unrelated application records');
     assertValid(readJson(root, 'octofit-tracker/backend/package.json').scripts?.seed, 'Backend package.json must define an npm run seed script');
+    const tests = readText(root, 'octofit-tracker/backend/tests/data.contract.test.ts');
+    containsAll(tests, ['seed\\(\\)', 'idempotently', 'sentinel'], 'Seed contract test');
   },
   'step3-api': (root) => {
     const backend = combinedText(root, 'octofit-tracker/backend/src');
     for (const path of ['/api/activities', '/api/teams', '/api/leaderboard', '/api/workouts/suggestions']) assertValid(backend.includes(path.replace('/api', '')) || backend.includes(path), `Backend must expose ${path}`);
+    assertValid(/\/workouts\/suggestions\/:userEmail/.test(backend), 'Workout suggestions route must identify the seeded user by email');
     containsAll(backend, ['status\\(400\\)|status: 400', 'getLeaderboard', 'suggestWorkouts', 'points', 'minutes'], 'API implementation');
   },
   'step4-frontend': (root) => {
@@ -48,10 +52,7 @@ export const checks = {
     containsAll(frontend, ['import.meta.env', 'localhost:8000', '/api/activities', '/api/teams', '/api/leaderboard', '/api/workouts/suggestions/', 'role=[\"\']status', 'role=[\"\']alert', 'no activities|empty state'], 'Frontend implementation');
   },
   'step5-final': (root) => {
-    checks['step1-architecture'](root);
-    checks['step2-data'](root);
-    checks['step3-api'](root);
-    checks['step4-frontend'](root);
+    checkFinalComposition(root);
     run('npm', ['run', 'test:data', '--prefix', 'octofit-tracker/backend'], root);
     run('npm', ['run', 'test:api', '--prefix', 'octofit-tracker/backend'], root);
     run('npm', ['test', '--prefix', 'octofit-tracker/frontend'], root);
@@ -59,6 +60,16 @@ export const checks = {
     run('npm', ['run', 'build', '--prefix', 'octofit-tracker/frontend'], root);
   },
 };
+export function checkFinalComposition(root) {
+  checks['step1-architecture'](root);
+  checks['step2-data'](root);
+  checks['step3-api'](root);
+  checks['step4-frontend'](root);
+  const backendScripts = readJson(root, 'octofit-tracker/backend/package.json').scripts ?? {};
+  const frontendScripts = readJson(root, 'octofit-tracker/frontend/package.json').scripts ?? {};
+  for (const script of ['test:data', 'test:api', 'build']) assertValid(backendScripts[script], `Backend package.json must define ${script}`);
+  for (const script of ['test', 'build']) assertValid(frontendScripts[script], `Frontend package.json must define ${script}`);
+}
 export function runCheck(checkName, root = process.cwd()) {
   const check = checks[checkName];
   assertValid(check, `Unknown validation check: ${checkName}`);

@@ -1,3 +1,7 @@
+---
+applyTo: "octofit-tracker/frontend/**"
+---
+
 # OctoFit React frontend instructions
 
 - Use React 19, Vite, React Router, and Bootstrap.

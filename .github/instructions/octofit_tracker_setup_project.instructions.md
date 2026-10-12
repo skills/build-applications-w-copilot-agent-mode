@@ -1,3 +1,7 @@
+---
+applyTo: "**/*"
+---
+
 # OctoFit project setup instructions
 
 Preserve these constraints across every tier:

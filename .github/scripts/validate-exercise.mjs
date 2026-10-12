@@ -120,6 +120,11 @@ export function validateExercise(root = process.cwd()) {
     ['Placeholder cleanup', () => {
       const targets = ['README.md', ...files(root, '.github', /\.(?:md|ya?ml)$/), ...files(root, 'docs', /\.md$/), ...files(root, '.vscode', /\.json$/)];
       for (const file of targets) assertValid(!/replace-me|\bOWNER\b|\bREPO\b|\bTITLE\b|\bFEATURE\b|Django|django/.test(readText(root, file)), `${file} contains placeholder or stale Django copy`);
+      for (const [file, scope] of [
+        ['.github/instructions/octofit_tracker_backend.instructions.md', 'octofit-tracker/backend/**'],
+        ['.github/instructions/octofit_tracker_react_frontend.instructions.md', 'octofit-tracker/frontend/**'],
+        ['.github/instructions/octofit_tracker_setup_project.instructions.md', '**/*'],
+      ]) assertValid(new RegExp(`^applyTo:\\s*["']?${scope.replaceAll('*', '\\*')}["']?\\s*$`, 'm').test(readText(root, file)), `${file} must declare applyTo scope ${scope}`);
     }],
   ]);
 }

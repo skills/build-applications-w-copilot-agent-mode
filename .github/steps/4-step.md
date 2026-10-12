@@ -18,7 +18,7 @@ The presentation tier should make loading, empty, success, and error states visi
    > Use the failing frontend test to implement the smallest UI change. Reuse the shared API client and preserve loading, empty, and error states.
    > ```
 
-1. Repeat for activities, teams, leaderboard, and workout suggestions. Every route needs loading, empty, success, and error states, and workout suggestions must call `/api/workouts/suggestions/:userId` for a seeded user.
+1. Repeat for activities, teams, leaderboard, and workout suggestions. Every route needs loading, empty, success, and error states, and workout suggestions must call `/api/workouts/suggestions/:userEmail` for a seeded user such as `mona@example.com`.
 
    > ![Static Badge](https://img.shields.io/badge/Terminal-text?logo=gnometerminal&labelColor=0969da&color=ddf4ff)
    >

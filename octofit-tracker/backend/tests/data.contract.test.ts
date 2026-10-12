@@ -41,6 +41,31 @@ describe('OctoFit data contract', () => {
     const previousUri = process.env.MONGODB_URI;
     process.env.MONGODB_URI = mongo.getUri();
     try {
+      await mongoose.connect(mongo.getUri());
+      const sentinelTeam = await Team.create({ name: 'Unrelated team', mascot: 'Keep', members: [] });
+      const sentinelUser = await User.create({
+        name: 'Unrelated user',
+        email: 'unrelated@example.com',
+        team: sentinelTeam._id,
+        fitnessGoal: 'mobility',
+      });
+      await Team.updateOne({ _id: sentinelTeam._id }, { $addToSet: { members: sentinelUser._id } });
+      const sentinelActivity = await Activity.create({
+        user: sentinelUser._id,
+        team: sentinelTeam._id,
+        type: 'walk',
+        minutes: 10,
+        points: 10,
+        occurredAt: new Date('2026-01-01T12:00:00.000Z'),
+      });
+      const sentinelWorkout = await Workout.create({
+        title: 'Unrelated workout',
+        focus: 'mobility',
+        minutes: 15,
+        difficulty: 'easy',
+      });
+      await mongoose.disconnect();
+
       const counts = async () => {
         await mongoose.connect(mongo.getUri());
         const result = {
@@ -54,10 +79,24 @@ describe('OctoFit data contract', () => {
       };
       await seed();
       const first = await counts();
-      expect(first.users).toBeGreaterThanOrEqual(2);
-      expect(first.teams).toBeGreaterThanOrEqual(2);
-      expect(first.activities).toBeGreaterThanOrEqual(2);
-      expect(first.workouts).toBeGreaterThanOrEqual(2);
+      expect(first.users).toBeGreaterThanOrEqual(3);
+      expect(first.teams).toBeGreaterThanOrEqual(3);
+      expect(first.activities).toBeGreaterThanOrEqual(3);
+      expect(first.workouts).toBeGreaterThanOrEqual(3);
+      await mongoose.connect(mongo.getUri());
+      const seededMona = await User.findOne({ email: 'mona@example.com' });
+      const seededTeam = await Team.findOne({ name: 'Octocats' });
+      expect(seededMona).toBeTruthy();
+      expect(seededTeam).toBeTruthy();
+      if (!seededMona || !seededTeam || !seededMona.team) throw new Error('Seed did not create linked Octocats fixtures');
+      expect(seededMona.team.toString()).toBe(seededTeam._id.toString());
+      expect(seededTeam.members.map((member) => member.toString())).toContain(seededMona._id.toString());
+      expect(await Activity.exists({ user: seededMona._id, team: seededTeam._id, type: 'run' })).toBeTruthy();
+      expect(await User.exists({ _id: sentinelUser._id })).toBeTruthy();
+      expect(await Team.exists({ _id: sentinelTeam._id })).toBeTruthy();
+      expect(await Activity.exists({ _id: sentinelActivity._id })).toBeTruthy();
+      expect(await Workout.exists({ _id: sentinelWorkout._id })).toBeTruthy();
+      await mongoose.disconnect();
       await seed();
       expect(await counts()).toEqual(first);
     } finally {
