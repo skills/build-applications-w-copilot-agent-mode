@@ -50,6 +50,14 @@ describe('OctoFit data contract', () => {
         fitnessGoal: 'mobility',
       });
       await Team.updateOne({ _id: sentinelTeam._id }, { $addToSet: { members: sentinelUser._id } });
+      const previousTeam = await Team.create({ name: 'Previous team', mascot: 'Mona', members: [] });
+      const existingMona = await User.create({
+        name: 'Mona',
+        email: 'mona@example.com',
+        team: previousTeam._id,
+        fitnessGoal: 'endurance',
+      });
+      await Team.updateOne({ _id: previousTeam._id }, { $addToSet: { members: existingMona._id } });
       const sentinelActivity = await Activity.create({
         user: sentinelUser._id,
         team: sentinelTeam._id,
@@ -80,17 +88,20 @@ describe('OctoFit data contract', () => {
       await seed();
       const first = await counts();
       expect(first.users).toBeGreaterThanOrEqual(3);
-      expect(first.teams).toBeGreaterThanOrEqual(3);
+      expect(first.teams).toBeGreaterThanOrEqual(4);
       expect(first.activities).toBeGreaterThanOrEqual(3);
       expect(first.workouts).toBeGreaterThanOrEqual(3);
       await mongoose.connect(mongo.getUri());
       const seededMona = await User.findOne({ email: 'mona@example.com' });
       const seededTeam = await Team.findOne({ name: 'Octocats' });
+      const retainedPreviousTeam = await Team.findById(previousTeam._id);
       expect(seededMona).toBeTruthy();
       expect(seededTeam).toBeTruthy();
-      if (!seededMona || !seededTeam || !seededMona.team) throw new Error('Seed did not create linked Octocats fixtures');
+      expect(retainedPreviousTeam).toBeTruthy();
+      if (!seededMona || !seededTeam || !seededMona.team || !retainedPreviousTeam) throw new Error('Seed did not create linked Octocats fixtures');
       expect(seededMona.team.toString()).toBe(seededTeam._id.toString());
       expect(seededTeam.members.map((member) => member.toString())).toContain(seededMona._id.toString());
+      expect(retainedPreviousTeam.members.map((member) => member.toString())).not.toContain(seededMona._id.toString());
       expect(await Activity.exists({ user: seededMona._id, team: seededTeam._id, type: 'run' })).toBeTruthy();
       expect(await User.exists({ _id: sentinelUser._id })).toBeTruthy();
       expect(await Team.exists({ _id: sentinelTeam._id })).toBeTruthy();

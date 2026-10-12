@@ -2,6 +2,20 @@ import { connectDatabase, disconnectDatabase } from '../config/database.js';
 import { Activity, Team, User, Workout } from '../models/index.js';
 
 // Seed stable demo records without clearing data owned by the application.
+async function upsertDemoUser(name: string, email: string, teamId: InstanceType<typeof Team>['_id'], fitnessGoal: string) {
+  const previousUser = await User.findOne({ email }).select('_id team');
+  if (previousUser?.team && previousUser.team.toString() !== teamId.toString()) {
+    await Team.updateOne({ _id: previousUser.team }, { $pull: { members: previousUser._id } });
+  }
+  const user = await User.findOneAndUpdate(
+    { email },
+    { $set: { name, email, team: teamId, fitnessGoal } },
+    { upsert: true, new: true, setDefaultsOnInsert: true },
+  );
+  await Team.updateOne({ _id: teamId }, { $addToSet: { members: user._id } });
+  return user;
+}
+
 export async function seed() {
   await connectDatabase();
   try {
@@ -15,19 +29,8 @@ export async function seed() {
       { $set: { name: 'Robocats', mascot: 'Hubot' } },
       { upsert: true, new: true, setDefaultsOnInsert: true },
     );
-    const mona = await User.findOneAndUpdate(
-      { email: 'mona@example.com' },
-      { $set: { name: 'Mona', email: 'mona@example.com', team: octocats._id, fitnessGoal: 'endurance' } },
-      { upsert: true, new: true, setDefaultsOnInsert: true },
-    );
-    const hubot = await User.findOneAndUpdate(
-      { email: 'hubot@example.com' },
-      { $set: { name: 'Hubot', email: 'hubot@example.com', team: robocats._id, fitnessGoal: 'strength' } },
-      { upsert: true, new: true, setDefaultsOnInsert: true },
-    );
-
-    await Team.updateOne({ _id: octocats._id }, { $addToSet: { members: mona._id } });
-    await Team.updateOne({ _id: robocats._id }, { $addToSet: { members: hubot._id } });
+    const mona = await upsertDemoUser('Mona', 'mona@example.com', octocats._id, 'endurance');
+    const hubot = await upsertDemoUser('Hubot', 'hubot@example.com', robocats._id, 'strength');
 
     const monaRunAt = new Date('2026-01-10T12:00:00.000Z');
     const hubotCycleAt = new Date('2026-01-11T12:00:00.000Z');
