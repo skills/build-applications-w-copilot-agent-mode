@@ -1,35 +1,34 @@
-# Build applications with GitHub Copilot agent mode
+# Build and test a multi-tier application with GitHub Copilot
 
-<!-- ![](../../actions/workflows/0-start-course.yml/badge.svg?branch=main) -->
-<img src=".github/images/octofit-tracker.png" alt="OctoFit Tracker application dashboard" width="300"/>
+_Use GitHub Copilot agent mode to implement, test, and review a React + Express + MongoDB application from executable contracts._
 
-_Build an application with GitHub Copilot agent mode in less than an hour._
+<img src=".github/images/octofit-tracker.png" alt="GitHub Skills banner for Mergington High School: Build and test a multi-tier application with GitHub Copilot" width="720"/>
 
 ## Welcome
 
-People love how GitHub Copilot helps them write code faster and with fewer errors.
-But what if GitHub could create a multi-tier application with a presentation, logic, and data layers based on requirements written in natural language?
-In this exercise, we will prompt GitHub Copilot agent mode to create a complete application.
-
-- **Who is this for**: Intermediate developers familiar with GitHub Copilot, basic GitHub, and basic web development
-- **What you'll learn**: We'll introduce GitHub Copilot agent mode and how to use it for application development.
-- **What you'll build**: You'll use GitHub Copilot agent mode to create a fitness application as the gym teacher of a high school.
-- **Prerequisites**: Skills Exercise: <a href="https://github.com/skills/getting-started-with-github-copilot">Getting Started with GitHub Copilot</a>.
-- **How long**: This course takes less than one hour to complete.
+- **Who is this for**: Developers comfortable with GitHub, VS Code, JavaScript/TypeScript, and basic GitHub Copilot workflows.
+- **What you will learn**: How to use Copilot agent mode as an engineering partner while preserving architecture boundaries, working from tests, validating generated code, and reviewing a multi-tier change.
+- **What you will build**: OctoFit Tracker with activity tracking, team management, a competitive leaderboard, and personalized workout suggestions.
+- **Prerequisites**:
+  - [Getting Started with GitHub Copilot](https://github.com/skills/getting-started-with-github-copilot)
+  - Familiarity with React, HTTP APIs, and automated tests.
+  - Access to [GitHub Codespaces](https://github.com/features/codespaces).
+- **How long**: 90–120 minutes, depending on your GitHub Copilot familiarity.
 
 In this exercise, you will:
 
-1. Start up a preconfigured development environment for making a multi-tier application.
-1. Open GitHub Copilot Chat and select **Agent** mode from the mode picker.
-1. In this exercise I primarily used the latest default LLM.
-1. Try other LLM models to see other output.
-1. For each step open up a new Copilot Chat session by hitting the plus `+` icon in the Copilot Chat pane.
+1. Explain and preserve presentation, logic, and data-tier boundaries.
+1. Use failing tests and explicit contracts to bound Copilot's work.
+1. Implement and test Mongoose data models and representative seed data.
+1. Implement and test Express API behavior, including validation and error states.
+1. Implement and test React routes and API-driven user experiences.
+1. Verify the integrated system and review a multi-tier pull request before merging.
 
 ### How to start this exercise
 
 Simply copy the exercise to your account, then give your favorite Octocat (Mona) **about 20 seconds** to prepare the first lesson, then **refresh the page**.
 
-[![](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=skills&template_name=build-applications-w-copilot-agent-mode&owner=%40me&name=skills-build-applications-w-copilot-agent-mode&description=Exercise:+Build+applications+with+GitHub+Copilot+agent+mode&visibility=public)
+[![Copy Exercise](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=skills&template_name=build-applications-w-copilot-agent-mode&owner=%40me&name=skills-build-applications-w-copilot-agent-mode&description=Exercise:+Build+and+test+a+multi-tier+application+with+GitHub+Copilot&visibility=public)
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
@@ -37,14 +36,9 @@ Simply copy the exercise to your account, then give your favorite Octocat (Mona)
 When copying the exercise, we recommend the following settings:
 
 - For owner, choose your personal account or an organization to host the repository.
-
 - We recommend creating a public repository, since private repositories will use Actions minutes.
-
-If the exercise isn't ready in 20 seconds, open the **Actions** tab in your copied repository.
-
-- Check to see if a job is running. Sometimes it simply takes a bit longer.
-
-- If the page shows a failed job, please submit an issue. Nice, you found a bug! 🐛
+- If the exercise is not ready in 20 seconds, open the **Actions** tab in your copied repository.
+- If a job failed, rerun it once. If it fails again, open an issue with the workflow log link.
 
 </details>
 

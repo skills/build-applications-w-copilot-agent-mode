@@ -1,24 +1,17 @@
-import mongoose from 'mongoose';
+import { connectDatabase, disconnectDatabase } from '../config/database.js';
+import { Activity, Team, User, Workout } from '../models/index.js';
 
-const connectionString = process.env.MONGODB_URI || 'mongodb://localhost:27017/octofit_db';
-
-/**
- * Seed the octofit_db database with test data
- */
-async function seedDatabase() {
-  try {
-    await mongoose.connect(connectionString);
-
-    console.log('Connected to octofit_db');
-
-    // TODO: Add seed data for users, teams, activities, leaderboard, and workouts
-
-    console.log('Database seeding complete');
-    await mongoose.disconnect();
-  } catch (error) {
-    console.error('Error seeding database:', error);
-    process.exit(1);
-  }
+// Seed the octofit_db database with representative test data.
+export async function seed() {
+  await connectDatabase();
+  await Activity.deleteMany({});
+  await User.deleteMany({});
+  await Team.deleteMany({});
+  await Workout.deleteMany({});
+  // Learners implement idempotent users, teams, activities, leaderboard inputs, and workout records here.
+  await disconnectDatabase();
 }
 
-seedDatabase();
+if (process.argv[1]?.endsWith('seed.ts')) {
+  await seed();
+}

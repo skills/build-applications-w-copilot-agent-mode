@@ -1,177 +1,71 @@
 #!/usr/bin/env node
-
+import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import {
-  ValidationError,
-  assertValid,
-  combinedText,
-  listFiles,
-  readJson,
-  readText,
-  requireDependency,
-  requirePatterns,
-} from './validation-lib.mjs';
+import { ValidationError, assertValid, combinedText, readJson, readText, requireDependency } from './validation-lib.mjs';
 
-const resources = ['users', 'teams', 'activities', 'leaderboard', 'workouts'];
-const resourceModels = {
-  users: 'user',
-  teams: 'team',
-  activities: 'activity',
-  leaderboard: 'leaderboard',
-  workouts: 'workout',
-};
-
-function resourceModelFile(root, resource) {
-  const modelName = resourceModels[resource];
-  const modelFiles = listFiles(root, 'octofit-tracker/backend/src/models', /\.(?:ts|js)$/);
-  const file = modelFiles.find((candidate) =>
-    path.basename(candidate, path.extname(candidate)).toLowerCase() === modelName,
-  );
-  assertValid(file, `Missing ${resource} model file`);
-  return readText(root, file);
+function run(command, args, root) {
+  execFileSync(command, args, { cwd: root, stdio: 'inherit' });
 }
-
-function resourceComponent(root, resource) {
-  const files = listFiles(root, 'octofit-tracker/frontend/src', /\.(?:jsx|tsx)$/);
-  const file = files.find((candidate) =>
-    path.basename(candidate, path.extname(candidate)).toLowerCase().startsWith(resource),
-  );
-  assertValid(file, `Missing ${resource} React component`);
-  return { file, text: readText(root, file) };
+function containsAll(text, words, context) {
+  for (const word of words) assertValid(new RegExp(word, 'i').test(text), `${context} must mention ${word}`);
 }
-
+function hasNonBlankValue(text, label) {
+  const match = text.match(new RegExp(`^- ${label}:[ \t]*(\\S.*)$`, 'im'));
+  assertValid(match && match[1].trim().length > 8, `Architecture plan must complete ${label}`);
+}
 export const checks = {
-  'step2-react': (root) => {
-    const packageJson = readJson(root, 'octofit-tracker/frontend/package.json');
-    const version = requireDependency(packageJson, 'react');
-    assertValid(/(?:^|[^\d])19(?:\.|$)/.test(version), `React must use major version 19, found ${version}`);
+  'step1-architecture': (root) => {
+    const architecture = readText(root, 'docs/architecture.md');
+    containsAll(architecture, ['Presentation tier', 'Logic tier', 'Data tier', '8000', '5173', '27017', 'Activity tracking', 'Teams', 'Leaderboard', 'Workout suggestions'], 'Architecture document');
+    for (const label of ['Presentation tier decision', 'Logic tier decision', 'Data tier decision', 'Activity tracking approach', 'Team management approach', 'Leaderboard approach', 'Workout suggestions approach']) hasNonBlankValue(architecture, label);
+    containsAll(architecture, ['npm run test:data --prefix octofit-tracker/backend', 'npm run test:api --prefix octofit-tracker/backend', 'npm test --prefix octofit-tracker/frontend'], 'Test plan');
   },
-  'step2-express': (root) => {
-    const packageJson = readJson(root, 'octofit-tracker/backend/package.json');
-    requireDependency(packageJson, 'express');
-    assertValid(
-      listFiles(root, 'octofit-tracker/backend/src', /\.(?:ts|js)$/).length > 0,
-      'Backend source files are missing',
-    );
-  },
-  'step2-mongoose': (root) => {
-    const packageJson = readJson(root, 'octofit-tracker/backend/package.json');
-    requireDependency(packageJson, 'mongoose');
-    readText(root, 'octofit-tracker/backend/tsconfig.json');
-  },
-  'step3-database': (root) => {
-    const database = readText(root, 'octofit-tracker/backend/src/config/database.ts');
-    requirePatterns(
-      database,
-      [/mongoose/i, /octofit_db/i, /mongodb:\/\/|MONGODB_URI/i],
-      'Database configuration',
-    );
-  },
-  'step3-models': (root) => {
-    for (const resource of resources) {
-      const modelText = resourceModelFile(root, resource);
-      requirePatterns(
-        modelText,
-        [/\bSchema\s*\(/i, /\bmodel\s*\(/i],
-        `${resource} model file`,
-      );
+  'step2-data': (root) => {
+    const backend = readJson(root, 'octofit-tracker/backend/package.json');
+    requireDependency(backend, 'mongoose');
+    for (const file of ['User', 'Team', 'Activity', 'Workout']) {
+      const text = readText(root, `octofit-tracker/backend/src/models/${file}.ts`);
+      assertValid(/required\s*:\s*true/i.test(text), `${file} schema must include required validation`);
+      assertValid(/Schema\s*\(/.test(text) && /model\s*\(/.test(text), `${file} must declare a Mongoose schema and model`);
     }
-  },
-  'step3-seed': (root) => {
     const seed = readText(root, 'octofit-tracker/backend/src/scripts/seed.ts');
-    assertValid(!/\bTODO\b/i.test(seed), 'Seed script still contains a TODO placeholder');
-    requirePatterns(
-      seed,
-      [
-        /Seed the octofit_db database with test data/i,
-        /(?:insertMany|create|save)\s*\(/i,
-        /mongoose\.connect|connectDB|connectDatabase/i,
-      ],
-      'Seed script',
-    );
-    for (const resource of resources) {
-      const modelName = resourceModels[resource];
-      assertValid(
-        new RegExp(`\\b${modelName}\\s*\\.\\s*(?:insertMany|create)\\s*\\(`, 'i').test(seed) ||
-          new RegExp(`new\\s+${modelName}\\s*\\([^)]*\\)\\s*\\.\\s*save\\s*\\(`, 'is').test(seed),
-        `Seed script does not write ${resource} data`,
-      );
-    }
+    assertValid(!/Learners implement|pending|TODO/i.test(seed), 'Seed script still contains starter placeholder text');
+    containsAll(seed, ['User', 'Team', 'Activity', 'Workout', 'upsert|insertMany|create', 'deleteMany|bulkWrite'], 'Seed script');
+    assertValid(readJson(root, 'octofit-tracker/backend/package.json').scripts?.seed, 'Backend package.json must define an npm run seed script');
   },
-  'step3-routes': (root) => {
+  'step3-api': (root) => {
     const backend = combinedText(root, 'octofit-tracker/backend/src');
-    for (const resource of resources) {
-      assertValid(
-        new RegExp(
-          `\\b(?:app|router)\\s*\\.\\s*(?:use|get|post|put|patch|delete|all)\\s*\\(\\s*['"\`]\\/api\\/${resource}\\/?['"\`]`,
-          'i',
-        ).test(backend),
-        `Backend does not register an Express route for /api/${resource}/`,
-      );
-    }
+    for (const path of ['/api/activities', '/api/teams', '/api/leaderboard', '/api/workouts/suggestions']) assertValid(backend.includes(path.replace('/api', '')) || backend.includes(path), `Backend must expose ${path}`);
+    containsAll(backend, ['status\\(400\\)|status: 400', 'getLeaderboard', 'suggestWorkouts', 'points', 'minutes'], 'API implementation');
   },
-  'step4-hosting': (root) => {
-    const server = readText(root, 'octofit-tracker/backend/src/server.ts');
-    requirePatterns(
-      server,
-      [/CODESPACE_NAME/, /-8000\.app\.github\.dev/, /localhost:8000/, /(?:PORT|listen\s*\()\D*8000/i],
-      'API server',
-    );
-  },
-  'step4-api': (root) => checks['step3-routes'](root),
-  'step5-dependencies': (root) => {
-    const packageJson = readJson(root, 'octofit-tracker/frontend/package.json');
-    requireDependency(packageJson, 'react-router-dom');
-    requireDependency(packageJson, 'bootstrap');
-  },
-  'step5-components': (root) => {
-    for (const resource of resources) {
-      resourceComponent(root, resource);
-    }
-    readText(root, 'octofit-tracker/frontend/src/App.jsx');
-    readText(root, 'octofit-tracker/frontend/src/main.jsx');
-  },
-  'step5-api-config': (root) => {
+  'step4-frontend': (root) => {
+    const pkg = readJson(root, 'octofit-tracker/frontend/package.json');
+    assertValid(/^\^?19\./.test(requireDependency(pkg, 'react')), 'React dependency must be version 19');
+    requireDependency(pkg, 'bootstrap');
+    requireDependency(pkg, 'react-router-dom');
     const frontend = combinedText(root, 'octofit-tracker/frontend/src');
-    const app = readText(root, 'octofit-tracker/frontend/src/App.jsx');
-    requirePatterns(
-      frontend,
-      [/import\.meta\.env/, /VITE_CODESPACE_NAME/, /localhost:8000/, /react-router-dom/i],
-      'React presentation tier',
-    );
-    for (const resource of resources) {
-      const { file, text } = resourceComponent(root, resource);
-      assertValid(
-        new RegExp(`/api/${resource}/?`, 'i').test(text) && /\b(?:fetch|axios)\b/i.test(text),
-        `${file} must request /api/${resource}/`,
-      );
-      const componentName = path.basename(file, path.extname(file));
-      assertValid(
-        new RegExp(`\\b${componentName}\\b`).test(app) &&
-          new RegExp(`(?:path\\s*=\\s*|path\\s*:)\\s*['"\`]\\/?${resource}\\/?['"\`]`, 'i').test(app),
-        `App.jsx must route /${resource} to ${componentName}`,
-      );
-    }
-    assertValid(!/https:\/\/\$\{[^}]*VITE_CODESPACE_NAME[^}]*\}-8000/.test(frontend) || /localhost:8000/.test(frontend),
-      'Codespaces API URL must include a localhost fallback');
+    containsAll(frontend, ['import.meta.env', 'localhost:8000', '/api/activities', '/api/teams', '/api/leaderboard', '/api/workouts/suggestions/', 'role=[\"\']status', 'role=[\"\']alert', 'no activities|empty state'], 'Frontend implementation');
+  },
+  'step5-final': (root) => {
+    checks['step1-architecture'](root);
+    checks['step2-data'](root);
+    checks['step3-api'](root);
+    checks['step4-frontend'](root);
+    run('npm', ['run', 'test:data', '--prefix', 'octofit-tracker/backend'], root);
+    run('npm', ['run', 'test:api', '--prefix', 'octofit-tracker/backend'], root);
+    run('npm', ['test', '--prefix', 'octofit-tracker/frontend'], root);
+    run('npm', ['run', 'build', '--prefix', 'octofit-tracker/backend'], root);
+    run('npm', ['run', 'build', '--prefix', 'octofit-tracker/frontend'], root);
   },
 };
-
 export function runCheck(checkName, root = process.cwd()) {
   const check = checks[checkName];
   assertValid(check, `Unknown validation check: ${checkName}`);
   check(root);
 }
-
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (isMain) {
-  try {
-    runCheck(process.argv[2]);
-    console.log(`PASS: ${process.argv[2]}`);
-  } catch (error) {
-    const message = error instanceof ValidationError ? error.message : error.stack;
-    console.error(`FAIL: ${process.argv[2] ?? 'missing check name'}: ${message}`);
-    process.exit(1);
-  }
+  try { runCheck(process.argv[2]); console.log(`PASS: ${process.argv[2]}`); }
+  catch (error) { const message = error instanceof ValidationError ? error.message : error.stack; console.error(`FAIL: ${process.argv[2] ?? 'missing check name'}: ${message}`); process.exit(1); }
 }

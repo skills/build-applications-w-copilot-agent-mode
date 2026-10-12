@@ -1,12 +1,15 @@
-name: Step 0 # Start Exercise build-applications-w-GHCP-agent-mode
+name: Step 0
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
 
+permissions: {}
+
 env:
-  STEP_1_FILE: ".github/steps/1-preparing.md"
+  STEP_1_FILE: ".github/steps/1-step.md"
 
 jobs:
   start_exercise:
@@ -17,14 +20,10 @@ jobs:
       contents: write
       actions: write
       issues: write
-    uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@v0.9.0
+    uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@v0.9.3
     with:
-      exercise-title: "Build Applications with GitHub Copilot Agent Mode"
-      intro-message: |
-        "Welcome to the exciting world of GitHub Copilot agent mode! 🚀
-        In this exercise, you'll unlock the potential of this AI-powered
-        coding assistant to accelerate your development process. Let's dive in
-        and have some fun exploring the future of coding together! 💻✨"
+      exercise-title: "Build and test a multi-tier application with GitHub Copilot"
+      intro-message: "Use Copilot agent mode to implement OctoFit Tracker from architecture notes and executable tests."
 
   post_next_step_content:
     name: Post next step content
@@ -37,18 +36,17 @@ jobs:
     env:
       ISSUE_NUMBER: ${{ needs.start_exercise.outputs.issue-number }}
       ISSUE_REPOSITORY: ${{ github.repository }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
+        with:
+          ref: main
       - name: Get response templates
         uses: actions/checkout@v6
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.9.0
-
+          ref: v0.9.3
       - name: Create comment - add step content
         uses: GrantBirki/comment@v2.1.1
         with:
@@ -58,16 +56,13 @@ jobs:
           vars: |
             login: ${{ github.actor }}
             full_repo_name: ${{ github.repository }}
-
       - name: Create comment - watching for progress
         uses: GrantBirki/comment@v2.1.1
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
-          file: .github/step-feedback/watching-for-progress.md
-
+          file: exercise-toolkit/markdown-templates/step-feedback/watching-for-progress.md
       - name: Enable next step workflow
-        run: |
-          gh workflow enable "Step 1"
+        run: gh workflow enable "Step 1"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

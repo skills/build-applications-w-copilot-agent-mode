@@ -34,3 +34,6 @@ __pycache__/
 
 # Local tool caches
 .impeccable/
+
+# Vite build output
+dist/
