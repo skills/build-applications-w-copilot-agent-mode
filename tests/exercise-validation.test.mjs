@@ -302,4 +302,9 @@ test('codespace welcome message cannot describe app ports as public', () => {
   const welcome = path.join(root, '.devcontainer/welcome-message.txt');
   fs.writeFileSync(welcome, fs.readFileSync(welcome, 'utf8').replace('8000 (private', '8000 (public'));
   assert.throws(() => validateExercise(root), /welcome-message\.txt/);
+  for (const wording of ['Public ports: 5173 and 8000\n', 'Make these public:\n- 5173\n- 8000\n']) {
+    const reordered = copyMetadata();
+    fs.appendFileSync(path.join(reordered, '.devcontainer/welcome-message.txt'), wording);
+    assert.throws(() => validateExercise(reordered), /welcome-message\.txt/);
+  }
 });

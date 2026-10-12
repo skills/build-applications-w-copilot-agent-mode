@@ -223,7 +223,7 @@ export function validateExercise(root = process.cwd()) {
       const postStart = readText(root, '.devcontainer/post_start.sh');
       assertValid(!/\b(?:8000|5173):public\b/.test(postStart), 'post_start.sh must not make the unauthenticated API or frontend ports public');
       const welcome = readText(root, '.devcontainer/welcome-message.txt');
-      assertValid(!/\b(?:8000|5173)\b[^\n]*\bpublic\b/i.test(welcome), 'welcome-message.txt must describe ports 8000 and 5173 as private');
+      assertValid(!/\bpublic\b/i.test(welcome), 'welcome-message.txt must not describe any port as public; ports 8000 and 5173 stay private');
       const client = readText(root, 'octofit-tracker/frontend/src/api/client.ts');
       assertValid(!/app\.github\.dev|CODESPACE_NAME/.test(client), 'The API client must use relative /api paths through the Vite proxy, not a public Codespaces URL');
     }],
