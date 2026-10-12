@@ -102,6 +102,17 @@ test('final completion job cannot bypass the merged pull request gate', () => {
   assert.throws(() => validateExercise(root), /job finish_exercise must be gated on a merged pull request/);
 });
 
+test('final job condition cannot bypass the merge predicate with OR', () => {
+  const root = copyMetadata();
+  const workflow = path.join(root, '.github/workflows/5-last-step.yml');
+  const text = fs.readFileSync(workflow, 'utf8').replace(
+    '    if: github.event.pull_request.merged == true\n    name: Finish Exercise',
+    "    if: github.event.pull_request.merged == true || github.event.action == 'closed'\n    name: Finish Exercise",
+  );
+  fs.writeFileSync(workflow, text);
+  assert.throws(() => validateExercise(root), /job finish_exercise must be gated on a merged pull request/);
+});
+
 test('workflow-level write permissions are rejected', () => {
   const root = copyMetadata();
   const workflow = path.join(root, '.github/workflows/1-step.yml');

@@ -29,12 +29,17 @@ function jobNeeds(block) {
   if (value.startsWith('[') && value.endsWith(']')) return value.slice(1, -1).split(',').map((item) => item.trim()).filter(Boolean);
   return [value];
 }
+function conditionRequiresMerged(condition) {
+  const mergePredicate = /github\.event\.pull_request\.merged\s*==\s*true/;
+  if (!mergePredicate.test(condition)) return false;
+  return condition.split(/\|\|/).every((branch) => mergePredicate.test(branch));
+}
 function isMergeGated(jobId, blocks, visited = new Set()) {
   if (visited.has(jobId)) return false;
   visited.add(jobId);
   const block = blocks.get(jobId) ?? '';
   const condition = block.match(/^    if:\s*(.+)$/m)?.[1] ?? '';
-  if (/github\.event\.pull_request\.merged\s*==\s*true/.test(condition)) return true;
+  if (/github\.event\.pull_request\.merged\s*==\s*true/.test(condition)) return conditionRequiresMerged(condition);
   if (/\b(?:always|failure|cancelled)\s*\(/.test(condition)) return false;
   return jobNeeds(block).some((dependency) => isMergeGated(dependency, blocks, new Set(visited)));
 }
