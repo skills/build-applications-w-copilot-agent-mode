@@ -15,6 +15,12 @@ describe('OctoFit data contract', () => {
   it('requires teams to have a name, mascot, and members array', () => {
     const team = new Team({ name: 'Octocats', mascot: 'Mona', members: [] });
     expect(team.validateSync()).toBeUndefined();
+    const defaulted = new Team({ name: 'Robocats', mascot: 'Hubot' });
+    expect(Array.isArray(defaulted.members)).toBe(true);
+    expect(defaulted.members).toHaveLength(0);
+    const memberId = new mongoose.Types.ObjectId();
+    const withMember = new Team({ name: 'Codecats', mascot: 'Copilot', members: [memberId.toString()] });
+    expect(withMember.members.map((member) => member.toString())).toEqual([memberId.toString()]);
     const missing = new Team({}).validateSync();
     expect(missing?.errors.name).toBeDefined();
     expect(missing?.errors.mascot).toBeDefined();

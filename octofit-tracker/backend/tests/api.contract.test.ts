@@ -53,10 +53,17 @@ describe('OctoFit API contract', () => {
   it('orders leaderboard entries by total points', async () => {
     const mona = await createUserAndTeam('Mona', 'mona@example.com', 'Mona', 'Octocats');
     const hubot = await createUserAndTeam('Hubot', 'hubot@example.com', 'Hubot', 'Robocats');
-    await request(app).post('/api/activities').send({ userId: mona.user._id.toString(), teamId: mona.team._id.toString(), type: 'run', minutes: 40 });
-    await request(app).post('/api/activities').send({ userId: hubot.user._id.toString(), teamId: hubot.team._id.toString(), type: 'cycle', minutes: 10 });
+    await Activity.create([
+      { user: mona.user._id, team: mona.team._id, type: 'run', minutes: 25, points: 25, occurredAt: new Date() },
+      { user: hubot.user._id, team: hubot.team._id, type: 'cycle', minutes: 20, points: 20, occurredAt: new Date() },
+      { user: hubot.user._id, team: hubot.team._id, type: 'strength', minutes: 15, points: 15, occurredAt: new Date() },
+    ]);
     const response = await request(app).get('/api/leaderboard');
-    expect(response.body.leaderboard.map((entry: { teamName: string }) => entry.teamName)).toEqual(['Octocats', 'Robocats']);
+    expect(response.status).toBe(200);
+    expect(response.body.leaderboard.map(({ teamName, totalPoints, rank }: { teamName: string; totalPoints: number; rank: number }) => ({ teamName, totalPoints, rank }))).toEqual([
+      { teamName: 'Robocats', totalPoints: 35, rank: 1 },
+      { teamName: 'Octocats', totalPoints: 25, rank: 2 },
+    ]);
   });
   it('suggests workouts that match each user activity pattern', async () => {
     const mona = await createUserAndTeam('Mona', 'mona@example.com', 'Mona', 'Octocats');
