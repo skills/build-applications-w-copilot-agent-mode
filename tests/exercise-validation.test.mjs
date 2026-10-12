@@ -235,3 +235,13 @@ test('frontend grader rejects components that bypass the shared API client', () 
   write(root, 'octofit-tracker/frontend/src/components/Teams.tsx', `import { getJson } from '../api/client.js';\nexport async function loadTeams() { await getJson<unknown>('/api/teams'); return (await fetch('http://localhost:8000/api/teams')).json(); }\n`);
   assert.throws(() => checks['step4-frontend'](root), /Teams\.tsx must not call fetch directly/);
 });
+
+test('data grader accepts the Mongoose array form of required validation', () => {
+  const root = completedFixture();
+  for (const model of ['User', 'Team', 'Activity', 'Workout']) {
+    write(root, `octofit-tracker/backend/src/models/${model}.ts`, `import { Schema, model } from 'mongoose';\nconst schema = new Schema({ name: { type: String, required: [true, '${model} name is required'] } });\nexport const ${model} = model('${model}', schema);\n`);
+  }
+  assert.doesNotThrow(() => checks['step2-data'](root));
+  write(root, 'octofit-tracker/backend/src/models/Team.ts', `import { Schema, model } from 'mongoose';\nconst schema = new Schema({ name: { type: String, required: [false, 'optional'] } });\nexport const Team = model('Team', schema);\n`);
+  assert.throws(() => checks['step2-data'](root), /Team schema must include required validation/);
+});

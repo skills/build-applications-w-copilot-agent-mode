@@ -26,7 +26,7 @@ export const checks = {
     requireDependency(backend, 'mongoose');
     for (const file of ['User', 'Team', 'Activity', 'Workout']) {
       const text = readText(root, `octofit-tracker/backend/src/models/${file}.ts`);
-      assertValid(/required\s*:\s*true/i.test(text), `${file} schema must include required validation`);
+      assertValid(/\brequired\s*:\s*(?:true\b|\[\s*true\s*,)/.test(text), `${file} schema must include required validation`);
       assertValid(/Schema\s*\(/.test(text) && /model\s*\(/.test(text), `${file} must declare a Mongoose schema and model`);
     }
     const seed = readText(root, 'octofit-tracker/backend/src/scripts/seed.ts');
