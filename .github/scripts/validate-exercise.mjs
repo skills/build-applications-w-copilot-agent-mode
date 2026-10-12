@@ -181,7 +181,7 @@ export function validateExercise(root = process.cwd()) {
         for (const repository of checkoutRepositories(text)) assertValid(!/\$\{\{/.test(repository), `${file} actions/checkout repository must be a literal value, found ${repository}`);
         for (const ref of toolkitCheckoutRefs(text)) assertValid(ref === TOOLKIT_REF, `${file} toolkit checkout must use ${TOOLKIT_REF} (found ${ref ?? 'no ref'})`);
         for (const [action, pin] of Object.entries(ACTION_PINS)) {
-          for (const match of text.matchAll(new RegExp(`uses:\\s*['"]?${action.replace('/', '\\/')}@([^\\s'"#]+)`, 'g'))) assertValid(match[1] === pin, `${file} must use ${action}@${pin} (found ${match[1]})`);
+          for (const match of text.matchAll(new RegExp(`uses:\\s*['"]?${action.replace('/', '\\/')}@([^\\s'"#]+)`, 'gi'))) assertValid(match[1] === pin, `${file} must use ${action}@${pin} (found ${match[1]})`);
         }
         assertValid(!/^\s*(?:-\s+)?uses:\s*['"]?(?!\.\/|docker:\/\/)[^\s'"#@]+['"]?\s*(?:#.*)?$/m.test(text), `${file} has an action without a version pin`);
         if (/workflows\/[1-5]-/.test(file)) assertValid(!/run:\s*npm (?:run |)(?:test|build)/.test(text), `${file} must grade through grade-step.mjs, not learner-editable npm scripts`);
@@ -222,6 +222,8 @@ export function validateExercise(root = process.cwd()) {
       }
       const postStart = readText(root, '.devcontainer/post_start.sh');
       assertValid(!/\b(?:8000|5173):public\b/.test(postStart), 'post_start.sh must not make the unauthenticated API or frontend ports public');
+      const welcome = readText(root, '.devcontainer/welcome-message.txt');
+      assertValid(!/\b(?:8000|5173)\b[^\n]*\bpublic\b/i.test(welcome), 'welcome-message.txt must describe ports 8000 and 5173 as private');
       const client = readText(root, 'octofit-tracker/frontend/src/api/client.ts');
       assertValid(!/app\.github\.dev|CODESPACE_NAME/.test(client), 'The API client must use relative /api paths through the Vite proxy, not a public Codespaces URL');
     }],

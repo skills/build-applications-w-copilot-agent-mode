@@ -289,3 +289,17 @@ test('devcontainer port attributes cannot make the API public', () => {
   fs.writeFileSync(file, JSON.stringify(config, null, 2));
   assert.throws(() => validateExercise(root), /visibility/);
 });
+
+test('action pins are enforced regardless of name casing', () => {
+  const root = copyMetadata();
+  const workflow = path.join(root, '.github/workflows/1-step.yml');
+  fs.writeFileSync(workflow, fs.readFileSync(workflow, 'utf8').replace('actions/checkout@v6', 'Actions/Checkout@v1'));
+  assert.throws(() => validateExercise(root), /actions\/checkout@v6 \(found v1\)/);
+});
+
+test('codespace welcome message cannot describe app ports as public', () => {
+  const root = copyMetadata();
+  const welcome = path.join(root, '.devcontainer/welcome-message.txt');
+  fs.writeFileSync(welcome, fs.readFileSync(welcome, 'utf8').replace('8000 (private', '8000 (public'));
+  assert.throws(() => validateExercise(root), /welcome-message\.txt/);
+});
