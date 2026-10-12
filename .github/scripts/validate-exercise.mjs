@@ -42,20 +42,40 @@ function yamlScalar(value) {
 }
 function checkoutRepositories(text) {
   const lines = text.split(/\n/);
-  return lines.flatMap((line, index) => {
+  const repositories = [];
+  for (const [index, line] of lines.entries()) {
     const match = line.match(/^(\s*)(?:-\s+)?uses:\s*actions\/checkout@/);
-    if (!match) return [];
+    if (!match) continue;
     const stepIndent = line.startsWith(`${match[1]}- `) ? match[1].length : match[1].length - 2;
-    const repositories = [];
-    for (const next of lines.slice(index + 1)) {
+    for (let cursor = index + 1; cursor < lines.length; cursor += 1) {
+      const next = lines[cursor];
       if (!next.trim()) continue;
       const indent = next.match(/^\s*/)[0].length;
       if (indent < stepIndent || (indent === stepIndent && /^\s*-\s/.test(next))) break;
       const repository = next.match(/^\s*repository:\s*(.+)$/)?.[1];
-      if (repository) repositories.push(yamlScalar(repository));
+      if (repository) {
+        let value = yamlScalar(repository);
+        if (/^[>|][+-]?\s*(?:#.*)?$/.test(repository.trim())) {
+          const keyIndent = indent;
+          const scalarLines = [];
+          let end = cursor + 1;
+          for (; end < lines.length; end += 1) {
+            const scalarLine = lines[end];
+            const scalarIndent = scalarLine.match(/^\s*/)[0].length;
+            if (scalarLine.trim() && scalarIndent <= keyIndent) break;
+            scalarLines.push(scalarLine.trim());
+          }
+          value = scalarLines.join(' ');
+          cursor = end - 1;
+        }
+        repositories.push(value);
+      } else {
+        const flowRepository = next.match(/(?:\{|,)\s*repository:\s*(.*?)(?=,\s*[\w-]+\s*:|})/);
+        if (flowRepository) repositories.push(flowRepository[1].trim().replace(/^['"]|['"]$/g, ''));
+      }
     }
-    return repositories;
-  });
+  }
+  return repositories;
 }
 function toolkitCheckoutRefs(text) {
   const lines = text.split(/\n/);

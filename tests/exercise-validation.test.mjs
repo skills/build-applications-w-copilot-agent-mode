@@ -169,10 +169,20 @@ test('each toolkit checkout must pin the release ref', () => {
 });
 
 test('checkout repositories must be literal values', () => {
-  const root = copyMetadata();
-  const workflow = path.join(root, '.github/workflows/1-step.yml');
-  fs.writeFileSync(workflow, fs.readFileSync(workflow, 'utf8').replace('          repository: skills/exercise-toolkit\n          path: exercise-toolkit\n          ref: v0.9.3', '          repository: ${{ vars.TOOLKIT_REPOSITORY }}\n          path: exercise-toolkit\n          ref: main'));
-  assert.throws(() => validateExercise(root), /actions\/checkout repository must be a literal value/);
+  for (const replacement of [
+    '        with:\n          repository: ${{ vars.TOOLKIT_REPOSITORY }}\n          path: exercise-toolkit\n          ref: v0.9.3',
+    '        with:\n          repository: >-\n            ${{ vars.TOOLKIT_REPOSITORY }}\n          path: exercise-toolkit\n          ref: v0.9.3',
+    "        with: { repository: '${{ vars.TOOLKIT_REPOSITORY }}', path: exercise-toolkit }",
+  ]) {
+    const root = copyMetadata();
+    const workflow = path.join(root, '.github/workflows/1-step.yml');
+    const text = fs.readFileSync(workflow, 'utf8').replace(
+      '        with:\n          repository: skills/exercise-toolkit\n          path: exercise-toolkit\n          ref: v0.9.3',
+      replacement,
+    );
+    fs.writeFileSync(workflow, text);
+    assert.throws(() => validateExercise(root), /actions\/checkout repository must be a literal value/, replacement);
+  }
 });
 
 test('progress comment lookup matches every state of the toolkit progress comment', () => {
