@@ -21,7 +21,7 @@ OctoFit Tracker is a three-tier application for a school fitness program. The st
 
 | Capability | Method and path | Expected behavior |
 | --- | --- | --- |
-| Activity tracking | `GET /api/activities`, `POST /api/activities` | List and create valid activity records. POST accepts `userId`, `teamId`, `type`, and `minutes`; the referenced user and team must already exist, otherwise respond with a deliberate 4xx. |
+| Activity tracking | `GET /api/activities`, `POST /api/activities` | List and create valid activity records. POST accepts `userId`, `teamId`, `type`, and `minutes`; `userId` and `teamId` must be well-formed IDs for an existing user and team; otherwise respond with a deliberate 4xx (never a 500 from a cast error). |
 | Teams | `GET /api/teams`, `POST /api/teams` | List and create teams with members. Reject a team without a name with `400`. |
 | Leaderboard | `GET /api/leaderboard` | Return teams ordered by the sum of their activity points, highest first. Each entry has `teamName`, `totalPoints`, and a 1-based `rank`. |
 | Workout suggestions | `GET /api/workouts/suggestions/:userEmail` | Recommend workouts from recent activity patterns for the matching seeded user's email address. The first suggestion's `focus` matches that user's goal or recent activity, with a `reason` explaining why. An email with no matching user returns a deliberate 4xx (for example, `404`). |

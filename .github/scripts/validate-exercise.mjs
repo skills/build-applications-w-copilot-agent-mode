@@ -44,6 +44,24 @@ function yamlScalar(value) {
   const trimmed = value.replace(/\s+#.*$/, '').trim();
   return trimmed.match(/^(['"])(.*)\1$/)?.[2] ?? trimmed;
 }
+// The safety checks below read workflows line by line, so require block mappings with unquoted keys.
+// Expression and quoted-string contents, comments, block scalar bodies, and an empty `{}` are ignored.
+function flowStyleLines(text) {
+  const lines = text.split(/\n/);
+  const flagged = [];
+  let scalarIndent = -1;
+  for (const [index, line] of lines.entries()) {
+    const indent = line.match(/^\s*/)[0].length;
+    if (scalarIndent >= 0) {
+      if (!line.trim() || indent > scalarIndent) continue;
+      scalarIndent = -1;
+    }
+    const code = line.replace(/\$\{\{.*?\}\}/g, '').replace(/"(?:[^"\\]|\\.)*"|'(?:[^']|'')*'/g, '""').replace(/\s#.*$/, '').replace(/^\s*#.*$/, '');
+    if (/[{}]/.test(code.replace(/:\s*\{\}\s*$/, ':')) || /^\s*(?:-\s+)?["']/.test(line.replace(/\$\{\{.*?\}\}/g, '')) && /^\s*(?:-\s+)?""\s*:/.test(code)) flagged.push(index + 1);
+    if (/:\s*[|>][+-]?\d*\s*(?:#.*)?$/.test(code)) scalarIndent = indent;
+  }
+  return flagged;
+}
 function checkoutRepositories(text) {
   const lines = text.split(/\n/);
   const repositories = [];
@@ -180,7 +198,8 @@ export function validateExercise(root = process.cwd()) {
       for (const file of workflowFiles) {
         const text = readText(root, file);
         for (const match of text.matchAll(/skills\/exercise-toolkit[^\s]+@([^\s]+)/g)) assertValid(match[1] === TOOLKIT_REF, `${file} uses toolkit ${match[1]}`);
-        assertValid(!/^\s*-\s*\{/m.test(text) && !/\{[^}\n]*['"]?\buses['"]?\s*:/i.test(text), `${file} must declare steps in block style; flow-style steps bypass action safety checks`);
+        const flowLines = flowStyleLines(text);
+        assertValid(flowLines.length === 0, `${file} must use block-style YAML with unquoted keys; flow-style or quoted-key steps bypass action safety checks (lines ${flowLines.join(', ')})`);
         for (const repository of checkoutRepositories(text)) assertValid(!/\$\{\{/.test(repository), `${file} actions/checkout repository must be a literal value, found ${repository}`);
         for (const ref of toolkitCheckoutRefs(text)) assertValid(ref === TOOLKIT_REF, `${file} toolkit checkout must use ${TOOLKIT_REF} (found ${ref ?? 'no ref'})`);
         for (const [action, pin] of Object.entries(ACTION_PINS)) {

@@ -155,7 +155,7 @@ test('each toolkit checkout must pin the release ref', () => {
   const flow = copyMetadata();
   const flowWorkflow = path.join(flow, '.github/workflows/3-step.yml');
   fs.writeFileSync(flowWorkflow, fs.readFileSync(flowWorkflow, 'utf8').replace('        with:\n          repository: skills/exercise-toolkit\n          path: exercise-toolkit\n          ref: v0.9.3', '        with: { repository: skills/exercise-toolkit, path: exercise-toolkit, ref: main }'));
-  assert.throws(() => validateExercise(flow), /found unrecognized checkout/);
+  assert.throws(() => validateExercise(flow), /found unrecognized checkout|flow-style or quoted-key steps/);
 
   const quotedPinned = copyMetadata();
   const quotedWorkflow = path.join(quotedPinned, '.github/workflows/4-step.yml');
@@ -181,7 +181,7 @@ test('checkout repositories must be literal values', () => {
       replacement,
     );
     fs.writeFileSync(workflow, text);
-    assert.throws(() => validateExercise(root), /actions\/checkout repository must be a literal value/, replacement);
+    assert.throws(() => validateExercise(root), /actions\/checkout repository must be a literal value|flow-style or quoted-key steps/, replacement);
   }
 });
 
@@ -385,6 +385,8 @@ test('flow-style workflow steps are rejected', () => {
   for (const step of [
     '      - { uses: Actions/Checkout@v6 , with: { Repository: "${{ vars.TOOLKIT_REPOSITORY }}" } }\n',
     '      - name: Inline\n        with: { path: x }\n      -  {"uses": "actions/checkout@v6"}\n',
+    '      -\n        {\n          "uses": "actions/checkout@v6",\n          "with": { "repository": "${{ vars.TOOLKIT_REPOSITORY }}" }\n        }\n',
+    '      - "uses": actions/checkout@v6\n        "with":\n          repository: ${{ vars.TOOLKIT_REPOSITORY }}\n',
   ]) {
     const root = copyMetadata();
     const workflow = path.join(root, '.github/workflows/1-step.yml');
@@ -392,6 +394,16 @@ test('flow-style workflow steps are rejected', () => {
     const changed = text.replace('      - name: Get response templates\n', `${step}      - name: Get response templates\n`);
     assert.notEqual(changed, text);
     fs.writeFileSync(workflow, changed);
-    assert.throws(() => validateExercise(root), /flow-style steps/, step);
+    assert.throws(() => validateExercise(root), /flow-style or quoted-key steps/, step);
   }
+});
+
+test('block scalars and expressions may contain braces', () => {
+  const root = copyMetadata();
+  const workflow = path.join(root, '.github/workflows/1-step.yml');
+  const text = fs.readFileSync(workflow, 'utf8');
+  const changed = text.replace('      - name: Get response templates\n', '      - name: Shell braces\n        run: |\n          echo "${HOME}" && test -n "${{ github.sha }}" && echo {a,b}\n      - name: Get response templates\n');
+  assert.notEqual(changed, text);
+  fs.writeFileSync(workflow, changed);
+  assert.doesNotThrow(() => validateExercise(root));
 });
