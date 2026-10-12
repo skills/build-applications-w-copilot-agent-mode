@@ -365,3 +365,18 @@ test('replace-mode lookups must match only the toolkit progress markers', () => 
     assert.throws(() => validateExercise(root), /find-comment must be scoped/);
   }
 });
+
+test('checkout repository check ignores uses casing and quoting', () => {
+  for (const uses of ['uses: Actions/Checkout@v6', "uses: 'actions/checkout@v6'", 'uses: "ACTIONS/CHECKOUT@v6"']) {
+    const root = copyMetadata();
+    const workflow = path.join(root, '.github/workflows/1-step.yml');
+    const text = fs.readFileSync(workflow, 'utf8');
+    const changed = text.replace(
+      'uses: actions/checkout@v6\n        with:\n          repository: skills/exercise-toolkit',
+      `${uses}\n        with:\n          Repository: \${{ vars.TOOLKIT_REPOSITORY }}`,
+    );
+    assert.notEqual(changed, text, uses);
+    fs.writeFileSync(workflow, changed);
+    assert.throws(() => validateExercise(root), /actions\/checkout repository must be a literal value/, uses);
+  }
+});

@@ -48,7 +48,7 @@ function checkoutRepositories(text) {
   const lines = text.split(/\n/);
   const repositories = [];
   for (const [index, line] of lines.entries()) {
-    const match = line.match(/^(\s*)(?:-\s+)?uses:\s*actions\/checkout@/);
+    const match = line.match(/^(\s*)(?:-\s+)?uses:\s*['"]?actions\/checkout@/i);
     if (!match) continue;
     const stepIndent = line.startsWith(`${match[1]}- `) ? match[1].length : match[1].length - 2;
     for (let cursor = index + 1; cursor < lines.length; cursor += 1) {
@@ -56,7 +56,7 @@ function checkoutRepositories(text) {
       if (!next.trim()) continue;
       const indent = next.match(/^\s*/)[0].length;
       if (indent < stepIndent || (indent === stepIndent && /^\s*-\s/.test(next))) break;
-      const repository = next.match(/^\s*repository:\s*(.+)$/)?.[1];
+      const repository = next.match(/^\s*['"]?repository['"]?:\s*(.+)$/i)?.[1];
       if (repository) {
         let value = yamlScalar(repository);
         if (/^[>|][+-]?\s*(?:#.*)?$/.test(repository.trim())) {
@@ -74,7 +74,7 @@ function checkoutRepositories(text) {
         }
         repositories.push(value);
       } else {
-        const flowRepository = next.match(/(?:\{|,)\s*repository:\s*(.*?)(?=,\s*[\w-]+\s*:|})/);
+        const flowRepository = next.match(/(?:\{|,)\s*['"]?repository['"]?:\s*(.*?)(?=,\s*[\w-]+\s*:|})/i);
         if (flowRepository) repositories.push(flowRepository[1].trim().replace(/^['"]|['"]$/g, ''));
       }
     }
