@@ -6,6 +6,8 @@ import { ValidationError, assertValid, listFiles, readText, runChecks } from './
 import { contractHash, protectedContracts } from './grade-step.mjs';
 
 const TOOLKIT_REF = 'v0.9.3';
+// Matches only the toolkit v0.9.3 progress templates: watching-for-progress.md, checking-work.md, and the step results comment.
+const PROGRESS_COMMENT_REGEX = String.raw`watch your progress in the background|Looks like you are making progress|## Step \d+ - (Passed|Fail)`;
 const ACTION_PINS = { 'actions/checkout': 'v6', 'GrantBirki/comment': 'v2.1.1', 'peter-evans/find-comment': 'v4' };
 const requiredSteps = [1, 2, 3, 4, 5];
 function files(root, dir, pattern) { return listFiles(root, dir, pattern).sort(); }
@@ -204,8 +206,8 @@ export function validateExercise(root = process.cwd()) {
         for (const step of steps.filter((candidate) => /^\s*edit-mode:\s*["']?replace\b/m.test(candidate))) {
           const lookupId = step.match(/^\s*comment-id:\s*\$\{\{\s*steps\.([A-Za-z0-9_-]+)\.outputs\.comment-id\s*\}\}\s*$/m)?.[1];
           const lookup = lookupId && steps.find((candidate) => new RegExp(`^\\s*(?:-\\s+)?id:\\s*["']?${lookupId}["']?\\s*$`, 'm').test(candidate));
-          assertValid(lookup && /uses:\s*peter-evans\/find-comment@/.test(lookup) && /^\s*comment-author:\s*["']?github-actions\[bot\]["']?\s*$/m.test(lookup) && /^\s*body-(?:includes|regex):\s*(["'])\S[^\n]*\1\s*$/m.test(lookup),
-            `${file} find-comment must be scoped: every edit-mode: replace must use comment-id from a peter-evans/find-comment step filtered by github-actions[bot] and a body selector`);
+          assertValid(lookup && /uses:\s*peter-evans\/find-comment@/.test(lookup) && /^\s*comment-author:\s*["']?github-actions\[bot\]["']?\s*$/m.test(lookup) && lookup.split('\n').some((line) => line.trim() === `body-regex: '${PROGRESS_COMMENT_REGEX}'`),
+            `${file} find-comment must be scoped: every edit-mode: replace must use comment-id from a peter-evans/find-comment step filtered by github-actions[bot] and body-regex: '${PROGRESS_COMMENT_REGEX}'`);
         }
       }
       const start = readText(root, '.github/workflows/0-start-exercise.yml');

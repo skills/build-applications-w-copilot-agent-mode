@@ -353,3 +353,15 @@ test('replace-mode comments must use the scoped find-comment output', () => {
   fs.writeFileSync(other, text.replace('comment-id: ${{ steps.find-last-comment.outputs.comment-id }}', 'comment-id: 12345'));
   assert.throws(() => validateExercise(literal), /find-comment must be scoped/);
 });
+
+test('replace-mode lookups must match only the toolkit progress markers', () => {
+  for (const broad of ["body-regex: '.*'", "body-includes: 'Step'"]) {
+    const root = copyMetadata();
+    const workflow = path.join(root, '.github/workflows/4-step.yml');
+    const text = fs.readFileSync(workflow, 'utf8');
+    const changed = text.replace(/body-regex: '[^\n]*'/, broad);
+    assert.notEqual(changed, text);
+    fs.writeFileSync(workflow, changed);
+    assert.throws(() => validateExercise(root), /find-comment must be scoped/);
+  }
+});
