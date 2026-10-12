@@ -50,6 +50,11 @@ export const checks = {
     requireDependency(pkg, 'react-router-dom');
     const frontend = combinedText(root, 'octofit-tracker/frontend/src');
     containsAll(frontend, ['import.meta.env', 'localhost:8000', '/api/activities', '/api/teams', '/api/leaderboard', '/api/workouts/suggestions/', 'role=[\"\']status', 'role=[\"\']alert', 'no activities|empty state'], 'Frontend implementation');
+    for (const component of ['Activities', 'Teams', 'Leaderboard', 'Workouts']) {
+      const text = readText(root, `octofit-tracker/frontend/src/components/${component}.tsx`);
+      assertValid(/import\s*\{[^}]*\bgetJson\b[^}]*\}\s*from\s*['"][./]*api\/client(?:\.js|\.ts)?['"]/.test(text) && /\bgetJson\s*[<(]/.test(text), `${component}.tsx must load data through getJson from src/api/client.ts`);
+      assertValid(!/\bfetch\s*\(/.test(text), `${component}.tsx must not call fetch directly; use the shared API client`);
+    }
   },
   'step5-final': (root) => {
     checkFinalComposition(root);

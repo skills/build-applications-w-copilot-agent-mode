@@ -29,10 +29,26 @@ function jobNeeds(block) {
   if (value.startsWith('[') && value.endsWith(']')) return value.slice(1, -1).split(',').map((item) => item.trim()).filter(Boolean);
   return [value];
 }
+// Only a plain conjunction is accepted: the merge predicate must be a top-level && term,
+// with no ||, negation, or grouping that could let an unmerged pull request through.
 function conditionRequiresMerged(condition) {
-  const mergePredicate = /github\.event\.pull_request\.merged\s*==\s*true/;
-  if (!mergePredicate.test(condition)) return false;
-  return condition.split(/\|\|/).every((branch) => mergePredicate.test(branch));
+  const expression = condition.trim().replace(/^\$\{\{\s*([\s\S]*?)\s*\}\}$/, '$1').trim();
+  if (/\|\||!(?!=)|[()]/.test(expression)) return false;
+  return expression.split('&&').some((term) => /^github\.event\.pull_request\.merged\s*==\s*true$/.test(term.trim()));
+}
+function toolkitCheckoutRefs(text) {
+  const lines = text.split(/\n/);
+  return lines.flatMap((line, index) => {
+    const match = line.match(/^(\s*)repository:\s*skills\/exercise-toolkit\s*$/);
+    if (!match) return [];
+    const indent = match[1];
+    let start = index;
+    while (start > 0 && lines[start - 1].startsWith(indent) && !/^\s*-\s/.test(lines[start - 1].slice(0, indent.length))) start -= 1;
+    let end = index;
+    while (end + 1 < lines.length && lines[end + 1].startsWith(indent) && lines[end + 1].trim()) end += 1;
+    const block = lines.slice(start, end + 1).filter((candidate) => candidate.startsWith(indent) && !candidate.startsWith(`${indent} `));
+    return [block.map((candidate) => candidate.match(/^\s*ref:\s*(\S+)\s*$/)?.[1]).find(Boolean) ?? null];
+  });
 }
 function isMergeGated(jobId, blocks, visited = new Set()) {
   if (visited.has(jobId)) return false;
@@ -115,7 +131,7 @@ export function validateExercise(root = process.cwd()) {
       for (const file of workflowFiles) {
         const text = readText(root, file);
         for (const match of text.matchAll(/skills\/exercise-toolkit[^\s]+@([^\s]+)/g)) assertValid(match[1] === TOOLKIT_REF, `${file} uses toolkit ${match[1]}`);
-        if (/repository:\s*skills\/exercise-toolkit/.test(text)) assertValid(new RegExp(`ref:\\s*${TOOLKIT_REF}`).test(text), `${file} toolkit checkout must use ${TOOLKIT_REF}`);
+        for (const ref of toolkitCheckoutRefs(text)) assertValid(ref === TOOLKIT_REF, `${file} toolkit checkout must use ${TOOLKIT_REF} (found ${ref ?? 'no ref'})`);
         assertValid(!/actions\/checkout@(?!v6)/.test(text), `${file} must use actions/checkout@v6`);
         assertValid(!/GrantBirki\/comment@(?!v2\.1\.1)/.test(text), `${file} must use GrantBirki/comment@v2.1.1`);
         assertValid(!/peter-evans\/find-comment@(?!v4)/.test(text), `${file} must use peter-evans/find-comment@v4`);

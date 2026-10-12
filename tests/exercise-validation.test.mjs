@@ -22,6 +22,9 @@ function completedFixture() {
   write(root, 'octofit-tracker/backend/src/scripts/seed.ts', `import { Activity, Team, User, Workout } from '../models/index.js';\nexport async function seed() {\n  await User.updateOne({}, {}, { upsert: true });\n  await Team.updateOne({}, {}, { upsert: true });\n  await Activity.updateOne({}, {}, { upsert: true });\n  await Workout.updateOne({}, {}, { upsert: true });\n}\n`);
   write(root, 'octofit-tracker/backend/tests/data.contract.test.ts', `it('seeds representative data idempotently and preserves a sentinel', async () => { await seed(); await seed(); expect(sentinel).toBeDefined(); });`);
   write(root, 'octofit-tracker/backend/src/services/completed-contract.ts', `response.status(400); getLeaderboard(); suggestWorkouts(); points; minutes;`);
+  for (const [component, route] of [['Activities', 'activities'], ['Teams', 'teams'], ['Leaderboard', 'leaderboard'], ['Workouts', 'workouts/suggestions/mona%40example.com']]) {
+    write(root, `octofit-tracker/frontend/src/components/${component}.tsx`, `import { getJson } from '../api/client.js';\nexport async function load${component}() { return getJson<unknown>('/api/${route}'); }\n`);
+  }
   write(root, 'octofit-tracker/frontend/src/completed-contract.tsx', `const base = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000'; const paths = ['/api/activities', '/api/teams', '/api/leaderboard', '/api/workouts/suggestions/']; const states = ['role="status"', 'role="alert"', 'No activities']; export { base, paths, states };`);
   return root;
 }
@@ -113,6 +116,34 @@ test('final job condition cannot bypass the merge predicate with OR', () => {
   assert.throws(() => validateExercise(root), /job finish_exercise must be gated on a merged pull request/);
 });
 
+test('final job condition cannot bypass the merge predicate with a negated OR branch', () => {
+  for (const condition of [
+    'github.event.pull_request.merged == true || !(github.event.pull_request.merged == true)',
+    '!(github.event.pull_request.merged == true)',
+    '${{ github.event.pull_request.merged == true || always() }}',
+  ]) {
+    const root = copyMetadata();
+    const workflow = path.join(root, '.github/workflows/5-last-step.yml');
+    fs.writeFileSync(workflow, fs.readFileSync(workflow, 'utf8').replace(
+      '    if: github.event.pull_request.merged == true\n    name: Finish Exercise',
+      `    if: ${condition}\n    name: Finish Exercise`,
+    ));
+    assert.throws(() => validateExercise(root), /job finish_exercise must be gated on a merged pull request/, condition);
+  }
+});
+
+test('each toolkit checkout must pin the release ref', () => {
+  const mixed = copyMetadata();
+  const mixedWorkflow = path.join(mixed, '.github/workflows/1-step.yml');
+  fs.writeFileSync(mixedWorkflow, fs.readFileSync(mixedWorkflow, 'utf8').replace('          ref: v0.9.3', '          ref: v0.9.0'));
+  assert.throws(() => validateExercise(mixed), /toolkit checkout must use v0\.9\.3 \(found v0\.9\.0\)/);
+
+  const missing = copyMetadata();
+  const missingWorkflow = path.join(missing, '.github/workflows/1-step.yml');
+  fs.writeFileSync(missingWorkflow, fs.readFileSync(missingWorkflow, 'utf8').replace('          ref: v0.9.3\n', ''));
+  assert.throws(() => validateExercise(missing), /toolkit checkout must use v0\.9\.3 \(found no ref\)/);
+});
+
 test('workflow-level write permissions are rejected', () => {
   const root = copyMetadata();
   const workflow = path.join(root, '.github/workflows/1-step.yml');
@@ -137,4 +168,10 @@ test('frontend grader requires shared API usage and visible states', () => {
   const root = copyAll();
   write(root, 'octofit-tracker/frontend/src/components/Activities.tsx', 'export default function Activities(){ return <h1>Activities</h1>; }');
   assert.throws(() => checks['step4-frontend'](root), /Frontend implementation/);
+});
+
+test('frontend grader rejects components that bypass the shared API client', () => {
+  const root = completedFixture();
+  write(root, 'octofit-tracker/frontend/src/components/Teams.tsx', `import { getJson } from '../api/client.js';\nexport async function loadTeams() { await getJson<unknown>('/api/teams'); return (await fetch('http://localhost:8000/api/teams')).json(); }\n`);
+  assert.throws(() => checks['step4-frontend'](root), /Teams\.tsx must not call fetch directly/);
 });
