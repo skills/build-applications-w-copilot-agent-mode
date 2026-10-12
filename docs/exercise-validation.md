@@ -13,6 +13,14 @@ npm run build --prefix octofit-tracker/frontend
 
 The starter application tests are intentionally red until a learner implements each capability. Use the grading script checks and negative fixtures to verify the exercise contract.
 
+Grading runs the contract tests, `tsc`, and `vite build` directly through `grade-step.mjs` rather than learner-editable npm scripts. It refuses to run if a protected contract file (contract tests, `tsconfig.json`, or the frontend `vite.config.ts`) has changed. After intentionally editing one of those files, refresh the hashes:
+
+```bash
+node .github/scripts/grade-step.mjs print-contract-hashes
+```
+
+Paste the output into `protectedContracts` in `.github/scripts/grade-step.mjs`.
+
 ## Reset and publication checklist
 
 1. Confirm the repository is configured as a template and `0-start-exercise.yml` has its automatic `push` trigger.

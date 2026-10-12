@@ -64,7 +64,7 @@ jobs:
       - name: Run API contract tests
         id: api_tests
         continue-on-error: true
-        run: npm run test:api --prefix octofit-tracker/backend
+        run: node .github/scripts/grade-step.mjs contract-api
       - name: Validate API implementation
         id: api_static
         continue-on-error: true

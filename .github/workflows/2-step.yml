@@ -65,7 +65,7 @@ jobs:
       - name: Run data-tier tests
         id: data_tests
         continue-on-error: true
-        run: npm run test:data --prefix octofit-tracker/backend
+        run: node .github/scripts/grade-step.mjs contract-data
       - name: Validate data-tier implementation
         id: data_static
         continue-on-error: true

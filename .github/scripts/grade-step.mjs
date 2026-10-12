@@ -1,12 +1,46 @@
 #!/usr/bin/env node
 import { execFileSync } from 'node:child_process';
+import crypto from 'node:crypto';
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ValidationError, assertValid, combinedText, readJson, readText, requireDependency } from './validation-lib.mjs';
 
-function run(command, args, root) {
-  execFileSync(command, args, { cwd: root, stdio: 'inherit' });
+// Maintainer-owned contracts. Grading runs these directly instead of learner-editable npm scripts,
+// and refuses to run if they changed. Update hashes with: node .github/scripts/grade-step.mjs print-contract-hashes
+export const protectedContracts = {
+  'octofit-tracker/backend/tests/data.contract.test.ts': '7096826f444db8431d1b740e276886b011f9e2bd6b0798bd8254c4396b7952c1',
+  'octofit-tracker/backend/tests/api.contract.test.ts': 'c387d43b7c72d1a7c26f1cf52dde0a8efe1f40743e121c93cbda1969209352f1',
+  'octofit-tracker/backend/tsconfig.json': '52ae7740b2c43a72f7306679d38fe15bc376384ea08eef7d913bfc633e6298b5',
+  'octofit-tracker/frontend/tests/app.contract.test.tsx': 'a5e731632ecf2a8b335cea709e7938779e0efc47b9d01a05a03dadab3cdcba17',
+  'octofit-tracker/frontend/vite.config.ts': 'a1f305cc8a408189f264ef113a470303581bf15355e647631a3c0c8cb0f17b41',
+  'octofit-tracker/frontend/tsconfig.json': '5cf5302ccdedebce59ab6734e9d8ffdc1091d828b6b527215ac33c0e17753596',
+};
+export function contractHash(root, file) {
+  return crypto.createHash('sha256').update(readText(root, file).replace(/\r\n/g, '\n')).digest('hex');
 }
+export function verifyContracts(root) {
+  for (const [file, expected] of Object.entries(protectedContracts)) {
+    assertValid(fs.existsSync(path.join(root, file)), `Protected contract ${file} is missing; restore it from the template`);
+    assertValid(contractHash(root, file) === expected, `Protected contract ${file} was modified; restore it with: git checkout origin/main -- ${file}`);
+  }
+  for (const app of ['backend', 'frontend']) {
+    const extras = fs.readdirSync(path.join(root, 'octofit-tracker', app)).filter((name) => /^(?:vitest\.(?:config|workspace)|vite\.config)\./.test(name) && !(app === 'frontend' && name === 'vite.config.ts'));
+    assertValid(extras.length === 0, `Remove extra test configuration from octofit-tracker/${app}: ${extras.join(', ')}`);
+  }
+}
+function tool(root, app, binary, args) {
+  verifyContracts(root);
+  const cwd = path.join(root, 'octofit-tracker', app);
+  execFileSync(path.join(cwd, 'node_modules', '.bin', binary), args, { cwd, stdio: 'inherit' });
+}
+const contractRuns = {
+  'contract-data': (root) => tool(root, 'backend', 'vitest', ['run', 'tests/data.contract.test.ts']),
+  'contract-api': (root) => tool(root, 'backend', 'vitest', ['run', 'tests/api.contract.test.ts']),
+  'build-backend': (root) => tool(root, 'backend', 'tsc', ['--noEmit', '-p', 'tsconfig.json']),
+  'contract-frontend': (root) => tool(root, 'frontend', 'vitest', ['run', 'tests/app.contract.test.tsx']),
+  'build-frontend': (root) => { tool(root, 'frontend', 'tsc', ['--noEmit', '-p', 'tsconfig.json']); tool(root, 'frontend', 'vite', ['build']); },
+};
 function containsAll(text, words, context) {
   for (const word of words) assertValid(new RegExp(word, 'i').test(text), `${context} must mention ${word}`);
 }
@@ -58,12 +92,10 @@ export const checks = {
   },
   'step5-final': (root) => {
     checkFinalComposition(root);
-    run('npm', ['run', 'test:data', '--prefix', 'octofit-tracker/backend'], root);
-    run('npm', ['run', 'test:api', '--prefix', 'octofit-tracker/backend'], root);
-    run('npm', ['test', '--prefix', 'octofit-tracker/frontend'], root);
-    run('npm', ['run', 'build', '--prefix', 'octofit-tracker/backend'], root);
-    run('npm', ['run', 'build', '--prefix', 'octofit-tracker/frontend'], root);
+    verifyContracts(root);
+    for (const name of ['contract-data', 'contract-api', 'contract-frontend', 'build-backend', 'build-frontend']) contractRuns[name](root);
   },
+  ...contractRuns,
 };
 export function checkFinalComposition(root) {
   checks['step1-architecture'](root);
@@ -81,7 +113,9 @@ export function runCheck(checkName, root = process.cwd()) {
   check(root);
 }
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
-if (isMain) {
+if (isMain && process.argv[2] === 'print-contract-hashes') {
+  for (const file of Object.keys(protectedContracts)) console.log(`  '${file}': '${contractHash(process.cwd(), file)}',`);
+} else if (isMain) {
   try { runCheck(process.argv[2]); console.log(`PASS: ${process.argv[2]}`); }
   catch (error) { const message = error instanceof ValidationError ? error.message : error.stack; console.error(`FAIL: ${process.argv[2] ?? 'missing check name'}: ${message}`); process.exit(1); }
 }

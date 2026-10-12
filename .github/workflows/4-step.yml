@@ -64,11 +64,11 @@ jobs:
       - name: Run frontend component tests
         id: frontend_tests
         continue-on-error: true
-        run: npm test --prefix octofit-tracker/frontend
+        run: node .github/scripts/grade-step.mjs contract-frontend
       - name: Build frontend
         id: frontend_build
         continue-on-error: true
-        run: npm run build --prefix octofit-tracker/frontend
+        run: node .github/scripts/grade-step.mjs build-frontend
       - name: Validate frontend implementation
         id: frontend_static
         continue-on-error: true

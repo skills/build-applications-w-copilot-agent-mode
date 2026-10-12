@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
-import { checkFinalComposition, checks } from '../.github/scripts/grade-step.mjs';
+import { checkFinalComposition, checks, protectedContracts, verifyContracts } from '../.github/scripts/grade-step.mjs';
 import { validateExercise } from '../.github/scripts/validate-exercise.mjs';
 
 const repositoryRoot = path.resolve(import.meta.dirname, '..');
@@ -11,7 +11,7 @@ function temp() { return fs.mkdtempSync(path.join(os.tmpdir(), 'octofit-validati
 function write(root, file, content) { const p = path.join(root, file); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, content); }
 function copyMetadata() { const root = temp(); fs.copyFileSync(path.join(repositoryRoot, 'README.md'), path.join(root, 'README.md')); fs.cpSync(path.join(repositoryRoot, '.github'), path.join(root, '.github'), { recursive: true });
   fs.cpSync(path.join(repositoryRoot, '.devcontainer'), path.join(root, '.devcontainer'), { recursive: true });
-  for (const file of ['octofit-tracker/frontend/vite.config.ts', 'octofit-tracker/frontend/src/api/client.ts']) { fs.mkdirSync(path.dirname(path.join(root, file)), { recursive: true }); fs.copyFileSync(path.join(repositoryRoot, file), path.join(root, file)); }
+  for (const file of ['octofit-tracker/frontend/src/api/client.ts', ...Object.keys(protectedContracts)]) { fs.mkdirSync(path.dirname(path.join(root, file)), { recursive: true }); fs.copyFileSync(path.join(repositoryRoot, file), path.join(root, file)); }
   return root;
 }
 function copyAll() { const root = copyMetadata(); for (const dir of ['docs','octofit-tracker']) fs.cpSync(path.join(repositoryRoot, dir), path.join(root, dir), { recursive: true, filter: (source) => !source.includes(`${path.sep}node_modules`) && !source.includes(`${path.sep}dist`) }); return root; }
@@ -244,4 +244,48 @@ test('data grader accepts the Mongoose array form of required validation', () =>
   assert.doesNotThrow(() => checks['step2-data'](root));
   write(root, 'octofit-tracker/backend/src/models/Team.ts', `import { Schema, model } from 'mongoose';\nconst schema = new Schema({ name: { type: String, required: [false, 'optional'] } });\nexport const Team = model('Team', schema);\n`);
   assert.throws(() => checks['step2-data'](root), /Team schema must include required validation/);
+});
+
+test('protected grading contracts are verified before learner tests run', () => {
+  assert.doesNotThrow(() => verifyContracts(repositoryRoot));
+  const tampered = copyMetadata();
+  const api = path.join(tampered, 'octofit-tracker/backend/tests/api.contract.test.ts');
+  fs.writeFileSync(api, fs.readFileSync(api, 'utf8').replace('it(', 'it.skip('));
+  assert.throws(() => verifyContracts(tampered), /api\.contract\.test\.ts/);
+  const extraConfig = copyMetadata();
+  write(extraConfig, 'octofit-tracker/backend/vitest.config.ts', 'export default { test: { include: [] } };');
+  assert.throws(() => verifyContracts(extraConfig), /vitest\.config\.ts/);
+  const crlf = copyMetadata();
+  const data = path.join(crlf, 'octofit-tracker/backend/tests/data.contract.test.ts');
+  fs.writeFileSync(data, fs.readFileSync(data, 'utf8').replace(/\n/g, '\r\n'));
+  assert.doesNotThrow(() => verifyContracts(crlf));
+});
+
+test('stale protected contract hashes are rejected by the validator', () => {
+  const root = copyAll();
+  fs.appendFileSync(path.join(root, 'octofit-tracker/frontend/tests/app.contract.test.tsx'), '\n// drift\n');
+  assert.throws(() => validateExercise(root), /Protected grading contracts/);
+});
+
+test('step workflows must not grade through learner-editable npm scripts', () => {
+  const root = copyMetadata();
+  const workflow = path.join(root, '.github/workflows/3-step.yml');
+  fs.writeFileSync(workflow, fs.readFileSync(workflow, 'utf8').replace(/node \.github\/scripts\/grade-step\.mjs contract-api/, 'npm run test'));
+  assert.throws(() => validateExercise(root), /learner-editable npm scripts/);
+});
+
+test('third-party actions must use the exact pinned release', () => {
+  const root = copyMetadata();
+  const workflow = path.join(root, '.github/workflows/1-step.yml');
+  fs.writeFileSync(workflow, fs.readFileSync(workflow, 'utf8').replace('actions/checkout@v6', 'actions/checkout@v60'));
+  assert.throws(() => validateExercise(root), /actions\/checkout@v6 \(found v60\)/);
+});
+
+test('devcontainer port attributes cannot make the API public', () => {
+  const root = copyMetadata();
+  const file = path.join(root, '.devcontainer/devcontainer.json');
+  const config = JSON.parse(fs.readFileSync(file, 'utf8'));
+  config.portsAttributes = { ...(config.portsAttributes ?? {}), 8000: { ...(config.portsAttributes?.['8000'] ?? {}), visibility: 'public' } };
+  fs.writeFileSync(file, JSON.stringify(config, null, 2));
+  assert.throws(() => validateExercise(root), /visibility/);
 });

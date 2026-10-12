@@ -3,8 +3,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ValidationError, assertValid, listFiles, readText, runChecks } from './validation-lib.mjs';
+import { contractHash, protectedContracts } from './grade-step.mjs';
 
 const TOOLKIT_REF = 'v0.9.3';
+const ACTION_PINS = { 'actions/checkout': 'v6', 'GrantBirki/comment': 'v2.1.1', 'peter-evans/find-comment': 'v4' };
 const requiredSteps = [1, 2, 3, 4, 5];
 function files(root, dir, pattern) { return listFiles(root, dir, pattern).sort(); }
 function workflowName(text) { return text.match(/^name:\s*Step\s+(\d+)/m)?.[1]; }
@@ -178,9 +180,11 @@ export function validateExercise(root = process.cwd()) {
         for (const match of text.matchAll(/skills\/exercise-toolkit[^\s]+@([^\s]+)/g)) assertValid(match[1] === TOOLKIT_REF, `${file} uses toolkit ${match[1]}`);
         for (const repository of checkoutRepositories(text)) assertValid(!/\$\{\{/.test(repository), `${file} actions/checkout repository must be a literal value, found ${repository}`);
         for (const ref of toolkitCheckoutRefs(text)) assertValid(ref === TOOLKIT_REF, `${file} toolkit checkout must use ${TOOLKIT_REF} (found ${ref ?? 'no ref'})`);
-        assertValid(!/actions\/checkout@(?!v6)/.test(text), `${file} must use actions/checkout@v6`);
-        assertValid(!/GrantBirki\/comment@(?!v2\.1\.1)/.test(text), `${file} must use GrantBirki/comment@v2.1.1`);
-        assertValid(!/peter-evans\/find-comment@(?!v4)/.test(text), `${file} must use peter-evans/find-comment@v4`);
+        for (const [action, pin] of Object.entries(ACTION_PINS)) {
+          for (const match of text.matchAll(new RegExp(`uses:\\s*['"]?${action.replace('/', '\\/')}@([^\\s'"#]+)`, 'g'))) assertValid(match[1] === pin, `${file} must use ${action}@${pin} (found ${match[1]})`);
+        }
+        assertValid(!/^\s*(?:-\s+)?uses:\s*['"]?(?!\.\/|docker:\/\/)[^\s'"#@]+['"]?\s*(?:#.*)?$/m.test(text), `${file} has an action without a version pin`);
+        if (/workflows\/[1-5]-/.test(file)) assertValid(!/run:\s*npm (?:run |)(?:test|build)/.test(text), `${file} must grade through grade-step.mjs, not learner-editable npm scripts`);
       }
     }],
     ['Workflow safety and grading gates', () => {
@@ -211,10 +215,18 @@ export function validateExercise(root = process.cwd()) {
     ['Codespaces API exposure', () => {
       const vite = readText(root, 'octofit-tracker/frontend/vite.config.ts');
       assertValid(/proxy:\s*\{[^}]*['"]\/api['"]\s*:\s*['"]http:\/\/localhost:8000['"]/.test(vite), 'Vite must proxy /api to http://localhost:8000 so the API port can stay private');
+      const devcontainer = readText(root, '.devcontainer/devcontainer.json');
+      for (const port of ['8000', '5173']) {
+        const attributes = devcontainer.match(new RegExp(`"${port}"\\s*:\\s*\\{([^}]*)\\}`))?.[1] ?? '';
+        assertValid(!/"visibility"\s*:\s*"(?!private")/.test(attributes), `devcontainer.json must not set port ${port} visibility to anything but private`);
+      }
       const postStart = readText(root, '.devcontainer/post_start.sh');
       assertValid(!/\b(?:8000|5173):public\b/.test(postStart), 'post_start.sh must not make the unauthenticated API or frontend ports public');
       const client = readText(root, 'octofit-tracker/frontend/src/api/client.ts');
       assertValid(!/app\.github\.dev|CODESPACE_NAME/.test(client), 'The API client must use relative /api paths through the Vite proxy, not a public Codespaces URL');
+    }],
+    ['Protected grading contracts', () => {
+      for (const [file, expected] of Object.entries(protectedContracts)) assertValid(contractHash(root, file) === expected, `${file} changed; update protectedContracts in grade-step.mjs with: node .github/scripts/grade-step.mjs print-contract-hashes`);
     }],
     ['Placeholder cleanup', () => {
       const targets = ['README.md', ...files(root, '.github', /\.(?:md|ya?ml)$/), ...files(root, 'docs', /\.md$/), ...files(root, '.vscode', /\.json$/)];
