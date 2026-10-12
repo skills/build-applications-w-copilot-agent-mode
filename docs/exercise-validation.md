@@ -21,6 +21,8 @@ node .github/scripts/grade-step.mjs print-contract-hashes
 
 Paste the output into `protectedContracts` in `.github/scripts/grade-step.mjs`.
 
+These protections guard against accidental or AI-generated changes, such as agent mode editing a test or npm script to make it pass. They are not a defense against deliberate tampering. Learners own their copied repository, including the grader and the step workflows, so grading is formative feedback that unlocks the next step, not a secured assessment. The maintainer-only `validate-exercise.yml` job runs only in the template repository.
+
 ## Reset and publication checklist
 
 1. Confirm the repository is configured as a template and `0-start-exercise.yml` has its automatic `push` trigger.
