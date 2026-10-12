@@ -380,3 +380,18 @@ test('checkout repository check ignores uses casing and quoting', () => {
     assert.throws(() => validateExercise(root), /actions\/checkout repository must be a literal value/, uses);
   }
 });
+
+test('flow-style workflow steps are rejected', () => {
+  for (const step of [
+    '      - { uses: Actions/Checkout@v6 , with: { Repository: "${{ vars.TOOLKIT_REPOSITORY }}" } }\n',
+    '      - name: Inline\n        with: { path: x }\n      -  {"uses": "actions/checkout@v6"}\n',
+  ]) {
+    const root = copyMetadata();
+    const workflow = path.join(root, '.github/workflows/1-step.yml');
+    const text = fs.readFileSync(workflow, 'utf8');
+    const changed = text.replace('      - name: Get response templates\n', `${step}      - name: Get response templates\n`);
+    assert.notEqual(changed, text);
+    fs.writeFileSync(workflow, changed);
+    assert.throws(() => validateExercise(root), /flow-style steps/, step);
+  }
+});

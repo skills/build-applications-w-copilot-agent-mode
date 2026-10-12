@@ -180,6 +180,7 @@ export function validateExercise(root = process.cwd()) {
       for (const file of workflowFiles) {
         const text = readText(root, file);
         for (const match of text.matchAll(/skills\/exercise-toolkit[^\s]+@([^\s]+)/g)) assertValid(match[1] === TOOLKIT_REF, `${file} uses toolkit ${match[1]}`);
+        assertValid(!/^\s*-\s*\{/m.test(text) && !/\{[^}\n]*['"]?\buses['"]?\s*:/i.test(text), `${file} must declare steps in block style; flow-style steps bypass action safety checks`);
         for (const repository of checkoutRepositories(text)) assertValid(!/\$\{\{/.test(repository), `${file} actions/checkout repository must be a literal value, found ${repository}`);
         for (const ref of toolkitCheckoutRefs(text)) assertValid(ref === TOOLKIT_REF, `${file} toolkit checkout must use ${TOOLKIT_REF} (found ${ref ?? 'no ref'})`);
         for (const [action, pin] of Object.entries(ACTION_PINS)) {

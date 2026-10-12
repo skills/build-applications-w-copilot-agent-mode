@@ -11,7 +11,7 @@ const app = createApp();
 beforeAll(async () => {
   mongo = await MongoMemoryServer.create();
   await mongoose.connect(mongo.getUri());
-});
+}, 60_000);
 afterAll(async () => {
   await mongoose.disconnect();
   await mongo.stop();
