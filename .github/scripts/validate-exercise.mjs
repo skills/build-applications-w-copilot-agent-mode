@@ -216,12 +216,16 @@ export function validateExercise(root = process.cwd()) {
       const vite = readText(root, 'octofit-tracker/frontend/vite.config.ts');
       assertValid(/proxy:\s*\{[^}]*['"]\/api['"]\s*:\s*['"]http:\/\/localhost:8000['"]/.test(vite), 'Vite must proxy /api to http://localhost:8000 so the API port can stay private');
       const devcontainer = readText(root, '.devcontainer/devcontainer.json');
-      for (const port of ['8000', '5173']) {
+      for (const port of ['8000', '5173', '27017']) {
         const attributes = devcontainer.match(new RegExp(`"${port}"\\s*:\\s*\\{([^}]*)\\}`))?.[1] ?? '';
         assertValid(!/"visibility"\s*:\s*"(?!private")/.test(attributes), `devcontainer.json must not set port ${port} visibility to anything but private`);
       }
       const postStart = readText(root, '.devcontainer/post_start.sh');
-      assertValid(!/\b(?:8000|5173):public\b/.test(postStart), 'post_start.sh must not make the unauthenticated API or frontend ports public');
+      assertValid(!/\b(?:8000|5173|27017):(?!private\b)\w+/.test(postStart), 'post_start.sh must not make the unauthenticated API, frontend, or MongoDB ports public');
+      for (const port of ['8000', '5173', '27017']) assertValid(new RegExp(`gh cs ports visibility ${port}:private\\b`).test(postStart), `post_start.sh must set port ${port} to private`);
+      const validation = readText(root, '.github/workflows/validate-exercise.yml');
+      assertValid(/^\s*if:\s*github\.event\.repository\.is_template\s*$/m.test(validation), 'validate-exercise.yml must only run in the template repository; learner copies intentionally diverge from the starter');
+      assertValid((validation.match(/^\s*-\s*["']?\.vscode\/\*\*["']?\s*$/gm) ?? []).length === 2, 'validate-exercise.yml must trigger on .vscode/** for both pull_request and push');
       const welcome = readText(root, '.devcontainer/welcome-message.txt');
       assertValid(!/\bpublic\b/i.test(welcome), 'welcome-message.txt must not describe any port as public; ports 8000 and 5173 stay private');
       const client = readText(root, 'octofit-tracker/frontend/src/api/client.ts');

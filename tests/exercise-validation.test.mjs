@@ -308,3 +308,27 @@ test('codespace welcome message cannot describe app ports as public', () => {
     assert.throws(() => validateExercise(reordered), /welcome-message\.txt/);
   }
 });
+
+test('MongoDB port cannot be exposed', () => {
+  const viaScript = copyMetadata();
+  const postStart = path.join(viaScript, '.devcontainer/post_start.sh');
+  fs.writeFileSync(postStart, fs.readFileSync(postStart, 'utf8').replace('27017:private', '27017:public'));
+  assert.throws(() => validateExercise(viaScript), /MongoDB|27017/);
+  const viaAttributes = copyMetadata();
+  const file = path.join(viaAttributes, '.devcontainer/devcontainer.json');
+  const config = JSON.parse(fs.readFileSync(file, 'utf8'));
+  config.portsAttributes['27017'].visibility = 'public';
+  fs.writeFileSync(file, JSON.stringify(config, null, 2));
+  assert.throws(() => validateExercise(viaAttributes), /port 27017 visibility/);
+});
+
+test('maintainer validation is scoped to the template and watches .vscode', () => {
+  const unscoped = copyMetadata();
+  const workflow = path.join(unscoped, '.github/workflows/validate-exercise.yml');
+  fs.writeFileSync(workflow, fs.readFileSync(workflow, 'utf8').replace(/^\s*if: github\.event\.repository\.is_template\n/m, ''));
+  assert.throws(() => validateExercise(unscoped), /template repository/);
+  const noVscode = copyMetadata();
+  const other = path.join(noVscode, '.github/workflows/validate-exercise.yml');
+  fs.writeFileSync(other, fs.readFileSync(other, 'utf8').replace('      - ".vscode/**"\n', ''));
+  assert.throws(() => validateExercise(noVscode), /\.vscode/);
+});

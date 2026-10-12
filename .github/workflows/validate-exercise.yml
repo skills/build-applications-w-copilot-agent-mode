@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/**"
       - ".devcontainer/**"
+      - ".vscode/**"
       - "README.md"
       - "docs/**"
       - "tests/**"
@@ -15,6 +16,7 @@ on:
     paths:
       - ".github/**"
       - ".devcontainer/**"
+      - ".vscode/**"
       - "README.md"
       - "docs/**"
       - "tests/**"
@@ -25,6 +27,8 @@ permissions: {}
 jobs:
   validate:
     name: Validate exercise metadata and scaffold
+    # Maintainer-only: learner copies are not templates and are graded by the step workflows instead.
+    if: github.event.repository.is_template
     runs-on: ubuntu-latest
     permissions:
       contents: read
