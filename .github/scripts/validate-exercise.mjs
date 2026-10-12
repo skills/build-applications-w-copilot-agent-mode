@@ -196,10 +196,16 @@ export function validateExercise(root = process.cwd()) {
           assertValid(!/actions:\s*write/.test(check), `${file} check_step_work must not have actions: write`);
           assertValid(!/contents:\s*write/.test(check), `${file} check_step_work must not have contents: write`);
           assertValid(file.includes('5-last') ? /post_review_content:[\s\S]*?needs:\s*\[[^\]]*check_step_work/.test(text) : /post_next_step_content:[\s\S]*?needs:\s*\[[^\]]*check_step_work/.test(text), `${file} progression job must need check_step_work`);
-          const ids = [...check.matchAll(/^        id:\s*([A-Za-z0-9_-]+)/gm)].map(m => m[1]).filter(id => id !== 'find-last-comment');
+          const ids = [...check.matchAll(/^        id:\s*([A-Za-z0-9_-]+)/gm)].map(m => m[1]).filter((id) => !new RegExp(`id:\\s*${id}\\s*\\n\\s*uses:\\s*peter-evans/find-comment@`).test(check));
           for (const id of ids) assertValid(new RegExp(`steps\\.${id}\\.outcome`).test(check), `${file} result table missing ${id}`);
           assertValid(/continue-on-error:\s*true/.test(check) && /contains\(steps\.\*\.outcome, 'failure'\)/.test(check), `${file} grading checks must be continue-on-error and close with failure gate`);
-          assertValid(/comment-author:\s*"?github-actions\[bot\]"?/.test(check) && /body-(?:includes|regex):\s*(["'])\S[^\n]*\1/.test(check), `${file} find-comment must be scoped`);
+        }
+        const steps = text.split(/\n(?=\s+-\s+(?:name|id|uses|run|if):)/);
+        for (const step of steps.filter((candidate) => /^\s*edit-mode:\s*["']?replace\b/m.test(candidate))) {
+          const lookupId = step.match(/^\s*comment-id:\s*\$\{\{\s*steps\.([A-Za-z0-9_-]+)\.outputs\.comment-id\s*\}\}\s*$/m)?.[1];
+          const lookup = lookupId && steps.find((candidate) => new RegExp(`^\\s*(?:-\\s+)?id:\\s*["']?${lookupId}["']?\\s*$`, 'm').test(candidate));
+          assertValid(lookup && /uses:\s*peter-evans\/find-comment@/.test(lookup) && /^\s*comment-author:\s*["']?github-actions\[bot\]["']?\s*$/m.test(lookup) && /^\s*body-(?:includes|regex):\s*(["'])\S[^\n]*\1\s*$/m.test(lookup),
+            `${file} find-comment must be scoped: every edit-mode: replace must use comment-id from a peter-evans/find-comment step filtered by github-actions[bot] and a body selector`);
         }
       }
       const start = readText(root, '.github/workflows/0-start-exercise.yml');

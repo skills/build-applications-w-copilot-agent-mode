@@ -75,7 +75,8 @@ export const checks = {
     const backend = combinedText(root, 'octofit-tracker/backend/src');
     for (const path of ['/api/activities', '/api/teams', '/api/leaderboard', '/api/workouts/suggestions']) assertValid(backend.includes(path.replace('/api', '')) || backend.includes(path), `Backend must expose ${path}`);
     assertValid(/\/workouts\/suggestions\/:userEmail/.test(backend), 'Workout suggestions route must identify the seeded user by email');
-    containsAll(backend, ['status\\(400\\)|status: 400', 'getLeaderboard', 'suggestWorkouts', 'points', 'minutes'], 'API implementation');
+    assertValid(!/not implemented yet/i.test(backend), 'Replace the starter "not implemented yet" service placeholders; the API contract tests define the required behavior');
+    containsAll(backend, ['getLeaderboard', 'suggestWorkouts', 'points', 'minutes'], 'API implementation');
   },
   'step4-frontend': (root) => {
     const pkg = readJson(root, 'octofit-tracker/frontend/package.json');

@@ -25,7 +25,7 @@ function completedFixture() {
   }
   write(root, 'octofit-tracker/backend/src/scripts/seed.ts', `import { Activity, Team, User, Workout } from '../models/index.js';\nexport async function seed() {\n  await User.updateOne({}, {}, { upsert: true });\n  await Team.updateOne({}, {}, { upsert: true });\n  await Activity.updateOne({}, {}, { upsert: true });\n  await Workout.updateOne({}, {}, { upsert: true });\n}\n`);
   write(root, 'octofit-tracker/backend/tests/data.contract.test.ts', `it('seeds representative data idempotently and preserves a sentinel', async () => { await seed(); await seed(); expect(sentinel).toBeDefined(); });`);
-  write(root, 'octofit-tracker/backend/src/services/completed-contract.ts', `response.status(400); getLeaderboard(); suggestWorkouts(); points; minutes;`);
+  write(root, 'octofit-tracker/backend/src/services/octofitService.ts', `export async function createActivity() { throw new HttpError(BAD_REQUEST); }\nexport async function getLeaderboard() { return []; }\nexport async function suggestWorkouts() { return []; }\nconst fields = ['points', 'minutes'];\n`);
   for (const [component, route] of [['Activities', 'activities'], ['Teams', 'teams'], ['Leaderboard', 'leaderboard'], ['Workouts', 'workouts/suggestions/mona%40example.com']]) {
     write(root, `octofit-tracker/frontend/src/components/${component}.tsx`, `import { getJson } from '../api/client.js';\nexport async function load${component}() { return getJson<unknown>('/api/${route}'); }\n`);
   }
@@ -331,4 +331,25 @@ test('maintainer validation is scoped to the template and watches .vscode', () =
   const other = path.join(noVscode, '.github/workflows/validate-exercise.yml');
   fs.writeFileSync(other, fs.readFileSync(other, 'utf8').replace('      - ".vscode/**"\n', ''));
   assert.throws(() => validateExercise(noVscode), /\.vscode/);
+});
+
+test('replace-mode comments must use the scoped find-comment output', () => {
+  const root = copyMetadata();
+  const workflow = path.join(root, '.github/workflows/2-step.yml');
+  const text = fs.readFileSync(workflow, 'utf8');
+  const unscoped = `      - name: Find any comment
+        id: find-any-comment
+        uses: peter-evans/find-comment@v4
+        with:
+          issue-number: \${{ env.ISSUE_NUMBER }}
+          direction: last
+`;
+  const redirected = text.replace('      - name: Update comment - checking work\n', `${unscoped}      - name: Update comment - checking work\n`).replace('comment-id: ${{ steps.find-last-comment.outputs.comment-id }}', 'comment-id: ${{ steps.find-any-comment.outputs.comment-id }}');
+  assert.notEqual(redirected, text);
+  fs.writeFileSync(workflow, redirected);
+  assert.throws(() => validateExercise(root), /find-comment must be scoped/);
+  const literal = copyMetadata();
+  const other = path.join(literal, '.github/workflows/2-step.yml');
+  fs.writeFileSync(other, text.replace('comment-id: ${{ steps.find-last-comment.outputs.comment-id }}', 'comment-id: 12345'));
+  assert.throws(() => validateExercise(literal), /find-comment must be scoped/);
 });
