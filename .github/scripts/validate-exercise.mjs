@@ -46,6 +46,7 @@ function yamlScalar(value) {
 }
 // The safety checks below read workflows line by line, so require block mappings with unquoted keys.
 // Expression and quoted-string contents, comments, block scalar bodies, and an empty `{}` are ignored.
+const BLOCK_SCALAR_HEADER = /:\s*[|>](?:[+-]?[1-9]?|[1-9][+-])\s*(?:#.*)?$/;
 function flowStyleLines(text) {
   const lines = text.split(/\n/);
   const flagged = [];
@@ -58,7 +59,7 @@ function flowStyleLines(text) {
     }
     const code = line.replace(/\$\{\{.*?\}\}/g, '').replace(/"(?:[^"\\]|\\.)*"|'(?:[^']|'')*'/g, '""').replace(/\s#.*$/, '').replace(/^\s*#.*$/, '');
     if (/[{}]/.test(code.replace(/:\s*\{\}\s*$/, ':')) || /^\s*(?:-\s+)?["']/.test(line.replace(/\$\{\{.*?\}\}/g, '')) && /^\s*(?:-\s+)?""\s*:/.test(code)) flagged.push(index + 1);
-    if (/:\s*[|>][+-]?\d*\s*(?:#.*)?$/.test(code)) scalarIndent = indent;
+    if (BLOCK_SCALAR_HEADER.test(code)) scalarIndent = indent;
   }
   return flagged;
 }
@@ -69,15 +70,18 @@ function checkoutRepositories(text) {
     const match = line.match(/^(\s*)(?:-\s+)?uses:\s*['"]?actions\/checkout@/i);
     if (!match) continue;
     const stepIndent = line.startsWith(`${match[1]}- `) ? match[1].length : match[1].length - 2;
-    for (let cursor = index + 1; cursor < lines.length; cursor += 1) {
-      const next = lines[cursor];
+    // YAML key order is insignificant, so scan the whole step, including keys before `uses:`.
+    let start = index;
+    while (start > 0 && !(lines[start].match(/^\s*/)[0].length === stepIndent && /^\s*-\s/.test(lines[start]))) start -= 1;
+    for (let cursor = start; cursor < lines.length; cursor += 1) {
+      const next = cursor === start ? lines[cursor].replace(/^(\s*)-\s+/, '$1  ') : lines[cursor];
       if (!next.trim()) continue;
       const indent = next.match(/^\s*/)[0].length;
-      if (indent < stepIndent || (indent === stepIndent && /^\s*-\s/.test(next))) break;
+      if (cursor > start && (indent < stepIndent || (indent === stepIndent && /^\s*-\s/.test(next)))) break;
       const repository = next.match(/^\s*['"]?repository['"]?:\s*(.+)$/i)?.[1];
       if (repository) {
         let value = yamlScalar(repository);
-        if (/^[>|][+-]?\s*(?:#.*)?$/.test(repository.trim())) {
+        if (BLOCK_SCALAR_HEADER.test(`:${repository}`)) {
           const keyIndent = indent;
           const scalarLines = [];
           let end = cursor + 1;
@@ -103,7 +107,7 @@ function toolkitCheckoutRefs(text) {
   const lines = text.split(/\n/);
   const refs = lines.flatMap((line, index) => {
     const match = line.match(/^(\s*)repository:\s*(.+)$/);
-    if (!match || yamlScalar(match[2]) !== 'skills/exercise-toolkit') return [];
+    if (!match || yamlScalar(match[2]).toLowerCase() !== 'skills/exercise-toolkit') return [];
     const indent = match[1];
     let start = index;
     while (start > 0 && lines[start - 1].startsWith(indent) && lines[start - 1].trim()) start -= 1;
@@ -114,7 +118,7 @@ function toolkitCheckoutRefs(text) {
     return [ref ? yamlScalar(ref) : null];
   });
   // Any other mention of the toolkit repository (flow mappings, anchors, etc.) cannot be verified.
-  const mentions = lines.filter((line) => /skills\/exercise-toolkit(?![\w./-]*@)/.test(line.replace(/^\s*#.*$/, ''))).length;
+  const mentions = lines.filter((line) => /skills\/exercise-toolkit(?![\w./-]*@)/i.test(line.replace(/^\s*#.*$/, ''))).length;
   return mentions === refs.length ? refs : [...refs, 'unrecognized checkout'];
 }
 function isMergeGated(jobId, blocks, visited = new Set()) {
@@ -197,7 +201,7 @@ export function validateExercise(root = process.cwd()) {
     ['Toolkit and action pins', () => {
       for (const file of workflowFiles) {
         const text = readText(root, file);
-        for (const match of text.matchAll(/skills\/exercise-toolkit[^\s]+@([^\s]+)/g)) assertValid(match[1] === TOOLKIT_REF, `${file} uses toolkit ${match[1]}`);
+        for (const match of text.matchAll(/skills\/exercise-toolkit[^\s@]*@([^\s'\"#]+)/gi)) assertValid(match[1] === TOOLKIT_REF, `${file} uses toolkit ${match[1]}`);
         const flowLines = flowStyleLines(text);
         assertValid(flowLines.length === 0, `${file} must use block-style YAML with unquoted keys; flow-style or quoted-key steps bypass action safety checks (lines ${flowLines.join(', ')})`);
         for (const repository of checkoutRepositories(text)) assertValid(!/\$\{\{/.test(repository), `${file} actions/checkout repository must be a literal value, found ${repository}`);

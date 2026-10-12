@@ -10,7 +10,7 @@ import { ValidationError, assertValid, combinedText, readJson, readText, require
 // and refuses to run if they changed. Update hashes with: node .github/scripts/grade-step.mjs print-contract-hashes
 export const protectedContracts = {
   'octofit-tracker/backend/tests/data.contract.test.ts': '4ba8958d2098d2223946072611494c97f3c2ec41c4b11a911c6baed8c3c87929',
-  'octofit-tracker/backend/tests/api.contract.test.ts': '27f82199053b7b696e8cb3773b0456f8f1ce31febaf9bb584811975253521725',
+  'octofit-tracker/backend/tests/api.contract.test.ts': '910fa9d539e1fbc6478e4c65e13d790b43a92d228752a7a6a2108e34902716fd',
   'octofit-tracker/backend/tsconfig.json': '52ae7740b2c43a72f7306679d38fe15bc376384ea08eef7d913bfc633e6298b5',
   'octofit-tracker/frontend/tests/app.contract.test.tsx': 'a5e731632ecf2a8b335cea709e7938779e0efc47b9d01a05a03dadab3cdcba17',
   'octofit-tracker/frontend/vite.config.ts': 'a1f305cc8a408189f264ef113a470303581bf15355e647631a3c0c8cb0f17b41',

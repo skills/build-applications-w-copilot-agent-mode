@@ -407,3 +407,40 @@ test('block scalars and expressions may contain braces', () => {
   fs.writeFileSync(workflow, changed);
   assert.doesNotThrow(() => validateExercise(root));
 });
+
+test('checkout inputs are checked regardless of key order', () => {
+  const root = copyMetadata();
+  const workflow = path.join(root, '.github/workflows/1-step.yml');
+  const original = '      - name: Get response templates\n        uses: actions/checkout@v6\n        with:\n          repository: skills/exercise-toolkit\n          path: exercise-toolkit\n          ref: v0.9.3\n';
+  const text = fs.readFileSync(workflow, 'utf8');
+  assert.ok(text.includes(original));
+  fs.writeFileSync(workflow, text.replace(original, '      - name: Get response templates\n        with:\n          repository: ${{ vars.TOOLKIT_REPOSITORY }}\n          path: exercise-toolkit\n          ref: v0.9.3\n        uses: actions/checkout@v6\n'));
+  assert.throws(() => validateExercise(root), /actions\/checkout repository must be a literal value/);
+});
+
+test('toolkit references are matched case-insensitively', () => {
+  const checkout = copyMetadata();
+  const checkoutWorkflow = path.join(checkout, '.github/workflows/1-step.yml');
+  fs.writeFileSync(checkoutWorkflow, fs.readFileSync(checkoutWorkflow, 'utf8').replace('          repository: skills/exercise-toolkit\n          path: exercise-toolkit\n          ref: v0.9.3', '          repository: Skills/Exercise-Toolkit\n          path: exercise-toolkit\n          ref: main'));
+  assert.throws(() => validateExercise(checkout), /toolkit checkout must use v0\.9\.3 \(found main\)/);
+
+  const reusable = copyMetadata();
+  const reusableWorkflow = path.join(reusable, '.github/workflows/1-step.yml');
+  const text = fs.readFileSync(reusableWorkflow, 'utf8');
+  const changed = text.replace('skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.9.3', 'Skills/Exercise-Toolkit/.github/workflows/find-exercise-issue.yml@main');
+  assert.notEqual(changed, text);
+  fs.writeFileSync(reusableWorkflow, changed);
+  assert.throws(() => validateExercise(reusable), /uses toolkit main/);
+});
+
+test('block scalar headers accept either indicator order', () => {
+  for (const header of ['|2-', '|-2', '>2+', '|2']) {
+    const root = copyMetadata();
+    const workflow = path.join(root, '.github/workflows/1-step.yml');
+    const text = fs.readFileSync(workflow, 'utf8');
+    const changed = text.replace('      - name: Get response templates\n', `      - name: Shell braces\n        run: ${header}\n            echo "\${HOME}" {a,b}\n      - name: Get response templates\n`);
+    assert.notEqual(changed, text);
+    fs.writeFileSync(workflow, changed);
+    assert.doesNotThrow(() => validateExercise(root), header);
+  }
+});

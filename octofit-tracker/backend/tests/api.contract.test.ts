@@ -45,6 +45,11 @@ describe('OctoFit API contract', () => {
     expect(created.status).toBe(201);
     const listed = await request(app).get('/api/activities');
     expect(listed.body.activities).toHaveLength(1);
+    for (const activity of [created.body.activity, listed.body.activities[0]]) {
+      expect(activity).toMatchObject({ user: user._id.toString(), team: team._id.toString(), type: 'run', minutes: 30 });
+      expect(activity.points).toBeGreaterThan(0);
+      expect(Number.isNaN(Date.parse(activity.occurredAt))).toBe(false);
+    }
   });
   it('creates teams and exposes members', async () => {
     const member = await User.create({ name: 'Mona', email: 'mona@example.com', fitnessGoal: 'endurance' });
@@ -52,7 +57,10 @@ describe('OctoFit API contract', () => {
     expect(invalid.status).toBe(400);
     const created = await request(app).post('/api/teams').send({ name: 'Octocats', mascot: 'Mona', members: [member._id.toString()] });
     expect(created.status).toBe(201);
+    expect(created.body.team).toMatchObject({ name: 'Octocats', mascot: 'Mona' });
     const listed = await request(app).get('/api/teams');
+    expect(listed.body.teams).toHaveLength(1);
+    expect(listed.body.teams[0]).toMatchObject({ name: 'Octocats', mascot: 'Mona' });
     expect(listed.body.teams[0].members.map((id: string) => id.toString())).toContain(member._id.toString());
   });
   it('orders leaderboard entries by total points', async () => {
