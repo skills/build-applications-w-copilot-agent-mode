@@ -36,19 +36,27 @@ function conditionRequiresMerged(condition) {
   if (/\|\||!(?!=)|[()]/.test(expression)) return false;
   return expression.split('&&').some((term) => /^github\.event\.pull_request\.merged\s*==\s*true$/.test(term.trim()));
 }
+function yamlScalar(value) {
+  const trimmed = value.replace(/\s+#.*$/, '').trim();
+  return trimmed.match(/^(['"])(.*)\1$/)?.[2] ?? trimmed;
+}
 function toolkitCheckoutRefs(text) {
   const lines = text.split(/\n/);
-  return lines.flatMap((line, index) => {
-    const match = line.match(/^(\s*)repository:\s*skills\/exercise-toolkit\s*$/);
-    if (!match) return [];
+  const refs = lines.flatMap((line, index) => {
+    const match = line.match(/^(\s*)repository:\s*(.+)$/);
+    if (!match || yamlScalar(match[2]) !== 'skills/exercise-toolkit') return [];
     const indent = match[1];
     let start = index;
-    while (start > 0 && lines[start - 1].startsWith(indent) && !/^\s*-\s/.test(lines[start - 1].slice(0, indent.length))) start -= 1;
+    while (start > 0 && lines[start - 1].startsWith(indent) && lines[start - 1].trim()) start -= 1;
     let end = index;
     while (end + 1 < lines.length && lines[end + 1].startsWith(indent) && lines[end + 1].trim()) end += 1;
-    const block = lines.slice(start, end + 1).filter((candidate) => candidate.startsWith(indent) && !candidate.startsWith(`${indent} `));
-    return [block.map((candidate) => candidate.match(/^\s*ref:\s*(\S+)\s*$/)?.[1]).find(Boolean) ?? null];
+    const siblings = lines.slice(start, end + 1).filter((candidate) => candidate.startsWith(indent) && !/^\s/.test(candidate.slice(indent.length)));
+    const ref = siblings.map((candidate) => candidate.match(/^\s*ref:\s*(.+)$/)?.[1]).find(Boolean);
+    return [ref ? yamlScalar(ref) : null];
   });
+  // Any other mention of the toolkit repository (flow mappings, anchors, etc.) cannot be verified.
+  const mentions = lines.filter((line) => /skills\/exercise-toolkit(?![\w./-]*@)/.test(line.replace(/^\s*#.*$/, ''))).length;
+  return mentions === refs.length ? refs : [...refs, 'unrecognized checkout'];
 }
 function isMergeGated(jobId, blocks, visited = new Set()) {
   if (visited.has(jobId)) return false;

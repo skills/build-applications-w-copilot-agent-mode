@@ -138,6 +138,26 @@ test('each toolkit checkout must pin the release ref', () => {
   fs.writeFileSync(mixedWorkflow, fs.readFileSync(mixedWorkflow, 'utf8').replace('          ref: v0.9.3', '          ref: v0.9.0'));
   assert.throws(() => validateExercise(mixed), /toolkit checkout must use v0\.9\.3 \(found v0\.9\.0\)/);
 
+  for (const [label, replacement] of [
+    ['quoted', '          repository: "skills/exercise-toolkit" # toolkit\n          path: exercise-toolkit\n          ref: main'],
+    ['single-quoted', "          repository: 'skills/exercise-toolkit'\n          path: exercise-toolkit\n          ref: 'main'"],
+  ]) {
+    const root = copyMetadata();
+    const workflow = path.join(root, '.github/workflows/2-step.yml');
+    fs.writeFileSync(workflow, fs.readFileSync(workflow, 'utf8').replace('          repository: skills/exercise-toolkit\n          path: exercise-toolkit\n          ref: v0.9.3', replacement));
+    assert.throws(() => validateExercise(root), /toolkit checkout must use v0\.9\.3 \(found main\)/, label);
+  }
+
+  const flow = copyMetadata();
+  const flowWorkflow = path.join(flow, '.github/workflows/3-step.yml');
+  fs.writeFileSync(flowWorkflow, fs.readFileSync(flowWorkflow, 'utf8').replace('        with:\n          repository: skills/exercise-toolkit\n          path: exercise-toolkit\n          ref: v0.9.3', '        with: { repository: skills/exercise-toolkit, path: exercise-toolkit, ref: main }'));
+  assert.throws(() => validateExercise(flow), /found unrecognized checkout/);
+
+  const quotedPinned = copyMetadata();
+  const quotedWorkflow = path.join(quotedPinned, '.github/workflows/4-step.yml');
+  fs.writeFileSync(quotedWorkflow, fs.readFileSync(quotedWorkflow, 'utf8').replaceAll('          repository: skills/exercise-toolkit\n          path: exercise-toolkit\n          ref: v0.9.3', '          repository: "skills/exercise-toolkit"\n          path: exercise-toolkit\n          ref: "v0.9.3" # latest release'));
+  assert.doesNotThrow(() => validateExercise(quotedPinned));
+
   const missing = copyMetadata();
   const missingWorkflow = path.join(missing, '.github/workflows/1-step.yml');
   fs.writeFileSync(missingWorkflow, fs.readFileSync(missingWorkflow, 'utf8').replace('          ref: v0.9.3\n', ''));
