@@ -8,6 +8,10 @@ const TOOLKIT_REF = 'v0.9.3';
 const requiredSteps = [1, 2, 3, 4, 5];
 function files(root, dir, pattern) { return listFiles(root, dir, pattern).sort(); }
 function workflowName(text) { return text.match(/^name:\s*Step\s+(\d+)/m)?.[1]; }
+function workflowJobIds(text) {
+  const jobs = text.match(/^jobs:\s*\n([\s\S]*)$/m)?.[1] ?? '';
+  return [...jobs.matchAll(/^  ([A-Za-z0-9_-]+):\s*$/gm)].map((match) => match[1]);
+}
 function jobBlock(text, name) {
   const lines = text.split(/\n/);
   const start = lines.findIndex((line) => line === `  ${name}:`);
@@ -18,6 +22,21 @@ function jobBlock(text, name) {
     body.push(line);
   }
   return body.join('\n');
+}
+function jobNeeds(block) {
+  const value = block.match(/^    needs:\s*(.+)$/m)?.[1]?.trim();
+  if (!value) return [];
+  if (value.startsWith('[') && value.endsWith(']')) return value.slice(1, -1).split(',').map((item) => item.trim()).filter(Boolean);
+  return [value];
+}
+function isMergeGated(jobId, blocks, visited = new Set()) {
+  if (visited.has(jobId)) return false;
+  visited.add(jobId);
+  const block = blocks.get(jobId) ?? '';
+  const condition = block.match(/^    if:\s*(.+)$/m)?.[1] ?? '';
+  if (/github\.event\.pull_request\.merged\s*==\s*true/.test(condition)) return true;
+  if (/\b(?:always|failure|cancelled)\s*\(/.test(condition)) return false;
+  return jobNeeds(block).some((dependency) => isMergeGated(dependency, blocks, new Set(visited)));
 }
 function sectionBody(text, heading) {
   const lines = text.split(/\n/);
@@ -116,6 +135,11 @@ export function validateExercise(root = process.cwd()) {
       assertValid(/!github\.event\.repository\.is_template/.test(start), 'Start workflow lacks template guard');
       const final = readText(root, '.github/workflows/5-last-step.yml');
       assertValid(/pull_request:[\s\S]*types:[\s\S]*closed/.test(final) && /github\.event\.pull_request\.merged\s*==\s*true/.test(final), 'Final workflow must require a merged pull request');
+      const finalJobs = new Map(workflowJobIds(final).map((jobId) => [jobId, jobBlock(final, jobId)]));
+      assertValid(finalJobs.has('finish_exercise'), 'Final workflow must define finish_exercise');
+      for (const jobId of finalJobs.keys()) {
+        assertValid(isMergeGated(jobId, finalJobs), `5-last-step.yml job ${jobId} must be gated on a merged pull request`);
+      }
     }],
     ['Placeholder cleanup', () => {
       const targets = ['README.md', ...files(root, '.github', /\.(?:md|ya?ml)$/), ...files(root, 'docs', /\.md$/), ...files(root, '.vscode', /\.json$/)];

@@ -20,8 +20,8 @@ beforeEach(async () => {
   await Promise.all([Activity.deleteMany({}), Team.deleteMany({}), User.deleteMany({}), Workout.deleteMany({})]);
 });
 
-async function createUserAndTeam(name: string, email: string, mascot: string) {
-  const team = await Team.create({ name: `${name} team`, mascot, members: [] });
+async function createUserAndTeam(name: string, email: string, mascot: string, teamName = `${name} team`) {
+  const team = await Team.create({ name: teamName, mascot, members: [] });
   const user = await User.create({ name, email, team: team._id, fitnessGoal: 'endurance' });
   await Team.updateOne({ _id: team._id }, { $addToSet: { members: user._id } });
   return { user, team };
@@ -45,8 +45,8 @@ describe('OctoFit API contract', () => {
     expect(listed.body.teams[0].members.map((id: string) => id.toString())).toContain(member._id.toString());
   });
   it('orders leaderboard entries by total points', async () => {
-    const mona = await createUserAndTeam('Mona', 'mona@example.com', 'Mona');
-    const hubot = await createUserAndTeam('Hubot', 'hubot@example.com', 'Hubot');
+    const mona = await createUserAndTeam('Mona', 'mona@example.com', 'Mona', 'Octocats');
+    const hubot = await createUserAndTeam('Hubot', 'hubot@example.com', 'Hubot', 'Robocats');
     await request(app).post('/api/activities').send({ userId: mona.user._id.toString(), teamId: mona.team._id.toString(), type: 'run', minutes: 40 });
     await request(app).post('/api/activities').send({ userId: hubot.user._id.toString(), teamId: hubot.team._id.toString(), type: 'cycle', minutes: 10 });
     const response = await request(app).get('/api/leaderboard');

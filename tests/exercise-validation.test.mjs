@@ -92,6 +92,16 @@ test('final workflow cannot enable another step', () => {
   assert.throws(() => validateExercise(root), /not enable another step/);
 });
 
+test('final completion job cannot bypass the merged pull request gate', () => {
+  const root = copyMetadata();
+  const workflow = path.join(root, '.github/workflows/5-last-step.yml');
+  const text = fs.readFileSync(workflow, 'utf8')
+    .replace('    if: github.event.pull_request.merged == true\n    name: Finish Exercise', '    name: Finish Exercise')
+    .replace('    needs: [find_exercise, post_review_content]\n    permissions:', '    permissions:');
+  fs.writeFileSync(workflow, text);
+  assert.throws(() => validateExercise(root), /job finish_exercise must be gated on a merged pull request/);
+});
+
 test('workflow-level write permissions are rejected', () => {
   const root = copyMetadata();
   const workflow = path.join(root, '.github/workflows/1-step.yml');
