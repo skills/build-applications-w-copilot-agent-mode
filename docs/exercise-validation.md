@@ -1,38 +1,33 @@
-# Exercise validation
+# Maintainer validation
 
-Run the repository-owned validation before publishing:
+Run these checks before publishing or after changing exercise content, automation, the devcontainer, or the starter scaffold.
 
 ```bash
 node .github/scripts/validate-exercise.mjs
 node --test tests/exercise-validation.test.mjs
+npm ci --prefix octofit-tracker/backend
+npm ci --prefix octofit-tracker/frontend
+npm run build --prefix octofit-tracker/backend
+npm run build --prefix octofit-tracker/frontend
 ```
 
-The structural validator checks step completeness, step/workflow parity, toolkit pinning, workflow permissions, safe issue-comment replacement, final merge gating, and leftover placeholders.
+The starter application tests are intentionally red until a learner implements each capability. Use the grading script checks and negative fixtures to verify the exercise contract.
 
-The negative fixture suite confirms that:
+Grading runs the contract tests, `tsc`, and `vite build` directly through `grade-step.mjs` rather than learner-editable npm scripts. It refuses to run if a protected contract file (contract tests, `tsconfig.json`, or the frontend `vite.config.ts`) has changed. After intentionally editing one of those files, refresh the hashes:
 
-- Missing Theory content is rejected.
-- Unsafe issue-comment replacement is rejected.
-- Closing an unmerged pull request cannot finish the exercise.
-- A fresh template cannot pass Step 2 before the learner creates the application.
-- A placeholder seed script cannot pass Step 3.
-- Frontend API configuration without a localhost fallback cannot pass Step 5.
-- Every resource defines its own Mongoose schema and model.
-- Seed data is written for every required resource.
-- API path strings without Express route registration are rejected.
-- Every resource view requests its own endpoint and is connected to React Router.
-- Mixed read/write workflow-level permissions are rejected.
-- Every replace-mode comment update traces to its own safely scoped lookup.
-- A merge expression in an unused comment cannot satisfy final workflow gating.
+```bash
+node .github/scripts/grade-step.mjs print-contract-hashes
+```
 
-## Fresh-template publication check
+Paste the output into `protectedContracts` in `.github/scripts/grade-step.mjs`.
 
-Before releasing a new version:
+These protections guard against accidental or AI-generated changes, such as agent mode editing a test or npm script to make it pass. They are not a defense against deliberate tampering. Learners own their copied repository, including the grader and the step workflows, so grading is formative feedback that unlocks the next step, not a secured assessment. The maintainer-only `validate-exercise.yml` job runs only in the template repository.
 
-1. Create a repository from the template.
-2. Confirm only Step 0 is enabled initially.
-3. Follow the issue from Step 1 through Step 6 using a new `build-octofit-app` branch.
-4. Intentionally fail each graded step once and confirm the feedback identifies the missing behavior.
-5. Add an issue comment before retrying a failed step and confirm automation updates only the marked feedback comment.
-6. Close one pull request without merging and confirm the exercise remains open.
-7. Merge a passing pull request and confirm both application tiers build before the final review is posted.
+## Reset and publication checklist
+
+1. Confirm the repository is configured as a template and `0-start-exercise.yml` has its automatic `push` trigger.
+2. Confirm all numbered workflows use the same `skills/exercise-toolkit@v0.9.3` pin. The toolkit start workflow disables every numbered workflow, then Step 0 enables Step 1.
+3. Create a fresh repository from the template and confirm the exercise issue appears without manually dispatching a workflow.
+4. Intentionally fail each graded step once and confirm its marked feedback comment is replaced rather than duplicated.
+5. To reset a disposable test copy, delete the exercise issue and recreate the repository from the template. Do not manually enable later step workflows in the published template.
+6. Close a pull request without merging and confirm the exercise remains open; then merge a passing pull request and confirm the final review is posted.
