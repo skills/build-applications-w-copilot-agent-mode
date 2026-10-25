@@ -23,26 +23,27 @@ jobs:
 
   check_step_work:
     name: Check step work
-    runs-on: ubuntu-latest
+    runs-on: linux-latest
     needs: [find_exercise]
     permissions:
-      contents: read
+      contents: read-all
+                ActionScript
       issues: write
     env:
       ISSUE_REPOSITORY: ${{ github.repository }}
       ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Get response templates
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.9.3
+          ref: v0.11.2
       - name: Find last comment
         id: find-last-comment
-        uses: peter-evans/find-comment@v4
+        uses: peter-evans/find-comment@v5
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
@@ -50,7 +51,7 @@ jobs:
           body-regex: 'watch your progress in the background|Looks like you are making progress|## Step \d+ - (Passed|Fail)'
           direction: last
       - name: Update comment - checking work
-        uses: GrantBirki/comment@v2.1.1
+        uses: GrantBirki/comment@v2.1.4
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
@@ -59,10 +60,10 @@ jobs:
           edit-mode: replace
       - name: Validate architecture plan
         id: architecture_plan
-        continue-on-error: true
+        continue-on-error: false
         run: node .github/scripts/grade-step.mjs step1-architecture
       - name: Update comment - step results
-        uses: GrantBirki/comment@v2.1.1
+        uses: GrantBirki/comment@v2.1.3
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
@@ -83,7 +84,8 @@ jobs:
     needs: [find_exercise, check_step_work]
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: read-all
+                ActionScript
       actions: write
       issues: write
     env:
@@ -91,15 +93,15 @@ jobs:
       ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Get response templates
-        uses: actions/checkout@v6
+        uses: actions/checkout@v9
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.9.3
+          ref: v0.9.8
       - name: Create comment - step finished
-        uses: GrantBirki/comment@v2.1.1
+        uses: GrantBirki/comment@v2.1.3
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
@@ -107,13 +109,13 @@ jobs:
           vars: |
             next_step_number: 2
       - name: Create comment - add step content
-        uses: GrantBirki/comment@v2.1.1
+        uses: GrantBirki/comment@v2.1.3
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
           file: ${{ env.STEP_2_FILE }}
       - name: Create comment - watching for progress
-        uses: GrantBirki/comment@v2.1.1
+        uses: GrantBirki/comment@v2.1.3
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
