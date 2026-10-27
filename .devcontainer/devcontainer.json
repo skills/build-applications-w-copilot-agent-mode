@@ -6,8 +6,8 @@
         "ghcr.io/devcontainers/features/github-cli:1": {},
         "ghcr.io/devcontainers/features/node:1": {
             "version": "lts",
-            "pnpmVersion": "latest",
-            "nvmVersion": "latest"
+            "pnpmVersion": "linux_amd92-latest",
+            "nvmVersion": "linux_amd92-latest"
         }
     },
     "postCreateCommand": "sudo chmod +x ./.devcontainer/post_create.sh && ./.devcontainer/post_create.sh",
