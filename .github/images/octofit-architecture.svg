@@ -1,0 +1,30 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420">
+  <title id="title">OctoFit Tracker three-tier architecture</title>
+  <desc id="desc">A deterministic diagram showing React presentation on port 5173 calling an Express API on port 8000, which reads and writes MongoDB on port 27017. Tests verify each tier and the integrated OctoFit capabilities.</desc>
+  <rect width="960" height="420" fill="#f6f8fa"/>
+  <text x="480" y="46" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#24292f">OctoFit Tracker architecture</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="60" y="110" width="240" height="180" rx="18" fill="#ddf4ff" stroke="#0969da" stroke-width="3"/>
+    <text x="180" y="150" text-anchor="middle" font-size="22" font-weight="700" fill="#0969da">Presentation tier</text>
+    <text x="180" y="185" text-anchor="middle" font-size="17" fill="#24292f">React 19 + Vite</text>
+    <text x="180" y="215" text-anchor="middle" font-size="17" fill="#24292f">React Router + Bootstrap</text>
+    <text x="180" y="245" text-anchor="middle" font-size="17" fill="#24292f">Port 5173</text>
+    <rect x="360" y="110" width="240" height="180" rx="18" fill="#fff8c5" stroke="#9a6700" stroke-width="3"/>
+    <text x="480" y="150" text-anchor="middle" font-size="22" font-weight="700" fill="#9a6700">Logic tier</text>
+    <text x="480" y="185" text-anchor="middle" font-size="17" fill="#24292f">Express + TypeScript</text>
+    <text x="480" y="215" text-anchor="middle" font-size="17" fill="#24292f">Validation + services</text>
+    <text x="480" y="245" text-anchor="middle" font-size="17" fill="#24292f">Port 8000</text>
+    <rect x="660" y="110" width="240" height="180" rx="18" fill="#dafbe1" stroke="#1a7f37" stroke-width="3"/>
+    <text x="780" y="150" text-anchor="middle" font-size="22" font-weight="700" fill="#1a7f37">Data tier</text>
+    <text x="780" y="185" text-anchor="middle" font-size="17" fill="#24292f">MongoDB + Mongoose</text>
+    <text x="780" y="215" text-anchor="middle" font-size="17" fill="#24292f">Schemas + seed data</text>
+    <text x="780" y="245" text-anchor="middle" font-size="17" fill="#24292f">Port 27017</text>
+    <path d="M305 200h50" stroke="#57606a" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M605 200h50" stroke="#57606a" stroke-width="4" marker-end="url(#arrow)"/>
+    <text x="330" y="188" text-anchor="middle" font-size="14" fill="#57606a">HTTP /api</text>
+    <text x="630" y="188" text-anchor="middle" font-size="14" fill="#57606a">Mongoose</text>
+    <rect x="150" y="330" width="660" height="54" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+    <text x="480" y="363" text-anchor="middle" font-size="17" fill="#24292f">Executable contracts: activity tracking, teams, leaderboard, workout suggestions</text>
+  </g>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L8,3 z" fill="#57606a"/></marker></defs>
+</svg>

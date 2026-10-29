@@ -31,3 +31,9 @@ yarn-error.log*
 # Python files
 *.pyc
 __pycache__/
+
+# Local tool caches
+.impeccable/
+
+# Vite build output
+dist/

@@ -8,12 +8,16 @@ die() {
   exit 1
 }
 
-: "${CODESPACE_NAME:?CODESPACE_NAME environment variable not set. This script should be run in a GitHub Codespace environment.}"
-
-echo "Setting multi-tier application port visibility..."
-gh cs ports visibility 8000:public -c "$CODESPACE_NAME" || die "Failed to set 8000 public"
-gh cs ports visibility 5173:public -c "$CODESPACE_NAME" || die "Failed to set 5173 public"
-gh cs ports visibility 27017:private -c "$CODESPACE_NAME" || die "Failed to set 27017 private"
+if [ -n "${CODESPACE_NAME:-}" ]; then
+  # The API has no authentication, so keep every app port private to the Codespace owner.
+  # The browser reaches the API through the Vite /api proxy on 5173.
+  echo "Setting multi-tier application port visibility..."
+  gh cs ports visibility 8000:private -c "$CODESPACE_NAME" || die "Failed to set 8000 private"
+  gh cs ports visibility 5173:private -c "$CODESPACE_NAME" || die "Failed to set 5173 private"
+  gh cs ports visibility 27017:private -c "$CODESPACE_NAME" || die "Failed to set 27017 private"
+else
+  echo "CODESPACE_NAME is not set; skipping Codespaces port visibility configuration."
+fi
 
 echo "Preparing MongoDB data dir..."
 sudo mkdir -p /data/db || die "mkdir failed"

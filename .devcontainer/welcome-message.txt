@@ -6,8 +6,8 @@ You will build OctoFit Tracker using:
 - Data tier: MongoDB
 
 Ports used in this exercise:
-- 5173 (public)
-- 8000 (public)
+- 5173 (private, Vite proxies /api to the API)
+- 8000 (private, unauthenticated API)
 - 27017 (private)
 
 📃 GitHub Copilot documentation: https://docs.github.com/en/copilot

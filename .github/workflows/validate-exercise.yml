@@ -1,0 +1,49 @@
+name: Validate Exercise
+
+on:
+  pull_request:
+    paths:
+      - ".github/**"
+      - ".devcontainer/**"
+      - ".vscode/**"
+      - "README.md"
+      - "docs/**"
+      - "tests/**"
+      - "octofit-tracker/**"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/**"
+      - ".devcontainer/**"
+      - ".vscode/**"
+      - "README.md"
+      - "docs/**"
+      - "tests/**"
+      - "octofit-tracker/**"
+
+permissions: {}
+
+jobs:
+  validate:
+    name: Validate exercise metadata and scaffold
+    # Maintainer-only: learner copies are not templates and are graded by the step workflows instead.
+    if: github.event.repository.is_template
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Validate exercise structure
+        run: node .github/scripts/validate-exercise.mjs
+      - name: Run validation fixtures
+        run: node --test tests/exercise-validation.test.mjs
+      - name: Install backend dependencies
+        run: npm ci --prefix octofit-tracker/backend
+      - name: Install frontend dependencies
+        run: npm ci --prefix octofit-tracker/frontend
+      - name: Build starter scaffold
+        run: |
+          npm run build --prefix octofit-tracker/backend
+          npm run build --prefix octofit-tracker/frontend
