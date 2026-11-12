@@ -2,31 +2,34 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Django Backend",
-      "type": "python",
+      "name": "Iniciar backend Express",
+      "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/octofit-tracker/backend/manage.py",
-      "args": ["runserver", "0.0.0.0:8000"],
-      "django": true,
-      "justMyCode": true,
-      "python": "${workspaceFolder}/octofit-tracker/backend/venv/bin/python",
+      "cwd": "${workspaceFolder}/octofit-tracker/backend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
       "env": {
-        "PYTHONPATH": "${workspaceFolder}/octofit-tracker/backend/venv/bin/python",
-        "VIRTUAL_ENV": "${workspaceFolder}/octofit-tracker/backend/venv",
-        "PATH": "${workspaceFolder}/octofit-tracker/backend/venv/bin:${env:PATH}"
+        "PORT": "8000"
       }
     },
     {
-      "name": "Launch React Frontend",
+      "name": "Iniciar frontend Vite",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/octofit-tracker/frontend/node_modules/react-scripts/scripts/start.js",
       "cwd": "${workspaceFolder}/octofit-tracker/frontend",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["start"],
-      "port": 3000,
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--host",
+        "0.0.0.0"
+      ],
       "env": {
-        "REACT_APP_CODESPACE_NAME": "${env:CODESPACE_NAME}"
+        "VITE_CODESPACE_NAME": "${env:CODESPACE_NAME}"
       }
     }
   ]

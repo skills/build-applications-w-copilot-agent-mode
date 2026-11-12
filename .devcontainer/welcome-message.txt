@@ -1,4 +1,13 @@
-👋 Welcome to building a multi-tier fitness tracker application with GitHub Copilot agent mode! 
-We are thrilled that you are here and we hope you are excited to explore the capabilities of Copilot!
-🏋🏽🔥💪🏼🎧 As the gym teacher of Mergington High School you have been tasked with building a fitness app for your students.
-📃 GitHub Copilot documentation: https://docs.github.com/en/copilot
+👋 Boas-vindas à construção de uma aplicação multicamadas moderna com o modo agent do GitHub Copilot!
+
+Você vai construir o OctoFit Tracker usando:
+- Camada de apresentação: React 19
+- Camada de lógica: Node.js + Express + TypeScript
+- Camada de dados: MongoDB
+
+Portas usadas neste exercício:
+- 3000 (pública, interface Vite)
+- 8000 (pública, API Express)
+- 27017 (privada, MongoDB)
+
+📃 Documentação do GitHub Copilot: https://docs.github.com/en/copilot

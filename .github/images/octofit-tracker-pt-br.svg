@@ -1,0 +1,14 @@
+<svg role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg" width="960" height="320" viewBox="0 0 960 320">
+  <title id="title">OctoFit Tracker: construa e teste uma aplicação multicamadas</title>
+  <desc id="desc">Banner em português do Brasil sobre a construção do OctoFit Tracker com o modo agent do GitHub Copilot.</desc>
+  <rect width="960" height="320" rx="20" fill="#0d1117"/>
+  <rect x="0" y="0" width="14" height="320" rx="7" fill="#2da44e"/>
+  <circle cx="790" cy="160" r="104" fill="#161b22" stroke="#2da44e" stroke-width="4"/>
+  <path d="M732 190h116M744 166h92M756 142h68" fill="none" stroke="#58a6ff" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="790" cy="112" r="15" fill="#a371f7"/>
+  <text x="58" y="72" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#8b949e">GITHUB SKILLS</text>
+  <text x="58" y="150" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#f0f6fc">OctoFit Tracker</text>
+  <text x="58" y="202" font-family="Arial, sans-serif" font-size="23" fill="#c9d1d9">Construa e teste uma aplicação multicamadas</text>
+  <text x="58" y="238" font-family="Arial, sans-serif" font-size="23" fill="#c9d1d9">com o modo agent do GitHub Copilot</text>
+  <text x="58" y="282" font-family="Arial, sans-serif" font-size="17" fill="#8b949e">React  ·  Express  ·  MongoDB</text>
+</svg>
