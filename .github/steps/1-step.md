@@ -22,7 +22,7 @@ For further reading:
 
 1. In the Codespace, create and publish a working branch named `build-octofit-app`.
 
-1. Open Copilot Chat and select **Auto** in the model picker. Keep it selected throughout the exercise; no specific model is required.
+1. Open Copilot Chat and select **Auto** in the model picker (or **Copilot Fusion** if it appears instead of Auto). Keep that selection throughout the exercise; no specific model is required.
 
 1. Check whether MongoDB is running before you run integration tests.
 
