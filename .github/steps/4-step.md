@@ -35,7 +35,7 @@ The presentation tier should make loading, empty, success, and error states visi
    > npm run dev --prefix octofit-tracker/frontend -- --host 0.0.0.0
    > ```
 
-1. Commit and push the presentation tier.
+1. Commit and push the presentation tier. Each push to `build-octofit-app` runs the Step 4 check, so push after Copilot finishes and the frontend tests pass.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
@@ -43,5 +43,6 @@ The presentation tier should make loading, empty, success, and error states visi
 - Keep the shared API client on relative `/api` paths (with an optional `import.meta.env.VITE_API_BASE_URL` override). The Vite proxy forwards them to port 8000, which stays private.
 - Keep fetch logic out of repeated components: each route component imports `getJson` from `src/api/client.ts` and never calls `fetch` directly.
 - Check accessible names and semantic status/error output when tests fail.
+- If the check fails or the exercise does not advance, fix the reported issue and push again, or open the **Actions** tab, select **Step 4**, choose **Run workflow**, pick the `build-octofit-app` branch, and run it. This also covers frontend work you pushed before Step 4 started.
 
 </details>

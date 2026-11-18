@@ -130,6 +130,27 @@ function isMergeGated(jobId, blocks, visited = new Set()) {
   if (/\b(?:always|failure|cancelled)\s*\(/.test(condition)) return false;
   return jobNeeds(block).some((dependency) => isMergeGated(dependency, blocks, new Set(visited)));
 }
+// Collects `paths:` filter entries from the workflow's top-level `on:` block.
+function triggerPaths(text) {
+  const lines = text.split(/\n/);
+  const start = lines.findIndex((line) => /^on:\s*$/.test(line));
+  if (start < 0) return [];
+  const paths = [];
+  let key = '';
+  for (const line of lines.slice(start + 1)) {
+    if (/^\S/.test(line)) break;
+    const keyMatch = line.match(/^\s*([A-Za-z_-]+):/);
+    if (keyMatch) { key = keyMatch[1]; continue; }
+    const item = line.match(/^\s*-\s*(.+)$/);
+    if (key === 'paths' && item) paths.push(yamlScalar(item[1]));
+  }
+  return paths;
+}
+function globMatches(pattern, file) {
+  const escape = (value) => value.replace(/[.+?^${}()|[\]\\]/g, '\\$&');
+  const source = pattern.split('**').map((part) => part.split('*').map(escape).join('[^/]*')).join('.*');
+  return new RegExp(`^${source}$`).test(file);
+}
 function sectionBody(text, heading) {
   const lines = text.split(/\n/);
   const start = lines.findIndex((line) => line.startsWith(heading));
@@ -242,6 +263,25 @@ export function validateExercise(root = process.cwd()) {
       assertValid(finalJobs.has('finish_exercise'), 'Final workflow must define finish_exercise');
       for (const jobId of finalJobs.keys()) {
         assertValid(isMergeGated(jobId, finalJobs), `5-last-step.yml job ${jobId} must be gated on a merged pull request`);
+      }
+    }],
+    ['Step recovery and rerun triggers', () => {
+      for (const file of workflowFiles.filter((candidate) => /workflows\/[1-5]-/.test(candidate))) {
+        const text = readText(root, file);
+        const paths = triggerPaths(text);
+        for (const [, tier] of text.matchAll(/npm ci --prefix octofit-tracker\/([A-Za-z0-9_-]+)/g)) {
+          for (const manifest of ['package.json', 'package-lock.json']) {
+            const target = `octofit-tracker/${tier}/${manifest}`;
+            assertValid(paths.some((pattern) => globMatches(pattern, target)), `${file} must rerun grading when ${target} changes; add it to the trigger paths`);
+          }
+        }
+      }
+      for (const n of [1, 2, 3, 4]) {
+        const file = `.github/steps/${n}-step.md`;
+        const text = readText(root, file);
+        const troubleshooting = text.slice(text.indexOf('Having trouble? 🤷'));
+        assertValid(troubleshooting.includes(`**Step ${n}**`) && /\*\*Run workflow\*\*/.test(troubleshooting) && troubleshooting.includes('`build-octofit-app`'),
+          `${file} troubleshooting must explain rerunning **Step ${n}** with **Run workflow** on the \`build-octofit-app\` branch`);
       }
     }],
     ['Codespaces API exposure', () => {

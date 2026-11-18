@@ -45,7 +45,7 @@ The logic tier owns request validation, business rules, status codes, and error 
    > curl -i -X POST http://localhost:8000/api/activities -H "Content-Type: application/json" -d "{}"
    > ```
 
-1. Commit and push the tested API.
+1. Commit and push the tested API. Each push to `build-octofit-app` runs the Step 3 check, so push after Copilot finishes and the API tests pass.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
@@ -53,5 +53,6 @@ The logic tier owns request validation, business rules, status codes, and error 
 - Keep routes under `/api/`.
 - Return deliberate 4xx responses for invalid input instead of success-shaped fallbacks.
 - Keep Codespaces and localhost behavior in one configuration helper.
+- If the check fails or the exercise does not advance, fix the reported issue and push again, or open the **Actions** tab, select **Step 3**, choose **Run workflow**, pick the `build-octofit-app` branch, and run it.
 
 </details>
