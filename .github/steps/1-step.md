@@ -6,6 +6,14 @@ Welcome @{{ login }}! You are extending OctoFit Tracker for a school fitness pro
 
 Agent mode is most reliable when it has explicit boundaries and executable acceptance criteria. The architecture document explains ownership across React, Express, and MongoDB, while the failing test suites show which behavior is intentionally incomplete. Reading both before editing lets you ask Copilot for a bounded plan instead of a broad application-generation prompt.
 
+#### Model selection and Copilot Fusion
+
+Model selection is separate from **Interactive**, **Plan**, and **Autopilot**, which control how Copilot works. Copilot Fusion routes tasks to models and orchestrates their work; exploring it is optional for this exercise.
+
+For further reading:
+
+- Explore [GitHub Copilot Fusion](https://docs.github.com/en/copilot/concepts/models/copilot-fusion) for model selection and orchestration.
+
 ### ⌨️ Activity: Read the architecture and establish a test baseline
 
 1. Open the button below in a new tab and create a Codespace for your copy of the exercise using the default configuration.
@@ -13,6 +21,8 @@ Agent mode is most reliable when it has explicit boundaries and executable accep
    [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/{{full_repo_name}}?quickstart=1)
 
 1. In the Codespace, create and publish a working branch named `build-octofit-app`.
+
+1. Open Copilot Chat and select **Auto** in the model picker (or **Copilot Fusion** if it appears instead of Auto). Keep that selection throughout the exercise; no specific model is required.
 
 1. Check whether MongoDB is running before you run integration tests.
 

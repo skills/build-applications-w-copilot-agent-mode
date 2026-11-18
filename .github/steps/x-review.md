@@ -17,3 +17,7 @@ Here's a recap of your accomplishments:
 - Add authentication and authorization as a follow-up challenge.
 - Explore deployment hardening, CI matrices, and richer recommendation algorithms.
 - Keep using inspect, test, implement, and review loops whenever you work with Copilot agent mode.
+
+For further reading:
+
+- Explore [GitHub Copilot Fusion](https://docs.github.com/en/copilot/concepts/models/copilot-fusion) for model selection and orchestration.
