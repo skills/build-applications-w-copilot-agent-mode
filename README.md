@@ -39,6 +39,7 @@ When copying the exercise, we recommend the following settings:
 - We recommend creating a public repository, since private repositories will use Actions minutes.
 - If the exercise is not ready in 20 seconds, open the **Actions** tab in your copied repository.
 - If a job failed, rerun it once. If it fails again, open an issue with the workflow log link.
+- If a later step does not advance after you push, open the **Actions** tab, select that step's workflow, choose **Run workflow**, and run it on the `build-octofit-app` branch.
 
 </details>
 

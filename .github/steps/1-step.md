@@ -51,7 +51,7 @@ For further reading:
    > Read docs/architecture.md and summarize the tier boundaries, current failing tests, and the smallest safe implementation order. Do not edit files.
    > ```
 
-1. Complete the implementation decisions and test plan in `docs/architecture.md`, then commit and push your branch.
+1. Complete the implementation decisions and test plan in `docs/architecture.md`, then commit and push your branch. Each push to `build-octofit-app` runs the Step 1 check, so review, commit, and push changes yourself after Copilot finishes instead of letting Copilot push partial work.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
@@ -59,5 +59,6 @@ For further reading:
 - Use `--prefix` so every command runs from the repository root.
 - Only ports 8000, 5173, and 27017 should appear in app configuration.
 - If MongoDB is not running, follow the Codespaces setup notes before continuing.
+- If the check fails or the exercise does not advance, fix the reported issue and push again, or open the **Actions** tab, select **Step 1**, choose **Run workflow**, pick the `build-octofit-app` branch, and run it.
 
 </details>

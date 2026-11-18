@@ -9,6 +9,8 @@ on:
       - "octofit-tracker/backend/src/models/**"
       - "octofit-tracker/backend/src/scripts/**"
       - "octofit-tracker/backend/tests/data.contract.test.ts"
+      - "octofit-tracker/backend/package.json"
+      - "octofit-tracker/backend/package-lock.json"
 
 permissions: {}
 

@@ -274,6 +274,20 @@ test('step workflows must not grade through learner-editable npm scripts', () =>
   assert.throws(() => validateExercise(root), /learner-editable npm scripts/);
 });
 
+test('step workflows must rerun when the manifests they install change', () => {
+  const root = copyMetadata();
+  const workflow = path.join(root, '.github/workflows/3-step.yml');
+  fs.writeFileSync(workflow, fs.readFileSync(workflow, 'utf8').replace(/^\s*- "octofit-tracker\/backend\/package-lock\.json"\n/m, ''));
+  assert.throws(() => validateExercise(root), /3-step\.yml must rerun grading when octofit-tracker\/backend\/package-lock\.json changes/);
+});
+
+test('step troubleshooting must explain how to rerun a stalled check', () => {
+  const root = copyMetadata();
+  const step = path.join(root, '.github/steps/4-step.md');
+  fs.writeFileSync(step, fs.readFileSync(step, 'utf8').replace(/^- If the check fails or the exercise does not advance.*\n/m, ''));
+  assert.throws(() => validateExercise(root), /4-step\.md troubleshooting must explain rerunning \*\*Step 4\*\*/);
+});
+
 test('third-party actions must use the exact pinned release', () => {
   const root = copyMetadata();
   const workflow = path.join(root, '.github/workflows/1-step.yml');

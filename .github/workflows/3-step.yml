@@ -8,6 +8,8 @@ on:
     paths:
       - "octofit-tracker/backend/src/**"
       - "octofit-tracker/backend/tests/api.contract.test.ts"
+      - "octofit-tracker/backend/package.json"
+      - "octofit-tracker/backend/package-lock.json"
 
 permissions: {}
 

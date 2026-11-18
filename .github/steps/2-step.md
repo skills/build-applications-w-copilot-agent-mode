@@ -35,7 +35,7 @@ Mongoose schemas should express the rules the rest of the application can rely o
    > npm run seed --prefix octofit-tracker/backend
    > ```
 
-1. Review the diff for validation rules and realistic relationships, then commit and push.
+1. Review the diff for validation rules and realistic relationships, then commit and push. Each push to `build-octofit-app` runs the Step 2 check, so push after Copilot finishes and the data tests pass.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
@@ -43,5 +43,6 @@ Mongoose schemas should express the rules the rest of the application can rely o
 - Use Mongoose models rather than raw MongoDB scripts.
 - Seed all four capabilities and keep repeated seed runs idempotent.
 - Diagnose the first failing assertion instead of regenerating every model.
+- If the check fails or the exercise does not advance, fix the reported issue and push again, or open the **Actions** tab, select **Step 2**, choose **Run workflow**, pick the `build-octofit-app` branch, and run it.
 
 </details>
